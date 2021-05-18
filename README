@@ -1,1 +1,6 @@
-Note that DLRM model, training, and data generation are taken from https://www.internalfb.com/intern/codesearch/path/fbsource/fbcode/ai_codesign/benchmarks/dlrm/
+Install with conda install --file requirements.txt
+
+Run:
+MASTER_PORT=29501 python dlrm_s_pytorch.py --use-gpu --print-time
+--dist-backend nccl --nepochs 2 --data-size 1024 --mini-batch-size 8
+--debug-mode --arch-sparse-feature-size 2
