@@ -1,5 +1,3 @@
-absl-py @ file:///tmp/build/80754af9/absl-py_1615411202722/work
-aiohttp @ file:///tmp/build/80754af9/aiohttp_1614360992924/work
 async-timeout==3.0.1
 attrs @ file:///tmp/build/80754af9/attrs_1620827162558/work
 blinker==1.4

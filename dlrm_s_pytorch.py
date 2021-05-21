@@ -1040,7 +1040,7 @@ def training(i, args):
     ws = torch.cuda.device_count()
     print(f"About to initialize distributed, world size {ws}")
     ext_dist.init_distributed(
-        rank=i, size=2, use_gpu=use_gpu, backend=args.dist_backend
+        rank=i, size=ws, use_gpu=use_gpu, backend=args.dist_backend
     )
     print(f"Distributed init done!")
 

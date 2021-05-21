@@ -5,3 +5,6 @@ Run:
 MASTER_ADDR="localhost" MASTER_PORT=29501 python dlrm_s_pytorch.py --use-gpu --print-time
 --dist-backend nccl --nepochs 2 --data-size 1024 --mini-batch-size 8
 --debug-mode --arch-sparse-feature-size 2
+
+
+MASTER_ADDR="train-dy-p4d24xlarge-1" MASTER_PORT=29501 python dlrm_s_pytorch.py --use-gpu --print-time --dist-backend nccl --nepochs 2 --data-size 1024 --mini-batch-size 8 --debug-mode --arch-sparse-feature-size 2
