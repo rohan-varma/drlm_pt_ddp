@@ -861,6 +861,7 @@ def run():
     parser = argparse.ArgumentParser(
         description="Train Deep Learning Recommendation Model (DLRM)"
     )
+    parser.add_argument("--node-world-size", type=int, default=-1)
     # model related parameters
     parser.add_argument("--arch-sparse-feature-size", type=int, default=2)
     parser.add_argument(
@@ -1037,7 +1038,13 @@ def training(i, args):
     # if not args.debug_mode:
     print(f"Initializing with {args.dist_backend}")
 
-    ws = torch.cuda.device_count()
+    #ws = torch.cuda.device_count()
+    nws = args.node_world_size
+    if nws <= 0:
+        raise ValueError("Most pass in --node-world-size coorectly")
+    lws = torch.cuda.device_count()
+    print(f"node size {nws} local {lws} overall {nws * lws}")
+    ws = nws * lws
     print(f"About to initialize distributed, world size {ws}")
     ext_dist.init_distributed(
         rank=i, size=ws, use_gpu=use_gpu, backend=args.dist_backend
