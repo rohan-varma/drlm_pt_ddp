@@ -147,8 +147,12 @@ def init_distributed(rank=-1, size=-1, use_gpu=False, backend=""):
             my_local_rank = rank % torch.cuda.device_count()
             print(f"Global rank {rank} using gpu {my_local_rank}")
             torch.cuda.set_device(my_local_rank)
-        print(f"Init pg with {backend} {rank} ws {size}")
+        master_addr = os.environ["MASTER_ADDR"]
+        master_port = os.environ["MASTER_PORT"]
+        print(f"Init pg with {backend} {rank} ws {size}, addr {master_addr} port {master_port}")
+        #return
         dist.init_process_group(backend, rank=rank, world_size=size)
+        print(f" ---- init done --- {dist.get_rank()} {dist.get_world_size()}")
         my_rank = dist.get_rank()
         my_size = dist.get_world_size()
         if my_rank == 0:

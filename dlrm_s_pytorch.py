@@ -857,6 +857,7 @@ def inference(
 
 
 def run():
+    print("exiting")
     ### parse arguments ###
     parser = argparse.ArgumentParser(
         description="Train Deep Learning Recommendation Model (DLRM)"
@@ -972,6 +973,11 @@ def run():
     parser.add_argument("--lr-decay-start-step", type=int, default=0)
     parser.add_argument("--lr-num-decay-steps", type=int, default=0)
 
+
+
+    # Rank
+    parser.add_argument("--rank", type=int, default=-1)
+
     global args
     global nbatches
     global nbatches_test
@@ -980,6 +986,7 @@ def run():
 
     WORLD_SIZE = torch.cuda.device_count()
     mp.set_start_method("spawn", force=True)
+    print(f"About to spawn....")
     mp.spawn(
         training,
         nprocs=WORLD_SIZE,
@@ -989,8 +996,14 @@ def run():
 
 
 def training(i, args):
-    print(f"Rank {i}")
-    torch.cuda.set_device(torch.cuda.current_device())
+    print(f"local Rank {i}")
+    node_rank = args.rank
+    global_rank = node_rank * torch.cuda.device_count() + i
+    print(f"globval rank {global_rank}")
+    if node_rank < 0:
+        raise ValueError("need to specify node_rank")
+    torch.cuda.set_device(i)
+    print(f"Rank {i} set device {torch.cuda.current_device()}")
     if args.mlperf_logging:
         mlperf_logger.log_event(key=mlperf_logger.constants.CACHE_CLEAR, value=True)
         mlperf_logger.log_start(
@@ -1045,9 +1058,9 @@ def training(i, args):
     lws = torch.cuda.device_count()
     print(f"node size {nws} local {lws} overall {nws * lws}")
     ws = nws * lws
-    print(f"About to initialize distributed, world size {ws}")
+    print(f"About to initialize distributed, world size {ws} global rank {global_rank}")
     ext_dist.init_distributed(
-        rank=i, size=ws, use_gpu=use_gpu, backend=args.dist_backend
+        rank=global_rank, size=ws, use_gpu=use_gpu, backend=args.dist_backend
     )
     print(f"Distributed init done!")
 
