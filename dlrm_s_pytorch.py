@@ -252,6 +252,11 @@ class DLRM_Net(nn.Module):
             EE = ext_dist.DDP(EE, device_ids=[dev_id], process_group=gloo_pg)
             print(f"Type of EE is {type(EE)}")
             emb_l.append(EE)
+
+        if self.use_grpc:
+            if dist.get_rank() == 0:
+                self.client.create_dlrm_embedding(name="create_dlrm_embedding", emb=emb_l, cuda=True)
+                print("-- created embedding!! --")
         return emb_l, v_W_l
 
     def __init__(
@@ -285,7 +290,22 @@ class DLRM_Net(nn.Module):
             and (ln_top is not None)
             and (arch_interaction_op is not None)
         ):
-
+            self.use_grpc = args.grpc
+            # create grpc client if needed
+            if self.use_grpc:
+                print("Creating grpc client")
+                maddr = os.environ["GRPC_MASTER_ADDR"]
+                mport = os.environ["GRPC_MASTER_PORT"]
+                client = grpc_client.Client(f"{maddr}:{mport}")
+                self.client = client
+                print("Created client!")
+                # Create embedding
+                client.create_embedding(name="create_embedding", tensor=torch.tensor([0]))
+                print("Created embedding!")
+                idx = torch.tensor([1])
+                cpu_tensors = client.embedding_lookup(name="embedding", tensor=idx, cuda=False)
+                print(f"Client got {cpu_tensors}")
+                # self.client.terminate()
             # save arguments
             self.ndevices = ndevices
             self.output_d = 0
@@ -408,6 +428,7 @@ class DLRM_Net(nn.Module):
                 ly.append(QV)
             else:
                 E = emb_l[k]
+                # print(" --- EMBEDDING LOOK UP HERE f{type(sparse_index_grou)} ---")
                 V = E(
                     sparse_index_group_batch,
                     sparse_offset_group_batch,
@@ -997,19 +1018,24 @@ def run():
     ctx = mp.get_context('spawn')
     if args.rank == 0 and args.grpc:
         print("-- starting grpc server")
-        server_proc = ctx.Process(target=grpc_server.run)
+        maddr = os.environ["GRPC_MASTER_ADDR"]
+        mport = os.environ["GRPC_MASTER_PORT"]
+        server_proc = ctx.Process(target=grpc_server.run, args=(maddr, mport))
         server_proc.start()
         grpc_server_proc = server_proc
         # Let server start
         import time ; time.sleep(2)
         # Create client
-        maddr = os.environ["MASTER_ADDR"]
-        mport = os.environ["MASTER_PORT"]
-        print("Creating grpc client")
-        client = grpc_client.Client(f"{maddr}:{mport}")
-        print("Created client!")
+        # print("Creating grpc client")
+        # client = grpc_client.Client(f"{maddr}:{mport}")
+        # print("Created client!")
+        # # Try an embedding lookup
+        # idx = torch.tensor([1])
+        # cpu_tensors = client.embedding_lookup(name="embedding", tensor=idx, cuda=False)
+        # print(f"Client got {cpu_tensors}")
+
         # Just terminate server for now
-        client.terminate()
+        #client.terminate()
     mp.spawn(
         training,
         nprocs=WORLD_SIZE,
@@ -1876,6 +1902,10 @@ def training(i, args):
         # check the onnx model
         onnx.checker.check_model(dlrm_pytorch_onnx)
     total_time_end = time_wrap(use_gpu)
+    try:
+        dlrm.client.terminate()
+    except:
+        pass
 
 
 if __name__ == "__main__":

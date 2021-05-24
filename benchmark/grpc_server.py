@@ -6,6 +6,7 @@ except:
 import pickle
 from concurrent import futures
 import torch
+from torch import Tensor
 import grpc
 import os
 
@@ -43,12 +44,34 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
     def __init__(self, server_address):
         self.server_address = server_address
         self.future = futures.Future()
+        self.embedding = None
+
+    def embedding(self, x: Tensor) -> Tensor:
+        assert self.embedding is not None
+        return self.embedding(x)
 
     def meta_run(self, request, context):
         name, tensor, cuda = pickle.loads(request.data)
-        if cuda:
-            tensor = tensor.cuda(0)
-        return benchmark_pb2.Response(data=pickle.dumps(funcs[name](tensor)))
+
+        if name == "create_embedding":
+            self.embedding = torch.nn.Embedding(10, 10)
+            return benchmark_pb2.Response(data=pickle.dumps(identity(tensor)))
+        elif name == "create_dlrm_embedding":
+            self.emb_l = tensor
+            if cuda:
+                for emb in self.emb_l:
+                    emb = emb.cuda(0)
+
+            print(f"Server: created embedding {self.emb_l}")
+            return benchmark_pb2.Response(data=pickle.dumps(identity(torch.ones(1))))
+        elif name == "embedding_lookup":
+            if cuda:
+                tensor = tensor.cuda(0)
+            return benchmark_pb2.Response(data=pickle.dumps(self.embedding(tensor)))
+        else:
+            if cuda:
+                tensor = tensor.cuda(0)
+            return benchmark_pb2.Response(data=pickle.dumps(funcs[name](tensor)))
 
     def terminate(self, request, context):
         print("Server got terminate")

@@ -53,7 +53,33 @@ class Client:
 
 
     def embedding_lookup(self, *, name=None, tensor=None, cuda=False, out_file=None):
-        pass
+        futs = []
+        assert name == "embedding"
+        data = pickle.dumps((name, tensor, cuda))
+        request = benchmark_pb2.Request(data=data)
+        futs.append(self.stubs[0].meta_run.future(request))
+        cpu_tensors = get_all_results(futs, cuda)
+        # TODO - need to move back to device.
+        return cpu_tensors
+
+    def create_embedding(self, *, name=None, tensor=None, cuda=False, out_file=None):
+        futs = []
+        assert name == "create_embedding"
+        data = pickle.dumps((name, tensor, cuda))
+        req = benchmark_pb2.Request(data=data)
+        futs.append(self.stubs[0].meta_run.future(req))
+        cpu_tensors = get_all_results(futs, cuda)
+        return cpu_tensors
+
+    def create_dlrm_embedding(self, *, name=None, emb=None, cuda=False):
+       assert name == "create_dlrm_embedding"
+       data = pickle.dumps((name, emb, cuda))
+       req = benchmark_pb2.Request(data=data)
+       futs = []
+       futs.append(self.stubs[0].meta_run.future(req))
+       cpu_tensors = get_all_results(futs, cuda)
+       return cpu_tensors
+
     def measure(self, *, name=None, tensor=None, cuda=False, out_file=None):
         # warmup
         futs = []
