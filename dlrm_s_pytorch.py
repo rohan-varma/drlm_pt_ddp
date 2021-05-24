@@ -4,6 +4,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import argparse
 
+import os
 # miscellaneous
 import builtins
 import datetime
@@ -25,6 +26,9 @@ import mlperf_logger
 # numpy
 import numpy as np
 import sklearn.metrics
+
+# grpc
+from benchmark import grpc_client, grpc_server
 
 # pytorch
 import torch
@@ -248,6 +252,11 @@ class DLRM_Net(nn.Module):
             EE = ext_dist.DDP(EE, device_ids=[dev_id], process_group=gloo_pg)
             print(f"Type of EE is {type(EE)}")
             emb_l.append(EE)
+
+        if self.use_grpc:
+            if dist.get_rank() == 0:
+                self.client.create_dlrm_embedding(name="create_dlrm_embedding", emb=emb_l, cuda=True)
+                print("-- created embedding!! --")
         return emb_l, v_W_l
 
     def __init__(
@@ -281,7 +290,22 @@ class DLRM_Net(nn.Module):
             and (ln_top is not None)
             and (arch_interaction_op is not None)
         ):
-
+            self.use_grpc = args.grpc
+            # create grpc client if needed
+            if self.use_grpc:
+                print("Creating grpc client")
+                maddr = os.environ["GRPC_MASTER_ADDR"]
+                mport = os.environ["GRPC_MASTER_PORT"]
+                client = grpc_client.Client(f"{maddr}:{mport}")
+                self.client = client
+                print("Created client!")
+                # Create embedding
+                client.create_embedding(name="create_embedding", tensor=torch.tensor([0]))
+                print("Created embedding!")
+                idx = torch.tensor([1])
+                cpu_tensors = client.embedding_lookup(name="embedding", tensor=idx, cuda=False)
+                print(f"Client got {cpu_tensors}")
+                # self.client.terminate()
             # save arguments
             self.ndevices = ndevices
             self.output_d = 0
@@ -404,6 +428,7 @@ class DLRM_Net(nn.Module):
                 ly.append(QV)
             else:
                 E = emb_l[k]
+                # print(" --- EMBEDDING LOOK UP HERE f{type(sparse_index_grou)} ---")
                 V = E(
                     sparse_index_group_batch,
                     sparse_offset_group_batch,
@@ -863,6 +888,7 @@ def run():
         description="Train Deep Learning Recommendation Model (DLRM)"
     )
     parser.add_argument("--node-world-size", type=int, default=-1)
+    parser.add_argument("--grpc", type=bool, default=False)
     # model related parameters
     parser.add_argument("--arch-sparse-feature-size", type=int, default=2)
     parser.add_argument(
@@ -987,16 +1013,42 @@ def run():
     WORLD_SIZE = torch.cuda.device_count()
     mp.set_start_method("spawn", force=True)
     print(f"About to spawn....")
+    # node 0 also starts grpc proc if needed
+    grpc_server_proc = None
+    ctx = mp.get_context('spawn')
+    if args.rank == 0 and args.grpc:
+        print("-- starting grpc server")
+        maddr = os.environ["GRPC_MASTER_ADDR"]
+        mport = os.environ["GRPC_MASTER_PORT"]
+        server_proc = ctx.Process(target=grpc_server.run, args=(maddr, mport))
+        server_proc.start()
+        grpc_server_proc = server_proc
+        # Let server start
+        import time ; time.sleep(2)
+        # Create client
+        # print("Creating grpc client")
+        # client = grpc_client.Client(f"{maddr}:{mport}")
+        # print("Created client!")
+        # # Try an embedding lookup
+        # idx = torch.tensor([1])
+        # cpu_tensors = client.embedding_lookup(name="embedding", tensor=idx, cuda=False)
+        # print(f"Client got {cpu_tensors}")
+
+        # Just terminate server for now
+        #client.terminate()
     mp.spawn(
         training,
         nprocs=WORLD_SIZE,
         args=(args,),
     )
+    if grpc_server_proc:
+        grpc_server_proc.join()
     # training(args)
 
 
 def training(i, args):
     print(f"local Rank {i}")
+    print(f"-- using grpc {args.grpc}")
     node_rank = args.rank
     global_rank = node_rank * torch.cuda.device_count() + i
     print(f"globval rank {global_rank}")
@@ -1850,6 +1902,10 @@ def training(i, args):
         # check the onnx model
         onnx.checker.check_model(dlrm_pytorch_onnx)
     total_time_end = time_wrap(use_gpu)
+    try:
+        dlrm.client.terminate()
+    except:
+        pass
 
 
 if __name__ == "__main__":

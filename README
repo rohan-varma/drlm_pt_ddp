@@ -1,6 +1,6 @@
 Code takenf rom https://github.com/facebookresearch/dlrm
-Install with conda install --file requirements.txt
 Install with conda install conda install scikit-learn tqdm torch tensorboard
+conda install git pip ; pip install grpcio grpcio_tools
 
 activate conda - conda activate pt_env
 Run:
@@ -8,3 +8,10 @@ MASTER_ADDR="localhost" MASTER_PORT=29501 python dlrm_s_pytorch.py --use-gpu --p
 --dist-backend nccl --nepochs 2 --data-size 1024 --mini-batch-size 8
 --debug-mode --arch-sparse-feature-size 2
 
+
+
+
+local 2 gpu run:
+MASTER_ADDR="localhost" MASTER_PORT=29501 python dlrm_s_pytorch.py --use-gpu
+--print-time --dist-backend nccl --nepochs 2 --data-size 2048 --mini-batch-size
+2 --debug-mode --arch-sparse-feature-size 2 --node-world-size 1 --rank 0
