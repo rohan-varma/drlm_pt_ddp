@@ -1,6 +1,6 @@
 Code takenf rom https://github.com/facebookresearch/dlrm
-Install with conda install --file requirements.txt
 Install with conda install conda install scikit-learn tqdm torch tensorboard
+conda install git pip ; pip install grpcio grpcio_tools
 
 activate conda - conda activate pt_env
 Run:
