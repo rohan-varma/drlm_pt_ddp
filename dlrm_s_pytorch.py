@@ -4,6 +4,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import argparse
 
+import os
 # miscellaneous
 import builtins
 import datetime
@@ -25,6 +26,9 @@ import mlperf_logger
 # numpy
 import numpy as np
 import sklearn.metrics
+
+# grpc
+from benchmark import grpc_client, grpc_server
 
 # pytorch
 import torch
@@ -863,6 +867,7 @@ def run():
         description="Train Deep Learning Recommendation Model (DLRM)"
     )
     parser.add_argument("--node-world-size", type=int, default=-1)
+    parser.add_argument("--grpc", type=bool, default=False)
     # model related parameters
     parser.add_argument("--arch-sparse-feature-size", type=int, default=2)
     parser.add_argument(
@@ -987,16 +992,37 @@ def run():
     WORLD_SIZE = torch.cuda.device_count()
     mp.set_start_method("spawn", force=True)
     print(f"About to spawn....")
+    # node 0 also starts grpc proc if needed
+    grpc_server_proc = None
+    ctx = mp.get_context('spawn')
+    if args.rank == 0 and args.grpc:
+        print("-- starting grpc server")
+        server_proc = ctx.Process(target=grpc_server.run)
+        server_proc.start()
+        grpc_server_proc = server_proc
+        # Let server start
+        import time ; time.sleep(2)
+        # Create client
+        maddr = os.environ["MASTER_ADDR"]
+        mport = os.environ["MASTER_PORT"]
+        print("Creating grpc client")
+        client = grpc_client.Client(f"{maddr}:{mport}")
+        print("Created client!")
+        # Just terminate server for now
+        client.terminate()
     mp.spawn(
         training,
         nprocs=WORLD_SIZE,
         args=(args,),
     )
+    if grpc_server_proc:
+        grpc_server_proc.join()
     # training(args)
 
 
 def training(i, args):
     print(f"local Rank {i}")
+    print(f"-- using grpc {args.grpc}")
     node_rank = args.rank
     global_rank = node_rank * torch.cuda.device_count() + i
     print(f"globval rank {global_rank}")
