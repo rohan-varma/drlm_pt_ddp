@@ -86,11 +86,11 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
             with self.lock:
                 name, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda = req_data
                 if sparse_index_group_batch is not None:
-                    sparse_index_group_batch = sparse_index_group_batch.to(0)
+                    sparse_index_group_batch = sparse_index_group_batch.cpu()
                 if sparse_offset_group_batch is not None:
-                    sparse_offset_group_batch = sparse_offset_group_batch.to(0)
+                    sparse_offset_group_batch = sparse_offset_group_batch.cpu()
                 if per_sample_weights is not None:
-                    per_sample_weights = per_sample_weights.to(0)
+                    per_sample_weights = per_sample_weights.cpu()
                 E = self.emb_l[k]
                 V = E(
                         sparse_index_group_batch,
@@ -105,13 +105,15 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
             for emb, grad_tensor in zip(self.emb_l, grad_tensors):
                 # print(f"type of grad {type(self.emb_l[i].weight.grad)} vs {type(grad_tensor)}")
                 # grad_tensor = grad_tensor.to(self.emb_l[i].weight.dtype)
-                grad_tensor = grad_tensor.to(0)
+                # grad_tensor = grad_tensor.to(0)
+                grad_tensor = torch.ones_like(self.emb_l[i].weight)
                 self.emb_l[i].weight.grad = grad_tensor
                 i += 1
             # Apply step
             for emb in self.emb_l:
                 with torch.no_grad():
-                    emb.weight -= 0.001 * emb.weight.grad
+                    if emb.weight.grad is not None:
+                        emb.weight -= 0.001 * emb.weight.grad
             
             return benchmark_pb2.Response(data=pickle.dumps(torch.tensor([1])))
         else:
@@ -126,14 +128,12 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
             elif name == "create_dlrm_embedding":
                 name, size, n, m, cuda = pickle.loads(request.data)
                 assert self.emb_l is None
-                n = 2
+                # n = 2
                 # return benchmark_pb2.Response(data=pickle.dumps(identity(torch.ones(1))))
                 self.emb_l = nn.ModuleList()
                 for _ in range(size):
                     # pass
-                    EE = nn.EmbeddingBag(n, m, mode="sum", sparse=True).cuda(
-                        0
-                    )
+                    EE = nn.EmbeddingBag(n, m, mode="sum", sparse=True)
                     # initialize embeddings
                     # nn.init.uniform_(EE.weight, a=-np.sqrt(1 / n), b=np.sqrt(1 / n))
                     W = np.random.uniform(
@@ -143,7 +143,7 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
                     EE.weight.data = torch.tensor(
                         W,
                         requires_grad=True,
-                        device=0,
+                        device="cpu",
                     )
                     self.emb_l.append(EE)
                 # self.create_dlrm_embedding(size=size,n=n,m=m)
@@ -196,7 +196,7 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
 def run(expected_dev_count, addr="localhost", port="29500"):
     # os.environ["CUDA_VISIBLE_DEVICES"] = "1"
     # assert torch.cuda.device_count() == 1
-    assert torch.cuda.device_count() == expected_dev_count
+    # assert torch.cuda.device_count() == expected_dev_count
 
     server = Server(f"{addr}:{port}")
     server.run()

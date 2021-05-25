@@ -90,6 +90,31 @@ def dlrm_wrap(X, lS_o, lS_i, use_gpu, device, ndevices=1):
         return dlrm(X.to(device), lS_o, lS_i)
 
 
+def profile_hook(state_dict, bucket):
+    rank = dist.get_rank()
+    tensor = bucket.get_tensors()[0]
+    metrics = {}
+    state_dict[bucket.get_index()] = metrics
+
+    # record event before comm
+    e_bfr = torch.cuda.Event(enable_timing=True)
+    metrics["e_bfr"] = e_bfr
+    with torch.cuda.device(rank):
+        e_bfr.record()
+
+    # launch async comm
+    fut = dist.all_reduce(tensor, async_op=True).get_future()
+
+    def cb(fut):
+        # record event after comm
+        e_aft = torch.cuda.Event(enable_timing=True)
+        metrics["e_aft"] = e_aft
+        with torch.cuda.device(rank):
+            e_aft.record()
+
+    fut.then(cb)
+    return fut
+
 def loss_fn_wrap(Z, T, use_gpu, device):
     with record_function("DLRM loss compute"):
         if True or args.loss_function == "mse" or args.loss_function == "bce":
@@ -251,6 +276,9 @@ class DLRM_Net(nn.Module):
             ee_params = {p.device for p in EE.parameters()}
             print(f"ee_params {ee_params}")
             EE = ext_dist.DDP(EE, device_ids=[dev_id], process_group=gloo_pg)
+            # if not self.sparse_state_dict:
+            #     self.sparse_state_dict = {}
+            #     self.sparse_state_dict
             print(f"Type of EE is {type(EE)}")
             emb_l.append(EE)
         
@@ -260,7 +288,7 @@ class DLRM_Net(nn.Module):
                 print(" -- creating embedding on server --")
                 embs = []
                 for e in emb_l:
-                    embs.append(e.module)
+                    embs.append(e.module if isinstance(e, torch.nn.parallel.DistributedDataParallel) else e)
 
                 print(f"embs {embs}, {set(type(c) for c in embs)}")
                 self.client.create_dlrm_embedding(name="create_dlrm_embedding", size=ln.size, n=ln[0],m=m,cuda=True)
@@ -446,18 +474,19 @@ class DLRM_Net(nn.Module):
                 # )
                 if self.use_grpc:
                     # ext_dist.print_all("Trying grpc embedding lookup")
-                    tens = self.client.dlrm_embedding_lookup_async(
+                    futs = self.client.dlrm_embedding_lookup_async(
                         name="dlrm_embedding_lookup_async",
                         k=k,
                         sparse_index_group_batch=sparse_index_group_batch,
                         sparse_offset_group_batch=sparse_offset_group_batch,
                         per_sample_weights=per_sample_weights,
-                        cuda=True,
+                        cuda=False,
                     )
-                    ret_tensors = []
-                    for t in tens:
-                        ret_tensors.append(t.to(torch.cuda.current_device()))
-                    V = ret_tensors[0]
+                    # ret_tensors = []
+                    # for t in tens:
+                    #     ret_tensors.append(t.to(torch.cuda.current_device()))
+                    # V = ret_tensors[0]
+                    V = futs[0]
                     # Save embedding shapes
                     self.Vs[k] = emb_l[k].module.weight.shape
                     # ext_dist.print_all(f"Client got back embedding {ret_tensors} compared to local {V}")
@@ -602,17 +631,23 @@ class DLRM_Net(nn.Module):
 
     def sequential_forward(self, dense_x, lS_o, lS_i):
         # process dense features (using bottom mlp), resulting in a row vector
+        # process sparse features(using embeddings), resulting in a list of row vectors
+        ly = self.apply_emb(lS_o, lS_i, self.emb_l, self.v_W_l)
         x = self.apply_mlp(dense_x, self.bot_l)
         # debug prints
         # print("intermediate")
         # print(x.detach().cpu().numpy())
-
-        # process sparse features(using embeddings), resulting in a list of row vectors
-        ly = self.apply_emb(lS_o, lS_i, self.emb_l, self.v_W_l)
         # for y in ly:
         #     print(y.detach().cpu().numpy())
 
         # interact features (dense and sparse)
+        if self.use_grpc:
+            futs = ly
+            cpu_tensors = self.client.wait_all_futs(futs, cuda=False)
+            tmp = cpu_tensors
+            for i in range(len(tmp)):
+                ly[i] = tmp[i].to(torch.cuda.current_device())
+            
         z = self.interact_features(x, ly)
         # print(z.detach().cpu().numpy())
 
@@ -1175,7 +1210,7 @@ def training(i, args):
     pt_master = os.environ["MASTER_ADDR"]
     pt_port = os.environ["MASTER_PORT"]
     print(f"About to initialize distributed, world size {ws} global rank {global_rank} with {pt_master}, {pt_port}")
-    return
+    # return
     ext_dist.init_distributed(
         rank=global_rank, size=ws, use_gpu=use_gpu, backend=args.dist_backend
     )
@@ -1737,11 +1772,11 @@ def training(i, args):
                         E.backward()
                         if dlrm.use_grpc:
                             # Send dummy gradients over the wire and apply step on param server
-                            grad_tensors = [torch.ones(s).to(torch.cuda.current_device()) for s in dlrm.Vs]
+                            grad_tensors = [torch.zeros(1) for _ in dlrm.Vs]
                             dlrm.client.dlrm_embedding_send_grads(
                                 name="dlrm_embedding_send_grads",
                                 grad_tensors=grad_tensors,
-                                cuda=True
+                                cuda=False
                             )
 
                         # optimizer

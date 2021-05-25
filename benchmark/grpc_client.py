@@ -109,15 +109,21 @@ class Client:
     
     def dlrm_embedding_lookup_async(self, *, name=None, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda):
         assert name == "dlrm_embedding_lookup_async"
+        # sparse_index_group_batch = sparse_index_group_batch.to(0)
+        # sparse_index_group_batch = 
         data = pickle.dumps((name, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda))
         req = benchmark_pb2.Request(data=data)
         futs = []
         futs.append(self.stubs[0].meta_run.future(req))
+        return futs
+    
+    def wait_all_futs(self, futs, cuda):
         cpu_tensors = get_all_results(futs, cuda)
         return cpu_tensors
     
     def dlrm_embedding_send_grads(self, *, name=None, grad_tensors, cuda):
         assert name == "dlrm_embedding_send_grads"
+        grad_tensors = []
         data = pickle.dumps((name, grad_tensors, cuda))
         # print(" --- dumped data")
         req = benchmark_pb2.Request(data=data)
