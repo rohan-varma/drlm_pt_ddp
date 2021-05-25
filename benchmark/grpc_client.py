@@ -72,13 +72,29 @@ class Client:
         return cpu_tensors
 
     def create_dlrm_embedding(self, *, name=None, emb=None, cuda=False):
+       print("Creating embedding")
        assert name == "create_dlrm_embedding"
+       print("About to pickle an ENORMOUS embedding bag")
+       print(emb)
        data = pickle.dumps((name, emb, cuda))
+       print("Done pickling")
        req = benchmark_pb2.Request(data=data)
        futs = []
        futs.append(self.stubs[0].meta_run.future(req))
+       print("Sent request, waiting")
        cpu_tensors = get_all_results(futs, cuda)
+       print(f"Done with request, got {cpu_tensors}")
        return cpu_tensors
+    
+    def dlrm_embedding_lookup_async(self, *, name=None, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda):
+        assert name == "dlrm_embedding_lookup_async"
+        data = pickle.dumps((name, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda))
+        req = benchmark_pb2.Request(data=data)
+        futs = []
+        futs.append(self.stubs[0].meta_run.future(req))
+        cpu_tensors = get_all_results(futs, cuda)
+        return cpu_tensors
+
 
     def measure(self, *, name=None, tensor=None, cuda=False, out_file=None):
         # warmup

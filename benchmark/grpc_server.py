@@ -51,27 +51,38 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
         return self.embedding(x)
 
     def meta_run(self, request, context):
-        name, tensor, cuda = pickle.loads(request.data)
-
-        if name == "create_embedding":
-            self.embedding = torch.nn.Embedding(10, 10)
-            return benchmark_pb2.Response(data=pickle.dumps(identity(tensor)))
-        elif name == "create_dlrm_embedding":
-            self.emb_l = tensor
-            if cuda:
-                for emb in self.emb_l:
-                    emb = emb.cuda(0)
-
-            print(f"Server: created embedding {self.emb_l}")
-            return benchmark_pb2.Response(data=pickle.dumps(identity(torch.ones(1))))
-        elif name == "embedding_lookup":
-            if cuda:
-                tensor = tensor.cuda(0)
-            return benchmark_pb2.Response(data=pickle.dumps(self.embedding(tensor)))
+        req_data = pickle.loads(request.data)
+        name = req_data[0]
+        if name == "dlrm_embedding_lookup_async":
+            name, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda = pickle.loads(request.data)
+            E = self.emb_l[k]
+            V = E(
+                    sparse_index_group_batch,
+                    sparse_offset_group_batch,
+                    per_sample_weights=per_sample_weights,
+                )
+            return benchmark_pb2.Response(data=pickle.dumps(V))
         else:
-            if cuda:
-                tensor = tensor.cuda(0)
-            return benchmark_pb2.Response(data=pickle.dumps(funcs[name](tensor)))
+            name, tensor, cuda = pickle.loads(request.data)
+            if name == "create_embedding":
+                self.embedding = torch.nn.Embedding(10, 10)
+                return benchmark_pb2.Response(data=pickle.dumps(identity(tensor)))
+            elif name == "create_dlrm_embedding":
+                self.emb_l = tensor
+                #if cuda:
+                    #for emb in self.emb_l:
+                    #    emb = emb.cuda(0)
+
+                print(f"Server: created embedding {self.emb_l}")
+                return benchmark_pb2.Response(data=pickle.dumps(identity(torch.ones(1))))
+            elif name == "embedding_lookup":
+                if cuda:
+                    tensor = tensor.cuda(0)
+                return benchmark_pb2.Response(data=pickle.dumps(self.embedding(tensor)))
+            else:
+                if cuda:
+                    tensor = tensor.cuda(0)
+                return benchmark_pb2.Response(data=pickle.dumps(funcs[name](tensor)))
 
     def terminate(self, request, context):
         print("Server got terminate")

@@ -8,10 +8,11 @@ import os
 # miscellaneous
 import builtins
 import datetime
+import socket
 import json
 import sys
 import time
-
+import socket
 # onnx
 # The onnx import causes deprecation warnings every time workers
 # are spawned during testing. So, we filter out those warnings.
@@ -255,7 +256,13 @@ class DLRM_Net(nn.Module):
 
         if self.use_grpc:
             if dist.get_rank() == 0:
-                self.client.create_dlrm_embedding(name="create_dlrm_embedding", emb=emb_l, cuda=True)
+                print(" -- creating embedding on server --")
+                cpu_embs = []
+                for e in emb_l:
+                    cpu_embs.append(e.module)
+
+                print(f"cpu embs {cpu_embs}, {set(type(c) for c in cpu_embs)}")
+                self.client.create_dlrm_embedding(name="create_dlrm_embedding", emb=cpu_embs, cuda=True)
                 print("-- created embedding!! --")
         return emb_l, v_W_l
 
@@ -298,13 +305,13 @@ class DLRM_Net(nn.Module):
                 mport = os.environ["GRPC_MASTER_PORT"]
                 client = grpc_client.Client(f"{maddr}:{mport}")
                 self.client = client
-                print("Created client!")
+                ext_dist.print_all("Created client!")
                 # Create embedding
                 client.create_embedding(name="create_embedding", tensor=torch.tensor([0]))
-                print("Created embedding!")
+                ext_dist.print_all("Created embedding!")
                 idx = torch.tensor([1])
                 cpu_tensors = client.embedding_lookup(name="embedding", tensor=idx, cuda=False)
-                print(f"Client got {cpu_tensors}")
+                ext_dist.print_all(f"Client on {socket.gethostname()} got {cpu_tensors}")
                 # self.client.terminate()
             # save arguments
             self.ndevices = ndevices
@@ -427,13 +434,35 @@ class DLRM_Net(nn.Module):
 
                 ly.append(QV)
             else:
-                E = emb_l[k]
-                # print(" --- EMBEDDING LOOK UP HERE f{type(sparse_index_grou)} ---")
-                V = E(
+                # E = emb_l[k]
+                # # print(" --- EMBEDDING LOOK UP HERE f{type(sparse_index_grou)} ---")
+                # V = E(
+                #     sparse_index_group_batch,
+                #     sparse_offset_group_batch,
+                #     per_sample_weights=per_sample_weights,
+                # )
+                if self.use_grpc:
+                    # ext_dist.print_all("Trying grpc embedding lookup")
+                    tens = self.client.dlrm_embedding_lookup_async(
+                        name="dlrm_embedding_lookup_async",
+                        k=k,
+                        sparse_index_group_batch=sparse_index_group_batch,
+                        sparse_offset_group_batch=sparse_offset_group_batch,
+                        per_sample_weights=per_sample_weights,
+                        cuda=True,
+                    )
+                    ret_tensors = []
+                    for t in tens:
+                        ret_tensors.append(t.to(torch.cuda.current_device()))
+                    V = ret_tensors[0]
+                    # ext_dist.print_all(f"Client got back embedding {ret_tensors} compared to local {V}")
+                else:
+                    E = emb_l[k]
+                    V = E(
                     sparse_index_group_batch,
                     sparse_offset_group_batch,
                     per_sample_weights=per_sample_weights,
-                )
+                    )
 
                 ly.append(V)
 
