@@ -253,17 +253,20 @@ class DLRM_Net(nn.Module):
             EE = ext_dist.DDP(EE, device_ids=[dev_id], process_group=gloo_pg)
             print(f"Type of EE is {type(EE)}")
             emb_l.append(EE)
-
+        
+        output = [None for _ in range(dist.get_world_size())]
         if self.use_grpc:
             if dist.get_rank() == 0:
                 print(" -- creating embedding on server --")
-                cpu_embs = []
+                embs = []
                 for e in emb_l:
-                    cpu_embs.append(e.module)
+                    embs.append(e.module)
 
-                print(f"cpu embs {cpu_embs}, {set(type(c) for c in cpu_embs)}")
-                self.client.create_dlrm_embedding(name="create_dlrm_embedding", emb=cpu_embs, cuda=True)
+                print(f"embs {embs}, {set(type(c) for c in embs)}")
+                self.client.create_dlrm_embedding(name="create_dlrm_embedding", size=ln.size, n=ln[0],m=m,cuda=True)
                 print("-- created embedding!! --")
+        
+        dist.all_gather_object(output, {1:2}, group=None)
         return emb_l, v_W_l
 
     def __init__(
@@ -1032,7 +1035,7 @@ def run():
 
 
 
-    # Rank
+    # GLOBAL rank
     parser.add_argument("--rank", type=int, default=-1)
 
     global args
@@ -1043,19 +1046,38 @@ def run():
 
     WORLD_SIZE = torch.cuda.device_count()
     mp.set_start_method("spawn", force=True)
-    print(f"About to spawn....")
-    # node 0 also starts grpc proc if needed
-    grpc_server_proc = None
-    ctx = mp.get_context('spawn')
-    if args.rank == 0 and args.grpc:
-        print("-- starting grpc server")
-        maddr = os.environ["GRPC_MASTER_ADDR"]
-        mport = os.environ["GRPC_MASTER_PORT"]
-        server_proc = ctx.Process(target=grpc_server.run, args=(maddr, mport))
-        server_proc.start()
-        grpc_server_proc = server_proc
-        # Let server start
-        import time ; time.sleep(2)
+    print(f"About to spawn.... {torch.cuda.device_count()}")
+    if not args.grpc:
+        mp.spawn(
+        training,
+        nprocs=WORLD_SIZE,
+        args=(args,),
+    )
+    else:
+        # node 0 also starts grpc proc if needed
+        grpc_server_proc = None
+        ctx = mp.get_context('spawn')
+        if args.rank == 0 and args.grpc:
+            print("-- starting grpc server")
+            maddr = os.environ["GRPC_MASTER_ADDR"]
+            hostname = socket.gethostname()
+            print(f"{maddr} vs {hostname}")
+            mport = os.environ["GRPC_MASTER_PORT"]
+            expected = torch.cuda.device_count()
+            server_proc = ctx.Process(target=grpc_server.run, args=(expected, maddr, mport))
+            server_proc.start()
+            grpc_server_proc = server_proc
+            # Let server start
+            import time ; time.sleep(2)
+            # Wait for termiante
+            grpc_server_proc.join()
+        else:
+            mp.spawn(
+            training,
+            nprocs=WORLD_SIZE,
+            args=(args,),
+        )
+            # Other nodes run training.
         # Create client
         # print("Creating grpc client")
         # client = grpc_client.Client(f"{maddr}:{mport}")
@@ -1067,13 +1089,13 @@ def run():
 
         # Just terminate server for now
         #client.terminate()
-    mp.spawn(
-        training,
-        nprocs=WORLD_SIZE,
-        args=(args,),
-    )
-    if grpc_server_proc:
-        grpc_server_proc.join()
+    # mp.spawn(
+    #     training,
+    #     nprocs=WORLD_SIZE,
+    #     args=(args,),
+    # )
+    # if grpc_server_proc:
+    #     grpc_server_proc.join()
     # training(args)
 
 
@@ -1081,6 +1103,10 @@ def training(i, args):
     print(f"local Rank {i}")
     print(f"-- using grpc {args.grpc}")
     node_rank = args.rank
+    if args.grpc:
+        node_rank -=1
+        if node_rank < 0:
+            raise ValueError("Must have world size > 2 with grpc.")
     global_rank = node_rank * torch.cuda.device_count() + i
     print(f"globval rank {global_rank}")
     if node_rank < 0:
@@ -1138,10 +1164,18 @@ def training(i, args):
     nws = args.node_world_size
     if nws <= 0:
         raise ValueError("Most pass in --node-world-size coorectly")
+    if args.grpc:
+        if nws - 1 <= 0:
+            raise ValueError(f"Must have node world size at least 2 when using grpc, passed in {nws}")
+        else:
+            nws = nws - 1
     lws = torch.cuda.device_count()
     print(f"node size {nws} local {lws} overall {nws * lws}")
     ws = nws * lws
-    print(f"About to initialize distributed, world size {ws} global rank {global_rank}")
+    pt_master = os.environ["MASTER_ADDR"]
+    pt_port = os.environ["MASTER_PORT"]
+    print(f"About to initialize distributed, world size {ws} global rank {global_rank} with {pt_master}, {pt_port}")
+    return
     ext_dist.init_distributed(
         rank=global_rank, size=ws, use_gpu=use_gpu, backend=args.dist_backend
     )

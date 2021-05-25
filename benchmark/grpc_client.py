@@ -8,6 +8,7 @@ import threading
 import time
 from functools import partial
 from statistics import stdev
+import datetime
 
 from concurrent import futures
 
@@ -71,19 +72,39 @@ class Client:
         cpu_tensors = get_all_results(futs, cuda)
         return cpu_tensors
 
-    def create_dlrm_embedding(self, *, name=None, emb=None, cuda=False):
-       print("Creating embedding")
+    def create_dlrm_embedding(self, *, name=None, size=None, n=None,m=None,cuda=None):
+    #    assert rank is not None
+       print(f"{datetime.datetime.now()} Creating embedding")
        assert name == "create_dlrm_embedding"
-       print("About to pickle an ENORMOUS embedding bag")
-       print(emb)
-       data = pickle.dumps((name, emb, cuda))
-       print("Done pickling")
+
+       print(f"{datetime.datetime.now()} Pickling")
+       data = pickle.dumps((name, size, n, m, cuda))
+       print(f"{datetime.datetime.now()}  pickled")
        req = benchmark_pb2.Request(data=data)
-       futs = []
-       futs.append(self.stubs[0].meta_run.future(req))
-       print("Sent request, waiting")
+       print(f"{datetime.datetime.now()} request")
+       futs = [self.stubs[0].meta_run.future(req)]
+       print(f"{datetime.datetime.now()} signal")
        cpu_tensors = get_all_results(futs, cuda)
-       print(f"Done with request, got {cpu_tensors}")
+       print(f"{datetime.datetime.now()} done")
+    #    name, size, n, m, cuda
+    #    # Assemble the embedding on the remote end one by one.
+    #    for i, e in enumerate(emb):
+    #        data = pickle.dumps((name, emb, cuda, i == len(emb) - 1))
+    #        req = benchmark_pb2.Request(data=data)
+    #        print(f"{datetime.datetime.now()} Created request obj, now calling meta_run.")
+    #        futs = [self.stubs[0].meta_run.future(req)]
+    #        print(f"{datetime.datetime.now()} Sent request, waiting")
+    #        get_all_results(futs, cuda)
+    #        print(f"{datetime.datetime.now()} Done with request, got {cpu_tensors}")
+    #    data = pickle.dumps((name, emb, cuda))
+    #    print(f"{datetime.datetime.now()} Done pickling, now sending request")
+    #    req = benchmark_pb2.Request(data=data)
+    #    print(f"{datetime.datetime.now()} Created request obj, now calling meta_run.")
+    #    futs = []
+    #    futs.append(self.stubs[0].meta_run.future(req))
+    #    print(f"{datetime.datetime.now()} Sent request, waiting")
+    #    cpu_tensors = get_all_results(futs, cuda)
+    #    print(f"{datetime.datetime.now()} Done with request, got {cpu_tensors}")
        return cpu_tensors
     
     def dlrm_embedding_lookup_async(self, *, name=None, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda):
