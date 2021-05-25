@@ -94,6 +94,18 @@ class Client:
         futs.append(self.stubs[0].meta_run.future(req))
         cpu_tensors = get_all_results(futs, cuda)
         return cpu_tensors
+    
+    def dlrm_embedding_send_grads(self, *, name=None, grad_tensors, cuda):
+        assert name == "dlrm_embedding_send_grads"
+        data = pickle.dumps((name, grad_tensors, cuda))
+        # print(" --- dumped data")
+        req = benchmark_pb2.Request(data=data)
+        # print(" -- created req")
+        futs = []
+        futs.append(self.stubs[0].meta_run.future(req))
+        # print(" --- sending req ---")
+        cpu_tensors = get_all_results(futs, cuda)
+        return cpu_tensors 
 
 
     def measure(self, *, name=None, tensor=None, cuda=False, out_file=None):

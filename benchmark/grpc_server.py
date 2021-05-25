@@ -54,7 +54,7 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
         req_data = pickle.loads(request.data)
         name = req_data[0]
         if name == "dlrm_embedding_lookup_async":
-            name, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda = pickle.loads(request.data)
+            name, k, sparse_index_group_batch, sparse_offset_group_batch, per_sample_weights, cuda = req_data
             E = self.emb_l[k]
             V = E(
                     sparse_index_group_batch,
@@ -62,6 +62,21 @@ class Server(benchmark_pb2_grpc.GRPCBenchmarkServicer):
                     per_sample_weights=per_sample_weights,
                 )
             return benchmark_pb2.Response(data=pickle.dumps(V))
+        elif name == "dlrm_embedding_send_grads":
+            name, grad_tensors, cuda = req_data
+            # Apply gradients and mock step
+            i = 0
+            for emb, grad_tensor in zip(self.emb_l, grad_tensors):
+                # print(f"type of grad {type(self.emb_l[i].weight.grad)} vs {type(grad_tensor)}")
+                # grad_tensor = grad_tensor.to(self.emb_l[i].weight.dtype)
+                self.emb_l[i].weight.grad = grad_tensor
+                i += 1
+            # Apply step
+            for emb in self.emb_l:
+                with torch.no_grad():
+                    emb.weight -= 0.001 * emb.weight.grad
+            
+            return benchmark_pb2.Response(data=pickle.dumps(torch.tensor([1])))
         else:
             name, tensor, cuda = pickle.loads(request.data)
             if name == "create_embedding":

@@ -396,7 +396,7 @@ class DLRM_Net(nn.Module):
         #   corresponding to a single lookup
         # 2. for each embedding the lookups are further organized into a batch
         # 3. for a list of embedding tables there is a list of batched lookups
-
+        self.Vs = [None for _ in range(len(lS_i))]
         ly = []
         for k, sparse_index_group_batch in enumerate(lS_i):
             sparse_offset_group_batch = lS_o[k]
@@ -455,6 +455,8 @@ class DLRM_Net(nn.Module):
                     for t in tens:
                         ret_tensors.append(t.to(torch.cuda.current_device()))
                     V = ret_tensors[0]
+                    # Save embedding shapes
+                    self.Vs[k] = emb_l[k].module.weight.shape
                     # ext_dist.print_all(f"Client got back embedding {ret_tensors} compared to local {V}")
                 else:
                     E = emb_l[k]
@@ -1699,6 +1701,14 @@ def training(i, args):
                         optimizer.zero_grad()
                         # backward pass
                         E.backward()
+                        if dlrm.use_grpc:
+                            # Send dummy gradients over the wire and apply step on param server
+                            grad_tensors = [torch.ones(s).to(torch.cuda.current_device()) for s in dlrm.Vs]
+                            dlrm.client.dlrm_embedding_send_grads(
+                                name="dlrm_embedding_send_grads",
+                                grad_tensors=grad_tensors,
+                                cuda=True
+                            )
 
                         # optimizer
                         optimizer.step()
