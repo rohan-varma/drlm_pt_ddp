@@ -15,3 +15,5 @@ local 2 gpu run:
 MASTER_ADDR="localhost" MASTER_PORT=29501 python dlrm_s_pytorch.py --use-gpu
 --print-time --dist-backend nccl --nepochs 2 --data-size 2048 --mini-batch-size
 2 --debug-mode --arch-sparse-feature-size 2 --node-world-size 1 --rank 0
+
+test_var_embeddings.sh runs the experiment that tests various embedding input sizes until oom. test_20m_varied_embedding_size.sh runs the experimetn with 20m embeddings with variable dim size (64, 128, 256, ... until OOM). test_large.sh and test_large_grpc.sh test a large model with and without GRPC. When GRPC is enabled, the parameter grpc server runs on its own machine and trainers are on separate machine, meaning that the parameter server does not have an associated PS process on its machine.

@@ -1,0 +1,24 @@
+using master addrtrain-dy-p4d24xlarge-5
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-6
+rank? 1
+embedding size 1024
+32768
+using master addrtrain-dy-p4d24xlarge-5
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-5
+rank? 0
+embedding size 1024
+32768
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8

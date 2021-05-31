@@ -1,0 +1,4260 @@
+using master addrtrain-dy-p4d24xlarge-1
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-1
+rank? 0
+using master addrtrain-dy-p4d24xlarge-1
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-2
+rank? 1
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 2
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 2
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc False
+globval rank 0
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 2 overall 4
+About to initialize distributed, world size 4 global rank 0 with train-dy-p4d24xlarge-1, 29501
+Global rank 0 using gpu 0
+Init pg with nccl 0 ws 4, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 0 4
+Running on 4 ranks using nccl backend
+world size: 4, current rank: 0, local rank: 0
+Distributed init done!
+Using 1 GPU per process, this process is using 0
+Using 1 GPU(s)...
+model arch:
+mlp top arch 3 layers, with input to output dimensions:
+[ 142 4096 4096    1]
+# of interactions
+142
+mlp bot arch 5 layers, with input to output dimensions:
+[2000 1024 1024  512  256   64]
+# of features (sparse and dense)
+13
+dense feature size
+2000
+sparse feature size
+64
+# of embeddings (= # of sparse features) 12, with dimensions 64x:
+[1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000
+ 1000000 1000000 1000000]
+computed ndevices as 1: ngpus=1, bs=4, fea=12
+--- calling create emb in DLRM __init__
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Creating linear with 2000 1024
+Creating linear with 1024 1024
+Creating linear with 1024 512
+Creating linear with 512 256
+Creating linear with 256 64
+Created 10 layers
+Creating linear with 142 4096
+Creating linear with 4096 4096
+Creating linear with 4096 1
+Created 6 layers
+overall: Number of parameter tensors: 28
+overall: Number of parameters: 789142337
+overall: Parameter size in bytes: 3156569348 (3010.3391151428223 MB) 
+
+emb_l: Number of parameter tensors: 12
+emb_l: Number of parameters: 768000000
+emb_l: Parameter size in bytes: 3072000000 (2929.6875 MB) 
+
+bot_l: Number of parameter tensors: 10
+bot_l: Number of parameters: 3771200
+bot_l: Parameter size in bytes: 15084800 (14.385986328125 MB) 
+
+top_l: Number of parameter tensors: 6
+top_l: Number of parameters: 17371137
+top_l: Parameter size in bytes: 69484548 (66.26562881469727 MB) 
+
+Initialized DLRM
+use_gpu is true
+Using data parallel MLPs
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+time/loss/accuracy (if enabled):
+mbs is 4
+Forward 781.1143798828125 ms
+Average overall bwd comp time nan
+Finished training it 1/512 of epoch 0, 907.01 ms/it, loss 0.131642
+mbs is 4
+Forward 11.531264305114746 ms
+Average overall bwd comp time 782.592658285714
+Finished training it 2/512 of epoch 0, 61.39 ms/it, loss 0.026860
+mbs is 4
+Forward 2.9951999187469482 ms
+Average overall bwd comp time 416.8921965714285
+Finished training it 3/512 of epoch 0, 51.31 ms/it, loss 0.098717
+mbs is 4
+Forward 3.0351359844207764 ms
+Average overall bwd comp time 293.83867707142855
+Finished training it 4/512 of epoch 0, 47.01 ms/it, loss 0.000839
+mbs is 4
+Forward 4.645887851715088 ms
+Average overall bwd comp time 231.11946928571427
+Finished training it 5/512 of epoch 0, 51.27 ms/it, loss 0.028262
+mbs is 4
+Forward 4.634624004364014 ms
+Average overall bwd comp time 194.045249
+Finished training it 6/512 of epoch 0, 51.45 ms/it, loss 0.000460
+mbs is 4
+Forward 2.9665279388427734 ms
+Average overall bwd comp time 169.3636012142857
+Finished training it 7/512 of epoch 0, 55.67 ms/it, loss 0.150412
+mbs is 4
+Forward 3.0699520111083984 ms
+Average overall bwd comp time 152.40614
+Finished training it 8/512 of epoch 0, 53.26 ms/it, loss 0.008030
+mbs is 4
+Forward 2.979840040206909 ms
+Average overall bwd comp time 139.4137857142857
+Finished training it 9/512 of epoch 0, 55.95 ms/it, loss 0.000875
+mbs is 4
+Forward 2.9030399322509766 ms
+Average overall bwd comp time 129.59256171428572
+Finished training it 10/512 of epoch 0, 53.03 ms/it, loss 0.029932
+mbs is 4
+Forward 3.027967929840088 ms
+Average overall bwd comp time 121.45676928571427
+Finished training it 11/512 of epoch 0, 61.50 ms/it, loss 0.046668
+mbs is 4
+Forward 3.0361599922180176 ms
+Average overall bwd comp time 115.53453278571428
+Finished training it 12/512 of epoch 0, 48.17 ms/it, loss 0.069712
+mbs is 4
+Forward 2.8037118911743164 ms
+Average overall bwd comp time 109.52524485714285
+Finished training it 13/512 of epoch 0, 56.61 ms/it, loss 0.035648
+mbs is 4
+Forward 2.9655039310455322 ms
+Average overall bwd comp time 105.03608771428571
+Finished training it 14/512 of epoch 0, 52.34 ms/it, loss 0.002957
+mbs is 4
+Forward 2.840575933456421 ms
+Average overall bwd comp time 100.91436557142858
+Finished training it 15/512 of epoch 0, 55.03 ms/it, loss 0.027091
+mbs is 4
+Forward 3.0709760189056396 ms
+Average overall bwd comp time 97.49306114285716
+Finished training it 16/512 of epoch 0, 55.91 ms/it, loss 0.014750
+mbs is 4
+Forward 2.900991916656494 ms
+Average overall bwd comp time 94.55552028571428
+Finished training it 17/512 of epoch 0, 53.75 ms/it, loss 0.234390
+mbs is 4
+Forward 2.831360101699829 ms
+Average overall bwd comp time 91.84653535714287
+Finished training it 18/512 of epoch 0, 50.33 ms/it, loss 0.000425
+mbs is 4
+Forward 2.821120023727417 ms
+Average overall bwd comp time 89.27131978571425
+Finished training it 19/512 of epoch 0, 54.42 ms/it, loss 0.011951
+mbs is 4
+Forward 4.641791820526123 ms
+Average overall bwd comp time 87.16376428571427
+Finished training it 20/512 of epoch 0, 49.79 ms/it, loss 0.000504
+mbs is 4
+Forward 4.621312141418457 ms
+Average overall bwd comp time 85.03863442857141
+Finished training it 21/512 of epoch 0, 53.45 ms/it, loss 0.093316
+mbs is 4
+Forward 6.917119979858398 ms
+Average overall bwd comp time 83.27563485714286
+Finished training it 22/512 of epoch 0, 62.22 ms/it, loss 0.053354
+mbs is 4
+Forward 2.9276158809661865 ms
+Average overall bwd comp time 81.92654071428571
+Finished training it 23/512 of epoch 0, 53.96 ms/it, loss 0.175363
+mbs is 4
+Forward 2.9071359634399414 ms
+Average overall bwd comp time 80.47425257142856
+Finished training it 24/512 of epoch 0, 49.79 ms/it, loss 0.001285
+mbs is 4
+Forward 2.9112319946289062 ms
+Average overall bwd comp time 78.99003142857143
+Finished training it 25/512 of epoch 0, 49.16 ms/it, loss 0.067769
+mbs is 4
+Forward 3.057663917541504 ms
+Average overall bwd comp time 77.6073767857143
+Finished training it 26/512 of epoch 0, 51.02 ms/it, loss 0.158075
+mbs is 4
+Forward 2.885632038116455 ms
+Average overall bwd comp time 76.40305
+Finished training it 27/512 of epoch 0, 54.42 ms/it, loss 0.234789
+mbs is 4
+Forward 2.8866560459136963 ms
+Average overall bwd comp time 75.41822699999999
+Finished training it 28/512 of epoch 0, 55.98 ms/it, loss 0.068906
+mbs is 4
+Forward 2.9409279823303223 ms
+Average overall bwd comp time 74.54337892857141
+Finished training it 29/512 of epoch 0, 53.63 ms/it, loss 0.024483
+mbs is 4
+Forward 2.9726719856262207 ms
+Average overall bwd comp time 73.64366885714286
+Finished training it 30/512 of epoch 0, 52.27 ms/it, loss 0.107936
+mbs is 4
+Forward 4.71347188949585 ms
+Average overall bwd comp time 72.76259678571428
+Finished training it 31/512 of epoch 0, 53.13 ms/it, loss 0.000010
+mbs is 4
+Forward 2.8272640705108643 ms
+Average overall bwd comp time 71.94927107142857
+Finished training it 32/512 of epoch 0, 52.92 ms/it, loss 0.072166
+mbs is 4
+Forward 3.017728090286255 ms
+Average overall bwd comp time 71.1929427142857
+Finished training it 33/512 of epoch 0, 53.19 ms/it, loss 0.123883
+mbs is 4
+Forward 2.9808640480041504 ms
+Average overall bwd comp time 70.49940385714287
+Finished training it 34/512 of epoch 0, 64.48 ms/it, loss 0.033934
+mbs is 4
+Forward 2.817023992538452 ms
+Average overall bwd comp time 70.14760550000001
+Finished training it 35/512 of epoch 0, 52.48 ms/it, loss 0.235631
+mbs is 4
+Forward 3.0269439220428467 ms
+Average overall bwd comp time 69.49686285714286
+Finished training it 36/512 of epoch 0, 53.10 ms/it, loss 0.012591
+mbs is 4
+Forward 3.1344640254974365 ms
+Average overall bwd comp time 68.89548707142856
+Finished training it 37/512 of epoch 0, 51.68 ms/it, loss 0.127162
+mbs is 4
+Forward 2.879487991333008 ms
+Average overall bwd comp time 68.29895228571426
+Finished training it 38/512 of epoch 0, 54.06 ms/it, loss 0.103946
+mbs is 4
+Forward 2.9184000492095947 ms
+Average overall bwd comp time 67.783584
+Finished training it 39/512 of epoch 0, 53.22 ms/it, loss 0.268092
+mbs is 4
+Forward 3.1293439865112305 ms
+Average overall bwd comp time 67.27628778571429
+Finished training it 40/512 of epoch 0, 49.92 ms/it, loss 0.000667
+mbs is 4
+Forward 3.077120065689087 ms
+Average overall bwd comp time 66.71642807142857
+Finished training it 41/512 of epoch 0, 48.43 ms/it, loss 0.000198
+mbs is 4
+Forward 2.8528640270233154 ms
+Average overall bwd comp time 66.15727235714286
+Finished training it 42/512 of epoch 0, 48.30 ms/it, loss 0.200337
+mbs is 4
+Forward 2.890752077102661 ms
+Average overall bwd comp time 65.61668357142857
+Finished training it 43/512 of epoch 0, 50.08 ms/it, loss 0.178223
+mbs is 4
+Forward 2.9511680603027344 ms
+Average overall bwd comp time 65.14007214285712
+Finished training it 44/512 of epoch 0, 55.92 ms/it, loss 0.064022
+mbs is 4
+Forward 2.919424057006836 ms
+Average overall bwd comp time 64.81159714285712
+Finished training it 45/512 of epoch 0, 52.22 ms/it, loss 0.000705
+mbs is 4
+Forward 4.642816066741943 ms
+Average overall bwd comp time 64.42015071428571
+Finished training it 46/512 of epoch 0, 53.81 ms/it, loss 0.012977
+mbs is 4
+Forward 4.601856231689453 ms
+Average overall bwd comp time 64.07025807142857
+Finished training it 47/512 of epoch 0, 51.25 ms/it, loss 0.282437
+mbs is 4
+Forward 4.6981120109558105 ms
+Average overall bwd comp time 63.68509271428571
+Finished training it 48/512 of epoch 0, 50.53 ms/it, loss 0.285795
+mbs is 4
+Forward 2.876415967941284 ms
+Average overall bwd comp time 63.301967428571416
+Finished training it 49/512 of epoch 0, 46.88 ms/it, loss 0.000152
+mbs is 4
+Forward 3.072000026702881 ms
+Average overall bwd comp time 62.8736577142857
+Finished training it 50/512 of epoch 0, 55.57 ms/it, loss 0.008765
+mbs is 4
+Forward 2.924544095993042 ms
+Average overall bwd comp time 62.62030535714286
+Finished training it 51/512 of epoch 0, 56.29 ms/it, loss 0.279126
+mbs is 4
+Forward 3.0208001136779785 ms
+Average overall bwd comp time 62.40022092857142
+Finished training it 52/512 of epoch 0, 51.14 ms/it, loss 0.011880
+mbs is 4
+Forward 4.65715217590332 ms
+Average overall bwd comp time 62.102266142857125
+Finished training it 53/512 of epoch 0, 54.58 ms/it, loss 0.174786
+mbs is 4
+Forward 2.822144031524658 ms
+Average overall bwd comp time 61.85916721428571
+Finished training it 54/512 of epoch 0, 49.67 ms/it, loss 0.093125
+mbs is 4
+Forward 2.8866560459136963 ms
+Average overall bwd comp time 61.54376957142858
+Finished training it 55/512 of epoch 0, 52.06 ms/it, loss 0.040441
+mbs is 4
+Forward 3.0208001136779785 ms
+Average overall bwd comp time 61.2865407142857
+Finished training it 56/512 of epoch 0, 51.89 ms/it, loss 0.100525
+mbs is 4
+Forward 2.8344318866729736 ms
+Average overall bwd comp time 61.02866614285715
+Finished training it 57/512 of epoch 0, 56.91 ms/it, loss 0.001195
+mbs is 4
+Forward 2.988032102584839 ms
+Average overall bwd comp time 60.86091657142857
+Finished training it 58/512 of epoch 0, 53.61 ms/it, loss 0.032222
+mbs is 4
+Forward 3.0361599922180176 ms
+Average overall bwd comp time 60.64797842857143
+Finished training it 59/512 of epoch 0, 55.36 ms/it, loss 0.186234
+mbs is 4
+Forward 2.8887040615081787 ms
+Average overall bwd comp time 60.4683657142857
+Finished training it 60/512 of epoch 0, 57.37 ms/it, loss 0.248285
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 60.324884571428576
+Finished training it 61/512 of epoch 0, 56.47 ms/it, loss 0.191951
+mbs is 4
+Forward 3.0013439655303955 ms
+Average overall bwd comp time 60.178645928571434
+Finished training it 62/512 of epoch 0, 56.80 ms/it, loss 0.057890
+mbs is 4
+Forward 2.826240062713623 ms
+Average overall bwd comp time 60.040899785714274
+Finished training it 63/512 of epoch 0, 51.71 ms/it, loss 0.054853
+mbs is 4
+Forward 3.0699520111083984 ms
+Average overall bwd comp time 59.827830999999996
+Finished training it 64/512 of epoch 0, 49.08 ms/it, loss 0.035629
+mbs is 4
+Forward 2.8825600147247314 ms
+Average overall bwd comp time 59.58708357142857
+Finished training it 65/512 of epoch 0, 64.43 ms/it, loss 0.191013
+mbs is 4
+Forward 2.894848108291626 ms
+Average overall bwd comp time 59.57074278571428
+Finished training it 66/512 of epoch 0, 56.84 ms/it, loss 0.025718
+mbs is 4
+Forward 3.1744000911712646 ms
+Average overall bwd comp time 59.444940214285715
+Finished training it 67/512 of epoch 0, 55.79 ms/it, loss 0.202549
+mbs is 4
+Forward 2.8375039100646973 ms
+Average overall bwd comp time 59.30611142857142
+Finished training it 68/512 of epoch 0, 58.95 ms/it, loss 0.133755
+mbs is 4
+Forward 2.8825600147247314 ms
+Average overall bwd comp time 59.224720357142864
+Finished training it 69/512 of epoch 0, 52.69 ms/it, loss 0.201662
+mbs is 4
+Forward 4.672512054443359 ms
+Average overall bwd comp time 59.05432685714285
+Finished training it 70/512 of epoch 0, 55.55 ms/it, loss 0.000053
+mbs is 4
+Forward 4.497407913208008 ms
+Average overall bwd comp time 58.92378992857143
+Finished training it 71/512 of epoch 0, 60.28 ms/it, loss 0.005363
+mbs is 4
+Forward 4.5496320724487305 ms
+Average overall bwd comp time 58.854722285714274
+Finished training it 72/512 of epoch 0, 53.96 ms/it, loss 0.176999
+mbs is 4
+Forward 4.610047817230225 ms
+Average overall bwd comp time 58.710323285714296
+Finished training it 73/512 of epoch 0, 49.69 ms/it, loss 0.107751
+mbs is 4
+Forward 4.624383926391602 ms
+Average overall bwd comp time 58.516792642857126
+Finished training it 74/512 of epoch 0, 48.91 ms/it, loss 0.033136
+mbs is 4
+Forward 2.836479902267456 ms
+Average overall bwd comp time 58.320634642857144
+Finished training it 75/512 of epoch 0, 56.74 ms/it, loss 0.026337
+mbs is 4
+Forward 2.9849600791931152 ms
+Average overall bwd comp time 58.227726571428555
+Finished training it 76/512 of epoch 0, 52.01 ms/it, loss 0.108143
+mbs is 4
+Forward 2.762752056121826 ms
+Average overall bwd comp time 58.08263928571428
+Finished training it 77/512 of epoch 0, 52.29 ms/it, loss 0.038147
+mbs is 4
+Forward 2.9460480213165283 ms
+Average overall bwd comp time 57.94745399999999
+Finished training it 78/512 of epoch 0, 51.15 ms/it, loss 0.046226
+mbs is 4
+Forward 2.8129279613494873 ms
+Average overall bwd comp time 57.80105107142857
+Finished training it 79/512 of epoch 0, 49.60 ms/it, loss 0.120232
+mbs is 4
+Forward 2.8641281127929688 ms
+Average overall bwd comp time 57.64142449999999
+Finished training it 80/512 of epoch 0, 50.47 ms/it, loss 0.019980
+mbs is 4
+Forward 2.9184000492095947 ms
+Average overall bwd comp time 57.49068349999999
+Finished training it 81/512 of epoch 0, 61.39 ms/it, loss 0.006310
+mbs is 4
+Forward 2.949120044708252 ms
+Average overall bwd comp time 57.465723785714275
+Finished training it 82/512 of epoch 0, 57.58 ms/it, loss 0.001987
+mbs is 4
+Forward 4.872191905975342 ms
+Average overall bwd comp time 57.39692335714285
+Finished training it 83/512 of epoch 0, 54.38 ms/it, loss 0.004710
+mbs is 4
+Forward 4.81279993057251 ms
+Average overall bwd comp time 57.294051857142854
+Finished training it 84/512 of epoch 0, 50.76 ms/it, loss 0.113140
+mbs is 4
+Forward 4.616191864013672 ms
+Average overall bwd comp time 57.15181721428571
+Finished training it 85/512 of epoch 0, 49.69 ms/it, loss 0.035854
+mbs is 4
+Forward 2.8968958854675293 ms
+Average overall bwd comp time 57.003766571428564
+Finished training it 86/512 of epoch 0, 56.81 ms/it, loss 0.175029
+mbs is 4
+Forward 3.0791680812835693 ms
+Average overall bwd comp time 56.93731807142856
+Finished training it 87/512 of epoch 0, 56.97 ms/it, loss 0.158293
+mbs is 4
+Forward 2.8631041049957275 ms
+Average overall bwd comp time 56.876349357142864
+Finished training it 88/512 of epoch 0, 56.85 ms/it, loss 0.004984
+mbs is 4
+Forward 2.875391960144043 ms
+Average overall bwd comp time 56.813668500000006
+Finished training it 89/512 of epoch 0, 51.58 ms/it, loss 0.208124
+mbs is 4
+Forward 2.9040639400482178 ms
+Average overall bwd comp time 56.70062892857142
+Finished training it 90/512 of epoch 0, 67.28 ms/it, loss 0.051785
+mbs is 4
+Forward 3.033087968826294 ms
+Average overall bwd comp time 56.75277528571428
+Finished training it 91/512 of epoch 0, 55.48 ms/it, loss 0.045494
+mbs is 4
+Forward 2.866175889968872 ms
+Average overall bwd comp time 56.68431628571428
+Finished training it 92/512 of epoch 0, 49.01 ms/it, loss 0.042200
+mbs is 4
+Forward 3.0013439655303955 ms
+Average overall bwd comp time 56.550566999999994
+Finished training it 93/512 of epoch 0, 50.30 ms/it, loss 0.012004
+mbs is 4
+Forward 2.968575954437256 ms
+Average overall bwd comp time 56.430590714285714
+Finished training it 94/512 of epoch 0, 52.15 ms/it, loss 0.005776
+mbs is 4
+Forward 2.9276158809661865 ms
+Average overall bwd comp time 56.331609928571424
+Finished training it 95/512 of epoch 0, 52.28 ms/it, loss 0.076451
+mbs is 4
+Forward 2.9419519901275635 ms
+Average overall bwd comp time 56.235752500000004
+Finished training it 96/512 of epoch 0, 51.02 ms/it, loss 0.036032
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 56.1292475
+Finished training it 97/512 of epoch 0, 56.28 ms/it, loss 0.010090
+mbs is 4
+Forward 3.0402560234069824 ms
+Average overall bwd comp time 56.07419678571427
+Finished training it 98/512 of epoch 0, 58.59 ms/it, loss 0.121854
+mbs is 4
+Forward 4.694015979766846 ms
+Average overall bwd comp time 56.044680571428565
+Finished training it 99/512 of epoch 0, 48.43 ms/it, loss 0.225171
+mbs is 4
+Forward 2.9419519901275635 ms
+Average overall bwd comp time 55.914823571428556
+Finished training it 100/512 of epoch 0, 53.71 ms/it, loss 0.001514
+mbs is 4
+Forward 3.0197761058807373 ms
+Average overall bwd comp time 55.84154307142857
+Finished training it 101/512 of epoch 0, 59.43 ms/it, loss 0.001188
+mbs is 4
+Forward 2.8446719646453857 ms
+Average overall bwd comp time 55.82305021428571
+Finished training it 102/512 of epoch 0, 51.93 ms/it, loss 0.104052
+mbs is 4
+Forward 3.077120065689087 ms
+Average overall bwd comp time 55.734911999999994
+Finished training it 103/512 of epoch 0, 49.07 ms/it, loss 0.027737
+mbs is 4
+Forward 2.920448064804077 ms
+Average overall bwd comp time 55.62357264285714
+Finished training it 104/512 of epoch 0, 51.85 ms/it, loss 0.008832
+mbs is 4
+Forward 2.993151903152466 ms
+Average overall bwd comp time 55.542015428571425
+Finished training it 105/512 of epoch 0, 49.22 ms/it, loss 0.125922
+mbs is 4
+Forward 3.1334400177001953 ms
+Average overall bwd comp time 55.436388571428566
+Finished training it 106/512 of epoch 0, 55.15 ms/it, loss 0.019370
+mbs is 4
+Forward 2.9184000492095947 ms
+Average overall bwd comp time 55.38302807142857
+Finished training it 107/512 of epoch 0, 49.36 ms/it, loss 0.028633
+mbs is 4
+Forward 3.1344640254974365 ms
+Average overall bwd comp time 55.28345221428571
+Finished training it 108/512 of epoch 0, 49.48 ms/it, loss 0.115063
+mbs is 4
+Forward 3.097599983215332 ms
+Average overall bwd comp time 55.183081714285706
+Finished training it 109/512 of epoch 0, 52.19 ms/it, loss 0.012956
+mbs is 4
+Forward 2.9911038875579834 ms
+Average overall bwd comp time 55.11083264285714
+Finished training it 110/512 of epoch 0, 48.22 ms/it, loss 0.021741
+mbs is 4
+Forward 3.082240104675293 ms
+Average overall bwd comp time 55.00527749999999
+Finished training it 111/512 of epoch 0, 54.29 ms/it, loss 0.037196
+mbs is 4
+Forward 3.027967929840088 ms
+Average overall bwd comp time 54.95217378571427
+Finished training it 112/512 of epoch 0, 55.38 ms/it, loss 0.039531
+mbs is 4
+Forward 2.8590080738067627 ms
+Average overall bwd comp time 54.91157099999999
+Finished training it 113/512 of epoch 0, 60.51 ms/it, loss 0.091821
+mbs is 4
+Forward 3.0259199142456055 ms
+Average overall bwd comp time 54.90928035714286
+Finished training it 114/512 of epoch 0, 53.03 ms/it, loss 0.108641
+mbs is 4
+Forward 2.978816032409668 ms
+Average overall bwd comp time 54.849263642857146
+Finished training it 115/512 of epoch 0, 50.26 ms/it, loss 0.229986
+mbs is 4
+Forward 2.994175910949707 ms
+Average overall bwd comp time 54.76610399999999
+Finished training it 116/512 of epoch 0, 56.12 ms/it, loss 0.000142
+mbs is 4
+Forward 4.716544151306152 ms
+Average overall bwd comp time 54.7320325
+Finished training it 117/512 of epoch 0, 49.12 ms/it, loss 0.233907
+mbs is 4
+Forward 2.8968958854675293 ms
+Average overall bwd comp time 54.63880642857142
+Finished training it 118/512 of epoch 0, 53.55 ms/it, loss 0.148982
+mbs is 4
+Forward 2.8426239490509033 ms
+Average overall bwd comp time 54.58833185714286
+Finished training it 119/512 of epoch 0, 57.06 ms/it, loss 0.001307
+mbs is 4
+Forward 4.530176162719727 ms
+Average overall bwd comp time 54.56799228571428
+Finished training it 120/512 of epoch 0, 47.27 ms/it, loss 0.130437
+mbs is 4
+Forward 2.9122560024261475 ms
+Average overall bwd comp time 54.46573335714287
+Finished training it 121/512 of epoch 0, 54.76 ms/it, loss 0.010381
+mbs is 4
+Forward 3.012608051300049 ms
+Average overall bwd comp time 54.425759000000006
+Finished training it 122/512 of epoch 0, 49.19 ms/it, loss 0.118480
+mbs is 4
+Forward 2.849792003631592 ms
+Average overall bwd comp time 54.34834685714285
+Finished training it 123/512 of epoch 0, 53.92 ms/it, loss 0.138056
+mbs is 4
+Forward 2.860032081604004 ms
+Average overall bwd comp time 54.30599507142857
+Finished training it 124/512 of epoch 0, 50.70 ms/it, loss 0.167507
+mbs is 4
+Forward 3.0658559799194336 ms
+Average overall bwd comp time 54.236473571428576
+Finished training it 125/512 of epoch 0, 51.15 ms/it, loss 0.087015
+mbs is 4
+Forward 3.2071681022644043 ms
+Average overall bwd comp time 54.17378778571429
+Finished training it 126/512 of epoch 0, 55.59 ms/it, loss 0.128124
+mbs is 4
+Forward 2.8446719646453857 ms
+Average overall bwd comp time 54.145345
+Finished training it 127/512 of epoch 0, 47.70 ms/it, loss 0.119329
+mbs is 4
+Forward 3.0115840435028076 ms
+Average overall bwd comp time 54.058572142857145
+Finished training it 128/512 of epoch 0, 56.46 ms/it, loss 0.198096
+mbs is 4
+Forward 2.8825600147247314 ms
+Average overall bwd comp time 54.03959114285714
+Finished training it 129/512 of epoch 0, 52.26 ms/it, loss 0.000027
+mbs is 4
+Forward 2.950144052505493 ms
+Average overall bwd comp time 53.98714521428571
+Finished training it 130/512 of epoch 0, 53.90 ms/it, loss 0.119571
+mbs is 4
+Forward 2.9511680603027344 ms
+Average overall bwd comp time 53.94689164285713
+Finished training it 131/512 of epoch 0, 54.50 ms/it, loss 0.191279
+mbs is 4
+Forward 2.9327359199523926 ms
+Average overall bwd comp time 53.91039621428571
+Finished training it 132/512 of epoch 0, 56.90 ms/it, loss 0.000652
+mbs is 4
+Forward 3.0167040824890137 ms
+Average overall bwd comp time 53.89347807142856
+Finished training it 133/512 of epoch 0, 50.65 ms/it, loss 0.002033
+mbs is 4
+Forward 2.9808640480041504 ms
+Average overall bwd comp time 53.83337185714284
+Finished training it 134/512 of epoch 0, 60.13 ms/it, loss 0.003006
+mbs is 4
+Forward 2.854912042617798 ms
+Average overall bwd comp time 53.84036014285714
+Finished training it 135/512 of epoch 0, 51.58 ms/it, loss 0.147635
+mbs is 4
+Forward 2.9911038875579834 ms
+Average overall bwd comp time 53.78781678571429
+Finished training it 136/512 of epoch 0, 50.12 ms/it, loss 0.030637
+mbs is 4
+Forward 3.0259199142456055 ms
+Average overall bwd comp time 53.72528285714286
+Finished training it 137/512 of epoch 0, 57.58 ms/it, loss 0.165341
+mbs is 4
+Forward 3.101696014404297 ms
+Average overall bwd comp time 53.71558021428573
+Finished training it 138/512 of epoch 0, 52.24 ms/it, loss 0.119888
+mbs is 4
+Forward 2.994175910949707 ms
+Average overall bwd comp time 53.66812028571428
+Finished training it 139/512 of epoch 0, 48.42 ms/it, loss 0.045697
+mbs is 4
+Forward 2.9368319511413574 ms
+Average overall bwd comp time 53.59507071428571
+Finished training it 140/512 of epoch 0, 52.12 ms/it, loss 0.014195
+mbs is 4
+Forward 2.929663896560669 ms
+Average overall bwd comp time 53.55022628571428
+Finished training it 141/512 of epoch 0, 50.68 ms/it, loss 0.139242
+mbs is 4
+Forward 2.969599962234497 ms
+Average overall bwd comp time 53.49663385714286
+Finished training it 142/512 of epoch 0, 51.71 ms/it, loss 0.159967
+mbs is 4
+Forward 2.899967908859253 ms
+Average overall bwd comp time 53.45116871428572
+Finished training it 143/512 of epoch 0, 49.78 ms/it, loss 0.043728
+mbs is 4
+Forward 2.958336114883423 ms
+Average overall bwd comp time 53.395148142857124
+Finished training it 144/512 of epoch 0, 49.15 ms/it, loss 0.232961
+mbs is 4
+Forward 3.0074880123138428 ms
+Average overall bwd comp time 53.33556728571428
+Finished training it 145/512 of epoch 0, 48.11 ms/it, loss 0.005550
+mbs is 4
+Forward 2.8375039100646973 ms
+Average overall bwd comp time 53.26646085714287
+Finished training it 146/512 of epoch 0, 50.52 ms/it, loss 0.000065
+mbs is 4
+Forward 2.831360101699829 ms
+Average overall bwd comp time 53.213245642857146
+Finished training it 147/512 of epoch 0, 58.09 ms/it, loss 0.005142
+mbs is 4
+Forward 2.8098559379577637 ms
+Average overall bwd comp time 53.213094428571424
+Finished training it 148/512 of epoch 0, 50.64 ms/it, loss 0.019065
+mbs is 4
+Forward 2.9849600791931152 ms
+Average overall bwd comp time 53.16543557142857
+Finished training it 149/512 of epoch 0, 53.28 ms/it, loss 0.004901
+mbs is 4
+Forward 2.7944960594177246 ms
+Average overall bwd comp time 53.13085564285713
+Finished training it 150/512 of epoch 0, 50.53 ms/it, loss 0.021578
+mbs is 4
+Forward 2.924544095993042 ms
+Average overall bwd comp time 53.08047164285714
+Finished training it 151/512 of epoch 0, 50.44 ms/it, loss 0.001793
+mbs is 4
+Forward 3.0648319721221924 ms
+Average overall bwd comp time 53.03334935714285
+Finished training it 152/512 of epoch 0, 57.43 ms/it, loss 0.094172
+mbs is 4
+Forward 2.939903974533081 ms
+Average overall bwd comp time 53.026725500000005
+Finished training it 153/512 of epoch 0, 50.82 ms/it, loss 0.006151
+mbs is 4
+Forward 3.1303679943084717 ms
+Average overall bwd comp time 52.97985535714285
+Finished training it 154/512 of epoch 0, 51.71 ms/it, loss 0.066382
+mbs is 4
+Forward 4.711423873901367 ms
+Average overall bwd comp time 52.940314857142866
+Finished training it 155/512 of epoch 0, 55.63 ms/it, loss 0.232579
+mbs is 4
+Forward 2.959359884262085 ms
+Average overall bwd comp time 52.91794135714286
+Finished training it 156/512 of epoch 0, 52.92 ms/it, loss 0.191282
+mbs is 4
+Forward 3.0259199142456055 ms
+Average overall bwd comp time 52.88568607142857
+Finished training it 157/512 of epoch 0, 58.90 ms/it, loss 0.050930
+mbs is 4
+Forward 2.9818880558013916 ms
+Average overall bwd comp time 52.889351285714284
+Finished training it 158/512 of epoch 0, 48.83 ms/it, loss 0.108938
+mbs is 4
+Forward 2.9184000492095947 ms
+Average overall bwd comp time 52.83549728571428
+Finished training it 159/512 of epoch 0, 54.24 ms/it, loss 0.004468
+mbs is 4
+Forward 4.744192123413086 ms
+Average overall bwd comp time 52.812651285714296
+Finished training it 160/512 of epoch 0, 63.13 ms/it, loss 0.033070
+mbs is 4
+Forward 2.994175910949707 ms
+Average overall bwd comp time 52.837036928571436
+Finished training it 161/512 of epoch 0, 49.24 ms/it, loss 0.210630
+mbs is 4
+Forward 2.8579840660095215 ms
+Average overall bwd comp time 52.784416571428565
+Finished training it 162/512 of epoch 0, 53.75 ms/it, loss 0.007584
+mbs is 4
+Forward 2.929663896560669 ms
+Average overall bwd comp time 52.75846271428571
+Finished training it 163/512 of epoch 0, 51.47 ms/it, loss 0.040707
+mbs is 4
+Forward 2.7852799892425537 ms
+Average overall bwd comp time 52.71909078571428
+Finished training it 164/512 of epoch 0, 52.87 ms/it, loss 0.092514
+mbs is 4
+Forward 4.687871932983398 ms
+Average overall bwd comp time 52.68879492857143
+Finished training it 165/512 of epoch 0, 60.54 ms/it, loss 0.108882
+mbs is 4
+Forward 2.894848108291626 ms
+Average overall bwd comp time 52.699197357142864
+Finished training it 166/512 of epoch 0, 51.02 ms/it, loss 0.185267
+mbs is 4
+Forward 2.800640106201172 ms
+Average overall bwd comp time 52.66313750000001
+Finished training it 167/512 of epoch 0, 46.77 ms/it, loss 0.020774
+mbs is 4
+Forward 2.840575933456421 ms
+Average overall bwd comp time 52.60086364285714
+Finished training it 168/512 of epoch 0, 52.78 ms/it, loss 0.009392
+mbs is 4
+Forward 3.1395840644836426 ms
+Average overall bwd comp time 52.57376178571428
+Finished training it 169/512 of epoch 0, 59.54 ms/it, loss 0.028786
+mbs is 4
+Forward 3.0013439655303955 ms
+Average overall bwd comp time 52.581702785714285
+Finished training it 170/512 of epoch 0, 50.85 ms/it, loss 0.043746
+mbs is 4
+Forward 3.0607359409332275 ms
+Average overall bwd comp time 52.54353828571427
+Finished training it 171/512 of epoch 0, 48.06 ms/it, loss 0.135064
+mbs is 4
+Forward 2.8528640270233154 ms
+Average overall bwd comp time 52.49369564285714
+Finished training it 172/512 of epoch 0, 50.27 ms/it, loss 0.045639
+mbs is 4
+Forward 2.8487679958343506 ms
+Average overall bwd comp time 52.45174978571429
+Finished training it 173/512 of epoch 0, 55.67 ms/it, loss 0.027998
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 52.440759357142845
+Finished training it 174/512 of epoch 0, 48.35 ms/it, loss 0.080982
+mbs is 4
+Forward 2.8098559379577637 ms
+Average overall bwd comp time 52.39172735714286
+Finished training it 175/512 of epoch 0, 49.90 ms/it, loss 0.022684
+mbs is 4
+Forward 2.817023992538452 ms
+Average overall bwd comp time 52.352973214285704
+Finished training it 176/512 of epoch 0, 49.14 ms/it, loss 0.006608
+mbs is 4
+Forward 2.9521920680999756 ms
+Average overall bwd comp time 52.30644828571428
+Finished training it 177/512 of epoch 0, 49.21 ms/it, loss 0.015631
+mbs is 4
+Forward 3.0464000701904297 ms
+Average overall bwd comp time 52.262286785714295
+Finished training it 178/512 of epoch 0, 49.08 ms/it, loss 0.000923
+mbs is 4
+Forward 4.574207782745361 ms
+Average overall bwd comp time 52.21850957142858
+Finished training it 179/512 of epoch 0, 52.24 ms/it, loss 0.086579
+mbs is 4
+Forward 3.0443520545959473 ms
+Average overall bwd comp time 52.188813499999995
+Finished training it 180/512 of epoch 0, 51.13 ms/it, loss 0.008925
+mbs is 4
+Forward 3.0617599487304688 ms
+Average overall bwd comp time 52.15662885714285
+Finished training it 181/512 of epoch 0, 59.72 ms/it, loss 0.088805
+mbs is 4
+Forward 2.846719980239868 ms
+Average overall bwd comp time 52.16967728571429
+Finished training it 182/512 of epoch 0, 48.96 ms/it, loss 0.067907
+mbs is 4
+Forward 3.0054399967193604 ms
+Average overall bwd comp time 52.1280985
+Finished training it 183/512 of epoch 0, 46.88 ms/it, loss 0.005804
+mbs is 4
+Forward 2.8979198932647705 ms
+Average overall bwd comp time 52.07693728571429
+Finished training it 184/512 of epoch 0, 55.63 ms/it, loss 0.021055
+mbs is 4
+Forward 2.8446719646453857 ms
+Average overall bwd comp time 52.069244214285696
+Finished training it 185/512 of epoch 0, 53.80 ms/it, loss 0.211076
+mbs is 4
+Forward 2.8579840660095215 ms
+Average overall bwd comp time 52.05373728571426
+Finished training it 186/512 of epoch 0, 52.55 ms/it, loss 0.008806
+mbs is 4
+Forward 2.9132800102233887 ms
+Average overall bwd comp time 52.029919928571424
+Finished training it 187/512 of epoch 0, 54.11 ms/it, loss 0.195405
+mbs is 4
+Forward 2.960383892059326 ms
+Average overall bwd comp time 52.01253971428572
+Finished training it 188/512 of epoch 0, 59.31 ms/it, loss 0.002489
+mbs is 4
+Forward 2.871295928955078 ms
+Average overall bwd comp time 52.02240492857142
+Finished training it 189/512 of epoch 0, 50.07 ms/it, loss 0.002658
+mbs is 4
+Forward 2.8426239490509033 ms
+Average overall bwd comp time 51.98746142857142
+Finished training it 190/512 of epoch 0, 55.92 ms/it, loss 0.269112
+mbs is 4
+Forward 3.058687925338745 ms
+Average overall bwd comp time 51.9803772142857
+Finished training it 191/512 of epoch 0, 54.05 ms/it, loss 0.000496
+mbs is 4
+Forward 3.0453760623931885 ms
+Average overall bwd comp time 51.963731499999994
+Finished training it 192/512 of epoch 0, 51.17 ms/it, loss 0.007758
+mbs is 4
+Forward 2.909183979034424 ms
+Average overall bwd comp time 51.93321542857143
+Finished training it 193/512 of epoch 0, 50.53 ms/it, loss 0.126460
+mbs is 4
+Forward 2.8866560459136963 ms
+Average overall bwd comp time 51.90090278571429
+Finished training it 194/512 of epoch 0, 49.67 ms/it, loss 0.170578
+mbs is 4
+Forward 4.769792079925537 ms
+Average overall bwd comp time 51.86533721428572
+Finished training it 195/512 of epoch 0, 49.62 ms/it, loss 0.028691
+mbs is 4
+Forward 4.619264125823975 ms
+Average overall bwd comp time 51.82582442857142
+Finished training it 196/512 of epoch 0, 53.69 ms/it, loss 0.013303
+mbs is 4
+Forward 3.0269439220428467 ms
+Average overall bwd comp time 51.80654585714285
+Finished training it 197/512 of epoch 0, 52.63 ms/it, loss 0.105984
+mbs is 4
+Forward 2.830336093902588 ms
+Average overall bwd comp time 51.78515099999999
+Finished training it 198/512 of epoch 0, 62.51 ms/it, loss 0.010574
+mbs is 4
+Forward 2.944000005722046 ms
+Average overall bwd comp time 51.81177057142857
+Finished training it 199/512 of epoch 0, 54.46 ms/it, loss 0.122911
+mbs is 4
+Forward 4.5649919509887695 ms
+Average overall bwd comp time 51.80060421428571
+Finished training it 200/512 of epoch 0, 50.73 ms/it, loss 0.183410
+mbs is 4
+Forward 4.630527973175049 ms
+Average overall bwd comp time 51.76787792857143
+Finished training it 201/512 of epoch 0, 53.12 ms/it, loss 0.067644
+mbs is 4
+Forward 2.8129279613494873 ms
+Average overall bwd comp time 51.747834142857144
+Finished training it 202/512 of epoch 0, 52.05 ms/it, loss 0.001238
+mbs is 4
+Forward 3.067903995513916 ms
+Average overall bwd comp time 51.72601935714287
+Finished training it 203/512 of epoch 0, 55.64 ms/it, loss 0.082792
+mbs is 4
+Forward 2.91430401802063 ms
+Average overall bwd comp time 51.71943507142857
+Finished training it 204/512 of epoch 0, 63.40 ms/it, loss 0.149171
+mbs is 4
+Forward 3.0382080078125 ms
+Average overall bwd comp time 51.74720207142858
+Finished training it 205/512 of epoch 0, 54.45 ms/it, loss 0.124252
+mbs is 4
+Forward 3.0402560234069824 ms
+Average overall bwd comp time 51.73448157142857
+Finished training it 206/512 of epoch 0, 48.57 ms/it, loss 0.217185
+mbs is 4
+Forward 2.8139519691467285 ms
+Average overall bwd comp time 51.69769785714285
+Finished training it 207/512 of epoch 0, 63.54 ms/it, loss 0.001910
+mbs is 4
+Forward 3.0269439220428467 ms
+Average overall bwd comp time 51.72754857142856
+Finished training it 208/512 of epoch 0, 52.04 ms/it, loss 0.023245
+mbs is 4
+Forward 2.9419519901275635 ms
+Average overall bwd comp time 51.707380428571426
+Finished training it 209/512 of epoch 0, 50.50 ms/it, loss 0.062247
+mbs is 4
+Forward 2.8671998977661133 ms
+Average overall bwd comp time 51.680568
+Finished training it 210/512 of epoch 0, 50.85 ms/it, loss 0.023168
+mbs is 4
+Forward 2.958336114883423 ms
+Average overall bwd comp time 51.65614171428571
+Finished training it 211/512 of epoch 0, 57.93 ms/it, loss 0.222800
+mbs is 4
+Forward 2.9327359199523926 ms
+Average overall bwd comp time 51.661201428571424
+Finished training it 212/512 of epoch 0, 52.47 ms/it, loss 0.088624
+mbs is 4
+Forward 4.571135997772217 ms
+Average overall bwd comp time 51.64230271428571
+Finished training it 213/512 of epoch 0, 52.15 ms/it, loss 0.003669
+mbs is 4
+Forward 4.575232028961182 ms
+Average overall bwd comp time 51.618898857142845
+Finished training it 214/512 of epoch 0, 56.65 ms/it, loss 0.013379
+mbs is 4
+Forward 2.9624319076538086 ms
+Average overall bwd comp time 51.61495828571428
+Finished training it 215/512 of epoch 0, 53.66 ms/it, loss 0.000868
+mbs is 4
+Forward 3.0013439655303955 ms
+Average overall bwd comp time 51.60000821428571
+Finished training it 216/512 of epoch 0, 50.44 ms/it, loss 0.002668
+mbs is 4
+Forward 2.949120044708252 ms
+Average overall bwd comp time 51.57175828571428
+Finished training it 217/512 of epoch 0, 52.29 ms/it, loss 0.221300
+mbs is 4
+Forward 3.008512020111084 ms
+Average overall bwd comp time 51.552622071428566
+Finished training it 218/512 of epoch 0, 50.46 ms/it, loss 0.004755
+mbs is 4
+Forward 3.0197761058807373 ms
+Average overall bwd comp time 51.52491585714285
+Finished training it 219/512 of epoch 0, 48.36 ms/it, loss 0.136604
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 51.491470928571424
+Finished training it 220/512 of epoch 0, 51.63 ms/it, loss 0.000123
+mbs is 4
+Forward 2.9849600791931152 ms
+Average overall bwd comp time 51.469681785714286
+Finished training it 221/512 of epoch 0, 59.18 ms/it, loss 0.034350
+mbs is 4
+Forward 2.9521920680999756 ms
+Average overall bwd comp time 51.47988885714285
+Finished training it 222/512 of epoch 0, 50.55 ms/it, loss 0.063832
+mbs is 4
+Forward 2.934783935546875 ms
+Average overall bwd comp time 51.453549142857135
+Finished training it 223/512 of epoch 0, 49.66 ms/it, loss 0.229042
+mbs is 4
+Forward 2.969599962234497 ms
+Average overall bwd comp time 51.423061000000004
+Finished training it 224/512 of epoch 0, 48.48 ms/it, loss 0.003360
+mbs is 4
+Forward 3.0310399532318115 ms
+Average overall bwd comp time 51.39086371428571
+Finished training it 225/512 of epoch 0, 49.48 ms/it, loss 0.021193
+mbs is 4
+Forward 2.9020159244537354 ms
+Average overall bwd comp time 51.36151907142856
+Finished training it 226/512 of epoch 0, 52.20 ms/it, loss 0.072246
+mbs is 4
+Forward 2.964479923248291 ms
+Average overall bwd comp time 51.34351592857143
+Finished training it 227/512 of epoch 0, 54.04 ms/it, loss 0.090798
+mbs is 4
+Forward 2.982912063598633 ms
+Average overall bwd comp time 51.332752000000006
+Finished training it 228/512 of epoch 0, 51.74 ms/it, loss 0.104838
+mbs is 4
+Forward 2.8671998977661133 ms
+Average overall bwd comp time 51.312029142857135
+Finished training it 229/512 of epoch 0, 49.83 ms/it, loss 0.015671
+mbs is 4
+Forward 2.8334081172943115 ms
+Average overall bwd comp time 51.28341785714285
+Finished training it 230/512 of epoch 0, 53.47 ms/it, loss 0.207554
+mbs is 4
+Forward 2.875391960144043 ms
+Average overall bwd comp time 51.271113642857145
+Finished training it 231/512 of epoch 0, 55.69 ms/it, loss 0.086408
+mbs is 4
+Forward 2.945024013519287 ms
+Average overall bwd comp time 51.26648485714286
+Finished training it 232/512 of epoch 0, 54.52 ms/it, loss 0.162778
+mbs is 4
+Forward 3.0791680812835693 ms
+Average overall bwd comp time 51.25860699999999
+Finished training it 233/512 of epoch 0, 60.24 ms/it, loss 0.063927
+mbs is 4
+Forward 2.822144031524658 ms
+Average overall bwd comp time 51.27207871428572
+Finished training it 234/512 of epoch 0, 60.83 ms/it, loss 0.000030
+mbs is 4
+Forward 2.9480960369110107 ms
+Average overall bwd comp time 51.29121435714285
+Finished training it 235/512 of epoch 0, 63.26 ms/it, loss 0.133260
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 51.31735571428572
+Finished training it 236/512 of epoch 0, 52.43 ms/it, loss 0.011074
+mbs is 4
+Forward 4.576255798339844 ms
+Average overall bwd comp time 51.301133142857154
+Finished training it 237/512 of epoch 0, 50.90 ms/it, loss 0.109379
+mbs is 4
+Forward 2.9061119556427 ms
+Average overall bwd comp time 51.277908714285715
+Finished training it 238/512 of epoch 0, 58.59 ms/it, loss 0.229561
+mbs is 4
+Forward 3.0709760189056396 ms
+Average overall bwd comp time 51.286401000000005
+Finished training it 239/512 of epoch 0, 55.14 ms/it, loss 0.007318
+mbs is 4
+Forward 4.599808216094971 ms
+Average overall bwd comp time 51.28085749999999
+Finished training it 240/512 of epoch 0, 51.42 ms/it, loss 0.064503
+mbs is 4
+Forward 2.9460480213165283 ms
+Average overall bwd comp time 51.260353071428575
+Finished training it 241/512 of epoch 0, 61.63 ms/it, loss 0.005714
+mbs is 4
+Forward 2.8938241004943848 ms
+Average overall bwd comp time 51.28032757142857
+Finished training it 242/512 of epoch 0, 51.23 ms/it, loss 0.101385
+mbs is 4
+Forward 3.037184000015259 ms
+Average overall bwd comp time 51.259548571428574
+Finished training it 243/512 of epoch 0, 51.32 ms/it, loss 0.002338
+mbs is 4
+Forward 2.885632038116455 ms
+Average overall bwd comp time 51.23883664285715
+Finished training it 244/512 of epoch 0, 56.80 ms/it, loss 0.206737
+mbs is 4
+Forward 5.213183879852295 ms
+Average overall bwd comp time 51.23982957142857
+Finished training it 245/512 of epoch 0, 60.27 ms/it, loss 0.002070
+mbs is 4
+Forward 3.1283199787139893 ms
+Average overall bwd comp time 51.25241035714286
+Finished training it 246/512 of epoch 0, 50.57 ms/it, loss 0.045465
+mbs is 4
+Forward 3.0750720500946045 ms
+Average overall bwd comp time 51.22887671428571
+Finished training it 247/512 of epoch 0, 48.68 ms/it, loss 0.026054
+mbs is 4
+Forward 2.8887040615081787 ms
+Average overall bwd comp time 51.19953185714286
+Finished training it 248/512 of epoch 0, 55.54 ms/it, loss 0.118970
+mbs is 4
+Forward 4.586495876312256 ms
+Average overall bwd comp time 51.197506
+Finished training it 249/512 of epoch 0, 49.03 ms/it, loss 0.081309
+mbs is 4
+Forward 2.9614078998565674 ms
+Average overall bwd comp time 51.16839600000001
+Finished training it 250/512 of epoch 0, 48.85 ms/it, loss 0.230702
+mbs is 4
+Forward 3.1088640689849854 ms
+Average overall bwd comp time 51.14223814285714
+Finished training it 251/512 of epoch 0, 48.67 ms/it, loss 0.240931
+mbs is 4
+Forward 2.8426239490509033 ms
+Average overall bwd comp time 51.11388949999999
+Finished training it 252/512 of epoch 0, 54.56 ms/it, loss 0.253285
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 51.10792471428571
+Finished training it 253/512 of epoch 0, 55.01 ms/it, loss 0.201035
+mbs is 4
+Forward 3.0750720500946045 ms
+Average overall bwd comp time 51.10273357142857
+Finished training it 254/512 of epoch 0, 52.18 ms/it, loss 0.027152
+mbs is 4
+Forward 2.825216054916382 ms
+Average overall bwd comp time 51.088175285714286
+Finished training it 255/512 of epoch 0, 50.62 ms/it, loss 0.043911
+mbs is 4
+Forward 4.240384101867676 ms
+Average overall bwd comp time 51.06682992857143
+Finished training it 256/512 of epoch 0, 56.08 ms/it, loss 0.008466
+mbs is 4
+Forward 4.5004801750183105 ms
+Average overall bwd comp time 51.062744428571435
+Finished training it 257/512 of epoch 0, 49.49 ms/it, loss 0.078462
+mbs is 4
+Forward 2.919424057006836 ms
+Average overall bwd comp time 51.03695542857143
+Finished training it 258/512 of epoch 0, 49.53 ms/it, loss 0.001603
+mbs is 4
+Forward 2.8375039100646973 ms
+Average overall bwd comp time 51.01412507142857
+Finished training it 259/512 of epoch 0, 47.59 ms/it, loss 0.012439
+mbs is 4
+Forward 3.073024034500122 ms
+Average overall bwd comp time 50.98260971428571
+Finished training it 260/512 of epoch 0, 51.84 ms/it, loss 0.077103
+mbs is 4
+Forward 2.871295928955078 ms
+Average overall bwd comp time 50.968120928571416
+Finished training it 261/512 of epoch 0, 53.43 ms/it, loss 0.136119
+mbs is 4
+Forward 2.8784639835357666 ms
+Average overall bwd comp time 50.95839357142855
+Finished training it 262/512 of epoch 0, 52.89 ms/it, loss 0.136319
+mbs is 4
+Forward 3.01363205909729 ms
+Average overall bwd comp time 50.94663671428572
+Finished training it 263/512 of epoch 0, 53.95 ms/it, loss 0.068701
+mbs is 4
+Forward 3.2194559574127197 ms
+Average overall bwd comp time 50.939229
+Finished training it 264/512 of epoch 0, 51.27 ms/it, loss 0.203692
+mbs is 4
+Forward 2.8928000926971436 ms
+Average overall bwd comp time 50.92162214285714
+Finished training it 265/512 of epoch 0, 55.26 ms/it, loss 0.234688
+mbs is 4
+Forward 2.822144031524658 ms
+Average overall bwd comp time 50.918897571428566
+Finished training it 266/512 of epoch 0, 51.85 ms/it, loss 0.119594
+mbs is 4
+Forward 3.0269439220428467 ms
+Average overall bwd comp time 50.90446457142856
+Finished training it 267/512 of epoch 0, 51.67 ms/it, loss 0.040512
+mbs is 4
+Forward 2.8180480003356934 ms
+Average overall bwd comp time 50.888469214285706
+Finished training it 268/512 of epoch 0, 50.48 ms/it, loss 0.001414
+mbs is 4
+Forward 2.894848108291626 ms
+Average overall bwd comp time 50.86884707142857
+Finished training it 269/512 of epoch 0, 54.46 ms/it, loss 0.002572
+mbs is 4
+Forward 2.8989439010620117 ms
+Average overall bwd comp time 50.862134714285716
+Finished training it 270/512 of epoch 0, 56.37 ms/it, loss 0.209405
+mbs is 4
+Forward 2.9020159244537354 ms
+Average overall bwd comp time 50.86337314285715
+Finished training it 271/512 of epoch 0, 56.96 ms/it, loss 0.065534
+mbs is 4
+Forward 3.0494720935821533 ms
+Average overall bwd comp time 50.8651145
+Finished training it 272/512 of epoch 0, 53.93 ms/it, loss 0.018136
+mbs is 4
+Forward 3.0914559364318848 ms
+Average overall bwd comp time 50.85958207142857
+Finished training it 273/512 of epoch 0, 50.87 ms/it, loss 0.145000
+mbs is 4
+Forward 2.9900801181793213 ms
+Average overall bwd comp time 50.84217628571429
+Finished training it 274/512 of epoch 0, 54.78 ms/it, loss 0.218031
+mbs is 4
+Forward 2.8825600147247314 ms
+Average overall bwd comp time 50.83712992857143
+Finished training it 275/512 of epoch 0, 49.18 ms/it, loss 0.019162
+mbs is 4
+Forward 3.018752098083496 ms
+Average overall bwd comp time 50.814282214285704
+Finished training it 276/512 of epoch 0, 58.66 ms/it, loss 0.065436
+mbs is 4
+Forward 2.9276158809661865 ms
+Average overall bwd comp time 50.82292942857142
+Finished training it 277/512 of epoch 0, 56.98 ms/it, loss 0.191734
+mbs is 4
+Forward 4.550655841827393 ms
+Average overall bwd comp time 50.82492328571429
+Finished training it 278/512 of epoch 0, 54.39 ms/it, loss 0.045022
+mbs is 4
+Forward 2.8682239055633545 ms
+Average overall bwd comp time 50.81796035714286
+Finished training it 279/512 of epoch 0, 48.88 ms/it, loss 0.010870
+mbs is 4
+Forward 3.0351359844207764 ms
+Average overall bwd comp time 50.79438285714286
+Finished training it 280/512 of epoch 0, 63.57 ms/it, loss 0.238505
+mbs is 4
+Forward 4.754432201385498 ms
+Average overall bwd comp time 50.818309071428565
+Finished training it 281/512 of epoch 0, 51.35 ms/it, loss 0.228476
+mbs is 4
+Forward 3.0074880123138428 ms
+Average overall bwd comp time 50.801158357142846
+Finished training it 282/512 of epoch 0, 51.79 ms/it, loss 0.085179
+mbs is 4
+Forward 2.8682239055633545 ms
+Average overall bwd comp time 50.78693407142856
+Finished training it 283/512 of epoch 0, 55.16 ms/it, loss 0.050419
+mbs is 4
+Forward 3.1139841079711914 ms
+Average overall bwd comp time 50.78502628571429
+Finished training it 284/512 of epoch 0, 66.58 ms/it, loss 0.114189
+mbs is 4
+Forward 3.028991937637329 ms
+Average overall bwd comp time 50.82120135714286
+Finished training it 285/512 of epoch 0, 55.33 ms/it, loss 0.026208
+mbs is 4
+Forward 2.836479902267456 ms
+Average overall bwd comp time 50.81897292857143
+Finished training it 286/512 of epoch 0, 60.00 ms/it, loss 0.000041
+mbs is 4
+Forward 2.9706239700317383 ms
+Average overall bwd comp time 50.832013142857136
+Finished training it 287/512 of epoch 0, 53.49 ms/it, loss 0.048401
+mbs is 4
+Forward 2.9480960369110107 ms
+Average overall bwd comp time 50.823885642857135
+Finished training it 288/512 of epoch 0, 50.31 ms/it, loss 0.265353
+mbs is 4
+Forward 2.953216075897217 ms
+Average overall bwd comp time 50.806205857142864
+Finished training it 289/512 of epoch 0, 50.33 ms/it, loss 0.001648
+mbs is 4
+Forward 3.057663917541504 ms
+Average overall bwd comp time 50.78798464285715
+Finished training it 290/512 of epoch 0, 53.98 ms/it, loss 0.200337
+mbs is 4
+Forward 3.0197761058807373 ms
+Average overall bwd comp time 50.78158371428571
+Finished training it 291/512 of epoch 0, 49.25 ms/it, loss 0.044865
+mbs is 4
+Forward 2.9081599712371826 ms
+Average overall bwd comp time 50.76155928571428
+Finished training it 292/512 of epoch 0, 56.16 ms/it, loss 0.002712
+mbs is 4
+Forward 2.8876800537109375 ms
+Average overall bwd comp time 50.76218578571429
+Finished training it 293/512 of epoch 0, 50.81 ms/it, loss 0.006964
+mbs is 4
+Forward 4.8209919929504395 ms
+Average overall bwd comp time 50.74554321428572
+Finished training it 294/512 of epoch 0, 48.99 ms/it, loss 0.162651
+mbs is 4
+Forward 2.855936050415039 ms
+Average overall bwd comp time 50.721125571428566
+Finished training it 295/512 of epoch 0, 55.49 ms/it, loss 0.091886
+mbs is 4
+Forward 3.093503952026367 ms
+Average overall bwd comp time 50.72076978571429
+Finished training it 296/512 of epoch 0, 48.56 ms/it, loss 0.014663
+mbs is 4
+Forward 2.805759906768799 ms
+Average overall bwd comp time 50.69709192857143
+Finished training it 297/512 of epoch 0, 51.80 ms/it, loss 0.177224
+mbs is 4
+Forward 3.821568012237549 ms
+Average overall bwd comp time 50.68505271428571
+Finished training it 298/512 of epoch 0, 51.86 ms/it, loss 0.179901
+mbs is 4
+Forward 2.831360101699829 ms
+Average overall bwd comp time 50.67102449999999
+Finished training it 299/512 of epoch 0, 57.17 ms/it, loss 0.020381
+mbs is 4
+Forward 2.945024013519287 ms
+Average overall bwd comp time 50.67465378571428
+Finished training it 300/512 of epoch 0, 60.48 ms/it, loss 0.048348
+mbs is 4
+Forward 3.022847890853882 ms
+Average overall bwd comp time 50.68972949999999
+Finished training it 301/512 of epoch 0, 60.34 ms/it, loss 0.168025
+mbs is 4
+Forward 2.884608030319214 ms
+Average overall bwd comp time 50.70345057142857
+Finished training it 302/512 of epoch 0, 52.67 ms/it, loss 0.106749
+mbs is 4
+Forward 3.034111976623535 ms
+Average overall bwd comp time 50.69417635714285
+Finished training it 303/512 of epoch 0, 56.69 ms/it, loss 0.069807
+mbs is 4
+Forward 2.8620800971984863 ms
+Average overall bwd comp time 50.69710757142857
+Finished training it 304/512 of epoch 0, 52.21 ms/it, loss 0.129215
+mbs is 4
+Forward 2.982912063598633 ms
+Average overall bwd comp time 50.686417642857144
+Finished training it 305/512 of epoch 0, 48.55 ms/it, loss 0.099125
+mbs is 4
+Forward 3.111936092376709 ms
+Average overall bwd comp time 50.66463935714285
+Finished training it 306/512 of epoch 0, 57.60 ms/it, loss 0.002597
+mbs is 4
+Forward 3.037184000015259 ms
+Average overall bwd comp time 50.66975778571429
+Finished training it 307/512 of epoch 0, 55.86 ms/it, loss 0.000347
+mbs is 4
+Forward 2.8723199367523193 ms
+Average overall bwd comp time 50.67081685714286
+Finished training it 308/512 of epoch 0, 50.61 ms/it, loss 0.165083
+mbs is 4
+Forward 2.9112319946289062 ms
+Average overall bwd comp time 50.654216
+Finished training it 309/512 of epoch 0, 50.64 ms/it, loss 0.106468
+mbs is 4
+Forward 2.8231680393218994 ms
+Average overall bwd comp time 50.63868621428572
+Finished training it 310/512 of epoch 0, 49.28 ms/it, loss 0.083881
+mbs is 4
+Forward 2.8815360069274902 ms
+Average overall bwd comp time 50.621416
+Finished training it 311/512 of epoch 0, 52.28 ms/it, loss 0.138711
+mbs is 4
+Forward 3.022847890853882 ms
+Average overall bwd comp time 50.61192164285713
+Finished training it 312/512 of epoch 0, 51.17 ms/it, loss 0.012231
+mbs is 4
+Forward 2.959359884262085 ms
+Average overall bwd comp time 50.598738000000004
+Finished training it 313/512 of epoch 0, 55.84 ms/it, loss 0.060473
+mbs is 4
+Forward 2.959359884262085 ms
+Average overall bwd comp time 50.599058714285704
+Finished training it 314/512 of epoch 0, 55.97 ms/it, loss 0.142520
+mbs is 4
+Forward 2.999295949935913 ms
+Average overall bwd comp time 50.60029257142857
+Finished training it 315/512 of epoch 0, 56.09 ms/it, loss 0.102936
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 50.60157242857143
+Finished training it 316/512 of epoch 0, 50.69 ms/it, loss 0.048366
+mbs is 4
+Forward 3.022847890853882 ms
+Average overall bwd comp time 50.58687407142856
+Finished training it 317/512 of epoch 0, 53.09 ms/it, loss 0.024373
+mbs is 4
+Forward 2.958336114883423 ms
+Average overall bwd comp time 50.57857857142857
+Finished training it 318/512 of epoch 0, 62.43 ms/it, loss 0.126928
+mbs is 4
+Forward 2.909183979034424 ms
+Average overall bwd comp time 50.598572
+Finished training it 319/512 of epoch 0, 55.50 ms/it, loss 0.026826
+mbs is 4
+Forward 4.574207782745361 ms
+Average overall bwd comp time 50.59686257142857
+Finished training it 320/512 of epoch 0, 57.93 ms/it, loss 0.158300
+mbs is 4
+Forward 4.632575988769531 ms
+Average overall bwd comp time 50.600431500000006
+Finished training it 321/512 of epoch 0, 50.70 ms/it, loss 0.177921
+mbs is 4
+Forward 4.636672019958496 ms
+Average overall bwd comp time 50.58390714285713
+Finished training it 322/512 of epoch 0, 52.66 ms/it, loss 0.001420
+mbs is 4
+Forward 3.058687925338745 ms
+Average overall bwd comp time 50.572090642857134
+Finished training it 323/512 of epoch 0, 47.06 ms/it, loss 0.030562
+mbs is 4
+Forward 2.950144052505493 ms
+Average overall bwd comp time 50.546808357142844
+Finished training it 324/512 of epoch 0, 61.34 ms/it, loss 0.045821
+mbs is 4
+Forward 3.078144073486328 ms
+Average overall bwd comp time 50.56221699999999
+Finished training it 325/512 of epoch 0, 55.78 ms/it, loss 0.144327
+mbs is 4
+Forward 2.8866560459136963 ms
+Average overall bwd comp time 50.56317178571429
+Finished training it 326/512 of epoch 0, 49.33 ms/it, loss 0.198678
+mbs is 4
+Forward 2.9276158809661865 ms
+Average overall bwd comp time 50.54533271428571
+Finished training it 327/512 of epoch 0, 59.13 ms/it, loss 0.153407
+mbs is 4
+Forward 2.831360101699829 ms
+Average overall bwd comp time 50.555421285714274
+Finished training it 328/512 of epoch 0, 59.47 ms/it, loss 0.000159
+mbs is 4
+Forward 3.265536069869995 ms
+Average overall bwd comp time 50.56759885714286
+Finished training it 329/512 of epoch 0, 51.51 ms/it, loss 0.008872
+mbs is 4
+Forward 2.969599962234497 ms
+Average overall bwd comp time 50.55431642857143
+Finished training it 330/512 of epoch 0, 52.11 ms/it, loss 0.207288
+mbs is 4
+Forward 3.037184000015259 ms
+Average overall bwd comp time 50.543133
+Finished training it 331/512 of epoch 0, 57.56 ms/it, loss 0.055058
+mbs is 4
+Forward 2.91430401802063 ms
+Average overall bwd comp time 50.54890749999999
+Finished training it 332/512 of epoch 0, 48.81 ms/it, loss 0.043763
+mbs is 4
+Forward 4.6387200355529785 ms
+Average overall bwd comp time 50.53102814285715
+Finished training it 333/512 of epoch 0, 55.40 ms/it, loss 0.191139
+mbs is 4
+Forward 4.721663951873779 ms
+Average overall bwd comp time 50.52901942857142
+Finished training it 334/512 of epoch 0, 50.15 ms/it, loss 0.059152
+mbs is 4
+Forward 4.686848163604736 ms
+Average overall bwd comp time 50.512686714285714
+Finished training it 335/512 of epoch 0, 54.42 ms/it, loss 0.183689
+mbs is 4
+Forward 4.567039966583252 ms
+Average overall bwd comp time 50.507942642857145
+Finished training it 336/512 of epoch 0, 48.02 ms/it, loss 0.205287
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 50.484798142857144
+Finished training it 337/512 of epoch 0, 54.19 ms/it, loss 0.003822
+mbs is 4
+Forward 2.894848108291626 ms
+Average overall bwd comp time 50.480689214285704
+Finished training it 338/512 of epoch 0, 51.87 ms/it, loss 0.107664
+mbs is 4
+Forward 4.627456188201904 ms
+Average overall bwd comp time 50.470914428571426
+Finished training it 339/512 of epoch 0, 49.35 ms/it, loss 0.044209
+mbs is 4
+Forward 2.8876800537109375 ms
+Average overall bwd comp time 50.45110571428571
+Finished training it 340/512 of epoch 0, 58.02 ms/it, loss 0.001957
+mbs is 4
+Forward 2.925568103790283 ms
+Average overall bwd comp time 50.45707364285715
+Finished training it 341/512 of epoch 0, 59.47 ms/it, loss 0.010358
+mbs is 4
+Forward 2.879487991333008 ms
+Average overall bwd comp time 50.466625428571426
+Finished training it 342/512 of epoch 0, 57.62 ms/it, loss 0.227139
+mbs is 4
+Forward 2.8835840225219727 ms
+Average overall bwd comp time 50.47313471428571
+Finished training it 343/512 of epoch 0, 51.81 ms/it, loss 0.081716
+mbs is 4
+Forward 3.1580159664154053 ms
+Average overall bwd comp time 50.46249
+Finished training it 344/512 of epoch 0, 50.31 ms/it, loss 0.199214
+mbs is 4
+Forward 3.0310399532318115 ms
+Average overall bwd comp time 50.44878507142857
+Finished training it 345/512 of epoch 0, 60.47 ms/it, loss 0.015199
+mbs is 4
+Forward 2.924544095993042 ms
+Average overall bwd comp time 50.46187728571427
+Finished training it 346/512 of epoch 0, 50.97 ms/it, loss 0.132537
+mbs is 4
+Forward 3.0760960578918457 ms
+Average overall bwd comp time 50.44928392857144
+Finished training it 347/512 of epoch 0, 56.15 ms/it, loss 0.143420
+mbs is 4
+Forward 2.8487679958343506 ms
+Average overall bwd comp time 50.45004042857143
+Finished training it 348/512 of epoch 0, 49.59 ms/it, loss 0.168908
+mbs is 4
+Forward 2.890752077102661 ms
+Average overall bwd comp time 50.433306857142846
+Finished training it 349/512 of epoch 0, 51.50 ms/it, loss 0.106824
+mbs is 4
+Forward 2.9132800102233887 ms
+Average overall bwd comp time 50.42343785714285
+Finished training it 350/512 of epoch 0, 51.62 ms/it, loss 0.116830
+mbs is 4
+Forward 3.033087968826294 ms
+Average overall bwd comp time 50.41291514285714
+Finished training it 351/512 of epoch 0, 52.20 ms/it, loss 0.001169
+mbs is 4
+Forward 2.9265921115875244 ms
+Average overall bwd comp time 50.40550628571428
+Finished training it 352/512 of epoch 0, 54.12 ms/it, loss 0.047643
+mbs is 4
+Forward 2.8682239055633545 ms
+Average overall bwd comp time 50.40201178571429
+Finished training it 353/512 of epoch 0, 53.31 ms/it, loss 0.005431
+mbs is 4
+Forward 2.8375039100646973 ms
+Average overall bwd comp time 50.396429071428564
+Finished training it 354/512 of epoch 0, 51.36 ms/it, loss 0.034823
+mbs is 4
+Forward 2.950144052505493 ms
+Average overall bwd comp time 50.385790785714285
+Finished training it 355/512 of epoch 0, 51.98 ms/it, loss 0.173655
+mbs is 4
+Forward 2.8579840660095215 ms
+Average overall bwd comp time 50.3769442142857
+Finished training it 356/512 of epoch 0, 57.39 ms/it, loss 0.089263
+mbs is 4
+Forward 3.009536027908325 ms
+Average overall bwd comp time 50.38201214285714
+Finished training it 357/512 of epoch 0, 50.42 ms/it, loss 0.000043
+mbs is 4
+Forward 2.9480960369110107 ms
+Average overall bwd comp time 50.369118
+Finished training it 358/512 of epoch 0, 66.40 ms/it, loss 0.001818
+mbs is 4
+Forward 4.711423873901367 ms
+Average overall bwd comp time 50.396609857142856
+Finished training it 359/512 of epoch 0, 52.99 ms/it, loss 0.014435
+mbs is 4
+Forward 2.9173760414123535 ms
+Average overall bwd comp time 50.38801899999999
+Finished training it 360/512 of epoch 0, 50.53 ms/it, loss 0.112054
+mbs is 4
+Forward 2.7904000282287598 ms
+Average overall bwd comp time 50.37483749999999
+Finished training it 361/512 of epoch 0, 55.25 ms/it, loss 0.066548
+mbs is 4
+Forward 3.0013439655303955 ms
+Average overall bwd comp time 50.37312707142858
+Finished training it 362/512 of epoch 0, 50.25 ms/it, loss 0.140917
+mbs is 4
+Forward 3.0566399097442627 ms
+Average overall bwd comp time 50.35917721428571
+Finished training it 363/512 of epoch 0, 51.70 ms/it, loss 0.041378
+mbs is 4
+Forward 2.8968958854675293 ms
+Average overall bwd comp time 50.34889778571429
+Finished training it 364/512 of epoch 0, 57.29 ms/it, loss 0.136516
+mbs is 4
+Forward 2.998271942138672 ms
+Average overall bwd comp time 50.3524785
+Finished training it 365/512 of epoch 0, 57.53 ms/it, loss 0.044292
+mbs is 4
+Forward 3.1784958839416504 ms
+Average overall bwd comp time 50.357131
+Finished training it 366/512 of epoch 0, 48.72 ms/it, loss 0.027487
+mbs is 4
+Forward 2.865151882171631 ms
+Average overall bwd comp time 50.34131135714286
+Finished training it 367/512 of epoch 0, 51.59 ms/it, loss 0.050455
+mbs is 4
+Forward 3.039232015609741 ms
+Average overall bwd comp time 50.3317315
+Finished training it 368/512 of epoch 0, 51.82 ms/it, loss 0.026693
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 50.32172621428572
+Finished training it 369/512 of epoch 0, 50.95 ms/it, loss 0.018501
+mbs is 4
+Forward 2.9777920246124268 ms
+Average overall bwd comp time 50.310873785714286
+Finished training it 370/512 of epoch 0, 49.68 ms/it, loss 0.036512
+mbs is 4
+Forward 2.865151882171631 ms
+Average overall bwd comp time 50.296460214285716
+Finished training it 371/512 of epoch 0, 52.47 ms/it, loss 0.165961
+mbs is 4
+Forward 2.9020159244537354 ms
+Average overall bwd comp time 50.28861707142858
+Finished training it 372/512 of epoch 0, 64.36 ms/it, loss 0.023659
+mbs is 4
+Forward 4.601856231689453 ms
+Average overall bwd comp time 50.31034892857143
+Finished training it 373/512 of epoch 0, 55.98 ms/it, loss 0.002204
+mbs is 4
+Forward 4.550655841827393 ms
+Average overall bwd comp time 50.310927428571425
+Finished training it 374/512 of epoch 0, 58.46 ms/it, loss 0.046234
+mbs is 4
+Forward 2.9655039310455322 ms
+Average overall bwd comp time 50.3166405
+Finished training it 375/512 of epoch 0, 47.66 ms/it, loss 0.050683
+mbs is 4
+Forward 2.8129279613494873 ms
+Average overall bwd comp time 50.29850935714285
+Finished training it 376/512 of epoch 0, 55.60 ms/it, loss 0.016240
+mbs is 4
+Forward 3.088383913040161 ms
+Average overall bwd comp time 50.29861850000001
+Finished training it 377/512 of epoch 0, 50.33 ms/it, loss 0.166855
+mbs is 4
+Forward 3.083264112472534 ms
+Average overall bwd comp time 50.28539192857143
+Finished training it 378/512 of epoch 0, 51.42 ms/it, loss 0.129639
+mbs is 4
+Forward 2.830336093902588 ms
+Average overall bwd comp time 50.27477678571429
+Finished training it 379/512 of epoch 0, 58.94 ms/it, loss 0.038687
+mbs is 4
+Forward 2.8631041049957275 ms
+Average overall bwd comp time 50.2836482857143
+Finished training it 380/512 of epoch 0, 53.23 ms/it, loss 0.017365
+mbs is 4
+Forward 2.923520088195801 ms
+Average overall bwd comp time 50.27742985714285
+Finished training it 381/512 of epoch 0, 50.88 ms/it, loss 0.040777
+mbs is 4
+Forward 2.840575933456421 ms
+Average overall bwd comp time 50.265830214285714
+Finished training it 382/512 of epoch 0, 55.20 ms/it, loss 0.124138
+mbs is 4
+Forward 3.250175952911377 ms
+Average overall bwd comp time 50.26566064285714
+Finished training it 383/512 of epoch 0, 52.62 ms/it, loss 0.055092
+mbs is 4
+Forward 2.845695972442627 ms
+Average overall bwd comp time 50.258188000000004
+Finished training it 384/512 of epoch 0, 49.28 ms/it, loss 0.000591
+mbs is 4
+Forward 2.9112319946289062 ms
+Average overall bwd comp time 50.24360385714285
+Finished training it 385/512 of epoch 0, 51.63 ms/it, loss 0.083992
+mbs is 4
+Forward 4.6438398361206055 ms
+Average overall bwd comp time 50.23417342857143
+Finished training it 386/512 of epoch 0, 47.89 ms/it, loss 0.032180
+mbs is 4
+Forward 2.8487679958343506 ms
+Average overall bwd comp time 50.21563607142857
+Finished training it 387/512 of epoch 0, 49.14 ms/it, loss 0.182942
+mbs is 4
+Forward 2.999295949935913 ms
+Average overall bwd comp time 50.20016564285714
+Finished training it 388/512 of epoch 0, 49.68 ms/it, loss 0.253172
+mbs is 4
+Forward 2.978816032409668 ms
+Average overall bwd comp time 50.18580292857143
+Finished training it 389/512 of epoch 0, 53.49 ms/it, loss 0.000791
+mbs is 4
+Forward 4.770815849304199 ms
+Average overall bwd comp time 50.18058342857143
+Finished training it 390/512 of epoch 0, 51.77 ms/it, loss 0.219415
+mbs is 4
+Forward 4.553728103637695 ms
+Average overall bwd comp time 50.17099271428571
+Finished training it 391/512 of epoch 0, 56.91 ms/it, loss 0.062253
+mbs is 4
+Forward 3.0494720935821533 ms
+Average overall bwd comp time 50.17348392857143
+Finished training it 392/512 of epoch 0, 62.94 ms/it, loss 0.000607
+mbs is 4
+Forward 2.9624319076538086 ms
+Average overall bwd comp time 50.191387999999996
+Finished training it 393/512 of epoch 0, 54.47 ms/it, loss 0.107070
+mbs is 4
+Forward 3.117055892944336 ms
+Average overall bwd comp time 50.18905078571429
+Finished training it 394/512 of epoch 0, 50.51 ms/it, loss 0.045425
+mbs is 4
+Forward 2.8835840225219727 ms
+Average overall bwd comp time 50.17793085714286
+Finished training it 395/512 of epoch 0, 52.47 ms/it, loss 0.057963
+mbs is 4
+Forward 3.083264112472534 ms
+Average overall bwd comp time 50.17199692857144
+Finished training it 396/512 of epoch 0, 51.60 ms/it, loss 0.152391
+mbs is 4
+Forward 2.9573121070861816 ms
+Average overall bwd comp time 50.162702928571434
+Finished training it 397/512 of epoch 0, 53.28 ms/it, loss 0.005510
+mbs is 4
+Forward 3.0842878818511963 ms
+Average overall bwd comp time 50.15706071428571
+Finished training it 398/512 of epoch 0, 51.12 ms/it, loss 0.048417
+mbs is 4
+Forward 2.899967908859253 ms
+Average overall bwd comp time 50.14683614285714
+Finished training it 399/512 of epoch 0, 54.13 ms/it, loss 0.034955
+mbs is 4
+Forward 3.0259199142456055 ms
+Average overall bwd comp time 50.143278714285714
+Finished training it 400/512 of epoch 0, 53.00 ms/it, loss 0.001325
+mbs is 4
+Forward 2.983936071395874 ms
+Average overall bwd comp time 50.13685742857143
+Finished training it 401/512 of epoch 0, 50.73 ms/it, loss 0.032424
+mbs is 4
+Forward 2.875391960144043 ms
+Average overall bwd comp time 50.125528214285715
+Finished training it 402/512 of epoch 0, 53.61 ms/it, loss 0.189454
+mbs is 4
+Forward 2.9071359634399414 ms
+Average overall bwd comp time 50.12093992857144
+Finished training it 403/512 of epoch 0, 50.64 ms/it, loss 0.165073
+mbs is 4
+Forward 2.8436479568481445 ms
+Average overall bwd comp time 50.11120464285715
+Finished training it 404/512 of epoch 0, 54.19 ms/it, loss 0.174233
+mbs is 4
+Forward 2.8928000926971436 ms
+Average overall bwd comp time 50.108543999999995
+Finished training it 405/512 of epoch 0, 49.26 ms/it, loss 0.202898
+mbs is 4
+Forward 2.934783935546875 ms
+Average overall bwd comp time 50.096066785714285
+Finished training it 406/512 of epoch 0, 49.57 ms/it, loss 0.078817
+mbs is 4
+Forward 3.0812160968780518 ms
+Average overall bwd comp time 50.08336107142857
+Finished training it 407/512 of epoch 0, 52.72 ms/it, loss 0.000027
+mbs is 4
+Forward 2.895872116088867 ms
+Average overall bwd comp time 50.07735164285714
+Finished training it 408/512 of epoch 0, 52.53 ms/it, loss 0.036218
+mbs is 4
+Forward 2.8088319301605225 ms
+Average overall bwd comp time 50.07107899999999
+Finished training it 409/512 of epoch 0, 54.27 ms/it, loss 0.007399
+mbs is 4
+Forward 2.8743679523468018 ms
+Average overall bwd comp time 50.068142
+Finished training it 410/512 of epoch 0, 50.52 ms/it, loss 0.118688
+mbs is 4
+Forward 2.8446719646453857 ms
+Average overall bwd comp time 50.056964214285706
+Finished training it 411/512 of epoch 0, 54.35 ms/it, loss 0.088874
+mbs is 4
+Forward 2.810879945755005 ms
+Average overall bwd comp time 50.05436157142857
+Finished training it 412/512 of epoch 0, 51.79 ms/it, loss 0.129997
+mbs is 4
+Forward 3.033087968826294 ms
+Average overall bwd comp time 50.04763392857143
+Finished training it 413/512 of epoch 0, 57.11 ms/it, loss 0.008867
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 50.05199485714285
+Finished training it 414/512 of epoch 0, 52.91 ms/it, loss 0.026218
+mbs is 4
+Forward 2.820096015930176 ms
+Average overall bwd comp time 50.047221285714286
+Finished training it 415/512 of epoch 0, 52.28 ms/it, loss 0.002290
+mbs is 4
+Forward 3.028991937637329 ms
+Average overall bwd comp time 50.04094242857143
+Finished training it 416/512 of epoch 0, 58.36 ms/it, loss 0.000246
+mbs is 4
+Forward 2.96345591545105 ms
+Average overall bwd comp time 50.047422142857144
+Finished training it 417/512 of epoch 0, 55.42 ms/it, loss 0.006327
+mbs is 4
+Forward 2.8323841094970703 ms
+Average overall bwd comp time 50.04699385714286
+Finished training it 418/512 of epoch 0, 52.51 ms/it, loss 0.000377
+mbs is 4
+Forward 4.662271976470947 ms
+Average overall bwd comp time 50.04211999999999
+Finished training it 419/512 of epoch 0, 55.46 ms/it, loss 0.064935
+mbs is 4
+Forward 3.0566399097442627 ms
+Average overall bwd comp time 50.04089271428571
+Finished training it 420/512 of epoch 0, 50.83 ms/it, loss 0.067536
+mbs is 4
+Forward 3.0105600357055664 ms
+Average overall bwd comp time 50.03079107142857
+Finished training it 421/512 of epoch 0, 50.60 ms/it, loss 0.091687
+mbs is 4
+Forward 2.9757440090179443 ms
+Average overall bwd comp time 50.02029871428571
+Finished training it 422/512 of epoch 0, 57.25 ms/it, loss 0.051352
+mbs is 4
+Forward 3.057663917541504 ms
+Average overall bwd comp time 50.02529342857142
+Finished training it 423/512 of epoch 0, 65.11 ms/it, loss 0.000004
+mbs is 4
+Forward 2.982912063598633 ms
+Average overall bwd comp time 50.04813364285714
+Finished training it 424/512 of epoch 0, 52.00 ms/it, loss 0.000907
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 50.04258892857143
+Finished training it 425/512 of epoch 0, 55.37 ms/it, loss 0.031742
+mbs is 4
+Forward 2.8282880783081055 ms
+Average overall bwd comp time 50.04352707142856
+Finished training it 426/512 of epoch 0, 50.20 ms/it, loss 0.000978
+mbs is 4
+Forward 2.8671998977661133 ms
+Average overall bwd comp time 50.03196992857143
+Finished training it 427/512 of epoch 0, 56.47 ms/it, loss 0.179304
+mbs is 4
+Forward 2.9112319946289062 ms
+Average overall bwd comp time 50.03480100000001
+Finished training it 428/512 of epoch 0, 48.64 ms/it, loss 0.016620
+mbs is 4
+Forward 3.0607359409332275 ms
+Average overall bwd comp time 50.02022385714286
+Finished training it 429/512 of epoch 0, 53.12 ms/it, loss 0.006965
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 50.01612164285714
+Finished training it 430/512 of epoch 0, 49.87 ms/it, loss 0.125812
+mbs is 4
+Forward 2.8528640270233154 ms
+Average overall bwd comp time 50.00582457142857
+Finished training it 431/512 of epoch 0, 51.14 ms/it, loss 0.030999
+mbs is 4
+Forward 3.08735990524292 ms
+Average overall bwd comp time 49.99691492857143
+Finished training it 432/512 of epoch 0, 54.14 ms/it, loss 0.028123
+mbs is 4
+Forward 5.090303897857666 ms
+Average overall bwd comp time 49.99574521428571
+Finished training it 433/512 of epoch 0, 54.81 ms/it, loss 0.099548
+mbs is 4
+Forward 2.822144031524658 ms
+Average overall bwd comp time 49.99423221428572
+Finished training it 434/512 of epoch 0, 55.58 ms/it, loss 0.004777
+mbs is 4
+Forward 3.0556159019470215 ms
+Average overall bwd comp time 49.99433814285714
+Finished training it 435/512 of epoch 0, 53.99 ms/it, loss 0.055594
+mbs is 4
+Forward 3.1047680377960205 ms
+Average overall bwd comp time 49.99139000000001
+Finished training it 436/512 of epoch 0, 58.35 ms/it, loss 0.013320
+mbs is 4
+Forward 3.052544116973877 ms
+Average overall bwd comp time 49.99782264285715
+Finished training it 437/512 of epoch 0, 49.09 ms/it, loss 0.213735
+mbs is 4
+Forward 2.9706239700317383 ms
+Average overall bwd comp time 49.985924642857135
+Finished training it 438/512 of epoch 0, 51.08 ms/it, loss 0.019481
+mbs is 4
+Forward 3.058687925338745 ms
+Average overall bwd comp time 49.97826342857143
+Finished training it 439/512 of epoch 0, 56.38 ms/it, loss 0.022300
+mbs is 4
+Forward 2.8938241004943848 ms
+Average overall bwd comp time 49.98058628571429
+Finished training it 440/512 of epoch 0, 57.38 ms/it, loss 0.058105
+mbs is 4
+Forward 2.850816011428833 ms
+Average overall bwd comp time 49.98481607142857
+Finished training it 441/512 of epoch 0, 51.34 ms/it, loss 0.215871
+mbs is 4
+Forward 3.0197761058807373 ms
+Average overall bwd comp time 49.97768785714287
+Finished training it 442/512 of epoch 0, 51.30 ms/it, loss 0.061445
+mbs is 4
+Forward 2.9951999187469482 ms
+Average overall bwd comp time 49.970038571428574
+Finished training it 443/512 of epoch 0, 52.47 ms/it, loss 0.252031
+mbs is 4
+Forward 2.945024013519287 ms
+Average overall bwd comp time 49.96406807142857
+Finished training it 444/512 of epoch 0, 48.83 ms/it, loss 0.000782
+mbs is 4
+Forward 2.8436479568481445 ms
+Average overall bwd comp time 49.951413428571435
+Finished training it 445/512 of epoch 0, 47.42 ms/it, loss 0.147777
+mbs is 4
+Forward 3.022847890853882 ms
+Average overall bwd comp time 49.9353312142857
+Finished training it 446/512 of epoch 0, 57.52 ms/it, loss 0.000334
+mbs is 4
+Forward 2.9480960369110107 ms
+Average overall bwd comp time 49.94134164285714
+Finished training it 447/512 of epoch 0, 51.26 ms/it, loss 0.089408
+mbs is 4
+Forward 3.0320639610290527 ms
+Average overall bwd comp time 49.93468342857142
+Finished training it 448/512 of epoch 0, 50.42 ms/it, loss 0.100413
+mbs is 4
+Forward 2.988032102584839 ms
+Average overall bwd comp time 49.92522307142857
+Finished training it 449/512 of epoch 0, 49.15 ms/it, loss 0.063115
+mbs is 4
+Forward 3.1631360054016113 ms
+Average overall bwd comp time 49.913179642857145
+Finished training it 450/512 of epoch 0, 60.29 ms/it, loss 0.246171
+mbs is 4
+Forward 2.879487991333008 ms
+Average overall bwd comp time 49.92360399999999
+Finished training it 451/512 of epoch 0, 52.06 ms/it, loss 0.000621
+mbs is 4
+Forward 3.0904319286346436 ms
+Average overall bwd comp time 49.91723192857143
+Finished training it 452/512 of epoch 0, 51.78 ms/it, loss 0.130280
+mbs is 4
+Forward 2.836479902267456 ms
+Average overall bwd comp time 49.91100007142857
+Finished training it 453/512 of epoch 0, 52.40 ms/it, loss 0.009814
+mbs is 4
+Forward 3.057663917541504 ms
+Average overall bwd comp time 49.90509500000001
+Finished training it 454/512 of epoch 0, 56.42 ms/it, loss 0.179126
+mbs is 4
+Forward 2.9286398887634277 ms
+Average overall bwd comp time 49.90763078571428
+Finished training it 455/512 of epoch 0, 57.35 ms/it, loss 0.063275
+mbs is 4
+Forward 2.8323841094970703 ms
+Average overall bwd comp time 49.911577999999984
+Finished training it 456/512 of epoch 0, 51.43 ms/it, loss 0.169909
+mbs is 4
+Forward 2.9573121070861816 ms
+Average overall bwd comp time 49.90373671428571
+Finished training it 457/512 of epoch 0, 52.89 ms/it, loss 0.003136
+mbs is 4
+Forward 2.8446719646453857 ms
+Average overall bwd comp time 49.89907478571429
+Finished training it 458/512 of epoch 0, 51.57 ms/it, loss 0.217619
+mbs is 4
+Forward 5.114880084991455 ms
+Average overall bwd comp time 49.891859571428576
+Finished training it 459/512 of epoch 0, 54.85 ms/it, loss 0.224351
+mbs is 4
+Forward 4.663296222686768 ms
+Average overall bwd comp time 49.89011914285714
+Finished training it 460/512 of epoch 0, 52.97 ms/it, loss 0.008505
+mbs is 4
+Forward 4.637695789337158 ms
+Average overall bwd comp time 49.884463928571435
+Finished training it 461/512 of epoch 0, 49.64 ms/it, loss 0.152604
+mbs is 4
+Forward 3.009536027908325 ms
+Average overall bwd comp time 49.873434642857134
+Finished training it 462/512 of epoch 0, 50.06 ms/it, loss 0.225696
+mbs is 4
+Forward 2.9706239700317383 ms
+Average overall bwd comp time 49.86458392857143
+Finished training it 463/512 of epoch 0, 54.87 ms/it, loss 0.117242
+mbs is 4
+Forward 2.974720001220703 ms
+Average overall bwd comp time 49.86437314285714
+Finished training it 464/512 of epoch 0, 50.81 ms/it, loss 0.148343
+mbs is 4
+Forward 2.894848108291626 ms
+Average overall bwd comp time 49.85593821428571
+Finished training it 465/512 of epoch 0, 50.15 ms/it, loss 0.002879
+mbs is 4
+Forward 2.8887040615081787 ms
+Average overall bwd comp time 49.84613392857143
+Finished training it 466/512 of epoch 0, 50.62 ms/it, loss 0.080216
+mbs is 4
+Forward 4.6684160232543945 ms
+Average overall bwd comp time 49.83757964285714
+Finished training it 467/512 of epoch 0, 52.17 ms/it, loss 0.019390
+mbs is 4
+Forward 4.675583839416504 ms
+Average overall bwd comp time 49.830993785714284
+Finished training it 468/512 of epoch 0, 63.81 ms/it, loss 0.026088
+mbs is 4
+Forward 4.69708776473999 ms
+Average overall bwd comp time 49.84760121428571
+Finished training it 469/512 of epoch 0, 53.12 ms/it, loss 0.154852
+mbs is 4
+Forward 4.555776119232178 ms
+Average overall bwd comp time 49.843008357142864
+Finished training it 470/512 of epoch 0, 58.05 ms/it, loss 0.074733
+mbs is 4
+Forward 2.815999984741211 ms
+Average overall bwd comp time 49.84837542857144
+Finished training it 471/512 of epoch 0, 49.52 ms/it, loss 0.072243
+mbs is 4
+Forward 2.958336114883423 ms
+Average overall bwd comp time 49.837511285714285
+Finished training it 472/512 of epoch 0, 57.78 ms/it, loss 0.067586
+mbs is 4
+Forward 2.9276158809661865 ms
+Average overall bwd comp time 49.84290342857143
+Finished training it 473/512 of epoch 0, 51.74 ms/it, loss 0.130230
+mbs is 4
+Forward 2.925568103790283 ms
+Average overall bwd comp time 49.83704649999999
+Finished training it 474/512 of epoch 0, 50.57 ms/it, loss 0.050615
+mbs is 4
+Forward 3.1160318851470947 ms
+Average overall bwd comp time 49.82803742857143
+Finished training it 475/512 of epoch 0, 55.25 ms/it, loss 0.003071
+mbs is 4
+Forward 2.9951999187469482 ms
+Average overall bwd comp time 49.829463999999994
+Finished training it 476/512 of epoch 0, 50.75 ms/it, loss 0.237822
+mbs is 4
+Forward 2.8528640270233154 ms
+Average overall bwd comp time 49.82200814285714
+Finished training it 477/512 of epoch 0, 53.75 ms/it, loss 0.066344
+mbs is 4
+Forward 2.9081599712371826 ms
+Average overall bwd comp time 49.81910271428571
+Finished training it 478/512 of epoch 0, 54.72 ms/it, loss 0.028601
+mbs is 4
+Forward 2.8538880348205566 ms
+Average overall bwd comp time 49.818080928571426
+Finished training it 479/512 of epoch 0, 58.49 ms/it, loss 0.038579
+mbs is 4
+Forward 2.871295928955078 ms
+Average overall bwd comp time 49.82469299999999
+Finished training it 480/512 of epoch 0, 51.14 ms/it, loss 0.045673
+mbs is 4
+Forward 2.9368319511413574 ms
+Average overall bwd comp time 49.816865357142845
+Finished training it 481/512 of epoch 0, 65.28 ms/it, loss 0.189013
+mbs is 4
+Forward 2.8671998977661133 ms
+Average overall bwd comp time 49.83680592857143
+Finished training it 482/512 of epoch 0, 257.42 ms/it, loss 0.112092
+mbs is 4
+Forward 4.831232070922852 ms
+Average overall bwd comp time 50.22615607142857
+Finished training it 483/512 of epoch 0, 49.57 ms/it, loss 0.139112
+mbs is 4
+Forward 2.88972806930542 ms
+Average overall bwd comp time 50.214529428571424
+Finished training it 484/512 of epoch 0, 52.10 ms/it, loss 0.151615
+mbs is 4
+Forward 2.9726719856262207 ms
+Average overall bwd comp time 50.20835028571429
+Finished training it 485/512 of epoch 0, 47.72 ms/it, loss 0.000206
+mbs is 4
+Forward 2.7996160984039307 ms
+Average overall bwd comp time 50.194885
+Finished training it 486/512 of epoch 0, 48.05 ms/it, loss 0.013515
+mbs is 4
+Forward 3.0402560234069824 ms
+Average overall bwd comp time 50.18102642857143
+Finished training it 487/512 of epoch 0, 49.18 ms/it, loss 0.038287
+mbs is 4
+Forward 2.9726719856262207 ms
+Average overall bwd comp time 50.169321785714274
+Finished training it 488/512 of epoch 0, 49.77 ms/it, loss 0.266117
+mbs is 4
+Forward 2.969599962234497 ms
+Average overall bwd comp time 50.15872528571429
+Finished training it 489/512 of epoch 0, 52.30 ms/it, loss 0.001735
+mbs is 4
+Forward 2.8682239055633545 ms
+Average overall bwd comp time 50.15251799999999
+Finished training it 490/512 of epoch 0, 58.93 ms/it, loss 0.083194
+mbs is 4
+Forward 2.8887040615081787 ms
+Average overall bwd comp time 50.15942978571428
+Finished training it 491/512 of epoch 0, 51.11 ms/it, loss 0.223186
+mbs is 4
+Forward 3.1487998962402344 ms
+Average overall bwd comp time 50.15204585714285
+Finished training it 492/512 of epoch 0, 54.20 ms/it, loss 0.008462
+mbs is 4
+Forward 3.0361599922180176 ms
+Average overall bwd comp time 50.14991857142858
+Finished training it 493/512 of epoch 0, 49.11 ms/it, loss 0.018875
+mbs is 4
+Forward 3.1549439430236816 ms
+Average overall bwd comp time 50.13824278571429
+Finished training it 494/512 of epoch 0, 54.57 ms/it, loss 0.000535
+mbs is 4
+Forward 3.088383913040161 ms
+Average overall bwd comp time 50.13752671428572
+Finished training it 495/512 of epoch 0, 49.00 ms/it, loss 0.035960
+mbs is 4
+Forward 2.9460480213165283 ms
+Average overall bwd comp time 50.12590478571429
+Finished training it 496/512 of epoch 0, 52.45 ms/it, loss 0.075524
+mbs is 4
+Forward 3.0208001136779785 ms
+Average overall bwd comp time 50.12112864285714
+Finished training it 497/512 of epoch 0, 51.57 ms/it, loss 0.000619
+mbs is 4
+Forward 2.9675519466400146 ms
+Average overall bwd comp time 50.11403021428572
+Finished training it 498/512 of epoch 0, 55.46 ms/it, loss 0.211477
+mbs is 4
+Forward 3.0361599922180176 ms
+Average overall bwd comp time 50.114848142857134
+Finished training it 499/512 of epoch 0, 52.93 ms/it, loss 0.243318
+mbs is 4
+Forward 2.9511680603027344 ms
+Average overall bwd comp time 50.11093892857143
+Finished training it 500/512 of epoch 0, 52.34 ms/it, loss 0.198430
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 50.105570428571426
+Finished training it 501/512 of epoch 0, 48.15 ms/it, loss 0.111806
+mbs is 4
+Forward 3.0689280033111572 ms
+Average overall bwd comp time 50.092784928571426
+Finished training it 502/512 of epoch 0, 54.12 ms/it, loss 0.019872
+mbs is 4
+Forward 3.043328046798706 ms
+Average overall bwd comp time 50.09088264285714
+Finished training it 503/512 of epoch 0, 48.71 ms/it, loss 0.155900
+mbs is 4
+Forward 2.8436479568481445 ms
+Average overall bwd comp time 50.07859378571429
+Finished training it 504/512 of epoch 0, 51.26 ms/it, loss 0.035675
+mbs is 4
+Forward 3.0801920890808105 ms
+Average overall bwd comp time 50.07163764285715
+Finished training it 505/512 of epoch 0, 66.10 ms/it, loss 0.062059
+mbs is 4
+Forward 3.058687925338745 ms
+Average overall bwd comp time 50.09549571428572
+Finished training it 506/512 of epoch 0, 49.59 ms/it, loss 0.023169
+mbs is 4
+Forward 3.0054399967193604 ms
+Average overall bwd comp time 50.085215642857136
+Finished training it 507/512 of epoch 0, 54.13 ms/it, loss 0.030987
+mbs is 4
+Forward 3.1344640254974365 ms
+Average overall bwd comp time 50.08299307142857
+Finished training it 508/512 of epoch 0, 50.11 ms/it, loss 0.086167
+mbs is 4
+Forward 3.082240104675293 ms
+Average overall bwd comp time 50.074310857142855
+Finished training it 509/512 of epoch 0, 50.25 ms/it, loss 0.014257
+mbs is 4
+Forward 3.0904319286346436 ms
+Average overall bwd comp time 50.06507907142856
+Finished training it 510/512 of epoch 0, 52.54 ms/it, loss 0.081030
+mbs is 4
+Forward 2.870271921157837 ms
+Average overall bwd comp time 50.06063128571428
+Finished training it 511/512 of epoch 0, 47.32 ms/it, loss 0.025916
+mbs is 4
+Forward 3.01363205909729 ms
+Average overall bwd comp time 50.046246785714274
+Finished training it 512/512 of epoch 0, 57.80 ms/it, loss 0.199437
+mbs is 4
+Forward 3.039232015609741 ms
+Average overall bwd comp time 50.05077442857144
+Finished training it 1/512 of epoch 1, 58.10 ms/it, loss 0.080930
+mbs is 4
+Forward 3.0218238830566406 ms
+Average overall bwd comp time 50.055568714285705
+Finished training it 2/512 of epoch 1, 59.94 ms/it, loss 0.058932
+mbs is 4
+Forward 2.851840019226074 ms
+Average overall bwd comp time 50.06499
+Finished training it 3/512 of epoch 1, 49.67 ms/it, loss 0.054749
+mbs is 4
+Forward 2.8968958854675293 ms
+Average overall bwd comp time 50.05569471428572
+Finished training it 4/512 of epoch 1, 55.77 ms/it, loss 0.011159
+mbs is 4
+Forward 2.9849600791931152 ms
+Average overall bwd comp time 50.05717257142857
+Finished training it 5/512 of epoch 1, 51.18 ms/it, loss 0.008978
+mbs is 4
+Forward 3.0300159454345703 ms
+Average overall bwd comp time 50.04950607142858
+Finished training it 6/512 of epoch 1, 48.23 ms/it, loss 0.002805
+mbs is 4
+Forward 2.950144052505493 ms
+Average overall bwd comp time 50.037787999999985
+Finished training it 7/512 of epoch 1, 53.97 ms/it, loss 0.212681
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 50.035021500000006
+Finished training it 8/512 of epoch 1, 54.59 ms/it, loss 0.025299
+mbs is 4
+Forward 3.077120065689087 ms
+Average overall bwd comp time 50.034320714285705
+Finished training it 9/512 of epoch 1, 60.21 ms/it, loss 0.002021
+mbs is 4
+Forward 2.8815360069274902 ms
+Average overall bwd comp time 50.04335092857143
+Finished training it 10/512 of epoch 1, 55.61 ms/it, loss 0.010928
+mbs is 4
+Forward 2.960383892059326 ms
+Average overall bwd comp time 50.04349271428571
+Finished training it 11/512 of epoch 1, 55.65 ms/it, loss 0.020976
+mbs is 4
+Forward 3.142656087875366 ms
+Average overall bwd comp time 50.04423107142856
+Finished training it 12/512 of epoch 1, 50.20 ms/it, loss 0.037334
+mbs is 4
+Forward 2.982912063598633 ms
+Average overall bwd comp time 50.034781642857126
+Finished training it 13/512 of epoch 1, 50.29 ms/it, loss 0.014217
+mbs is 4
+Forward 2.920448064804077 ms
+Average overall bwd comp time 50.02641042857143
+Finished training it 14/512 of epoch 1, 51.24 ms/it, loss 0.000257
+mbs is 4
+Forward 2.8825600147247314 ms
+Average overall bwd comp time 50.01955907142856
+Finished training it 15/512 of epoch 1, 48.56 ms/it, loss 0.054305
+mbs is 4
+Forward 2.969599962234497 ms
+Average overall bwd comp time 50.007995071428574
+Finished training it 16/512 of epoch 1, 49.50 ms/it, loss 0.035655
+mbs is 4
+Forward 3.1037440299987793 ms
+Average overall bwd comp time 49.99836442857143
+Finished training it 17/512 of epoch 1, 48.40 ms/it, loss 0.175687
+mbs is 4
+Forward 2.830336093902588 ms
+Average overall bwd comp time 49.98725178571429
+Finished training it 18/512 of epoch 1, 53.54 ms/it, loss 0.007255
+mbs is 4
+Forward 2.835455894470215 ms
+Average overall bwd comp time 49.98410185714285
+Finished training it 19/512 of epoch 1, 50.59 ms/it, loss 0.002176
+mbs is 4
+Forward 2.8866560459136963 ms
+Average overall bwd comp time 49.976933571428575
+Finished training it 20/512 of epoch 1, 51.25 ms/it, loss 0.007710
+mbs is 4
+Forward 3.033087968826294 ms
+Average overall bwd comp time 49.97008128571428
+Finished training it 21/512 of epoch 1, 53.92 ms/it, loss 0.138570
+mbs is 4
+Forward 3.088383913040161 ms
+Average overall bwd comp time 49.968364
+Finished training it 22/512 of epoch 1, 50.80 ms/it, loss 0.085879
+mbs is 4
+Forward 4.938752174377441 ms
+Average overall bwd comp time 49.9606225
+Finished training it 23/512 of epoch 1, 49.88 ms/it, loss 0.228884
+mbs is 4
+Forward 2.8375039100646973 ms
+Average overall bwd comp time 49.9509917142857
+Finished training it 24/512 of epoch 1, 57.91 ms/it, loss 0.009297
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 49.95561507142857
+Finished training it 25/512 of epoch 1, 50.04 ms/it, loss 0.100918
+mbs is 4
+Forward 2.9224960803985596 ms
+Average overall bwd comp time 49.947120999999996
+Finished training it 26/512 of epoch 1, 58.70 ms/it, loss 0.116335
+mbs is 4
+Forward 2.835455894470215 ms
+Average overall bwd comp time 49.953117
+Finished training it 27/512 of epoch 1, 52.28 ms/it, loss 0.184074
+mbs is 4
+Forward 4.669439792633057 ms
+Average overall bwd comp time 49.948390285714275
+Finished training it 28/512 of epoch 1, 51.60 ms/it, loss 0.100342
+mbs is 4
+Forward 3.136512041091919 ms
+Average overall bwd comp time 49.940902785714286
+Finished training it 29/512 of epoch 1, 51.65 ms/it, loss 0.009466
+mbs is 4
+Forward 2.9573121070861816 ms
+Average overall bwd comp time 49.93432242857143
+Finished training it 30/512 of epoch 1, 50.35 ms/it, loss 0.074936
+mbs is 4
+Forward 2.915328025817871 ms
+Average overall bwd comp time 49.926433071428576
+Finished training it 31/512 of epoch 1, 51.89 ms/it, loss 0.003261
+mbs is 4
+Forward 2.9327359199523926 ms
+Average overall bwd comp time 49.92084335714286
+Finished training it 32/512 of epoch 1, 47.78 ms/it, loss 0.103005
+mbs is 4
+Forward 3.028991937637329 ms
+Average overall bwd comp time 49.90878921428571
+Finished training it 33/512 of epoch 1, 51.01 ms/it, loss 0.089570
+mbs is 4
+Forward 2.9122560024261475 ms
+Average overall bwd comp time 49.90207928571429
+Finished training it 34/512 of epoch 1, 50.09 ms/it, loss 0.017476
+mbs is 4
+Forward 2.8723199367523193 ms
+Average overall bwd comp time 49.89337592857142
+Finished training it 35/512 of epoch 1, 53.63 ms/it, loss 0.189034
+mbs is 4
+Forward 2.9224960803985596 ms
+Average overall bwd comp time 49.89114628571428
+Finished training it 36/512 of epoch 1, 48.62 ms/it, loss 0.026716
+mbs is 4
+Forward 3.0658559799194336 ms
+Average overall bwd comp time 49.88015335714285
+Finished training it 37/512 of epoch 1, 54.51 ms/it, loss 0.094509
+mbs is 4
+Forward 3.0740480422973633 ms
+Average overall bwd comp time 49.87919035714286
+Finished training it 38/512 of epoch 1, 54.68 ms/it, loss 0.139002
+mbs is 4
+Forward 2.973695993423462 ms
+Average overall bwd comp time 49.878947499999995
+Finished training it 39/512 of epoch 1, 57.76 ms/it, loss 0.221271
+mbs is 4
+Forward 2.9716479778289795 ms
+Average overall bwd comp time 49.88310335714285
+Finished training it 40/512 of epoch 1, 56.05 ms/it, loss 0.005277
+mbs is 4
+Forward 2.8078079223632812 ms
+Average overall bwd comp time 49.884402071428575
+Finished training it 41/512 of epoch 1, 48.50 ms/it, loss 0.001099
+mbs is 4
+Forward 2.9265921115875244 ms
+Average overall bwd comp time 49.87306064285714
+Finished training it 42/512 of epoch 1, 52.61 ms/it, loss 0.161138
+mbs is 4
+Forward 3.0218238830566406 ms
+Average overall bwd comp time 49.86970435714285
+Finished training it 43/512 of epoch 1, 52.21 ms/it, loss 0.219865
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 49.865129714285715
+Finished training it 44/512 of epoch 1, 52.36 ms/it, loss 0.089956
+mbs is 4
+Forward 3.0648319721221924 ms
+Average overall bwd comp time 49.86005742857143
+Finished training it 45/512 of epoch 1, 56.74 ms/it, loss 0.005417
+mbs is 4
+Forward 3.012608051300049 ms
+Average overall bwd comp time 49.86240671428571
+Finished training it 46/512 of epoch 1, 52.84 ms/it, loss 0.025563
+mbs is 4
+Forward 2.925568103790283 ms
+Average overall bwd comp time 49.858225571428555
+Finished training it 47/512 of epoch 1, 49.97 ms/it, loss 0.235250
+mbs is 4
+Forward 2.831360101699829 ms
+Average overall bwd comp time 49.849869
+Finished training it 48/512 of epoch 1, 50.27 ms/it, loss 0.238924
+mbs is 4
+Forward 2.846719980239868 ms
+Average overall bwd comp time 49.84163642857142
+Finished training it 49/512 of epoch 1, 49.68 ms/it, loss 0.003423
+mbs is 4
+Forward 2.955264091491699 ms
+Average overall bwd comp time 49.83309157142857
+Finished training it 50/512 of epoch 1, 58.66 ms/it, loss 0.019804
+mbs is 4
+Forward 2.8692479133605957 ms
+Average overall bwd comp time 49.838710642857144
+Finished training it 51/512 of epoch 1, 236.04 ms/it, loss 0.234718
+mbs is 4
+Forward 3.191807985305786 ms
+Average overall bwd comp time 50.13675664285715
+Finished training it 52/512 of epoch 1, 52.32 ms/it, loss 0.023743
+mbs is 4
+Forward 2.935807943344116 ms
+Average overall bwd comp time 50.13141671428572
+Finished training it 53/512 of epoch 1, 48.08 ms/it, loss 0.212941
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 50.11940557142857
+Finished training it 54/512 of epoch 1, 52.49 ms/it, loss 0.067734
+mbs is 4
+Forward 2.846719980239868 ms
+Average overall bwd comp time 50.11527649999999
+Finished training it 55/512 of epoch 1, 49.44 ms/it, loss 0.059427
+mbs is 4
+Forward 2.919424057006836 ms
+Average overall bwd comp time 50.10552385714285
+Finished training it 56/512 of epoch 1, 57.86 ms/it, loss 0.130454
+mbs is 4
+Forward 2.855936050415039 ms
+Average overall bwd comp time 50.109222357142855
+Finished training it 57/512 of epoch 1, 51.63 ms/it, loss 0.000134
+mbs is 4
+Forward 2.9808640480041504 ms
+Average overall bwd comp time 50.10268014285713
+Finished training it 58/512 of epoch 1, 48.50 ms/it, loss 0.018944
+mbs is 4
+Forward 2.855936050415039 ms
+Average overall bwd comp time 50.092353071428555
+Finished training it 59/512 of epoch 1, 54.35 ms/it, loss 0.221785
+mbs is 4
+Forward 2.8477439880371094 ms
+Average overall bwd comp time 50.090697214285704
+Finished training it 60/512 of epoch 1, 56.60 ms/it, loss 0.209071
+mbs is 4
+Forward 3.003391981124878 ms
+Average overall bwd comp time 50.092800000000004
+Finished training it 61/512 of epoch 1, 50.94 ms/it, loss 0.229336
+mbs is 4
+Forward 2.880511999130249 ms
+Average overall bwd comp time 50.08569885714286
+Finished training it 62/512 of epoch 1, 54.92 ms/it, loss 0.077622
+mbs is 4
+Forward 2.845695972442627 ms
+Average overall bwd comp time 50.08484992857142
+Finished training it 63/512 of epoch 1, 53.00 ms/it, loss 0.073897
+mbs is 4
+Forward 2.935807943344116 ms
+Average overall bwd comp time 50.081149999999994
+Finished training it 64/512 of epoch 1, 49.14 ms/it, loss 0.051724
+mbs is 4
+Forward 3.0167040824890137 ms
+Average overall bwd comp time 50.070856642857144
+Finished training it 65/512 of epoch 1, 49.05 ms/it, loss 0.160633
+mbs is 4
+Forward 3.0842878818511963 ms
+Average overall bwd comp time 50.06085842857142
+Finished training it 66/512 of epoch 1, 57.44 ms/it, loss 0.038013
+mbs is 4
+Forward 2.8815360069274902 ms
+Average overall bwd comp time 50.064608642857145
+Finished training it 67/512 of epoch 1, 49.18 ms/it, loss 0.173107
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 50.05507164285713
+Finished training it 68/512 of epoch 1, 52.35 ms/it, loss 0.108864
+mbs is 4
+Forward 2.994175910949707 ms
+Average overall bwd comp time 50.05036907142857
+Finished training it 69/512 of epoch 1, 50.86 ms/it, loss 0.232450
+mbs is 4
+Forward 4.91212797164917 ms
+Average overall bwd comp time 50.04333849999999
+Finished training it 70/512 of epoch 1, 49.70 ms/it, loss 0.000724
+mbs is 4
+Forward 4.709375858306885 ms
+Average overall bwd comp time 50.033801357142856
+Finished training it 71/512 of epoch 1, 49.61 ms/it, loss 0.001734
+mbs is 4
+Forward 2.949120044708252 ms
+Average overall bwd comp time 50.024036928571434
+Finished training it 72/512 of epoch 1, 50.46 ms/it, loss 0.151797
+mbs is 4
+Forward 3.06278395652771 ms
+Average overall bwd comp time 50.01707785714285
+Finished training it 73/512 of epoch 1, 52.55 ms/it, loss 0.128769
+mbs is 4
+Forward 2.7996160984039307 ms
+Average overall bwd comp time 50.01308028571429
+Finished training it 74/512 of epoch 1, 50.79 ms/it, loss 0.023499
+mbs is 4
+Forward 4.597760200500488 ms
+Average overall bwd comp time 50.0059055
+Finished training it 75/512 of epoch 1, 54.23 ms/it, loss 0.017774
+mbs is 4
+Forward 4.6090240478515625 ms
+Average overall bwd comp time 50.00380921428571
+Finished training it 76/512 of epoch 1, 52.54 ms/it, loss 0.090885
+mbs is 4
+Forward 3.230720043182373 ms
+Average overall bwd comp time 49.99941457142857
+Finished training it 77/512 of epoch 1, 60.26 ms/it, loss 0.028397
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 50.00685528571429
+Finished training it 78/512 of epoch 1, 51.11 ms/it, loss 0.058712
+mbs is 4
+Forward 3.176448106765747 ms
+Average overall bwd comp time 50.00019078571428
+Finished training it 79/512 of epoch 1, 51.71 ms/it, loss 0.103077
+mbs is 4
+Forward 2.920448064804077 ms
+Average overall bwd comp time 49.995012857142854
+Finished training it 80/512 of epoch 1, 55.84 ms/it, loss 0.013349
+mbs is 4
+Forward 2.998271942138672 ms
+Average overall bwd comp time 49.99617142857142
+Finished training it 81/512 of epoch 1, 48.37 ms/it, loss 0.011105
+mbs is 4
+Forward 2.890752077102661 ms
+Average overall bwd comp time 49.98579157142857
+Finished training it 82/512 of epoch 1, 52.56 ms/it, loss 0.004799
+mbs is 4
+Forward 3.034111976623535 ms
+Average overall bwd comp time 49.9814415
+Finished training it 83/512 of epoch 1, 56.28 ms/it, loss 0.002128
+mbs is 4
+Forward 2.8037118911743164 ms
+Average overall bwd comp time 49.984019499999995
+Finished training it 84/512 of epoch 1, 52.68 ms/it, loss 0.129340
+mbs is 4
+Forward 2.968575954437256 ms
+Average overall bwd comp time 49.980697071428565
+Finished training it 85/512 of epoch 1, 47.87 ms/it, loss 0.044819
+mbs is 4
+Forward 2.945024013519287 ms
+Average overall bwd comp time 49.96879014285713
+Finished training it 86/512 of epoch 1, 50.11 ms/it, loss 0.157230
+mbs is 4
+Forward 2.8733439445495605 ms
+Average overall bwd comp time 49.96060592857143
+Finished training it 87/512 of epoch 1, 49.57 ms/it, loss 0.176105
+mbs is 4
+Forward 2.945024013519287 ms
+Average overall bwd comp time 49.95229499999999
+Finished training it 88/512 of epoch 1, 50.36 ms/it, loss 0.008566
+mbs is 4
+Forward 2.900991916656494 ms
+Average overall bwd comp time 49.94455471428571
+Finished training it 89/512 of epoch 1, 54.12 ms/it, loss 0.228650
+mbs is 4
+Forward 2.96345591545105 ms
+Average overall bwd comp time 49.94359142857142
+Finished training it 90/512 of epoch 1, 56.94 ms/it, loss 0.042462
+mbs is 4
+Forward 2.795520067214966 ms
+Average overall bwd comp time 49.94704764285715
+Finished training it 91/512 of epoch 1, 55.96 ms/it, loss 0.036956
+mbs is 4
+Forward 3.0300159454345703 ms
+Average overall bwd comp time 49.94873892857142
+Finished training it 92/512 of epoch 1, 52.60 ms/it, loss 0.034134
+mbs is 4
+Forward 2.8375039100646973 ms
+Average overall bwd comp time 49.94468921428571
+Finished training it 93/512 of epoch 1, 54.81 ms/it, loss 0.016498
+mbs is 4
+Forward 3.0074880123138428 ms
+Average overall bwd comp time 49.94387071428571
+Finished training it 94/512 of epoch 1, 54.83 ms/it, loss 0.009019
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 49.943266071428575
+Finished training it 95/512 of epoch 1, 49.89 ms/it, loss 0.086682
+mbs is 4
+Forward 3.0750720500946045 ms
+Average overall bwd comp time 49.93521878571428
+Finished training it 96/512 of epoch 1, 47.83 ms/it, loss 0.043540
+mbs is 4
+Forward 2.8180480003356934 ms
+Average overall bwd comp time 49.92401457142858
+Finished training it 97/512 of epoch 1, 56.26 ms/it, loss 0.013950
+mbs is 4
+Forward 3.063807964324951 ms
+Average overall bwd comp time 49.92619135714285
+Finished training it 98/512 of epoch 1, 47.91 ms/it, loss 0.134121
+mbs is 4
+Forward 2.8671998977661133 ms
+Average overall bwd comp time 49.915235071428576
+Finished training it 99/512 of epoch 1, 64.62 ms/it, loss 0.240767
+mbs is 4
+Forward 3.0248959064483643 ms
+Average overall bwd comp time 49.92965385714286
+Finished training it 100/512 of epoch 1, 51.84 ms/it, loss 0.000507
+mbs is 4
+Forward 2.854912042617798 ms
+Average overall bwd comp time 49.92457114285714
+Finished training it 101/512 of epoch 1, 53.23 ms/it, loss 0.000339
+mbs is 4
+Forward 2.849792003631592 ms
+Average overall bwd comp time 49.922300857142865
+Finished training it 102/512 of epoch 1, 51.27 ms/it, loss 0.094311
+mbs is 4
+Forward 2.9224960803985596 ms
+Average overall bwd comp time 49.91642328571429
+Finished training it 103/512 of epoch 1, 50.19 ms/it, loss 0.022690
+mbs is 4
+Forward 2.910207986831665 ms
+Average overall bwd comp time 49.909000642857144
+Finished training it 104/512 of epoch 1, 51.43 ms/it, loss 0.006193
+mbs is 4
+Forward 3.0515201091766357 ms
+Average overall bwd comp time 49.90351435714286
+Finished training it 105/512 of epoch 1, 52.82 ms/it, loss 0.136433
+mbs is 4
+Forward 3.0197761058807373 ms
+Average overall bwd comp time 49.89978242857142
+Finished training it 106/512 of epoch 1, 51.07 ms/it, loss 0.015504
+mbs is 4
+Forward 3.01363205909729 ms
+Average overall bwd comp time 49.89344028571429
+Finished training it 107/512 of epoch 1, 58.10 ms/it, loss 0.033860
+mbs is 4
+Forward 3.022847890853882 ms
+Average overall bwd comp time 49.89790235714286
+Finished training it 108/512 of epoch 1, 58.32 ms/it, loss 0.124405
+mbs is 4
+Forward 3.0105600357055664 ms
+Average overall bwd comp time 49.90303285714286
+Finished training it 109/512 of epoch 1, 51.33 ms/it, loss 0.009958
+mbs is 4
+Forward 2.8334081172943115 ms
+Average overall bwd comp time 49.89737128571429
+Finished training it 110/512 of epoch 1, 52.65 ms/it, loss 0.026091
+mbs is 4
+Forward 2.964479923248291 ms
+Average overall bwd comp time 49.893536285714276
+Finished training it 111/512 of epoch 1, 50.83 ms/it, loss 0.032002
+mbs is 4
+Forward 4.928512096405029 ms
+Average overall bwd comp time 49.88719371428572
+Finished training it 112/512 of epoch 1, 57.45 ms/it, loss 0.034617
+mbs is 4
+Forward 4.6827521324157715 ms
+Average overall bwd comp time 49.890226071428565
+Finished training it 113/512 of epoch 1, 55.27 ms/it, loss 0.084385
+mbs is 4
+Forward 2.933759927749634 ms
+Average overall bwd comp time 49.89004514285714
+Finished training it 114/512 of epoch 1, 53.04 ms/it, loss 0.099623
+mbs is 4
+Forward 3.1109120845794678 ms
+Average overall bwd comp time 49.88687121428571
+Finished training it 115/512 of epoch 1, 55.07 ms/it, loss 0.241809
+mbs is 4
+Forward 2.9409279823303223 ms
+Average overall bwd comp time 49.886761642857145
+Finished training it 116/512 of epoch 1, 52.15 ms/it, loss 0.000558
+mbs is 4
+Forward 2.9521920680999756 ms
+Average overall bwd comp time 49.88258035714285
+Finished training it 117/512 of epoch 1, 46.45 ms/it, loss 0.245738
+mbs is 4
+Forward 2.9911038875579834 ms
+Average overall bwd comp time 49.870596142857146
+Finished training it 118/512 of epoch 1, 49.63 ms/it, loss 0.158627
+mbs is 4
+Forward 2.9665279388427734 ms
+Average overall bwd comp time 49.86295842857144
+Finished training it 119/512 of epoch 1, 52.68 ms/it, loss 0.002296
+mbs is 4
+Forward 2.8774399757385254 ms
+Average overall bwd comp time 49.859645357142846
+Finished training it 120/512 of epoch 1, 52.02 ms/it, loss 0.138262
+mbs is 4
+Forward 3.066879987716675 ms
+Average overall bwd comp time 49.85541178571428
+Finished training it 121/512 of epoch 1, 54.73 ms/it, loss 0.012670
+mbs is 4
+Forward 2.974720001220703 ms
+Average overall bwd comp time 49.85510435714287
+Finished training it 122/512 of epoch 1, 52.52 ms/it, loss 0.126155
+mbs is 4
+Forward 2.973695993423462 ms
+Average overall bwd comp time 49.85119485714285
+Finished training it 123/512 of epoch 1, 57.41 ms/it, loss 0.130368
+mbs is 4
+Forward 2.876415967941284 ms
+Average overall bwd comp time 49.85461635714285
+Finished training it 124/512 of epoch 1, 56.15 ms/it, loss 0.176187
+mbs is 4
+Forward 2.9665279388427734 ms
+Average overall bwd comp time 49.85658178571428
+Finished training it 125/512 of epoch 1, 53.11 ms/it, loss 0.081082
+mbs is 4
+Forward 3.2286720275878906 ms
+Average overall bwd comp time 49.85386778571428
+Finished training it 126/512 of epoch 1, 50.59 ms/it, loss 0.120750
+mbs is 4
+Forward 3.0023679733276367 ms
+Average overall bwd comp time 49.84712821428572
+Finished training it 127/512 of epoch 1, 56.22 ms/it, loss 0.112416
+mbs is 4
+Forward 2.895872116088867 ms
+Average overall bwd comp time 49.84868178571429
+Finished training it 128/512 of epoch 1, 49.10 ms/it, loss 0.207148
+mbs is 4
+Forward 2.900991916656494 ms
+Average overall bwd comp time 49.83990121428571
+Finished training it 129/512 of epoch 1, 57.28 ms/it, loss 0.000156
+mbs is 4
+Forward 2.933759927749634 ms
+Average overall bwd comp time 49.843547
+Finished training it 130/512 of epoch 1, 51.38 ms/it, loss 0.125774
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 49.83829707142858
+Finished training it 131/512 of epoch 1, 50.58 ms/it, loss 0.199792
+mbs is 4
+Forward 2.860032081604004 ms
+Average overall bwd comp time 49.831605285714275
+Finished training it 132/512 of epoch 1, 49.20 ms/it, loss 0.000312
+mbs is 4
+Forward 2.8917760848999023 ms
+Average overall bwd comp time 49.82329935714285
+Finished training it 133/512 of epoch 1, 63.25 ms/it, loss 0.002964
+mbs is 4
+Forward 2.9706239700317383 ms
+Average overall bwd comp time 49.834983
+Finished training it 134/512 of epoch 1, 52.41 ms/it, loss 0.004003
+mbs is 4
+Forward 2.8641281127929688 ms
+Average overall bwd comp time 49.83123864285712
+Finished training it 135/512 of epoch 1, 51.25 ms/it, loss 0.140965
+mbs is 4
+Forward 2.796544075012207 ms
+Average overall bwd comp time 49.825671357142845
+Finished training it 136/512 of epoch 1, 48.24 ms/it, loss 0.027695
+mbs is 4
+Forward 2.9951999187469482 ms
+Average overall bwd comp time 49.81674671428571
+Finished training it 137/512 of epoch 1, 60.14 ms/it, loss 0.172085
+mbs is 4
+Forward 2.8928000926971436 ms
+Average overall bwd comp time 49.82396649999999
+Finished training it 138/512 of epoch 1, 53.00 ms/it, loss 0.125503
+mbs is 4
+Forward 4.891647815704346 ms
+Average overall bwd comp time 49.82114907142856
+Finished training it 139/512 of epoch 1, 49.50 ms/it, loss 0.049088
+mbs is 4
+Forward 4.737023830413818 ms
+Average overall bwd comp time 49.812693285714275
+Finished training it 140/512 of epoch 1, 53.81 ms/it, loss 0.012465
+mbs is 4
+Forward 3.0218238830566406 ms
+Average overall bwd comp time 49.810707642857146
+Finished training it 141/512 of epoch 1, 52.22 ms/it, loss 0.144914
+mbs is 4
+Forward 2.96345591545105 ms
+Average overall bwd comp time 49.80655678571429
+Finished training it 142/512 of epoch 1, 53.79 ms/it, loss 0.153876
+mbs is 4
+Forward 2.854912042617798 ms
+Average overall bwd comp time 49.80459249999999
+Finished training it 143/512 of epoch 1, 56.39 ms/it, loss 0.040547
+mbs is 4
+Forward 3.017728090286255 ms
+Average overall bwd comp time 49.806217642857135
+Finished training it 144/512 of epoch 1, 55.24 ms/it, loss 0.226023
+mbs is 4
+Forward 2.8784639835357666 ms
+Average overall bwd comp time 49.80710642857143
+Finished training it 145/512 of epoch 1, 53.35 ms/it, loss 0.004610
+mbs is 4
+Forward 3.122175931930542 ms
+Average overall bwd comp time 49.804781142857145
+Finished training it 146/512 of epoch 1, 55.38 ms/it, loss 0.000223
+mbs is 4
+Forward 2.8323841094970703 ms
+Average overall bwd comp time 49.805498428571426
+Finished training it 147/512 of epoch 1, 57.06 ms/it, loss 0.006170
+mbs is 4
+Forward 2.9122560024261475 ms
+Average overall bwd comp time 49.808757571428565
+Finished training it 148/512 of epoch 1, 60.89 ms/it, loss 0.017366
+mbs is 4
+Forward 3.16211199760437 ms
+Average overall bwd comp time 49.81663128571428
+Finished training it 149/512 of epoch 1, 54.17 ms/it, loss 0.004064
+mbs is 4
+Forward 3.1139841079711914 ms
+Average overall bwd comp time 49.81575614285714
+Finished training it 150/512 of epoch 1, 51.10 ms/it, loss 0.019804
+mbs is 4
+Forward 2.9429759979248047 ms
+Average overall bwd comp time 49.81004742857142
+Finished training it 151/512 of epoch 1, 55.20 ms/it, loss 0.002358
+mbs is 4
+Forward 2.8426239490509033 ms
+Average overall bwd comp time 49.81020228571428
+Finished training it 152/512 of epoch 1, 52.09 ms/it, loss 0.090735
+mbs is 4
+Forward 3.012608051300049 ms
+Average overall bwd comp time 49.80608885714285
+Finished training it 153/512 of epoch 1, 57.37 ms/it, loss 0.007014
+mbs is 4
+Forward 3.042304039001465 ms
+Average overall bwd comp time 49.809387857142845
+Finished training it 154/512 of epoch 1, 54.97 ms/it, loss 0.069042
+mbs is 4
+Forward 2.974720001220703 ms
+Average overall bwd comp time 49.809518785714275
+Finished training it 155/512 of epoch 1, 48.61 ms/it, loss 0.237886
+mbs is 4
+Forward 2.979840040206909 ms
+Average overall bwd comp time 49.80071735714286
+Finished training it 156/512 of epoch 1, 52.35 ms/it, loss 0.186663
+mbs is 4
+Forward 2.8968958854675293 ms
+Average overall bwd comp time 49.7968675
+Finished training it 157/512 of epoch 1, 50.89 ms/it, loss 0.053381
+mbs is 4
+Forward 2.8149759769439697 ms
+Average overall bwd comp time 49.79087221428572
+Finished training it 158/512 of epoch 1, 55.41 ms/it, loss 0.112213
+mbs is 4
+Forward 3.167232036590576 ms
+Average overall bwd comp time 49.79123778571428
+Finished training it 159/512 of epoch 1, 52.51 ms/it, loss 0.003928
+mbs is 4
+Forward 2.7852799892425537 ms
+Average overall bwd comp time 49.787637214285716
+Finished training it 160/512 of epoch 1, 50.41 ms/it, loss 0.034822
+mbs is 4
+Forward 2.879487991333008 ms
+Average overall bwd comp time 49.78115364285715
+Finished training it 161/512 of epoch 1, 51.58 ms/it, loss 0.206323
+mbs is 4
+Forward 3.0361599922180176 ms
+Average overall bwd comp time 49.77675935714285
+Finished training it 162/512 of epoch 1, 51.34 ms/it, loss 0.008319
+mbs is 4
+Forward 2.9020159244537354 ms
+Average overall bwd comp time 49.77228171428571
+Finished training it 163/512 of epoch 1, 57.64 ms/it, loss 0.042508
+mbs is 4
+Forward 2.8866560459136963 ms
+Average overall bwd comp time 49.77552471428571
+Finished training it 164/512 of epoch 1, 50.68 ms/it, loss 0.089540
+mbs is 4
+Forward 2.879487991333008 ms
+Average overall bwd comp time 49.769483642857146
+Finished training it 165/512 of epoch 1, 58.07 ms/it, loss 0.106366
+mbs is 4
+Forward 6.859776020050049 ms
+Average overall bwd comp time 49.773703857142856
+Finished training it 166/512 of epoch 1, 53.60 ms/it, loss 0.181437
+mbs is 4
+Forward 2.98905611038208 ms
+Average overall bwd comp time 49.769865642857134
+Finished training it 167/512 of epoch 1, 56.42 ms/it, loss 0.021942
+mbs is 4
+Forward 4.641791820526123 ms
+Average overall bwd comp time 49.77151121428572
+Finished training it 168/512 of epoch 1, 57.40 ms/it, loss 0.010038
+mbs is 4
+Forward 4.899839878082275 ms
+Average overall bwd comp time 49.77389207142856
+Finished training it 169/512 of epoch 1, 60.54 ms/it, loss 0.027401
+mbs is 4
+Forward 5.139455795288086 ms
+Average overall bwd comp time 49.78138742857142
+Finished training it 170/512 of epoch 1, 53.20 ms/it, loss 0.045122
+mbs is 4
+Forward 2.80678391456604 ms
+Average overall bwd comp time 49.77857471428571
+Finished training it 171/512 of epoch 1, 51.15 ms/it, loss 0.132037
+mbs is 4
+Forward 2.9859840869903564 ms
+Average overall bwd comp time 49.77318592857142
+Finished training it 172/512 of epoch 1, 48.52 ms/it, loss 0.043969
+mbs is 4
+Forward 2.8129279613494873 ms
+Average overall bwd comp time 49.7643775
+Finished training it 173/512 of epoch 1, 51.30 ms/it, loss 0.029146
+mbs is 4
+Forward 3.0310399532318115 ms
+Average overall bwd comp time 49.759660857142855
+Finished training it 174/512 of epoch 1, 50.44 ms/it, loss 0.082952
+mbs is 4
+Forward 3.1539199352264404 ms
+Average overall bwd comp time 49.754120785714285
+Finished training it 175/512 of epoch 1, 60.98 ms/it, loss 0.021385
+mbs is 4
+Forward 2.9378559589385986 ms
+Average overall bwd comp time 49.761856214285714
+Finished training it 176/512 of epoch 1, 55.18 ms/it, loss 0.007144
+mbs is 4
+Forward 3.0361599922180176 ms
+Average overall bwd comp time 49.761902000000006
+Finished training it 177/512 of epoch 1, 53.28 ms/it, loss 0.016452
+mbs is 4
+Forward 2.9716479778289795 ms
+Average overall bwd comp time 49.7599205
+Finished training it 178/512 of epoch 1, 52.76 ms/it, loss 0.000731
+mbs is 4
+Forward 4.536320209503174 ms
+Average overall bwd comp time 49.756911214285715
+Finished training it 179/512 of epoch 1, 52.24 ms/it, loss 0.087993
+mbs is 4
+Forward 4.629504203796387 ms
+Average overall bwd comp time 49.75276078571428
+Finished training it 180/512 of epoch 1, 53.87 ms/it, loss 0.008277
+mbs is 4
+Forward 4.6438398361206055 ms
+Average overall bwd comp time 49.750942571428574
+Finished training it 181/512 of epoch 1, 50.59 ms/it, loss 0.090861
+mbs is 4
+Forward 4.6981120109558105 ms
+Average overall bwd comp time 49.744798214285716
+Finished training it 182/512 of epoch 1, 50.87 ms/it, loss 0.069696
+mbs is 4
+Forward 4.688896179199219 ms
+Average overall bwd comp time 49.738876642857136
+Finished training it 183/512 of epoch 1, 53.62 ms/it, loss 0.006343
+mbs is 4
+Forward 3.047424077987671 ms
+Average overall bwd comp time 49.73618528571428
+Finished training it 184/512 of epoch 1, 51.67 ms/it, loss 0.020120
+mbs is 4
+Forward 2.8631041049957275 ms
+Average overall bwd comp time 49.73160985714285
+Finished training it 185/512 of epoch 1, 48.53 ms/it, loss 0.209369
+mbs is 4
+Forward 3.0515201091766357 ms
+Average overall bwd comp time 49.72297407142857
+Finished training it 186/512 of epoch 1, 50.43 ms/it, loss 0.009247
+mbs is 4
+Forward 2.9757440090179443 ms
+Average overall bwd comp time 49.71679614285713
+Finished training it 187/512 of epoch 1, 49.14 ms/it, loss 0.192391
+mbs is 4
+Forward 4.679679870605469 ms
+Average overall bwd comp time 49.70878285714285
+Finished training it 188/512 of epoch 1, 52.00 ms/it, loss 0.002211
+mbs is 4
+Forward 3.0699520111083984 ms
+Average overall bwd comp time 49.70386028571427
+Finished training it 189/512 of epoch 1, 51.13 ms/it, loss 0.003011
+mbs is 4
+Forward 3.028991937637329 ms
+Average overall bwd comp time 49.698779928571426
+Finished training it 190/512 of epoch 1, 50.01 ms/it, loss 0.270740
+mbs is 4
+Forward 3.063807964324951 ms
+Average overall bwd comp time 49.692995142857136
+Finished training it 191/512 of epoch 1, 52.18 ms/it, loss 0.000405
+mbs is 4
+Forward 2.8047358989715576 ms
+Average overall bwd comp time 49.68931385714285
+Finished training it 192/512 of epoch 1, 52.12 ms/it, loss 0.007373
+mbs is 4
+Forward 3.102720022201538 ms
+Average overall bwd comp time 49.685396714285694
+Finished training it 193/512 of epoch 1, 58.07 ms/it, loss 0.128210
+mbs is 4
+Forward 2.9921278953552246 ms
+Average overall bwd comp time 49.68936592857143
+Finished training it 194/512 of epoch 1, 55.45 ms/it, loss 0.172121
+mbs is 4
+Forward 4.613120079040527 ms
+Average overall bwd comp time 49.68983457142857
+Finished training it 195/512 of epoch 1, 55.68 ms/it, loss 0.027738
+mbs is 4
+Forward 4.642816066741943 ms
+Average overall bwd comp time 49.690231
+Finished training it 196/512 of epoch 1, 61.05 ms/it, loss 0.013814
+mbs is 4
+Forward 2.9265921115875244 ms
+Average overall bwd comp time 49.697726
+Finished training it 197/512 of epoch 1, 63.33 ms/it, loss 0.107811
+mbs is 4
+Forward 2.8180480003356934 ms
+Average overall bwd comp time 49.709057928571426
+Finished training it 198/512 of epoch 1, 53.06 ms/it, loss 0.011019
+mbs is 4
+Forward 2.933759927749634 ms
+Average overall bwd comp time 49.70650621428571
+Finished training it 199/512 of epoch 1, 54.84 ms/it, loss 0.121270
+mbs is 4
+Forward 2.8037118911743164 ms
+Average overall bwd comp time 49.70619414285714
+Finished training it 200/512 of epoch 1, 54.25 ms/it, loss 0.184432
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 49.705131928571426
+Finished training it 201/512 of epoch 1, 56.66 ms/it, loss 0.068926
+mbs is 4
+Forward 2.93887996673584 ms
+Average overall bwd comp time 49.708024928571426
+Finished training it 202/512 of epoch 1, 57.90 ms/it, loss 0.001393
+mbs is 4
+Forward 2.9870080947875977 ms
+Average overall bwd comp time 49.71197028571429
+Finished training it 203/512 of epoch 1, 51.50 ms/it, loss 0.083899
+mbs is 4
+Forward 2.840575933456421 ms
+Average overall bwd comp time 49.707715857142844
+Finished training it 204/512 of epoch 1, 54.88 ms/it, loss 0.150255
+mbs is 4
+Forward 2.8835840225219727 ms
+Average overall bwd comp time 49.70793
+Finished training it 205/512 of epoch 1, 53.69 ms/it, loss 0.123211
+mbs is 4
+Forward 2.849792003631592 ms
+Average overall bwd comp time 49.706120357142865
+Finished training it 206/512 of epoch 1, 48.88 ms/it, loss 0.215066
+mbs is 4
+Forward 3.088383913040161 ms
+Average overall bwd comp time 49.69832907142857
+Finished training it 207/512 of epoch 1, 51.97 ms/it, loss 0.001699
+mbs is 4
+Forward 2.9409279823303223 ms
+Average overall bwd comp time 49.69432964285714
+Finished training it 208/512 of epoch 1, 58.76 ms/it, loss 0.022539
+mbs is 4
+Forward 3.0504961013793945 ms
+Average overall bwd comp time 49.69924635714285
+Finished training it 209/512 of epoch 1, 50.38 ms/it, loss 0.062645
+mbs is 4
+Forward 2.9849600791931152 ms
+Average overall bwd comp time 49.693534285714286
+Finished training it 210/512 of epoch 1, 52.25 ms/it, loss 0.023867
+mbs is 4
+Forward 4.121600151062012 ms
+Average overall bwd comp time 49.69054007142858
+Finished training it 211/512 of epoch 1, 53.60 ms/it, loss 0.223514
+mbs is 4
+Forward 2.9112319946289062 ms
+Average overall bwd comp time 49.688939928571415
+Finished training it 212/512 of epoch 1, 52.17 ms/it, loss 0.090111
+mbs is 4
+Forward 3.0320639610290527 ms
+Average overall bwd comp time 49.68526171428572
+Finished training it 213/512 of epoch 1, 50.67 ms/it, loss 0.003410
+mbs is 4
+Forward 2.944000005722046 ms
+Average overall bwd comp time 49.679415000000006
+Finished training it 214/512 of epoch 1, 69.01 ms/it, loss 0.013795
+mbs is 4
+Forward 4.7472639083862305 ms
+Average overall bwd comp time 49.697163857142854
+Finished training it 215/512 of epoch 1, 49.96 ms/it, loss 0.000774
+mbs is 4
+Forward 4.852735996246338 ms
+Average overall bwd comp time 49.690281285714285
+Finished training it 216/512 of epoch 1, 53.63 ms/it, loss 0.002862
+mbs is 4
+Forward 2.8323841094970703 ms
+Average overall bwd comp time 49.68814707142857
+Finished training it 217/512 of epoch 1, 48.85 ms/it, loss 0.222403
+mbs is 4
+Forward 3.003391981124878 ms
+Average overall bwd comp time 49.68067978571428
+Finished training it 218/512 of epoch 1, 51.45 ms/it, loss 0.004994
+mbs is 4
+Forward 2.8968958854675293 ms
+Average overall bwd comp time 49.67606592857144
+Finished training it 219/512 of epoch 1, 54.81 ms/it, loss 0.134644
+mbs is 4
+Forward 2.933759927749634 ms
+Average overall bwd comp time 49.67590407142857
+Finished training it 220/512 of epoch 1, 55.81 ms/it, loss 0.000177
+mbs is 4
+Forward 2.998271942138672 ms
+Average overall bwd comp time 49.67745228571429
+Finished training it 221/512 of epoch 1, 60.82 ms/it, loss 0.034863
+mbs is 4
+Forward 3.053567886352539 ms
+Average overall bwd comp time 49.68501307142857
+Finished training it 222/512 of epoch 1, 55.59 ms/it, loss 0.063087
+mbs is 4
+Forward 2.9224960803985596 ms
+Average overall bwd comp time 49.68574814285715
+Finished training it 223/512 of epoch 1, 55.14 ms/it, loss 0.227290
+mbs is 4
+Forward 2.8037118911743164 ms
+Average overall bwd comp time 49.68578399999999
+Finished training it 224/512 of epoch 1, 53.21 ms/it, loss 0.003581
+mbs is 4
+Forward 2.9071359634399414 ms
+Average overall bwd comp time 49.683895
+Finished training it 225/512 of epoch 1, 51.96 ms/it, loss 0.020609
+mbs is 4
+Forward 2.999295949935913 ms
+Average overall bwd comp time 49.68010285714285
+Finished training it 226/512 of epoch 1, 54.56 ms/it, loss 0.071346
+mbs is 4
+Forward 4.680704116821289 ms
+Average overall bwd comp time 49.67975514285714
+Finished training it 227/512 of epoch 1, 50.27 ms/it, loss 0.092376
+mbs is 4
+Forward 4.6438398361206055 ms
+Average overall bwd comp time 49.6737287142857
+Finished training it 228/512 of epoch 1, 49.19 ms/it, loss 0.103563
+mbs is 4
+Forward 4.666368007659912 ms
+Average overall bwd comp time 49.665838785714286
+Finished training it 229/512 of epoch 1, 55.44 ms/it, loss 0.015344
+mbs is 4
+Forward 4.676608085632324 ms
+Average overall bwd comp time 49.666013714285704
+Finished training it 230/512 of epoch 1, 54.19 ms/it, loss 0.206140
+mbs is 4
+Forward 4.630527973175049 ms
+Average overall bwd comp time 49.66409092857141
+Finished training it 231/512 of epoch 1, 50.98 ms/it, loss 0.087243
+mbs is 4
+Forward 3.0402560234069824 ms
+Average overall bwd comp time 49.65856378571429
+Finished training it 232/512 of epoch 1, 56.73 ms/it, loss 0.161416
+mbs is 4
+Forward 2.929663896560669 ms
+Average overall bwd comp time 49.66073707142858
+Finished training it 233/512 of epoch 1, 56.12 ms/it, loss 0.063294
+mbs is 4
+Forward 2.8979198932647705 ms
+Average overall bwd comp time 49.66238907142857
+Finished training it 234/512 of epoch 1, 64.14 ms/it, loss 0.000044
+mbs is 4
+Forward 2.9480960369110107 ms
+Average overall bwd comp time 49.67403935714284
+Finished training it 235/512 of epoch 1, 54.29 ms/it, loss 0.134251
+mbs is 4
+Forward 3.073024034500122 ms
+Average overall bwd comp time 49.67354757142857
+Finished training it 236/512 of epoch 1, 53.18 ms/it, loss 0.010581
+mbs is 4
+Forward 2.836479902267456 ms
+Average overall bwd comp time 49.671679499999996
+Finished training it 237/512 of epoch 1, 50.48 ms/it, loss 0.108050
+mbs is 4
+Forward 3.0259199142456055 ms
+Average overall bwd comp time 49.666821571428564
+Finished training it 238/512 of epoch 1, 55.11 ms/it, loss 0.230231
+mbs is 4
+Forward 2.998271942138672 ms
+Average overall bwd comp time 49.66709542857142
+Finished training it 239/512 of epoch 1, 60.23 ms/it, loss 0.007061
+mbs is 4
+Forward 2.836479902267456 ms
+Average overall bwd comp time 49.673781642857136
+Finished training it 240/512 of epoch 1, 47.76 ms/it, loss 0.065369
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 49.66495771428571
+Finished training it 241/512 of epoch 1, 54.75 ms/it, loss 0.005849
+mbs is 4
+Forward 2.9173760414123535 ms
+Average overall bwd comp time 49.6648237857143
+Finished training it 242/512 of epoch 1, 53.25 ms/it, loss 0.100444
+mbs is 4
+Forward 3.017728090286255 ms
+Average overall bwd comp time 49.66261428571429
+Finished training it 243/512 of epoch 1, 51.97 ms/it, loss 0.002543
+mbs is 4
+Forward 2.849792003631592 ms
+Average overall bwd comp time 49.658822071428574
+Finished training it 244/512 of epoch 1, 50.81 ms/it, loss 0.207737
+mbs is 4
+Forward 2.8487679958343506 ms
+Average overall bwd comp time 49.65355628571428
+Finished training it 245/512 of epoch 1, 62.20 ms/it, loss 0.002157
+mbs is 4
+Forward 2.9511680603027344 ms
+Average overall bwd comp time 49.66244878571428
+Finished training it 246/512 of epoch 1, 50.89 ms/it, loss 0.046342
+mbs is 4
+Forward 3.052544116973877 ms
+Average overall bwd comp time 49.65778157142857
+Finished training it 247/512 of epoch 1, 50.22 ms/it, loss 0.025592
+mbs is 4
+Forward 3.0791680812835693 ms
+Average overall bwd comp time 49.65187078571428
+Finished training it 248/512 of epoch 1, 59.02 ms/it, loss 0.119993
+mbs is 4
+Forward 2.8866560459136963 ms
+Average overall bwd comp time 49.657256285714276
+Finished training it 249/512 of epoch 1, 49.22 ms/it, loss 0.080432
+mbs is 4
+Forward 3.0218238830566406 ms
+Average overall bwd comp time 49.650875
+Finished training it 250/512 of epoch 1, 55.63 ms/it, loss 0.228915
+mbs is 4
+Forward 2.8692479133605957 ms
+Average overall bwd comp time 49.651668928571425
+Finished training it 251/512 of epoch 1, 49.47 ms/it, loss 0.241997
+mbs is 4
+Forward 2.905087947845459 ms
+Average overall bwd comp time 49.645278928571415
+Finished training it 252/512 of epoch 1, 50.52 ms/it, loss 0.251621
+mbs is 4
+Forward 2.854912042617798 ms
+Average overall bwd comp time 49.63998857142857
+Finished training it 253/512 of epoch 1, 54.32 ms/it, loss 0.201687
+mbs is 4
+Forward 2.8538880348205566 ms
+Average overall bwd comp time 49.639321142857135
+Finished training it 254/512 of epoch 1, 58.31 ms/it, loss 0.027692
+mbs is 4
+Forward 2.8323841094970703 ms
+Average overall bwd comp time 49.64338571428571
+Finished training it 255/512 of epoch 1, 51.70 ms/it, loss 0.044661
+mbs is 4
+Forward 3.082240104675293 ms
+Average overall bwd comp time 49.639407857142864
+Finished training it 256/512 of epoch 1, 50.68 ms/it, loss 0.008762
+mbs is 4
+Forward 2.9962239265441895 ms
+Average overall bwd comp time 49.63507657142858
+Finished training it 257/512 of epoch 1, 51.87 ms/it, loss 0.079170
+mbs is 4
+Forward 4.7472639083862305 ms
+Average overall bwd comp time 49.631497785714274
+Finished training it 258/512 of epoch 1, 55.47 ms/it, loss 0.001520
+mbs is 4
+Forward 4.749311923980713 ms
+Average overall bwd comp time 49.63188949999999
+Finished training it 259/512 of epoch 1, 51.59 ms/it, loss 0.012082
+mbs is 4
+Forward 4.7718400955200195 ms
+Average overall bwd comp time 49.62770607142857
+Finished training it 260/512 of epoch 1, 56.23 ms/it, loss 0.078016
+mbs is 4
+Forward 3.072000026702881 ms
+Average overall bwd comp time 49.628608642857145
+Finished training it 261/512 of epoch 1, 53.86 ms/it, loss 0.134543
+mbs is 4
+Forward 3.023871898651123 ms
+Average overall bwd comp time 49.62736499999999
+Finished training it 262/512 of epoch 1, 55.03 ms/it, loss 0.137575
+mbs is 4
+Forward 2.994175910949707 ms
+Average overall bwd comp time 49.627679571428565
+Finished training it 263/512 of epoch 1, 50.78 ms/it, loss 0.069504
+mbs is 4
+Forward 4.734975814819336 ms
+Average overall bwd comp time 49.622574214285706
+Finished training it 264/512 of epoch 1, 51.74 ms/it, loss 0.201664
+mbs is 4
+Forward 4.538368225097656 ms
+Average overall bwd comp time 49.61850178571429
+Finished training it 265/512 of epoch 1, 60.05 ms/it, loss 0.235907
+mbs is 4
+Forward 3.048448085784912 ms
+Average overall bwd comp time 49.624208857142854
+Finished training it 266/512 of epoch 1, 52.41 ms/it, loss 0.118309
+mbs is 4
+Forward 2.8631041049957275 ms
+Average overall bwd comp time 49.62195514285714
+Finished training it 267/512 of epoch 1, 49.02 ms/it, loss 0.039741
+mbs is 4
+Forward 2.955264091491699 ms
+Average overall bwd comp time 49.61472228571428
+Finished training it 268/512 of epoch 1, 54.14 ms/it, loss 0.001306
+mbs is 4
+Forward 2.890752077102661 ms
+Average overall bwd comp time 49.613802714285725
+Finished training it 269/512 of epoch 1, 52.72 ms/it, loss 0.002508
+mbs is 4
+Forward 3.1201279163360596 ms
+Average overall bwd comp time 49.611238785714285
+Finished training it 270/512 of epoch 1, 50.20 ms/it, loss 0.209961
+mbs is 4
+Forward 3.132416009902954 ms
+Average overall bwd comp time 49.60559849999999
+Finished training it 271/512 of epoch 1, 54.29 ms/it, loss 0.064834
+mbs is 4
+Forward 4.964352130889893 ms
+Average overall bwd comp time 49.604767428571435
+Finished training it 272/512 of epoch 1, 53.51 ms/it, loss 0.018271
+mbs is 4
+Forward 4.613120079040527 ms
+Average overall bwd comp time 49.60240185714286
+Finished training it 273/512 of epoch 1, 52.99 ms/it, loss 0.143732
+mbs is 4
+Forward 4.662271976470947 ms
+Average overall bwd comp time 49.59973292857143
+Finished training it 274/512 of epoch 1, 53.16 ms/it, loss 0.218448
+mbs is 4
+Forward 4.663296222686768 ms
+Average overall bwd comp time 49.59739471428571
+Finished training it 275/512 of epoch 1, 48.95 ms/it, loss 0.019358
+mbs is 4
+Forward 2.849792003631592 ms
+Average overall bwd comp time 49.59019250000001
+Finished training it 276/512 of epoch 1, 59.85 ms/it, loss 0.064889
+mbs is 4
+Forward 4.919295787811279 ms
+Average overall bwd comp time 49.59618492857142
+Finished training it 277/512 of epoch 1, 50.72 ms/it, loss 0.192347
+mbs is 4
+Forward 2.915328025817871 ms
+Average overall bwd comp time 49.590926214285716
+Finished training it 278/512 of epoch 1, 52.48 ms/it, loss 0.044542
+mbs is 4
+Forward 3.093503952026367 ms
+Average overall bwd comp time 49.58866799999999
+Finished training it 279/512 of epoch 1, 51.31 ms/it, loss 0.010688
+mbs is 4
+Forward 2.8723199367523193 ms
+Average overall bwd comp time 49.58460214285714
+Finished training it 280/512 of epoch 1, 48.19 ms/it, loss 0.238480
+mbs is 4
+Forward 3.008512020111084 ms
+Average overall bwd comp time 49.576967857142854
+Finished training it 281/512 of epoch 1, 58.02 ms/it, loss 0.229407
+mbs is 4
+Forward 3.0791680812835693 ms
+Average overall bwd comp time 49.580903285714285
+Finished training it 282/512 of epoch 1, 52.67 ms/it, loss 0.085081
+mbs is 4
+Forward 2.9368319511413574 ms
+Average overall bwd comp time 49.57857585714286
+Finished training it 283/512 of epoch 1, 59.35 ms/it, loss 0.049929
+mbs is 4
+Forward 2.958336114883423 ms
+Average overall bwd comp time 49.584021285714286
+Finished training it 284/512 of epoch 1, 52.75 ms/it, loss 0.115013
+mbs is 4
+Forward 3.0013439655303955 ms
+Average overall bwd comp time 49.58159942857143
+Finished training it 285/512 of epoch 1, 52.68 ms/it, loss 0.025724
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 49.57973514285714
+Finished training it 286/512 of epoch 1, 52.41 ms/it, loss 0.000030
+mbs is 4
+Forward 3.6526079177856445 ms
+Average overall bwd comp time 49.577246071428576
+Finished training it 287/512 of epoch 1, 54.46 ms/it, loss 0.049003
+mbs is 4
+Forward 2.9184000492095947 ms
+Average overall bwd comp time 49.57608942857143
+Finished training it 288/512 of epoch 1, 60.09 ms/it, loss 0.264074
+mbs is 4
+Forward 2.8835840225219727 ms
+Average overall bwd comp time 49.58219821428572
+Finished training it 289/512 of epoch 1, 51.91 ms/it, loss 0.001507
+mbs is 4
+Forward 2.9460480213165283 ms
+Average overall bwd comp time 49.578660500000005
+Finished training it 290/512 of epoch 1, 52.23 ms/it, loss 0.201300
+mbs is 4
+Forward 2.870271921157837 ms
+Average overall bwd comp time 49.57616035714285
+Finished training it 291/512 of epoch 1, 54.09 ms/it, loss 0.044225
+mbs is 4
+Forward 3.0300159454345703 ms
+Average overall bwd comp time 49.57564292857142
+Finished training it 292/512 of epoch 1, 56.72 ms/it, loss 0.002544
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 49.57760892857142
+Finished training it 293/512 of epoch 1, 52.94 ms/it, loss 0.006673
+mbs is 4
+Forward 2.960383892059326 ms
+Average overall bwd comp time 49.575219785714275
+Finished training it 294/512 of epoch 1, 49.84 ms/it, loss 0.163989
+mbs is 4
+Forward 2.9665279388427734 ms
+Average overall bwd comp time 49.570232999999995
+Finished training it 295/512 of epoch 1, 47.79 ms/it, loss 0.090603
+mbs is 4
+Forward 2.841599941253662 ms
+Average overall bwd comp time 49.56255207142858
+Finished training it 296/512 of epoch 1, 51.60 ms/it, loss 0.014240
+mbs is 4
+Forward 4.494336128234863 ms
+Average overall bwd comp time 49.5597535
+Finished training it 297/512 of epoch 1, 53.18 ms/it, loss 0.177825
+mbs is 4
+Forward 4.453375816345215 ms
+Average overall bwd comp time 49.55682221428572
+Finished training it 298/512 of epoch 1, 50.33 ms/it, loss 0.178317
+mbs is 4
+Forward 2.8528640270233154 ms
+Average overall bwd comp time 49.55116785714286
+Finished training it 299/512 of epoch 1, 50.31 ms/it, loss 0.019796
+mbs is 4
+Forward 2.8477439880371094 ms
+Average overall bwd comp time 49.54597257142857
+Finished training it 300/512 of epoch 1, 49.35 ms/it, loss 0.048871
+mbs is 4
+Forward 4.6387200355529785 ms
+Average overall bwd comp time 49.539634071428566
+Finished training it 301/512 of epoch 1, 54.31 ms/it, loss 0.167406
+mbs is 4
+Forward 2.835455894470215 ms
+Average overall bwd comp time 49.53887264285714
+Finished training it 302/512 of epoch 1, 49.39 ms/it, loss 0.107596
+mbs is 4
+Forward 2.8477439880371094 ms
+Average overall bwd comp time 49.53330185714285
+Finished training it 303/512 of epoch 1, 48.57 ms/it, loss 0.069054
+mbs is 4
+Forward 2.9911038875579834 ms
+Average overall bwd comp time 49.526168
+Finished training it 304/512 of epoch 1, 47.97 ms/it, loss 0.129660
+mbs is 4
+Forward 4.633600234985352 ms
+Average overall bwd comp time 49.519169857142856
+Finished training it 305/512 of epoch 1, 58.06 ms/it, loss 0.099900
+mbs is 4
+Forward 4.6530561447143555 ms
+Average overall bwd comp time 49.52194899999999
+Finished training it 306/512 of epoch 1, 59.14 ms/it, loss 0.002494
+mbs is 4
+Forward 4.6141438484191895 ms
+Average overall bwd comp time 49.52667007142857
+Finished training it 307/512 of epoch 1, 50.96 ms/it, loss 0.000390
+mbs is 4
+Forward 4.669439792633057 ms
+Average overall bwd comp time 49.52151585714285
+Finished training it 308/512 of epoch 1, 52.30 ms/it, loss 0.164373
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 49.51854099999999
+Finished training it 309/512 of epoch 1, 49.30 ms/it, loss 0.105670
+mbs is 4
+Forward 2.9859840869903564 ms
+Average overall bwd comp time 49.51259607142857
+Finished training it 310/512 of epoch 1, 56.33 ms/it, loss 0.084219
+mbs is 4
+Forward 2.8815360069274902 ms
+Average overall bwd comp time 49.5150025
+Finished training it 311/512 of epoch 1, 52.06 ms/it, loss 0.139324
+mbs is 4
+Forward 2.9808640480041504 ms
+Average overall bwd comp time 49.51196092857142
+Finished training it 312/512 of epoch 1, 49.09 ms/it, loss 0.012338
+mbs is 4
+Forward 3.0914559364318848 ms
+Average overall bwd comp time 49.5061155
+Finished training it 313/512 of epoch 1, 56.08 ms/it, loss 0.060054
+mbs is 4
+Forward 2.8743679523468018 ms
+Average overall bwd comp time 49.50791892857143
+Finished training it 314/512 of epoch 1, 56.23 ms/it, loss 0.141856
+mbs is 4
+Forward 3.0156800746917725 ms
+Average overall bwd comp time 49.50965121428572
+Finished training it 315/512 of epoch 1, 52.11 ms/it, loss 0.103554
+mbs is 4
+Forward 2.8641281127929688 ms
+Average overall bwd comp time 49.50678592857143
+Finished training it 316/512 of epoch 1, 51.43 ms/it, loss 0.047667
+mbs is 4
+Forward 3.066879987716675 ms
+Average overall bwd comp time 49.503029071428564
+Finished training it 317/512 of epoch 1, 53.68 ms/it, loss 0.024531
+mbs is 4
+Forward 3.0269439220428467 ms
+Average overall bwd comp time 49.502046928571424
+Finished training it 318/512 of epoch 1, 54.60 ms/it, loss 0.127417
+mbs is 4
+Forward 3.0597119331359863 ms
+Average overall bwd comp time 49.50234714285714
+Finished training it 319/512 of epoch 1, 54.26 ms/it, loss 0.026176
+mbs is 4
+Forward 3.0556159019470215 ms
+Average overall bwd comp time 49.50221535714286
+Finished training it 320/512 of epoch 1, 52.87 ms/it, loss 0.156996
+mbs is 4
+Forward 2.945024013519287 ms
+Average overall bwd comp time 49.50036171428572
+Finished training it 321/512 of epoch 1, 48.19 ms/it, loss 0.176941
+mbs is 4
+Forward 2.9122560024261475 ms
+Average overall bwd comp time 49.49392849999999
+Finished training it 322/512 of epoch 1, 60.73 ms/it, loss 0.001373
+mbs is 4
+Forward 4.596735954284668 ms
+Average overall bwd comp time 49.500672071428575
+Finished training it 323/512 of epoch 1, 55.11 ms/it, loss 0.030487
+mbs is 4
+Forward 4.601856231689453 ms
+Average overall bwd comp time 49.500611214285705
+Finished training it 324/512 of epoch 1, 54.73 ms/it, loss 0.045633
+mbs is 4
+Forward 3.0351359844207764 ms
+Average overall bwd comp time 49.50040335714285
+Finished training it 325/512 of epoch 1, 50.78 ms/it, loss 0.144781
+mbs is 4
+Forward 2.9061119556427 ms
+Average overall bwd comp time 49.49637078571429
+Finished training it 326/512 of epoch 1, 53.28 ms/it, loss 0.197635
+mbs is 4
+Forward 4.570112228393555 ms
+Average overall bwd comp time 49.49513192857142
+Finished training it 327/512 of epoch 1, 57.02 ms/it, loss 0.153798
+mbs is 4
+Forward 3.012608051300049 ms
+Average overall bwd comp time 49.49707121428571
+Finished training it 328/512 of epoch 1, 54.06 ms/it, loss 0.000150
+mbs is 4
+Forward 2.9777920246124268 ms
+Average overall bwd comp time 49.49607121428572
+Finished training it 329/512 of epoch 1, 50.40 ms/it, loss 0.008682
+mbs is 4
+Forward 2.9818880558013916 ms
+Average overall bwd comp time 49.49147171428571
+Finished training it 330/512 of epoch 1, 60.28 ms/it, loss 0.207366
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 49.49738792857143
+Finished training it 331/512 of epoch 1, 52.60 ms/it, loss 0.055249
+mbs is 4
+Forward 2.8917760848999023 ms
+Average overall bwd comp time 49.495071642857155
+Finished training it 332/512 of epoch 1, 50.96 ms/it, loss 0.044194
+mbs is 4
+Forward 2.8293120861053467 ms
+Average overall bwd comp time 49.490739857142856
+Finished training it 333/512 of epoch 1, 54.94 ms/it, loss 0.190402
+mbs is 4
+Forward 3.009536027908325 ms
+Average overall bwd comp time 49.490785142857135
+Finished training it 334/512 of epoch 1, 53.02 ms/it, loss 0.058929
+mbs is 4
+Forward 2.830336093902588 ms
+Average overall bwd comp time 49.489371500000004
+Finished training it 335/512 of epoch 1, 50.64 ms/it, loss 0.183205
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 49.48520371428572
+Finished training it 336/512 of epoch 1, 58.76 ms/it, loss 0.206070
+mbs is 4
+Forward 3.2225279808044434 ms
+Average overall bwd comp time 49.489549428571415
+Finished training it 337/512 of epoch 1, 48.90 ms/it, loss 0.003830
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 49.48344385714285
+Finished training it 338/512 of epoch 1, 54.58 ms/it, loss 0.107764
+mbs is 4
+Forward 4.597760200500488 ms
+Average overall bwd comp time 49.48349214285714
+Finished training it 339/512 of epoch 1, 54.89 ms/it, loss 0.043747
+mbs is 4
+Forward 4.700160026550293 ms
+Average overall bwd comp time 49.48336378571429
+Finished training it 340/512 of epoch 1, 55.99 ms/it, loss 0.001891
+mbs is 4
+Forward 4.761600017547607 ms
+Average overall bwd comp time 49.48404478571428
+Finished training it 341/512 of epoch 1, 53.09 ms/it, loss 0.010312
+mbs is 4
+Forward 4.8752641677856445 ms
+Average overall bwd comp time 49.48147907142857
+Finished training it 342/512 of epoch 1, 51.56 ms/it, loss 0.226095
+mbs is 4
+Forward 3.1037440299987793 ms
+Average overall bwd comp time 49.47754107142856
+Finished training it 343/512 of epoch 1, 52.08 ms/it, loss 0.081242
+mbs is 4
+Forward 2.835455894470215 ms
+Average overall bwd comp time 49.474599285714284
+Finished training it 344/512 of epoch 1, 53.89 ms/it, loss 0.198715
+mbs is 4
+Forward 2.9030399322509766 ms
+Average overall bwd comp time 49.47374657142857
+Finished training it 345/512 of epoch 1, 53.26 ms/it, loss 0.015294
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 49.47193192857143
+Finished training it 346/512 of epoch 1, 54.87 ms/it, loss 0.132231
+mbs is 4
+Forward 2.8733439445495605 ms
+Average overall bwd comp time 49.47194807142858
+Finished training it 347/512 of epoch 1, 54.82 ms/it, loss 0.142652
+mbs is 4
+Forward 2.920448064804077 ms
+Average overall bwd comp time 49.47257514285714
+Finished training it 348/512 of epoch 1, 58.55 ms/it, loss 0.168927
+mbs is 4
+Forward 3.034111976623535 ms
+Average overall bwd comp time 49.47701357142857
+Finished training it 349/512 of epoch 1, 55.24 ms/it, loss 0.106686
+mbs is 4
+Forward 3.0494720935821533 ms
+Average overall bwd comp time 49.477987
+Finished training it 350/512 of epoch 1, 59.07 ms/it, loss 0.116692
+mbs is 4
+Forward 2.876415967941284 ms
+Average overall bwd comp time 49.482554571428565
+Finished training it 351/512 of epoch 1, 57.35 ms/it, loss 0.001166
+mbs is 4
+Forward 2.999295949935913 ms
+Average overall bwd comp time 49.485466499999994
+Finished training it 352/512 of epoch 1, 55.60 ms/it, loss 0.047596
+mbs is 4
+Forward 2.810879945755005 ms
+Average overall bwd comp time 49.48686585714285
+Finished training it 353/512 of epoch 1, 51.54 ms/it, loss 0.005560
+mbs is 4
+Forward 3.0945279598236084 ms
+Average overall bwd comp time 49.48344685714285
+Finished training it 354/512 of epoch 1, 60.12 ms/it, loss 0.034790
+mbs is 4
+Forward 2.8723199367523193 ms
+Average overall bwd comp time 49.48955592857143
+Finished training it 355/512 of epoch 1, 50.39 ms/it, loss 0.172883
+mbs is 4
+Forward 4.6981120109558105 ms
+Average overall bwd comp time 49.48519157142856
+Finished training it 356/512 of epoch 1, 54.48 ms/it, loss 0.089335
+mbs is 4
+Forward 4.770815849304199 ms
+Average overall bwd comp time 49.484610499999995
+Finished training it 357/512 of epoch 1, 56.11 ms/it, loss 0.000046
+mbs is 4
+Forward 3.0750720500946045 ms
+Average overall bwd comp time 49.48577085714286
+Finished training it 358/512 of epoch 1, 55.70 ms/it, loss 0.001765
+mbs is 4
+Forward 2.978816032409668 ms
+Average overall bwd comp time 49.48670742857143
+Finished training it 359/512 of epoch 1, 48.29 ms/it, loss 0.014240
+mbs is 4
+Forward 3.1037440299987793 ms
+Average overall bwd comp time 49.48009978571429
+Finished training it 360/512 of epoch 1, 52.52 ms/it, loss 0.112258
+mbs is 4
+Forward 2.879487991333008 ms
+Average overall bwd comp time 49.47768728571429
+Finished training it 361/512 of epoch 1, 51.98 ms/it, loss 0.066316
+mbs is 4
+Forward 3.078144073486328 ms
+Average overall bwd comp time 49.475094000000006
+Finished training it 362/512 of epoch 1, 56.38 ms/it, loss 0.140572
+mbs is 4
+Forward 3.0382080078125 ms
+Average overall bwd comp time 49.47669178571427
+Finished training it 363/512 of epoch 1, 53.22 ms/it, loss 0.041091
+mbs is 4
+Forward 2.9286398887634277 ms
+Average overall bwd comp time 49.47510042857142
+Finished training it 364/512 of epoch 1, 48.90 ms/it, loss 0.136977
+mbs is 4
+Forward 3.0003199577331543 ms
+Average overall bwd comp time 49.4696035
+Finished training it 365/512 of epoch 1, 52.05 ms/it, loss 0.044273
+mbs is 4
+Forward 2.9184000492095947 ms
+Average overall bwd comp time 49.46662871428571
+Finished training it 366/512 of epoch 1, 63.58 ms/it, loss 0.027661
+mbs is 4
+Forward 3.0494720935821533 ms
+Average overall bwd comp time 49.47636357142857
+Finished training it 367/512 of epoch 1, 52.62 ms/it, loss 0.050330
+mbs is 4
+Forward 4.611072063446045 ms
+Average overall bwd comp time 49.47415350000001
+Finished training it 368/512 of epoch 1, 48.74 ms/it, loss 0.026401
+mbs is 4
+Forward 2.9511680603027344 ms
+Average overall bwd comp time 49.46783342857142
+Finished training it 369/512 of epoch 1, 52.52 ms/it, loss 0.018409
+mbs is 4
+Forward 2.9122560024261475 ms
+Average overall bwd comp time 49.46578471428571
+Finished training it 370/512 of epoch 1, 56.70 ms/it, loss 0.036751
+mbs is 4
+Forward 3.0504961013793945 ms
+Average overall bwd comp time 49.46788364285714
+Finished training it 371/512 of epoch 1, 53.47 ms/it, loss 0.165253
+mbs is 4
+Forward 2.998271942138672 ms
+Average overall bwd comp time 49.46688457142857
+Finished training it 372/512 of epoch 1, 57.58 ms/it, loss 0.023403
+mbs is 4
+Forward 2.98905611038208 ms
+Average overall bwd comp time 49.47045621428572
+Finished training it 373/512 of epoch 1, 48.47 ms/it, loss 0.002238
+mbs is 4
+Forward 2.8682239055633545 ms
+Average overall bwd comp time 49.46420378571428
+Finished training it 374/512 of epoch 1, 52.83 ms/it, loss 0.046309
+mbs is 4
+Forward 3.012608051300049 ms
+Average overall bwd comp time 49.46276257142858
+Finished training it 375/512 of epoch 1, 53.74 ms/it, loss 0.050957
+mbs is 4
+Forward 3.097599983215332 ms
+Average overall bwd comp time 49.46163507142857
+Finished training it 376/512 of epoch 1, 49.13 ms/it, loss 0.016176
+mbs is 4
+Forward 3.150847911834717 ms
+Average overall bwd comp time 49.456294785714285
+Finished training it 377/512 of epoch 1, 48.41 ms/it, loss 0.166508
+mbs is 4
+Forward 2.9317119121551514 ms
+Average overall bwd comp time 49.450420928571425
+Finished training it 378/512 of epoch 1, 50.43 ms/it, loss 0.129014
+mbs is 4
+Forward 2.905087947845459 ms
+Average overall bwd comp time 49.4460035
+Finished training it 379/512 of epoch 1, 48.95 ms/it, loss 0.038903
+mbs is 4
+Forward 2.9419519901275635 ms
+Average overall bwd comp time 49.439933142857136
+Finished training it 380/512 of epoch 1, 50.56 ms/it, loss 0.017045
+mbs is 4
+Forward 2.944000005722046 ms
+Average overall bwd comp time 49.43553778571428
+Finished training it 381/512 of epoch 1, 55.49 ms/it, loss 0.040573
+mbs is 4
+Forward 2.9368319511413574 ms
+Average overall bwd comp time 49.43630271428571
+Finished training it 382/512 of epoch 1, 53.75 ms/it, loss 0.123700
+mbs is 4
+Forward 2.9112319946289062 ms
+Average overall bwd comp time 49.43509178571428
+Finished training it 383/512 of epoch 1, 54.36 ms/it, loss 0.054888
+mbs is 4
+Forward 2.9122560024261475 ms
+Average overall bwd comp time 49.43507014285715
+Finished training it 384/512 of epoch 1, 50.04 ms/it, loss 0.000580
+mbs is 4
+Forward 2.999295949935913 ms
+Average overall bwd comp time 49.430438428571435
+Finished training it 385/512 of epoch 1, 49.08 ms/it, loss 0.083936
+mbs is 4
+Forward 3.0156800746917725 ms
+Average overall bwd comp time 49.42472171428572
+Finished training it 386/512 of epoch 1, 53.31 ms/it, loss 0.032102
+mbs is 4
+Forward 2.9214720726013184 ms
+Average overall bwd comp time 49.423062928571426
+Finished training it 387/512 of epoch 1, 54.57 ms/it, loss 0.183056
+mbs is 4
+Forward 4.676608085632324 ms
+Average overall bwd comp time 49.423055357142864
+Finished training it 388/512 of epoch 1, 48.48 ms/it, loss 0.251622
+mbs is 4
+Forward 2.8774399757385254 ms
+Average overall bwd comp time 49.4164875
+Finished training it 389/512 of epoch 1, 62.45 ms/it, loss 0.000770
+mbs is 4
+Forward 2.894848108291626 ms
+Average overall bwd comp time 49.42489585714285
+Finished training it 390/512 of epoch 1, 53.53 ms/it, loss 0.218583
+mbs is 4
+Forward 2.9112319946289062 ms
+Average overall bwd comp time 49.42344442857142
+Finished training it 391/512 of epoch 1, 54.98 ms/it, loss 0.062573
+mbs is 4
+Forward 2.8139519691467285 ms
+Average overall bwd comp time 49.42352042857142
+Finished training it 392/512 of epoch 1, 53.15 ms/it, loss 0.000661
+mbs is 4
+Forward 2.91430401802063 ms
+Average overall bwd comp time 49.42230207142857
+Finished training it 393/512 of epoch 1, 64.09 ms/it, loss 0.107812
+mbs is 4
+Forward 2.9962239265441895 ms
+Average overall bwd comp time 49.431701357142856
+Finished training it 394/512 of epoch 1, 51.47 ms/it, loss 0.045782
+mbs is 4
+Forward 2.9767680168151855 ms
+Average overall bwd comp time 49.42900092857143
+Finished training it 395/512 of epoch 1, 55.70 ms/it, loss 0.057488
+mbs is 4
+Forward 2.9163520336151123 ms
+Average overall bwd comp time 49.429761857142864
+Finished training it 396/512 of epoch 1, 54.87 ms/it, loss 0.152087
+mbs is 4
+Forward 3.0689280033111572 ms
+Average overall bwd comp time 49.42974085714286
+Finished training it 397/512 of epoch 1, 56.54 ms/it, loss 0.005421
+mbs is 4
+Forward 2.8282880783081055 ms
+Average overall bwd comp time 49.43180121428571
+Finished training it 398/512 of epoch 1, 60.35 ms/it, loss 0.048714
+mbs is 4
+Forward 3.0689280033111572 ms
+Average overall bwd comp time 49.43736957142857
+Finished training it 399/512 of epoch 1, 52.42 ms/it, loss 0.034801
+mbs is 4
+Forward 2.9265921115875244 ms
+Average overall bwd comp time 49.43486964285713
+Finished training it 400/512 of epoch 1, 55.18 ms/it, loss 0.001325
+mbs is 4
+Forward 3.1047680377960205 ms
+Average overall bwd comp time 49.43540807142857
+Finished training it 401/512 of epoch 1, 51.97 ms/it, loss 0.032863
+mbs is 4
+Forward 2.983936071395874 ms
+Average overall bwd comp time 49.432426071428566
+Finished training it 402/512 of epoch 1, 54.63 ms/it, loss 0.189637
+mbs is 4
+Forward 2.9184000492095947 ms
+Average overall bwd comp time 49.4321225
+Finished training it 403/512 of epoch 1, 53.90 ms/it, loss 0.165938
+mbs is 4
+Forward 2.854912042617798 ms
+Average overall bwd comp time 49.43136257142857
+Finished training it 404/512 of epoch 1, 48.69 ms/it, loss 0.174509
+mbs is 4
+Forward 3.039232015609741 ms
+Average overall bwd comp time 49.42515035714286
+Finished training it 405/512 of epoch 1, 52.40 ms/it, loss 0.202033
+mbs is 4
+Forward 3.0494720935821533 ms
+Average overall bwd comp time 49.42303714285715
+Finished training it 406/512 of epoch 1, 54.18 ms/it, loss 0.078597
+mbs is 4
+Forward 4.891647815704346 ms
+Average overall bwd comp time 49.42235185714285
+Finished training it 407/512 of epoch 1, 55.57 ms/it, loss 0.000030
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 49.42277000000001
+Finished training it 408/512 of epoch 1, 53.78 ms/it, loss 0.036502
+mbs is 4
+Forward 2.831360101699829 ms
+Average overall bwd comp time 49.42222857142856
+Finished training it 409/512 of epoch 1, 51.15 ms/it, loss 0.007290
+mbs is 4
+Forward 4.997119903564453 ms
+Average overall bwd comp time 49.41851807142856
+Finished training it 410/512 of epoch 1, 58.62 ms/it, loss 0.118652
+mbs is 4
+Forward 5.01145601272583 ms
+Average overall bwd comp time 49.42194578571428
+Finished training it 411/512 of epoch 1, 63.16 ms/it, loss 0.089280
+mbs is 4
+Forward 4.517888069152832 ms
+Average overall bwd comp time 49.43012714285714
+Finished training it 412/512 of epoch 1, 49.79 ms/it, loss 0.129470
+mbs is 4
+Forward 4.933631896972656 ms
+Average overall bwd comp time 49.42474592857143
+Finished training it 413/512 of epoch 1, 49.97 ms/it, loss 0.008753
+mbs is 4
+Forward 5.020671844482422 ms
+Average overall bwd comp time 49.41911592857143
+Finished training it 414/512 of epoch 1, 50.17 ms/it, loss 0.026229
+mbs is 4
+Forward 4.753407955169678 ms
+Average overall bwd comp time 49.41398299999999
+Finished training it 415/512 of epoch 1, 50.90 ms/it, loss 0.002204
+mbs is 4
+Forward 2.845695972442627 ms
+Average overall bwd comp time 49.40971607142857
+Finished training it 416/512 of epoch 1, 56.43 ms/it, loss 0.000256
+mbs is 4
+Forward 3.0218238830566406 ms
+Average overall bwd comp time 49.411476285714286
+Finished training it 417/512 of epoch 1, 54.01 ms/it, loss 0.006307
+mbs is 4
+Forward 3.0504961013793945 ms
+Average overall bwd comp time 49.41065642857143
+Finished training it 418/512 of epoch 1, 57.04 ms/it, loss 0.000367
+mbs is 4
+Forward 2.9777920246124268 ms
+Average overall bwd comp time 49.413326285714284
+Finished training it 419/512 of epoch 1, 52.58 ms/it, loss 0.064786
+mbs is 4
+Forward 2.78220796585083 ms
+Average overall bwd comp time 49.411623642857144
+Finished training it 420/512 of epoch 1, 51.15 ms/it, loss 0.067442
+mbs is 4
+Forward 4.752384185791016 ms
+Average overall bwd comp time 49.408341857142865
+Finished training it 421/512 of epoch 1, 53.68 ms/it, loss 0.091376
+mbs is 4
+Forward 3.082240104675293 ms
+Average overall bwd comp time 49.40716485714286
+Finished training it 422/512 of epoch 1, 50.18 ms/it, loss 0.051408
+mbs is 4
+Forward 3.077120065689087 ms
+Average overall bwd comp time 49.403327999999995
+Finished training it 423/512 of epoch 1, 48.32 ms/it, loss 0.000003
+mbs is 4
+Forward 4.530176162719727 ms
+Average overall bwd comp time 49.39701264285714
+Finished training it 424/512 of epoch 1, 49.83 ms/it, loss 0.000889
+mbs is 4
+Forward 3.0740480422973633 ms
+Average overall bwd comp time 49.392296357142854
+Finished training it 425/512 of epoch 1, 55.30 ms/it, loss 0.031660
+mbs is 4
+Forward 2.861056089401245 ms
+Average overall bwd comp time 49.393502857142856
+Finished training it 426/512 of epoch 1, 54.66 ms/it, loss 0.000946
+mbs is 4
+Forward 2.8569600582122803 ms
+Average overall bwd comp time 49.393589357142865
+Finished training it 427/512 of epoch 1, 50.19 ms/it, loss 0.178803
+mbs is 4
+Forward 2.8477439880371094 ms
+Average overall bwd comp time 49.389239999999994
+Finished training it 428/512 of epoch 1, 48.30 ms/it, loss 0.016458
+mbs is 4
+Forward 3.1139841079711914 ms
+Average overall bwd comp time 49.38311892857142
+Finished training it 429/512 of epoch 1, 52.30 ms/it, loss 0.006790
+mbs is 4
+Forward 2.994175910949707 ms
+Average overall bwd comp time 49.38134107142857
+Finished training it 430/512 of epoch 1, 56.53 ms/it, loss 0.125911
+mbs is 4
+Forward 2.9163520336151123 ms
+Average overall bwd comp time 49.383178142857126
+Finished training it 431/512 of epoch 1, 52.85 ms/it, loss 0.030853
+mbs is 4
+Forward 3.042304039001465 ms
+Average overall bwd comp time 49.38124614285715
+Finished training it 432/512 of epoch 1, 55.22 ms/it, loss 0.027970
+mbs is 4
+Forward 2.9071359634399414 ms
+Average overall bwd comp time 49.38175835714286
+Finished training it 433/512 of epoch 1, 56.01 ms/it, loss 0.099830
+mbs is 4
+Forward 2.880511999130249 ms
+Average overall bwd comp time 49.382925142857154
+Finished training it 434/512 of epoch 1, 54.55 ms/it, loss 0.004846
+mbs is 4
+Forward 4.61516809463501 ms
+Average overall bwd comp time 49.3827122857143
+Finished training it 435/512 of epoch 1, 56.78 ms/it, loss 0.055845
+mbs is 4
+Forward 3.073024034500122 ms
+Average overall bwd comp time 49.3844655
+Finished training it 436/512 of epoch 1, 55.37 ms/it, loss 0.013264
+mbs is 4
+Forward 2.9265921115875244 ms
+Average overall bwd comp time 49.38512592857142
+Finished training it 437/512 of epoch 1, 56.76 ms/it, loss 0.213780
+mbs is 4
+Forward 3.1703040599823 ms
+Average overall bwd comp time 49.38698171428571
+Finished training it 438/512 of epoch 1, 58.12 ms/it, loss 0.019545
+mbs is 4
+Forward 3.063807964324951 ms
+Average overall bwd comp time 49.390764999999995
+Finished training it 439/512 of epoch 1, 55.77 ms/it, loss 0.021981
+mbs is 4
+Forward 2.8579840660095215 ms
+Average overall bwd comp time 49.39221149999999
+Finished training it 440/512 of epoch 1, 51.02 ms/it, loss 0.057966
+mbs is 4
+Forward 2.9071359634399414 ms
+Average overall bwd comp time 49.388944428571435
+Finished training it 441/512 of epoch 1, 53.26 ms/it, loss 0.215717
+mbs is 4
+Forward 2.8733439445495605 ms
+Average overall bwd comp time 49.38819107142857
+Finished training it 442/512 of epoch 1, 51.76 ms/it, loss 0.061476
+mbs is 4
+Forward 3.118079900741577 ms
+Average overall bwd comp time 49.38556749999999
+Finished training it 443/512 of epoch 1, 54.91 ms/it, loss 0.251048
+mbs is 4
+Forward 3.008512020111084 ms
+Average overall bwd comp time 49.386103500000004
+Finished training it 444/512 of epoch 1, 59.07 ms/it, loss 0.000806
+mbs is 4
+Forward 2.890752077102661 ms
+Average overall bwd comp time 49.390418571428576
+Finished training it 445/512 of epoch 1, 53.70 ms/it, loss 0.147941
+mbs is 4
+Forward 2.9470720291137695 ms
+Average overall bwd comp time 49.38949921428571
+Finished training it 446/512 of epoch 1, 53.80 ms/it, loss 0.000345
+mbs is 4
+Forward 4.571135997772217 ms
+Average overall bwd comp time 49.38864442857143
+Finished training it 447/512 of epoch 1, 63.95 ms/it, loss 0.088989
+mbs is 4
+Forward 4.686848163604736 ms
+Average overall bwd comp time 49.397442071428564
+Finished training it 448/512 of epoch 1, 50.91 ms/it, loss 0.100073
+mbs is 4
+Forward 2.8579840660095215 ms
+Average overall bwd comp time 49.39305821428571
+Finished training it 449/512 of epoch 1, 48.46 ms/it, loss 0.062613
+mbs is 4
+Forward 2.9911038875579834 ms
+Average overall bwd comp time 49.38699150000001
+Finished training it 450/512 of epoch 1, 53.17 ms/it, loss 0.245567
+mbs is 4
+Forward 3.0617599487304688 ms
+Average overall bwd comp time 49.38598535714285
+Finished training it 451/512 of epoch 1, 61.47 ms/it, loss 0.000613
+mbs is 4
+Forward 2.939903974533081 ms
+Average overall bwd comp time 49.39262121428571
+Finished training it 452/512 of epoch 1, 52.63 ms/it, loss 0.129500
+mbs is 4
+Forward 2.8487679958343506 ms
+Average overall bwd comp time 49.391034142857144
+Finished training it 453/512 of epoch 1, 61.20 ms/it, loss 0.009710
+mbs is 4
+Forward 2.924544095993042 ms
+Average overall bwd comp time 49.39756957142857
+Finished training it 454/512 of epoch 1, 49.79 ms/it, loss 0.178457
+mbs is 4
+Forward 3.0074880123138428 ms
+Average overall bwd comp time 49.39289750000001
+Finished training it 455/512 of epoch 1, 54.43 ms/it, loss 0.062795
+mbs is 4
+Forward 2.924544095993042 ms
+Average overall bwd comp time 49.3926895
+Finished training it 456/512 of epoch 1, 53.62 ms/it, loss 0.170397
+mbs is 4
+Forward 3.012608051300049 ms
+Average overall bwd comp time 49.39164435714286
+Finished training it 457/512 of epoch 1, 54.81 ms/it, loss 0.003161
+mbs is 4
+Forward 2.9470720291137695 ms
+Average overall bwd comp time 49.39220592857142
+Finished training it 458/512 of epoch 1, 51.65 ms/it, loss 0.217846
+mbs is 4
+Forward 2.8282880783081055 ms
+Average overall bwd comp time 49.389161142857134
+Finished training it 459/512 of epoch 1, 54.05 ms/it, loss 0.224747
+mbs is 4
+Forward 2.8815360069274902 ms
+Average overall bwd comp time 49.388618928571425
+Finished training it 460/512 of epoch 1, 57.65 ms/it, loss 0.008350
+mbs is 4
+Forward 2.8989439010620117 ms
+Average overall bwd comp time 49.391464714285696
+Finished training it 461/512 of epoch 1, 52.10 ms/it, loss 0.151675
+mbs is 4
+Forward 2.9777920246124268 ms
+Average overall bwd comp time 49.38940914285713
+Finished training it 462/512 of epoch 1, 53.57 ms/it, loss 0.226288
+mbs is 4
+Forward 3.08735990524292 ms
+Average overall bwd comp time 49.38877657142857
+Finished training it 463/512 of epoch 1, 52.95 ms/it, loss 0.117619
+mbs is 4
+Forward 2.8979198932647705 ms
+Average overall bwd comp time 49.38745621428571
+Finished training it 464/512 of epoch 1, 51.36 ms/it, loss 0.147671
+mbs is 4
+Forward 3.101696014404297 ms
+Average overall bwd comp time 49.384652285714274
+Finished training it 465/512 of epoch 1, 47.16 ms/it, loss 0.002956
+mbs is 4
+Forward 2.9665279388427734 ms
+Average overall bwd comp time 49.377555500000014
+Finished training it 466/512 of epoch 1, 58.20 ms/it, loss 0.080392
+mbs is 4
+Forward 3.057663917541504 ms
+Average overall bwd comp time 49.38108907142856
+Finished training it 467/512 of epoch 1, 60.04 ms/it, loss 0.019143
+mbs is 4
+Forward 3.018752098083496 ms
+Average overall bwd comp time 49.38605164285714
+Finished training it 468/512 of epoch 1, 57.71 ms/it, loss 0.025928
+mbs is 4
+Forward 2.9911038875579834 ms
+Average overall bwd comp time 49.389075857142856
+Finished training it 469/512 of epoch 1, 51.89 ms/it, loss 0.155435
+mbs is 4
+Forward 2.9409279823303223 ms
+Average overall bwd comp time 49.38709907142857
+Finished training it 470/512 of epoch 1, 50.00 ms/it, loss 0.074214
+mbs is 4
+Forward 2.900991916656494 ms
+Average overall bwd comp time 49.38252399999999
+Finished training it 471/512 of epoch 1, 52.64 ms/it, loss 0.071782
+mbs is 4
+Forward 3.1057920455932617 ms
+Average overall bwd comp time 49.38070192857143
+Finished training it 472/512 of epoch 1, 51.24 ms/it, loss 0.067850
+mbs is 4
+Forward 2.9040639400482178 ms
+Average overall bwd comp time 49.37750535714285
+Finished training it 473/512 of epoch 1, 50.69 ms/it, loss 0.129052
+mbs is 4
+Forward 2.8641281127929688 ms
+Average overall bwd comp time 49.373778
+Finished training it 474/512 of epoch 1, 52.61 ms/it, loss 0.050381
+mbs is 4
+Forward 3.0320639610290527 ms
+Average overall bwd comp time 49.37174349999999
+Finished training it 475/512 of epoch 1, 50.28 ms/it, loss 0.003153
+mbs is 4
+Forward 3.0054399967193604 ms
+Average overall bwd comp time 49.36789142857143
+Finished training it 476/512 of epoch 1, 56.93 ms/it, loss 0.236594
+mbs is 4
+Forward 2.9870080947875977 ms
+Average overall bwd comp time 49.36998992857142
+Finished training it 477/512 of epoch 1, 53.22 ms/it, loss 0.066637
+mbs is 4
+Forward 2.9460480213165283 ms
+Average overall bwd comp time 49.36903385714286
+Finished training it 478/512 of epoch 1, 48.72 ms/it, loss 0.028864
+mbs is 4
+Forward 2.9777920246124268 ms
+Average overall bwd comp time 49.36364242857143
+Finished training it 479/512 of epoch 1, 58.61 ms/it, loss 0.038333
+mbs is 4
+Forward 2.810879945755005 ms
+Average overall bwd comp time 49.36760685714285
+Finished training it 480/512 of epoch 1, 54.16 ms/it, loss 0.045044
+mbs is 4
+Forward 2.9163520336151123 ms
+Average overall bwd comp time 49.36712221428571
+Finished training it 481/512 of epoch 1, 51.22 ms/it, loss 0.188577
+mbs is 4
+Forward 2.9716479778289795 ms
+Average overall bwd comp time 49.36387185714285
+Finished training it 482/512 of epoch 1, 50.89 ms/it, loss 0.112515
+mbs is 4
+Forward 3.106816053390503 ms
+Average overall bwd comp time 49.36050735714286
+Finished training it 483/512 of epoch 1, 48.95 ms/it, loss 0.139873
+mbs is 4
+Forward 2.9480960369110107 ms
+Average overall bwd comp time 49.35513542857142
+Finished training it 484/512 of epoch 1, 52.97 ms/it, loss 0.150812
+mbs is 4
+Forward 2.854912042617798 ms
+Average overall bwd comp time 49.35413414285715
+Finished training it 485/512 of epoch 1, 52.94 ms/it, loss 0.000192
+mbs is 4
+Forward 2.9818880558013916 ms
+Average overall bwd comp time 49.35287528571428
+Finished training it 486/512 of epoch 1, 51.77 ms/it, loss 0.013668
+mbs is 4
+Forward 2.958336114883423 ms
+Average overall bwd comp time 49.35051664285714
+Finished training it 487/512 of epoch 1, 51.25 ms/it, loss 0.038460
+mbs is 4
+Forward 3.093503952026367 ms
+Average overall bwd comp time 49.34742042857143
+Finished training it 488/512 of epoch 1, 49.54 ms/it, loss 0.265331
+mbs is 4
+Forward 3.067903995513916 ms
+Average overall bwd comp time 49.34252299999999
+Finished training it 489/512 of epoch 1, 56.77 ms/it, loss 0.001639
+mbs is 4
+Forward 2.8375039100646973 ms
+Average overall bwd comp time 49.3445717142857
+Finished training it 490/512 of epoch 1, 51.55 ms/it, loss 0.082983
+mbs is 4
+Forward 3.078144073486328 ms
+Average overall bwd comp time 49.34242964285715
+Finished training it 491/512 of epoch 1, 64.10 ms/it, loss 0.223447
+mbs is 4
+Forward 2.8436479568481445 ms
+Average overall bwd comp time 49.35132485714286
+Finished training it 492/512 of epoch 1, 52.00 ms/it, loss 0.008341
+mbs is 4
+Forward 3.0382080078125 ms
+Average overall bwd comp time 49.34932785714285
+Finished training it 493/512 of epoch 1, 66.36 ms/it, loss 0.018616
+mbs is 4
+Forward 3.06278395652771 ms
+Average overall bwd comp time 49.36063235714285
+Finished training it 494/512 of epoch 1, 51.08 ms/it, loss 0.000531
+mbs is 4
+Forward 2.9317119121551514 ms
+Average overall bwd comp time 49.357490785714276
+Finished training it 495/512 of epoch 1, 53.30 ms/it, loss 0.035678
+mbs is 4
+Forward 3.0074880123138428 ms
+Average overall bwd comp time 49.356557
+Finished training it 496/512 of epoch 1, 68.19 ms/it, loss 0.075833
+mbs is 4
+Forward 2.900991916656494 ms
+Average overall bwd comp time 49.36879
+Finished training it 497/512 of epoch 1, 50.40 ms/it, loss 0.000646
+mbs is 4
+Forward 3.0269439220428467 ms
+Average overall bwd comp time 49.3651965
+Finished training it 498/512 of epoch 1, 49.15 ms/it, loss 0.210908
+mbs is 4
+Forward 2.909183979034424 ms
+Average overall bwd comp time 49.360396
+Finished training it 499/512 of epoch 1, 51.74 ms/it, loss 0.242786
+mbs is 4
+Forward 3.083264112472534 ms
+Average overall bwd comp time 49.35763550000001
+Finished training it 500/512 of epoch 1, 51.88 ms/it, loss 0.198182
+mbs is 4
+Forward 2.8825600147247314 ms
+Average overall bwd comp time 49.355056071428564
+Finished training it 501/512 of epoch 1, 54.32 ms/it, loss 0.111258
+mbs is 4
+Forward 2.8917760848999023 ms
+Average overall bwd comp time 49.354777
+Finished training it 502/512 of epoch 1, 50.78 ms/it, loss 0.020016
+mbs is 4
+Forward 2.9132800102233887 ms
+Average overall bwd comp time 49.35111342857142
+Finished training it 503/512 of epoch 1, 56.28 ms/it, loss 0.155338
+mbs is 4
+Forward 2.9030399322509766 ms
+Average overall bwd comp time 49.35268871428572
+Finished training it 504/512 of epoch 1, 54.14 ms/it, loss 0.035650
+mbs is 4
+Forward 2.9163520336151123 ms
+Average overall bwd comp time 49.352125357142846
+Finished training it 505/512 of epoch 1, 58.63 ms/it, loss 0.062084
+mbs is 4
+Forward 4.685823917388916 ms
+Average overall bwd comp time 49.356231785714286
+Finished training it 506/512 of epoch 1, 53.60 ms/it, loss 0.023457
+mbs is 4
+Forward 2.8733439445495605 ms
+Average overall bwd comp time 49.354804785714286
+Finished training it 507/512 of epoch 1, 53.68 ms/it, loss 0.030824
+mbs is 4
+Forward 2.8241920471191406 ms
+Average overall bwd comp time 49.35422607142857
+Finished training it 508/512 of epoch 1, 62.36 ms/it, loss 0.086452
+mbs is 4
+Forward 2.8590080738067627 ms
+Average overall bwd comp time 49.36123028571428
+Finished training it 509/512 of epoch 1, 49.25 ms/it, loss 0.014249
+mbs is 4
+Forward 2.8989439010620117 ms
+Average overall bwd comp time 49.35665221428572
+Finished training it 510/512 of epoch 1, 55.93 ms/it, loss 0.081412
+mbs is 4
+Forward 3.1201279163360596 ms
+Average overall bwd comp time 49.35778242857142
+Finished training it 511/512 of epoch 1, 50.78 ms/it, loss 0.025706
+mbs is 4
+Forward 3.0310399532318115 ms
+Average overall bwd comp time 49.35423935714285
+Finished training it 512/512 of epoch 1, 54.01 ms/it, loss 0.198703
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc False
+globval rank 3
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 2 overall 4
+About to initialize distributed, world size 4 global rank 3 with train-dy-p4d24xlarge-1, 29501
+Global rank 3 using gpu 1
+Init pg with nccl 3 ws 4, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 3 4
+world size: 4, current rank: 3, local rank: 1
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc False
+globval rank 2
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 2 overall 4
+About to initialize distributed, world size 4 global rank 2 with train-dy-p4d24xlarge-1, 29501
+Global rank 2 using gpu 0
+Init pg with nccl 2 ws 4, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 2 4
+world size: 4, current rank: 2, local rank: 0
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc False
+globval rank 1
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 2 overall 4
+About to initialize distributed, world size 4 global rank 1 with train-dy-p4d24xlarge-1, 29501
+Global rank 1 using gpu 1
+Init pg with nccl 1 ws 4, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 1 4
+world size: 4, current rank: 1, local rank: 1
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>

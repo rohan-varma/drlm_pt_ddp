@@ -1,0 +1,16 @@
+using master addrtrain-dy-p4d24xlarge-3
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-4
+rank? 1
+embedding size 64
+32768
+using master addrtrain-dy-p4d24xlarge-3
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-3
+rank? 0
+embedding size 64
+32768

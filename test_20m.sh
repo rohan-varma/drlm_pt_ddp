@@ -12,4 +12,4 @@ echo "rank? "$SLURM_PROCID
 export NITERS=512
 z=$((NITERS*MINI_BATCH_SIZE))
 echo $z
-python dlrm_s_pytorch.py --use-gpu --print-time --dist-backend nccl --nepochs 1 --data-size ${z} --mini-batch-size ${MINI_BATCH_SIZE} --debug-mode --arch-sparse-feature-size 64 --arch-embedding-size 1000000-1000000-1000000-1000000-1000000-1000000-1000000-1000000-1000000-1000000-1000000-1000000 --arch-mlp-bot 2000-1024-1024-512-256-64 --arch-mlp-top 4096-4096-1 --node-world-size ${SLURM_NTASKS} --rank ${SLURM_PROCID}
+python dlrm_s_pytorch.py --use-gpu --print-time --dist-backend nccl --nepochs 1 --data-size ${z} --mini-batch-size ${MINI_BATCH_SIZE} --debug-mode --arch-sparse-feature-size 64 --arch-embedding-size 4000000-4000000-4000000-4000000-4000000 --arch-mlp-bot 2000-1024-1024-512-256-64 --arch-mlp-top 4096-4096-1 --node-world-size ${SLURM_NTASKS} --rank ${SLURM_PROCID}

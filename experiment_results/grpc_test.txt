@@ -1,0 +1,2182 @@
+using master addrtrain-dy-p4d24xlarge-2
+using part 
+GRPC master train-dy-p4d24xlarge-1
+running python script
+world size 3
+node name train-dy-p4d24xlarge-3
+rank? 2
+using master addrtrain-dy-p4d24xlarge-2
+using part 
+GRPC master train-dy-p4d24xlarge-1
+running python script
+world size 3
+node name train-dy-p4d24xlarge-2
+rank? 1
+using master addrtrain-dy-p4d24xlarge-2
+using part 
+GRPC master train-dy-p4d24xlarge-1
+running python script
+world size 3
+node name train-dy-p4d24xlarge-1
+rank? 0
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+-- starting grpc server
+train-dy-p4d24xlarge-1 vs train-dy-p4d24xlarge-1
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc True
+globval rank 0
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 0 with train-dy-p4d24xlarge-2, 29501
+Global rank 0 using gpu 0
+Init pg with nccl 0 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 0 16
+Running on 16 ranks using nccl backend
+world size: 16, current rank: 0, local rank: 0
+Distributed init done!
+Using 1 GPU per process, this process is using 0
+Using 1 GPU(s)...
+model arch:
+mlp top arch 3 layers, with input to output dimensions:
+[ 142 4096 4096    1]
+# of interactions
+142
+mlp bot arch 5 layers, with input to output dimensions:
+[2000 1024 1024  512  256   64]
+# of features (sparse and dense)
+13
+dense feature size
+2000
+sparse feature size
+64
+# of embeddings (= # of sparse features) 12, with dimensions 64x:
+[1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000
+ 1000000 1000000 1000000]
+computed ndevices as 1: ngpus=1, bs=16, fea=12
+Creating grpc client
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+--- calling create emb in DLRM __init__
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.modules.sparse.EmbeddingBag'>
+ -- creating embedding on server --
+embs [EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum), EmbeddingBag(1000000, 64, mode=sum)], {<class 'torch.nn.modules.sparse.EmbeddingBag'>}
+2021-05-26 10:31:37.899496 Creating embedding
+2021-05-26 10:31:37.899527 Pickling
+2021-05-26 10:31:37.899738  pickled
+2021-05-26 10:31:37.899829 request
+2021-05-26 10:31:37.917878 signal
+2021-05-26 10:31:52.492112 done
+-- created embedding!! --
+Creating linear with 2000 1024
+Creating linear with 1024 1024
+Creating linear with 1024 512
+Creating linear with 512 256
+Creating linear with 256 64
+Created 10 layers
+Creating linear with 142 4096
+Creating linear with 4096 4096
+Creating linear with 4096 1
+Created 6 layers
+overall: Number of parameter tensors: 28
+overall: Number of parameters: 789142337
+overall: Parameter size in bytes: 3156569348 (3010.3391151428223 MB) 
+
+emb_l: Number of parameter tensors: 12
+emb_l: Number of parameters: 768000000
+emb_l: Parameter size in bytes: 3072000000 (2929.6875 MB) 
+
+bot_l: Number of parameter tensors: 10
+bot_l: Number of parameters: 3771200
+bot_l: Parameter size in bytes: 15084800 (14.385986328125 MB) 
+
+top_l: Number of parameter tensors: 6
+top_l: Number of parameters: 17371137
+top_l: Parameter size in bytes: 69484548 (66.26562881469727 MB) 
+
+Initialized DLRM
+use_gpu is true
+Using data parallel MLPs
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+time/loss/accuracy (if enabled):
+mbs is 16
+Fwd comm: 0.021614308118820192 ms
+Forward 23090.357421875 ms
+Backward time: 355.2997741699219
+grpc bwd comm" 2.355337142944336e-06
+Overall iteration time 23450.01953125
+Finished training it 1/128 of epoch 0, 23449.80 ms/it, loss 0.073210
+mbs is 16
+Fwd comm: 0.0004537680149078369 ms
+Forward 463.8609313964844 ms
+Backward time: 4642.9755859375
+grpc bwd comm" 6.813526153564453e-06
+Overall iteration time 5115.84033203125
+Finished training it 2/128 of epoch 0, 5115.67 ms/it, loss 0.063442
+mbs is 16
+Fwd comm: 0.004075949192047119 ms
+Forward 4083.460205078125 ms
+Backward time: 232.2503662109375
+grpc bwd comm" 2.2759437561035155e-06
+Overall iteration time 4320.017578125
+Finished training it 3/128 of epoch 0, 4319.88 ms/it, loss 0.080615
+mbs is 16
+Fwd comm: 0.0041154024600982666 ms
+Forward 4122.92626953125 ms
+Backward time: 242.75762939453125
+grpc bwd comm" 8.867025375366212e-06
+Overall iteration time 4376.75
+Finished training it 4/128 of epoch 0, 4376.57 ms/it, loss 0.093772
+mbs is 16
+Fwd comm: 0.002068286657333374 ms
+Forward 2076.367431640625 ms
+Backward time: 181.36781311035156
+grpc bwd comm" 3.881692886352539e-06
+Overall iteration time 2263.700439453125
+Finished training it 5/128 of epoch 0, 2263.50 ms/it, loss 0.074694
+mbs is 16
+Fwd comm: 0.0021613876819610595 ms
+Forward 2168.24853515625 ms
+Backward time: 342.0108947753906
+grpc bwd comm" 5.9959888458251955e-06
+Overall iteration time 2517.904296875
+Finished training it 6/128 of epoch 0, 2517.78 ms/it, loss 0.085758
+mbs is 16
+Fwd comm: 0.0005336604118347168 ms
+Forward 541.38623046875 ms
+Backward time: 1069.7677001953125
+grpc bwd comm" 7.996964454650878e-05
+Overall iteration time 1693.570068359375
+Finished training it 7/128 of epoch 0, 1693.41 ms/it, loss 0.102926
+mbs is 16
+Fwd comm: 0.00037785577774047854 ms
+Forward 385.8586730957031 ms
+Backward time: 1165.77685546875
+grpc bwd comm" 3.4694671630859374e-06
+Overall iteration time 1557.518310546875
+Finished training it 8/128 of epoch 0, 1557.32 ms/it, loss 0.082401
+mbs is 16
+Fwd comm: 0.0020199387073516844 ms
+Forward 2027.14990234375 ms
+Backward time: 130.97779846191406
+grpc bwd comm" 3.581523895263672e-06
+Overall iteration time 2163.988525390625
+Finished training it 9/128 of epoch 0, 2163.79 ms/it, loss 0.093753
+mbs is 16
+Fwd comm: 0.000591428518295288 ms
+Forward 598.5952758789062 ms
+Backward time: 1266.8671875
+grpc bwd comm" 2.3691654205322264e-06
+Overall iteration time 1870.1240234375
+Finished training it 10/128 of epoch 0, 1869.95 ms/it, loss 0.122841
+mbs is 16
+Fwd comm: 0.0025462689399719236 ms
+Forward 2555.604248046875 ms
+Backward time: 763.9439086914062
+grpc bwd comm" 4.842400550842285e-05
+Overall iteration time 3370.40185546875
+Finished training it 11/128 of epoch 0, 3370.22 ms/it, loss 0.084944
+mbs is 16
+Fwd comm: 0.00282254958152771 ms
+Forward 2830.067626953125 ms
+Backward time: 107.36434936523438
+grpc bwd comm" 8.70661735534668e-05
+Overall iteration time 3026.301025390625
+Finished training it 12/128 of epoch 0, 3026.16 ms/it, loss 0.099031
+mbs is 16
+Fwd comm: 0.0032088074684143066 ms
+Forward 3217.6298828125 ms
+Backward time: 121.97990417480469
+grpc bwd comm" 7.721161842346191e-05
+Overall iteration time 3419.59375
+Finished training it 13/128 of epoch 0, 3419.39 ms/it, loss 0.079047
+mbs is 16
+Fwd comm: 0.000978456497192383 ms
+Forward 986.019287109375 ms
+Backward time: 2068.77587890625
+grpc bwd comm" 4.7724246978759764e-06
+Overall iteration time 3061.663818359375
+Finished training it 14/128 of epoch 0, 3061.50 ms/it, loss 0.075801
+mbs is 16
+Fwd comm: 0.002752805948257446 ms
+Forward 2761.465576171875 ms
+Backward time: 1210.40380859375
+grpc bwd comm" 6.780147552490234e-06
+Overall iteration time 3980.72119140625
+Finished training it 15/128 of epoch 0, 3980.55 ms/it, loss 0.047184
+mbs is 16
+Fwd comm: 0.000570063591003418 ms
+Forward 574.9122314453125 ms
+Backward time: 842.1785888671875
+grpc bwd comm" 5.7129859924316406e-06
+Overall iteration time 1424.7659912109375
+Finished training it 16/128 of epoch 0, 1424.59 ms/it, loss 0.098799
+mbs is 16
+Fwd comm: 0.001387315034866333 ms
+Forward 1393.365478515625 ms
+Backward time: 872.4520874023438
+grpc bwd comm" 7.297992706298828e-06
+Overall iteration time 2275.349609375
+Finished training it 17/128 of epoch 0, 2275.18 ms/it, loss 0.059929
+mbs is 16
+Fwd comm: 0.0020462534427642823 ms
+Forward 2053.283935546875 ms
+Backward time: 1437.0191650390625
+grpc bwd comm" 5.441427230834961e-06
+Overall iteration time 3497.8232421875
+Finished training it 18/128 of epoch 0, 3497.66 ms/it, loss 0.081630
+mbs is 16
+Fwd comm: 0.002844407320022583 ms
+Forward 2850.016845703125 ms
+Backward time: 277.3657531738281
+grpc bwd comm" 6.611347198486328e-06
+Overall iteration time 3136.00927734375
+Finished training it 19/128 of epoch 0, 3135.83 ms/it, loss 0.126235
+mbs is 16
+Fwd comm: 0.0008073675632476806 ms
+Forward 814.92626953125 ms
+Backward time: 309.1322937011719
+grpc bwd comm" 4.348039627075195e-06
+Overall iteration time 1131.3695068359375
+Finished training it 20/128 of epoch 0, 1131.18 ms/it, loss 0.091925
+mbs is 16
+Fwd comm: 0.0025047130584716797 ms
+Forward 2512.314208984375 ms
+Backward time: 381.2710266113281
+grpc bwd comm" 2.4154186248779297e-06
+Overall iteration time 2898.197509765625
+Finished training it 21/128 of epoch 0, 2898.05 ms/it, loss 0.050874
+mbs is 16
+Fwd comm: 0.000802661418914795 ms
+Forward 809.1268920898438 ms
+Backward time: 470.972412109375
+grpc bwd comm" 2.146005630493164e-06
+Overall iteration time 1284.2557373046875
+Finished training it 22/128 of epoch 0, 1284.08 ms/it, loss 0.091847
+mbs is 16
+Fwd comm: 0.0013697121143341063 ms
+Forward 1376.5931396484375 ms
+Backward time: 1792.9932861328125
+grpc bwd comm" 3.068685531616211e-06
+Overall iteration time 3174.921142578125
+Finished training it 23/128 of epoch 0, 3174.73 ms/it, loss 0.092787
+mbs is 16
+Fwd comm: 0.0017189953327178954 ms
+Forward 1726.219970703125 ms
+Backward time: 1115.9071044921875
+grpc bwd comm" 4.478216171264649e-06
+Overall iteration time 2848.6533203125
+Finished training it 24/128 of epoch 0, 2848.48 ms/it, loss 0.078291
+mbs is 16
+Fwd comm: 0.00044131875038146975 ms
+Forward 448.287353515625 ms
+Backward time: 1331.7939453125
+grpc bwd comm" 4.615545272827149e-06
+Overall iteration time 1786.53076171875
+Finished training it 25/128 of epoch 0, 1786.36 ms/it, loss 0.078562
+mbs is 16
+Fwd comm: 0.0031182801723480223 ms
+Forward 3125.188232421875 ms
+Backward time: 132.5701141357422
+grpc bwd comm" 6.395101547241211e-06
+Overall iteration time 3266.281494140625
+Finished training it 26/128 of epoch 0, 3266.06 ms/it, loss 0.066721
+mbs is 16
+Fwd comm: 0.002914602041244507 ms
+Forward 2921.649658203125 ms
+Backward time: 705.63330078125
+grpc bwd comm" 6.718635559082031e-06
+Overall iteration time 3635.97216796875
+Finished training it 27/128 of epoch 0, 3635.85 ms/it, loss 0.095711
+mbs is 16
+Fwd comm: 0.000322066068649292 ms
+Forward 327.75311279296875 ms
+Backward time: 1252.294677734375
+grpc bwd comm" 1.0590553283691407e-05
+Overall iteration time 1592.848388671875
+Finished training it 28/128 of epoch 0, 1592.71 ms/it, loss 0.131884
+mbs is 16
+Fwd comm: 0.0017593309879302978 ms
+Forward 1764.5604248046875 ms
+Backward time: 347.146240234375
+grpc bwd comm" 5.144119262695313e-06
+Overall iteration time 2118.90283203125
+Finished training it 29/128 of epoch 0, 2118.64 ms/it, loss 0.100787
+mbs is 16
+Fwd comm: 0.003073957920074463 ms
+Forward 3082.338134765625 ms
+Backward time: 347.14215087890625
+grpc bwd comm" 6.635904312133789e-06
+Overall iteration time 3439.033447265625
+Finished training it 30/128 of epoch 0, 3438.86 ms/it, loss 0.070037
+mbs is 16
+Fwd comm: 0.0022217319011688234 ms
+Forward 2228.11279296875 ms
+Backward time: 1252.4298095703125
+grpc bwd comm" 3.963804244995117e-05
+Overall iteration time 3522.891845703125
+Finished training it 31/128 of epoch 0, 3522.73 ms/it, loss 0.110805
+mbs is 16
+Fwd comm: 0.00021401500701904297 ms
+Forward 221.51187133789062 ms
+Backward time: 4200.56884765625
+grpc bwd comm" 1.5349388122558593e-06
+Overall iteration time 4425.65625
+Finished training it 32/128 of epoch 0, 4425.50 ms/it, loss 0.099838
+mbs is 16
+Fwd comm: 0.0003889930248260498 ms
+Forward 396.71942138671875 ms
+Backward time: 3852.4384765625
+grpc bwd comm" 1.3573169708251952e-06
+Overall iteration time 4253.11962890625
+Finished training it 33/128 of epoch 0, 4252.96 ms/it, loss 0.106364
+mbs is 16
+Fwd comm: 0.0005532476902008057 ms
+Forward 563.371826171875 ms
+Backward time: 1800.332275390625
+grpc bwd comm" 2.5188922882080077e-06
+Overall iteration time 2368.251953125
+Finished training it 34/128 of epoch 0, 2368.09 ms/it, loss 0.067124
+mbs is 16
+Fwd comm: 0.0006175532341003418 ms
+Forward 629.7033081054688 ms
+Backward time: 1921.5789794921875
+grpc bwd comm" 4.773139953613281e-06
+Overall iteration time 2558.117919921875
+Finished training it 35/128 of epoch 0, 2557.98 ms/it, loss 0.056769
+mbs is 16
+Fwd comm: 0.0007436578273773193 ms
+Forward 750.8869018554688 ms
+Backward time: 2613.001220703125
+grpc bwd comm" 3.5054683685302733e-06
+Overall iteration time 3369.289794921875
+Finished training it 36/128 of epoch 0, 3369.13 ms/it, loss 0.086800
+mbs is 16
+Fwd comm: 0.0027908406257629395 ms
+Forward 2800.85986328125 ms
+Backward time: 166.31602478027344
+grpc bwd comm" 3.1321048736572267e-06
+Overall iteration time 2972.36474609375
+Finished training it 37/128 of epoch 0, 2972.20 ms/it, loss 0.063761
+mbs is 16
+Fwd comm: 0.00041167044639587404 ms
+Forward 420.8878479003906 ms
+Backward time: 1027.5625
+grpc bwd comm" 3.831624984741211e-06
+Overall iteration time 1455.340576171875
+Finished training it 38/128 of epoch 0, 1455.13 ms/it, loss 0.081136
+mbs is 16
+Fwd comm: 0.002732372760772705 ms
+Forward 2741.94580078125 ms
+Backward time: 449.45611572265625
+grpc bwd comm" 6.245136260986328e-06
+Overall iteration time 3199.687744140625
+Finished training it 39/128 of epoch 0, 3199.53 ms/it, loss 0.093468
+mbs is 16
+Fwd comm: 0.0011696405410766603 ms
+Forward 1176.5341796875 ms
+Backward time: 3033.301025390625
+grpc bwd comm" 1.30462646484375e-05
+Overall iteration time 4225.33642578125
+Finished training it 40/128 of epoch 0, 4225.16 ms/it, loss 0.088768
+mbs is 16
+Fwd comm: 0.0035621705055236814 ms
+Forward 3568.2353515625 ms
+Backward time: 118.04569244384766
+grpc bwd comm" 3.8645267486572265e-06
+Overall iteration time 3692.49072265625
+Finished training it 41/128 of epoch 0, 3692.33 ms/it, loss 0.055800
+mbs is 16
+Fwd comm: 0.0007146499156951904 ms
+Forward 721.8410034179688 ms
+Backward time: 947.44677734375
+grpc bwd comm" 1.6074180603027344e-06
+Overall iteration time 1675.031494140625
+Finished training it 42/128 of epoch 0, 1674.88 ms/it, loss 0.114728
+mbs is 16
+Fwd comm: 0.0025250821113586425 ms
+Forward 2533.244140625 ms
+Backward time: 632.7736206054688
+grpc bwd comm" 5.769729614257812e-06
+Overall iteration time 3173.91259765625
+Finished training it 43/128 of epoch 0, 3173.76 ms/it, loss 0.089038
+mbs is 16
+Fwd comm: 0.001163052797317505 ms
+Forward 1170.491455078125 ms
+Backward time: 2068.681640625
+grpc bwd comm" 2.237558364868164e-06
+Overall iteration time 3243.36328125
+Finished training it 44/128 of epoch 0, 3243.22 ms/it, loss 0.078661
+mbs is 16
+Fwd comm: 0.0004800610542297363 ms
+Forward 486.09197998046875 ms
+Backward time: 1330.044921875
+grpc bwd comm" 9.884238243103027e-05
+Overall iteration time 1916.8941650390625
+Finished training it 45/128 of epoch 0, 1916.74 ms/it, loss 0.090668
+mbs is 16
+Fwd comm: 0.0003828432559967041 ms
+Forward 389.8496398925781 ms
+Backward time: 1314.7279052734375
+grpc bwd comm" 4.2645931243896485e-06
+Overall iteration time 1710.8367919921875
+Finished training it 46/128 of epoch 0, 1710.67 ms/it, loss 0.082785
+mbs is 16
+Fwd comm: 0.0005282530784606934 ms
+Forward 538.2275390625 ms
+Backward time: 2181.359619140625
+grpc bwd comm" 6.2024593353271486e-06
+Overall iteration time 2727.677978515625
+Finished training it 47/128 of epoch 0, 2727.53 ms/it, loss 0.085744
+mbs is 16
+Fwd comm: 0.0034430265426635743 ms
+Forward 3450.114990234375 ms
+Backward time: 361.2774353027344
+grpc bwd comm" 5.5320262908935545e-06
+Overall iteration time 3819.0029296875
+Finished training it 48/128 of epoch 0, 3818.84 ms/it, loss 0.063745
+mbs is 16
+Fwd comm: 0.0009794857501983644 ms
+Forward 986.4676513671875 ms
+Backward time: 1423.9508056640625
+grpc bwd comm" 8.325576782226563e-06
+Overall iteration time 2420.959228515625
+Finished training it 49/128 of epoch 0, 2420.76 ms/it, loss 0.100489
+mbs is 16
+Fwd comm: 0.0020020937919616698 ms
+Forward 2009.3712158203125 ms
+Backward time: 121.33478546142578
+grpc bwd comm" 1.0117292404174805e-05
+Overall iteration time 2142.97705078125
+Finished training it 50/128 of epoch 0, 2142.80 ms/it, loss 0.081897
+mbs is 16
+Fwd comm: 0.002450904130935669 ms
+Forward 2456.672119140625 ms
+Backward time: 166.3477783203125
+grpc bwd comm" 2.539396286010742e-06
+Overall iteration time 2627.97412109375
+Finished training it 51/128 of epoch 0, 2627.80 ms/it, loss 0.086853
+mbs is 16
+Fwd comm: 0.0009759056568145752 ms
+Forward 984.5892333984375 ms
+Backward time: 2462.319580078125
+grpc bwd comm" 2.1600723266601564e-06
+Overall iteration time 3450.9853515625
+Finished training it 52/128 of epoch 0, 3450.86 ms/it, loss 0.109119
+mbs is 16
+Fwd comm: 0.0020351784229278563 ms
+Forward 2043.639892578125 ms
+Backward time: 897.88720703125
+grpc bwd comm" 5.1648616790771485e-06
+Overall iteration time 2948.703125
+Finished training it 53/128 of epoch 0, 2948.52 ms/it, loss 0.109963
+mbs is 16
+Fwd comm: 0.002281745672225952 ms
+Forward 2288.990966796875 ms
+Backward time: 1645.03857421875
+grpc bwd comm" 3.2117366790771485e-06
+Overall iteration time 3939.00146484375
+Finished training it 54/128 of epoch 0, 3938.87 ms/it, loss 0.086445
+mbs is 16
+Fwd comm: 0.001140247106552124 ms
+Forward 1148.0086669921875 ms
+Backward time: 2990.089111328125
+grpc bwd comm" 4.059314727783203e-06
+Overall iteration time 4144.66064453125
+Finished training it 55/128 of epoch 0, 4144.49 ms/it, loss 0.076581
+mbs is 16
+Fwd comm: 0.001201418399810791 ms
+Forward 1212.2508544921875 ms
+Backward time: 1661.2259521484375
+grpc bwd comm" 3.291821479797363e-05
+Overall iteration time 2908.504150390625
+Finished training it 56/128 of epoch 0, 2908.32 ms/it, loss 0.084777
+mbs is 16
+Fwd comm: 0.0016409029960632324 ms
+Forward 1647.0404052734375 ms
+Backward time: 493.0457458496094
+grpc bwd comm" 5.131244659423828e-06
+Overall iteration time 2147.439697265625
+Finished training it 57/128 of epoch 0, 2147.20 ms/it, loss 0.106873
+mbs is 16
+Fwd comm: 0.002659447908401489 ms
+Forward 2667.429443359375 ms
+Backward time: 1359.240234375
+grpc bwd comm" 2.1817684173583984e-06
+Overall iteration time 4031.2177734375
+Finished training it 58/128 of epoch 0, 4031.05 ms/it, loss 0.138103
+mbs is 16
+Fwd comm: 0.00036337733268737793 ms
+Forward 370.33392333984375 ms
+Backward time: 3155.48046875
+grpc bwd comm" 3.2489299774169923e-06
+Overall iteration time 3531.230224609375
+Finished training it 59/128 of epoch 0, 3531.05 ms/it, loss 0.119205
+mbs is 16
+Fwd comm: 0.0004575152397155762 ms
+Forward 463.2744445800781 ms
+Backward time: 2825.01123046875
+grpc bwd comm" 2.4313926696777345e-06
+Overall iteration time 3292.424072265625
+Finished training it 60/128 of epoch 0, 3292.30 ms/it, loss 0.068983
+mbs is 16
+Fwd comm: 0.0007004005908966065 ms
+Forward 707.3748168945312 ms
+Backward time: 588.5368041992188
+grpc bwd comm" 3.131389617919922e-06
+Overall iteration time 1300.974609375
+Finished training it 61/128 of epoch 0, 1300.83 ms/it, loss 0.110077
+mbs is 16
+Fwd comm: 0.0019449281692504883 ms
+Forward 1954.023193359375 ms
+Backward time: 1040.2734375
+grpc bwd comm" 6.196856498718262e-05
+Overall iteration time 3058.4228515625
+Finished training it 62/128 of epoch 0, 3058.28 ms/it, loss 0.069978
+mbs is 16
+Fwd comm: 0.0015716636180877685 ms
+Forward 1578.8035888671875 ms
+Backward time: 2260.087890625
+grpc bwd comm" 4.592418670654297e-06
+Overall iteration time 3845.182373046875
+Finished training it 63/128 of epoch 0, 3845.05 ms/it, loss 0.099836
+mbs is 16
+Fwd comm: 0.002659914255142212 ms
+Forward 2668.58154296875 ms
+Backward time: 1306.481689453125
+grpc bwd comm" 4.987716674804688e-06
+Overall iteration time 3982.087158203125
+Finished training it 64/128 of epoch 0, 3981.92 ms/it, loss 0.085585
+mbs is 16
+Fwd comm: 0.002241241455078125 ms
+Forward 2248.703857421875 ms
+Backward time: 1548.732421875
+grpc bwd comm" 2.554655075073242e-06
+Overall iteration time 3802.165283203125
+Finished training it 65/128 of epoch 0, 3802.00 ms/it, loss 0.059581
+mbs is 16
+Fwd comm: 0.0020514860153198243 ms
+Forward 2059.249755859375 ms
+Backward time: 1229.1890869140625
+grpc bwd comm" 7.277488708496094e-06
+Overall iteration time 3297.82275390625
+Finished training it 66/128 of epoch 0, 3297.67 ms/it, loss 0.086739
+mbs is 16
+Fwd comm: 0.0017903375625610352 ms
+Forward 1798.5689697265625 ms
+Backward time: 427.040771484375
+grpc bwd comm" 2.7484893798828126e-06
+Overall iteration time 2230.37451171875
+Finished training it 67/128 of epoch 0, 2230.21 ms/it, loss 0.091238
+mbs is 16
+Fwd comm: 0.0020254878997802736 ms
+Forward 2035.283447265625 ms
+Backward time: 332.67303466796875
+grpc bwd comm" 4.4789314270019535e-06
+Overall iteration time 2374.67041015625
+Finished training it 68/128 of epoch 0, 2374.46 ms/it, loss 0.096435
+mbs is 16
+Fwd comm: 0.0011906909942626953 ms
+Forward 1200.8958740234375 ms
+Backward time: 154.97010803222656
+grpc bwd comm" 4.104256629943848e-05
+Overall iteration time 1398.9129638671875
+Finished training it 69/128 of epoch 0, 1398.66 ms/it, loss 0.081038
+mbs is 16
+Fwd comm: 3.852367401123047e-05 ms
+Forward 46.02492904663086 ms
+Backward time: 3326.51416015625
+grpc bwd comm" 7.25102424621582e-06
+Overall iteration time 3381.580810546875
+Finished training it 70/128 of epoch 0, 3381.28 ms/it, loss 0.087711
+mbs is 16
+Fwd comm: 0.001190664529800415 ms
+Forward 1198.614013671875 ms
+Backward time: 577.80224609375
+grpc bwd comm" 4.409074783325195e-06
+Overall iteration time 1783.0379638671875
+Finished training it 71/128 of epoch 0, 1782.85 ms/it, loss 0.074117
+mbs is 16
+Fwd comm: 0.0008031466007232666 ms
+Forward 811.2494506835938 ms
+Backward time: 831.9661865234375
+grpc bwd comm" 6.275653839111328e-06
+Overall iteration time 1651.3331298828125
+Finished training it 72/128 of epoch 0, 1651.18 ms/it, loss 0.057300
+mbs is 16
+Fwd comm: 0.0029033670425415038 ms
+Forward 2911.6669921875 ms
+Backward time: 850.882568359375
+grpc bwd comm" 7.241725921630859e-06
+Overall iteration time 3771.931640625
+Finished training it 73/128 of epoch 0, 3771.76 ms/it, loss 0.086908
+mbs is 16
+Fwd comm: 0.0024279401302337647 ms
+Forward 2433.38916015625 ms
+Backward time: 999.151611328125
+grpc bwd comm" 2.099514007568359e-06
+Overall iteration time 3436.687255859375
+Finished training it 74/128 of epoch 0, 3436.54 ms/it, loss 0.093568
+mbs is 16
+Fwd comm: 0.00046707749366760255 ms
+Forward 475.8123474121094 ms
+Backward time: 2075.693115234375
+grpc bwd comm" 3.087759017944336e-06
+Overall iteration time 2556.55224609375
+Finished training it 75/128 of epoch 0, 2556.38 ms/it, loss 0.059912
+mbs is 16
+Fwd comm: 0.0028215839862823487 ms
+Forward 2827.64404296875 ms
+Backward time: 1377.702880859375
+grpc bwd comm" 7.01284408569336e-06
+Overall iteration time 4214.3291015625
+Finished training it 76/128 of epoch 0, 4214.18 ms/it, loss 0.095059
+mbs is 16
+Fwd comm: 0.0017263619899749755 ms
+Forward 1733.4661865234375 ms
+Backward time: 1713.0045166015625
+grpc bwd comm" 5.93113899230957e-06
+Overall iteration time 3454.634033203125
+Finished training it 77/128 of epoch 0, 3454.49 ms/it, loss 0.077573
+mbs is 16
+Fwd comm: 0.00010787034034729003 ms
+Forward 116.2892837524414 ms
+Backward time: 2857.51708984375
+grpc bwd comm" 1.456308364868164e-05
+Overall iteration time 2990.802001953125
+Finished training it 78/128 of epoch 0, 2990.64 ms/it, loss 0.089479
+mbs is 16
+Fwd comm: 0.002418111801147461 ms
+Forward 2423.44970703125 ms
+Backward time: 164.99609375
+grpc bwd comm" 7.871627807617187e-06
+Overall iteration time 2598.256591796875
+Finished training it 79/128 of epoch 0, 2598.12 ms/it, loss 0.070038
+mbs is 16
+Fwd comm: 0.0039033989906311034 ms
+Forward 3910.24462890625 ms
+Backward time: 133.88185119628906
+grpc bwd comm" 3.7238597869873046e-06
+Overall iteration time 4049.8974609375
+Finished training it 80/128 of epoch 0, 4049.75 ms/it, loss 0.096613
+mbs is 16
+Fwd comm: 0.0012115979194641114 ms
+Forward 1217.61767578125 ms
+Backward time: 2187.399169921875
+grpc bwd comm" 9.021997451782227e-06
+Overall iteration time 3417.016357421875
+Finished training it 81/128 of epoch 0, 3416.85 ms/it, loss 0.081105
+mbs is 16
+Fwd comm: 0.0022515707015991213 ms
+Forward 2257.79931640625 ms
+Backward time: 1598.140380859375
+grpc bwd comm" 4.1046142578125e-06
+Overall iteration time 3861.895263671875
+Finished training it 82/128 of epoch 0, 3861.75 ms/it, loss 0.099494
+mbs is 16
+Fwd comm: 0.0005393834114074707 ms
+Forward 546.4888916015625 ms
+Backward time: 1761.490966796875
+grpc bwd comm" 4.96983528137207e-06
+Overall iteration time 2314.84716796875
+Finished training it 83/128 of epoch 0, 2314.67 ms/it, loss 0.087399
+mbs is 16
+Fwd comm: 0.0004807949066162109 ms
+Forward 488.1606750488281 ms
+Backward time: 509.84857177734375
+grpc bwd comm" 5.402565002441406e-06
+Overall iteration time 1005.391845703125
+Finished training it 84/128 of epoch 0, 1005.21 ms/it, loss 0.091109
+mbs is 16
+Fwd comm: 0.0005952067375183106 ms
+Forward 602.6817626953125 ms
+Backward time: 415.35284423828125
+grpc bwd comm" 4.33802604675293e-06
+Overall iteration time 1024.405517578125
+Finished training it 85/128 of epoch 0, 1024.24 ms/it, loss 0.076219
+mbs is 16
+Fwd comm: 0.001448744773864746 ms
+Forward 1456.6983642578125 ms
+Backward time: 774.8853759765625
+grpc bwd comm" 5.9448003768920896e-05
+Overall iteration time 2293.1455078125
+Finished training it 86/128 of epoch 0, 2293.00 ms/it, loss 0.081243
+mbs is 16
+Fwd comm: 0.00312786865234375 ms
+Forward 3136.748291015625 ms
+Backward time: 501.2275085449219
+grpc bwd comm" 5.192041397094727e-06
+Overall iteration time 3645.6787109375
+Finished training it 87/128 of epoch 0, 3645.54 ms/it, loss 0.067514
+mbs is 16
+Fwd comm: 0.0018920106887817382 ms
+Forward 1899.937744140625 ms
+Backward time: 532.294677734375
+grpc bwd comm" 5.5725336074829105e-05
+Overall iteration time 2490.219482421875
+Finished training it 88/128 of epoch 0, 2490.04 ms/it, loss 0.060867
+mbs is 16
+Fwd comm: 0.0030682520866394045 ms
+Forward 3075.001708984375 ms
+Backward time: 508.8931884765625
+grpc bwd comm" 3.873825073242188e-06
+Overall iteration time 3589.959716796875
+Finished training it 89/128 of epoch 0, 3589.78 ms/it, loss 0.097249
+mbs is 16
+Fwd comm: 0.0005422282218933105 ms
+Forward 549.2999267578125 ms
+Backward time: 1148.04736328125
+grpc bwd comm" 4.25267219543457e-06
+Overall iteration time 1703.7496337890625
+Finished training it 90/128 of epoch 0, 1703.56 ms/it, loss 0.100343
+mbs is 16
+Fwd comm: 0.0012193119525909424 ms
+Forward 1226.423095703125 ms
+Backward time: 143.599609375
+grpc bwd comm" 3.530740737915039e-06
+Overall iteration time 1375.6170654296875
+Finished training it 91/128 of epoch 0, 1375.44 ms/it, loss 0.105716
+mbs is 16
+Fwd comm: 0.002129251480102539 ms
+Forward 2136.5283203125 ms
+Backward time: 352.9717712402344
+grpc bwd comm" 2.773165702819824e-05
+Overall iteration time 2519.9482421875
+Finished training it 92/128 of epoch 0, 2519.80 ms/it, loss 0.059277
+mbs is 16
+Fwd comm: 0.002205130338668823 ms
+Forward 2211.922607421875 ms
+Backward time: 355.31365966796875
+grpc bwd comm" 2.1696090698242187e-06
+Overall iteration time 2571.5322265625
+Finished training it 93/128 of epoch 0, 2571.34 ms/it, loss 0.076945
+mbs is 16
+Fwd comm: 0.0005512833595275879 ms
+Forward 558.2069091796875 ms
+Backward time: 3480.144775390625
+grpc bwd comm" 6.668329238891602e-06
+Overall iteration time 4046.93701171875
+Finished training it 94/128 of epoch 0, 4046.74 ms/it, loss 0.075620
+mbs is 16
+Fwd comm: 0.0022019102573394775 ms
+Forward 2208.780517578125 ms
+Backward time: 362.74072265625
+grpc bwd comm" 3.5517215728759766e-06
+Overall iteration time 2577.27392578125
+Finished training it 95/128 of epoch 0, 2577.12 ms/it, loss 0.084402
+mbs is 16
+Fwd comm: 0.0008040733337402343 ms
+Forward 811.08203125 ms
+Backward time: 2173.625244140625
+grpc bwd comm" 2.2748231887817382e-05
+Overall iteration time 3009.38134765625
+Finished training it 96/128 of epoch 0, 3009.24 ms/it, loss 0.075361
+mbs is 16
+Fwd comm: 0.0008139150142669677 ms
+Forward 819.5203247070312 ms
+Backward time: 1685.5982666015625
+grpc bwd comm" 4.673957824707031e-06
+Overall iteration time 2512.018310546875
+Finished training it 97/128 of epoch 0, 2511.87 ms/it, loss 0.088297
+mbs is 16
+Fwd comm: 0.0024517364501953124 ms
+Forward 2460.087646484375 ms
+Backward time: 153.28871154785156
+grpc bwd comm" 6.290197372436523e-06
+Overall iteration time 2622.42919921875
+Finished training it 98/128 of epoch 0, 2622.25 ms/it, loss 0.069024
+mbs is 16
+Fwd comm: 0.0014449272155761719 ms
+Forward 1450.5191650390625 ms
+Backward time: 2500.210693359375
+grpc bwd comm" 1.410961151123047e-06
+Overall iteration time 3954.236328125
+Finished training it 99/128 of epoch 0, 3954.08 ms/it, loss 0.076377
+mbs is 16
+Fwd comm: 0.0004303288459777832 ms
+Forward 437.45648193359375 ms
+Backward time: 3149.408203125
+grpc bwd comm" 4.826545715332031e-06
+Overall iteration time 3593.785400390625
+Finished training it 100/128 of epoch 0, 3593.60 ms/it, loss 0.104906
+mbs is 16
+Fwd comm: 0.0008776977062225342 ms
+Forward 885.7921752929688 ms
+Backward time: 2753.026123046875
+grpc bwd comm" 5.141496658325196e-06
+Overall iteration time 3646.11572265625
+Finished training it 101/128 of epoch 0, 3645.94 ms/it, loss 0.086446
+mbs is 16
+Fwd comm: 0.0021543524265289307 ms
+Forward 2161.401123046875 ms
+Backward time: 742.9099731445312
+grpc bwd comm" 2.8738975524902344e-06
+Overall iteration time 2909.3037109375
+Finished training it 102/128 of epoch 0, 2909.12 ms/it, loss 0.107645
+mbs is 16
+Fwd comm: 0.0007361745834350585 ms
+Forward 742.4645385742188 ms
+Backward time: 3056.639892578125
+grpc bwd comm" 5.318164825439453e-06
+Overall iteration time 3806.636962890625
+Finished training it 103/128 of epoch 0, 3806.46 ms/it, loss 0.061432
+mbs is 16
+Fwd comm: 0.0029649343490600584 ms
+Forward 2971.64453125 ms
+Backward time: 386.84979248046875
+grpc bwd comm" 3.1409263610839843e-06
+Overall iteration time 3364.020263671875
+Finished training it 104/128 of epoch 0, 3363.83 ms/it, loss 0.083047
+mbs is 16
+Fwd comm: 0.0011129088401794433 ms
+Forward 1120.0499267578125 ms
+Backward time: 1504.818115234375
+grpc bwd comm" 1.5158653259277343e-06
+Overall iteration time 2628.404296875
+Finished training it 105/128 of epoch 0, 2628.23 ms/it, loss 0.079301
+mbs is 16
+Fwd comm: 0.0005740911960601807 ms
+Forward 581.3361206054688 ms
+Backward time: 2423.731201171875
+grpc bwd comm" 5.041360855102539e-06
+Overall iteration time 3012.4248046875
+Finished training it 106/128 of epoch 0, 3012.23 ms/it, loss 0.050715
+mbs is 16
+Fwd comm: 0.0013156869411468505 ms
+Forward 1322.718994140625 ms
+Backward time: 2106.406982421875
+grpc bwd comm" 4.337549209594727e-06
+Overall iteration time 3435.696044921875
+Finished training it 107/128 of epoch 0, 3435.53 ms/it, loss 0.075747
+mbs is 16
+Fwd comm: 0.0027971367835998534 ms
+Forward 2804.0322265625 ms
+Backward time: 1186.56201171875
+grpc bwd comm" 7.772445678710938e-06
+Overall iteration time 4000.140380859375
+Finished training it 108/128 of epoch 0, 3999.97 ms/it, loss 0.053079
+mbs is 16
+Fwd comm: 0.001596433162689209 ms
+Forward 1601.901123046875 ms
+Backward time: 137.99014282226562
+grpc bwd comm" 6.598234176635742e-06
+Overall iteration time 1748.5966796875
+Finished training it 109/128 of epoch 0, 1748.41 ms/it, loss 0.090199
+mbs is 16
+Fwd comm: 0.002424034833908081 ms
+Forward 2432.34619140625 ms
+Backward time: 392.57598876953125
+grpc bwd comm" 1.4488697052001953e-06
+Overall iteration time 2843.464599609375
+Finished training it 110/128 of epoch 0, 2843.33 ms/it, loss 0.079969
+mbs is 16
+Fwd comm: 0.002487515211105347 ms
+Forward 2495.021728515625 ms
+Backward time: 143.5299835205078
+grpc bwd comm" 6.300997734069825e-05
+Overall iteration time 2703.596435546875
+Finished training it 111/128 of epoch 0, 2703.44 ms/it, loss 0.055876
+mbs is 16
+Fwd comm: 0.001826380968093872 ms
+Forward 1834.1708984375 ms
+Backward time: 611.0802001953125
+grpc bwd comm" 2.864837646484375e-06
+Overall iteration time 2450.27734375
+Finished training it 112/128 of epoch 0, 2450.11 ms/it, loss 0.048859
+mbs is 16
+Fwd comm: 0.0007645304203033447 ms
+Forward 772.8218994140625 ms
+Backward time: 2251.1953125
+grpc bwd comm" 1.302957534790039e-06
+Overall iteration time 3027.559326171875
+Finished training it 113/128 of epoch 0, 3027.40 ms/it, loss 0.082365
+mbs is 16
+Fwd comm: 0.002991039991378784 ms
+Forward 3001.627685546875 ms
+Backward time: 126.40767669677734
+grpc bwd comm" 3.72624397277832e-06
+Overall iteration time 3134.00634765625
+Finished training it 114/128 of epoch 0, 3133.84 ms/it, loss 0.072277
+mbs is 16
+Fwd comm: 0.001336042881011963 ms
+Forward 1342.615966796875 ms
+Backward time: 1599.6241455078125
+grpc bwd comm" 1.8451213836669922e-06
+Overall iteration time 2946.735107421875
+Finished training it 115/128 of epoch 0, 2946.57 ms/it, loss 0.082559
+mbs is 16
+Fwd comm: 0.0008933587074279785 ms
+Forward 901.9638671875 ms
+Backward time: 2448.6953125
+grpc bwd comm" 1.9960403442382812e-06
+Overall iteration time 3354.67724609375
+Finished training it 116/128 of epoch 0, 3354.55 ms/it, loss 0.063023
+mbs is 16
+Fwd comm: 0.0019543344974517823 ms
+Forward 1961.8900146484375 ms
+Backward time: 1700.8240966796875
+grpc bwd comm" 2.7582645416259768e-06
+Overall iteration time 3667.695556640625
+Finished training it 117/128 of epoch 0, 3667.54 ms/it, loss 0.096795
+mbs is 16
+Fwd comm: 0.0006100471019744873 ms
+Forward 618.0631713867188 ms
+Backward time: 2124.297119140625
+grpc bwd comm" 6.287097930908203e-06
+Overall iteration time 2750.900146484375
+Finished training it 118/128 of epoch 0, 2750.74 ms/it, loss 0.076773
+mbs is 16
+Fwd comm: 0.0035369865894317627 ms
+Forward 3543.455078125 ms
+Backward time: 251.05101013183594
+grpc bwd comm" 1.9965171813964845e-06
+Overall iteration time 3798.678466796875
+Finished training it 119/128 of epoch 0, 3798.52 ms/it, loss 0.078011
+mbs is 16
+Fwd comm: 0.0025950007438659667 ms
+Forward 2604.960205078125 ms
+Backward time: 1266.5701904296875
+grpc bwd comm" 1.8374919891357422e-06
+Overall iteration time 3875.57275390625
+Finished training it 120/128 of epoch 0, 3875.41 ms/it, loss 0.078126
+mbs is 16
+Fwd comm: 0.00042133116722106934 ms
+Forward 431.36016845703125 ms
+Backward time: 3598.17626953125
+grpc bwd comm" 6.5090656280517574e-06
+Overall iteration time 4038.222900390625
+Finished training it 121/128 of epoch 0, 4038.05 ms/it, loss 0.115221
+mbs is 16
+Fwd comm: 0.00105483078956604 ms
+Forward 1062.6455078125 ms
+Backward time: 2159.351806640625
+grpc bwd comm" 3.166675567626953e-06
+Overall iteration time 3227.5087890625
+Finished training it 122/128 of epoch 0, 3227.33 ms/it, loss 0.069787
+mbs is 16
+Fwd comm: 0.0016670353412628174 ms
+Forward 1674.1676025390625 ms
+Backward time: 2234.0546875
+grpc bwd comm" 1.7714500427246093e-06
+Overall iteration time 3912.322998046875
+Finished training it 123/128 of epoch 0, 3912.15 ms/it, loss 0.091119
+mbs is 16
+Fwd comm: 0.0005402884483337402 ms
+Forward 548.7379760742188 ms
+Backward time: 3906.79248046875
+grpc bwd comm" 1.6498565673828125e-06
+Overall iteration time 4459.01220703125
+Finished training it 124/128 of epoch 0, 4458.85 ms/it, loss 0.101020
+mbs is 16
+Fwd comm: 0.0005515973567962647 ms
+Forward 560.6773071289062 ms
+Backward time: 2044.6678466796875
+grpc bwd comm" 1.8613338470458985e-06
+Overall iteration time 2609.2451171875
+Finished training it 125/128 of epoch 0, 2609.03 ms/it, loss 0.093750
+mbs is 16
+Fwd comm: 0.000713918924331665 ms
+Forward 721.9354858398438 ms
+Backward time: 2702.482421875
+grpc bwd comm" 5.067110061645508e-06
+Overall iteration time 3431.528564453125
+Finished training it 126/128 of epoch 0, 3431.38 ms/it, loss 0.077006
+mbs is 16
+Fwd comm: 0.0010615203380584717 ms
+Forward 1070.6475830078125 ms
+Backward time: 2417.3896484375
+grpc bwd comm" 2.4890899658203124e-06
+Overall iteration time 3492.2802734375
+Finished training it 127/128 of epoch 0, 3492.14 ms/it, loss 0.064444
+mbs is 16
+Fwd comm: 0.003176036596298218 ms
+Forward 3183.976318359375 ms
+Backward time: 947.6597900390625
+grpc bwd comm" 6.917476654052734e-06
+Overall iteration time 4141.6396484375
+Finished training it 128/128 of epoch 0, 4141.45 ms/it, loss 0.099635
+mbs is 16
+Fwd comm: 0.0018551678657531738 ms
+Forward 1861.279052734375 ms
+Backward time: 2150.583251953125
+grpc bwd comm" 2.8853416442871094e-06
+Overall iteration time 4016.901123046875
+Finished training it 1/128 of epoch 1, 4016.67 ms/it, loss 0.069424
+mbs is 16
+Fwd comm: 0.002498408555984497 ms
+Forward 2505.38427734375 ms
+Backward time: 641.8646850585938
+grpc bwd comm" 6.8683624267578125e-06
+Overall iteration time 3156.169677734375
+Finished training it 2/128 of epoch 1, 3155.99 ms/it, loss 0.063920
+mbs is 16
+Fwd comm: 0.0010393216609954833 ms
+Forward 1046.7685546875 ms
+Backward time: 103.84588623046875
+grpc bwd comm" 5.568504333496094e-06
+Overall iteration time 1158.318115234375
+Finished training it 3/128 of epoch 1, 1158.15 ms/it, loss 0.073948
+mbs is 16
+Fwd comm: 0.0021164777278900146 ms
+Forward 2124.328369140625 ms
+Backward time: 714.1427001953125
+grpc bwd comm" 6.586074829101562e-06
+Overall iteration time 2847.29248046875
+Finished training it 4/128 of epoch 1, 2847.12 ms/it, loss 0.080606
+mbs is 16
+Fwd comm: 0.0009203424453735351 ms
+Forward 925.5673828125 ms
+Backward time: 2488.97021484375
+grpc bwd comm" 5.829572677612305e-06
+Overall iteration time 3422.709716796875
+Finished training it 5/128 of epoch 1, 3422.53 ms/it, loss 0.076387
+mbs is 16
+Fwd comm: 0.0028081650733947756 ms
+Forward 2815.029296875 ms
+Backward time: 596.9152221679688
+grpc bwd comm" 6.648302078247071e-06
+Overall iteration time 3420.5869140625
+Finished training it 6/128 of epoch 1, 3420.44 ms/it, loss 0.080177
+mbs is 16
+Fwd comm: 0.0013051230907440185 ms
+Forward 1313.88525390625 ms
+Backward time: 1570.3603515625
+grpc bwd comm" 2.335548400878906e-06
+Overall iteration time 2888.584228515625
+Finished training it 7/128 of epoch 1, 2888.44 ms/it, loss 0.075535
+mbs is 16
+Fwd comm: 0.0029564409255981444 ms
+Forward 2967.9072265625 ms
+Backward time: 514.3787231445312
+grpc bwd comm" 3.780364990234375e-06
+Overall iteration time 3488.1259765625
+Finished training it 8/128 of epoch 1, 3487.94 ms/it, loss 0.070837
+mbs is 16
+Fwd comm: 0.0015816853046417237 ms
+Forward 1588.894287109375 ms
+Backward time: 664.4623413085938
+grpc bwd comm" 6.680250167846679e-06
+Overall iteration time 2262.14501953125
+Finished training it 9/128 of epoch 1, 2261.97 ms/it, loss 0.084574
+mbs is 16
+Fwd comm: 0.0020504565238952635 ms
+Forward 2057.197998046875 ms
+Backward time: 337.1673583984375
+grpc bwd comm" 6.273508071899414e-06
+Overall iteration time 2402.484130859375
+Finished training it 10/128 of epoch 1, 2402.34 ms/it, loss 0.106478
+mbs is 16
+Fwd comm: 0.001461150884628296 ms
+Forward 1466.4229736328125 ms
+Backward time: 544.4096069335938
+grpc bwd comm" 1.3539791107177735e-06
+Overall iteration time 2014.045166015625
+Finished training it 11/128 of epoch 1, 2013.89 ms/it, loss 0.095823
+mbs is 16
+Fwd comm: 0.0008256127834320069 ms
+Forward 833.281494140625 ms
+Backward time: 2897.807373046875
+grpc bwd comm" 4.725456237792969e-06
+Overall iteration time 3737.830322265625
+Finished training it 12/128 of epoch 1, 3737.66 ms/it, loss 0.089434
+mbs is 16
+Fwd comm: 0.0003608725070953369 ms
+Forward 367.4261474609375 ms
+Backward time: 2342.707275390625
+grpc bwd comm" 7.760524749755859e-06
+Overall iteration time 2720.0439453125
+Finished training it 13/128 of epoch 1, 2719.88 ms/it, loss 0.061847
+mbs is 16
+Fwd comm: 0.003681570053100586 ms
+Forward 3689.39599609375 ms
+Backward time: 522.2881469726562
+grpc bwd comm" 4.9991607666015625e-06
+Overall iteration time 4218.9794921875
+Finished training it 14/128 of epoch 1, 4218.86 ms/it, loss 0.071663
+mbs is 16
+Fwd comm: 0.002016589641571045 ms
+Forward 2024.02294921875 ms
+Backward time: 1258.982421875
+grpc bwd comm" 6.076574325561523e-06
+Overall iteration time 3290.97216796875
+Finished training it 15/128 of epoch 1, 3290.81 ms/it, loss 0.052363
+mbs is 16
+Fwd comm: 0.00107887601852417 ms
+Forward 1086.8648681640625 ms
+Backward time: 2474.632080078125
+grpc bwd comm" 5.332469940185547e-06
+Overall iteration time 3568.57763671875
+Finished training it 16/128 of epoch 1, 3568.43 ms/it, loss 0.087157
+mbs is 16
+Fwd comm: 0.0008818151950836182 ms
+Forward 889.2538452148438 ms
+Backward time: 125.00582122802734
+grpc bwd comm" 5.2511215209960935e-05
+Overall iteration time 1068.8665771484375
+Finished training it 17/128 of epoch 1, 1068.70 ms/it, loss 0.053040
+mbs is 16
+Fwd comm: 0.001119384765625 ms
+Forward 1125.1922607421875 ms
+Backward time: 3078.88232421875
+grpc bwd comm" 1.3881444931030273e-05
+Overall iteration time 4220.11279296875
+Finished training it 18/128 of epoch 1, 4219.93 ms/it, loss 0.077932
+mbs is 16
+Fwd comm: 0.003484295606613159 ms
+Forward 3489.503662109375 ms
+Backward time: 133.27462768554688
+grpc bwd comm" 6.248235702514649e-06
+Overall iteration time 3630.8212890625
+Finished training it 19/128 of epoch 1, 3630.66 ms/it, loss 0.121629
+mbs is 16
+Fwd comm: 0.0011090142726898193 ms
+Forward 1116.5477294921875 ms
+Backward time: 2174.251953125
+grpc bwd comm" 2.195119857788086e-06
+Overall iteration time 3295.196044921875
+Finished training it 20/128 of epoch 1, 3295.01 ms/it, loss 0.079668
+mbs is 16
+Fwd comm: 0.00014219164848327636 ms
+Forward 150.60032653808594 ms
+Backward time: 1357.3468017578125
+grpc bwd comm" 1.7155647277832032e-05
+Overall iteration time 1527.0706787109375
+Finished training it 21/128 of epoch 1, 1526.85 ms/it, loss 0.052983
+mbs is 16
+Fwd comm: 0.00031645679473876954 ms
+Forward 323.5638732910156 ms
+Backward time: 3077.9228515625
+grpc bwd comm" 3.5402774810791016e-06
+Overall iteration time 3406.812255859375
+Finished training it 22/128 of epoch 1, 3406.58 ms/it, loss 0.080343
+mbs is 16
+Fwd comm: 0.0023435530662536622 ms
+Forward 2350.263427734375 ms
+Backward time: 465.7735595703125
+grpc bwd comm" 7.948398590087891e-06
+Overall iteration time 2826.209228515625
+Finished training it 23/128 of epoch 1, 2825.96 ms/it, loss 0.079645
+mbs is 16
+Fwd comm: 0.001084657907485962 ms
+Forward 1091.8966064453125 ms
+Backward time: 1645.980712890625
+grpc bwd comm" 3.355979919433594e-06
+Overall iteration time 2743.6083984375
+Finished training it 24/128 of epoch 1, 2743.43 ms/it, loss 0.071283
+mbs is 16
+Fwd comm: 0.0012684948444366456 ms
+Forward 1275.158935546875 ms
+Backward time: 1385.9696044921875
+grpc bwd comm" 2.5742053985595705e-06
+Overall iteration time 2666.343505859375
+Finished training it 25/128 of epoch 1, 2666.19 ms/it, loss 0.070143
+mbs is 16
+Fwd comm: 0.00016507863998413086 ms
+Forward 172.02243041992188 ms
+Backward time: 3004.388427734375
+grpc bwd comm" 2.6104450225830078e-06
+Overall iteration time 3181.034423828125
+Finished training it 26/128 of epoch 1, 3180.89 ms/it, loss 0.077566
+mbs is 16
+Fwd comm: 0.001994673252105713 ms
+Forward 2001.8546142578125 ms
+Backward time: 370.16473388671875
+grpc bwd comm" 4.467964172363281e-06
+Overall iteration time 2378.48876953125
+Finished training it 27/128 of epoch 1, 2378.32 ms/it, loss 0.086169
+mbs is 16
+Fwd comm: 0.0011407420635223388 ms
+Forward 1149.0162353515625 ms
+Backward time: 311.11883544921875
+grpc bwd comm" 2.469778060913086e-06
+Overall iteration time 1464.795166015625
+Finished training it 28/128 of epoch 1, 1464.62 ms/it, loss 0.120847
+mbs is 16
+Fwd comm: 0.00040871143341064453 ms
+Forward 417.6504821777344 ms
+Backward time: 3083.43603515625
+grpc bwd comm" 0.00022427940368652344
+Overall iteration time 3727.299560546875
+Finished training it 29/128 of epoch 1, 3727.16 ms/it, loss 0.078510
+mbs is 16
+Fwd comm: 0.0033246891498565673 ms
+Forward 3330.177734375 ms
+Backward time: 428.69964599609375
+grpc bwd comm" 5.676507949829102e-06
+Overall iteration time 3766.507568359375
+Finished training it 30/128 of epoch 1, 3766.36 ms/it, loss 0.073958
+mbs is 16
+Fwd comm: 0.0007177801132202149 ms
+Forward 723.4732055664062 ms
+Backward time: 336.1341552734375
+grpc bwd comm" 3.6814212799072267e-06
+Overall iteration time 1065.3255615234375
+Finished training it 31/128 of epoch 1, 1065.15 ms/it, loss 0.100920
+mbs is 16
+Fwd comm: 0.00274721097946167 ms
+Forward 2753.010498046875 ms
+Backward time: 690.6685180664062
+grpc bwd comm" 1.7843961715698243e-05
+Overall iteration time 3463.72802734375
+Finished training it 32/128 of epoch 1, 3463.56 ms/it, loss 0.078184
+mbs is 16
+Fwd comm: 0.0018829975128173827 ms
+Forward 1889.7786865234375 ms
+Backward time: 1238.44091796875
+grpc bwd comm" 1.4945268630981446e-05
+Overall iteration time 3145.05224609375
+Finished training it 33/128 of epoch 1, 3144.90 ms/it, loss 0.106584
+mbs is 16
+Fwd comm: 0.0029495553970336915 ms
+Forward 2955.447998046875 ms
+Backward time: 438.54437255859375
+grpc bwd comm" 4.000186920166015e-06
+Overall iteration time 3400.035400390625
+Finished training it 34/128 of epoch 1, 3399.87 ms/it, loss 0.066174
+mbs is 16
+Fwd comm: 0.0008347649574279785 ms
+Forward 842.4727172851562 ms
+Backward time: 2014.8203125
+grpc bwd comm" 7.324624061584472e-05
+Overall iteration time 2933.45166015625
+Finished training it 35/128 of epoch 1, 2933.30 ms/it, loss 0.067937
+mbs is 16
+Fwd comm: 0.0032343146800994874 ms
+Forward 3240.117431640625 ms
+Backward time: 571.2742309570312
+grpc bwd comm" 1.2743473052978515e-06
+Overall iteration time 3814.676513671875
+Finished training it 36/128 of epoch 1, 3814.53 ms/it, loss 0.089710
+mbs is 16
+Fwd comm: 0.0017944753170013427 ms
+Forward 1805.3125 ms
+Backward time: 2575.12451171875
+grpc bwd comm" 3.139972686767578e-06
+Overall iteration time 4385.875
+Finished training it 37/128 of epoch 1, 4385.70 ms/it, loss 0.064490
+mbs is 16
+Fwd comm: 0.0008271121978759765 ms
+Forward 834.0162353515625 ms
+Backward time: 149.38111877441406
+grpc bwd comm" 5.614519119262695e-06
+Overall iteration time 991.320068359375
+Finished training it 38/128 of epoch 1, 991.17 ms/it, loss 0.082188
+mbs is 16
+Fwd comm: 0.0016085588932037353 ms
+Forward 1617.2098388671875 ms
+Backward time: 1340.32080078125
+grpc bwd comm" 5.14674186706543e-06
+Overall iteration time 2964.798583984375
+Finished training it 39/128 of epoch 1, 2964.61 ms/it, loss 0.088331
+mbs is 16
+Fwd comm: 0.0030432875156402588 ms
+Forward 3051.362060546875 ms
+Backward time: 148.3100128173828
+grpc bwd comm" 4.045248031616211e-06
+Overall iteration time 3205.696533203125
+Finished training it 40/128 of epoch 1, 3205.55 ms/it, loss 0.096187
+mbs is 16
+Fwd comm: 0.00015300869941711425 ms
+Forward 159.97561645507812 ms
+Backward time: 2102.7900390625
+grpc bwd comm" 3.3719539642333986e-06
+Overall iteration time 2268.157958984375
+Finished training it 41/128 of epoch 1, 2267.98 ms/it, loss 0.051982
+mbs is 16
+Fwd comm: 0.002575145959854126 ms
+Forward 2587.62646484375 ms
+Backward time: 358.7307434082031
+grpc bwd comm" 3.6287307739257814e-06
+Overall iteration time 2952.435791015625
+Finished training it 42/128 of epoch 1, 2952.31 ms/it, loss 0.103288
+mbs is 16
+Fwd comm: 0.0007688121795654297 ms
+Forward 776.6165161132812 ms
+Backward time: 2585.3388671875
+grpc bwd comm" 6.9983005523681644e-06
+Overall iteration time 3370.919921875
+Finished training it 43/128 of epoch 1, 3370.73 ms/it, loss 0.079667
+mbs is 16
+Fwd comm: 0.001415278434753418 ms
+Forward 1422.2635498046875 ms
+Backward time: 530.3859252929688
+grpc bwd comm" 1.2509822845458984e-06
+Overall iteration time 1956.0345458984375
+Finished training it 44/128 of epoch 1, 1955.87 ms/it, loss 0.068737
+mbs is 16
+Fwd comm: 0.0020698580741882323 ms
+Forward 2076.33544921875 ms
+Backward time: 1978.072021484375
+grpc bwd comm" 4.167318344116211e-06
+Overall iteration time 4060.57666015625
+Finished training it 45/128 of epoch 1, 4060.43 ms/it, loss 0.084672
+mbs is 16
+Fwd comm: 0.0007941851615905762 ms
+Forward 801.0940551757812 ms
+Backward time: 2037.3134765625
+grpc bwd comm" 5.376100540161133e-06
+Overall iteration time 2846.446533203125
+Finished training it 46/128 of epoch 1, 2846.28 ms/it, loss 0.082902
+mbs is 16
+Fwd comm: 0.0016868228912353515 ms
+Forward 1695.326904296875 ms
+Backward time: 2879.813720703125
+grpc bwd comm" 5.6366920471191405e-06
+Overall iteration time 4582.68359375
+Finished training it 47/128 of epoch 1, 4582.57 ms/it, loss 0.078892
+mbs is 16
+Fwd comm: 0.0003214871883392334 ms
+Forward 328.3160705566406 ms
+Backward time: 3093.190673828125
+grpc bwd comm" 4.187822341918946e-06
+Overall iteration time 3427.59521484375
+Finished training it 48/128 of epoch 1, 3427.43 ms/it, loss 0.066335
+mbs is 16
+Fwd comm: 0.001250629186630249 ms
+Forward 1259.906005859375 ms
+Backward time: 2304.47216796875
+grpc bwd comm" 5.459308624267578e-06
+Overall iteration time 3571.788818359375
+Finished training it 49/128 of epoch 1, 3571.59 ms/it, loss 0.099846
+mbs is 16
+Fwd comm: 0.0023568882942199706 ms
+Forward 2364.23486328125 ms
+Backward time: 398.4660339355469
+grpc bwd comm" 5.7683467864990236e-05
+Overall iteration time 2822.642578125
+Finished training it 50/128 of epoch 1, 2822.45 ms/it, loss 0.078725
+mbs is 16
+Fwd comm: 0.0012575147151947022 ms
+Forward 1264.9127197265625 ms
+Backward time: 193.1182098388672
+grpc bwd comm" 3.229570388793945e-05
+Overall iteration time 1492.5147705078125
+Finished training it 51/128 of epoch 1, 1492.35 ms/it, loss 0.091518
+mbs is 16
+Fwd comm: 0.002678919792175293 ms
+Forward 2687.598388671875 ms
+Backward time: 1036.078125
+grpc bwd comm" 1.4660358428955078e-06
+Overall iteration time 3727.416259765625
+Finished training it 52/128 of epoch 1, 3727.24 ms/it, loss 0.102629
+mbs is 16
+Fwd comm: 0.0015771677494049072 ms
+Forward 1586.8951416015625 ms
+Backward time: 1952.585693359375
+grpc bwd comm" 3.968000411987305e-06
+Overall iteration time 3545.292724609375
+Finished training it 53/128 of epoch 1, 3545.13 ms/it, loss 0.111322
+mbs is 16
+Fwd comm: 0.0032974798679351806 ms
+Forward 3305.25634765625 ms
+Backward time: 808.2298583984375
+grpc bwd comm" 4.839420318603515e-06
+Overall iteration time 4120.65087890625
+Finished training it 54/128 of epoch 1, 4120.47 ms/it, loss 0.079686
+mbs is 16
+Fwd comm: 0.0007406301498413086 ms
+Forward 747.5870361328125 ms
+Backward time: 2798.15771484375
+grpc bwd comm" 2.7265548706054687e-06
+Overall iteration time 3550.309326171875
+Finished training it 55/128 of epoch 1, 3550.14 ms/it, loss 0.069343
+mbs is 16
+Fwd comm: 0.0006610608100891113 ms
+Forward 666.311279296875 ms
+Backward time: 3084.409912109375
+grpc bwd comm" 4.851579666137695e-06
+Overall iteration time 3757.447265625
+Finished training it 56/128 of epoch 1, 3757.32 ms/it, loss 0.084769
+mbs is 16
+Fwd comm: 0.002455941915512085 ms
+Forward 2462.016357421875 ms
+Backward time: 716.3433227539062
+grpc bwd comm" 3.828048706054688e-06
+Overall iteration time 3184.445556640625
+Finished training it 57/128 of epoch 1, 3184.27 ms/it, loss 0.099658
+mbs is 16
+Fwd comm: 0.000871708869934082 ms
+Forward 879.3236083984375 ms
+Backward time: 427.38177490234375
+grpc bwd comm" 3.4270286560058595e-06
+Overall iteration time 1312.648193359375
+Finished training it 58/128 of epoch 1, 1312.48 ms/it, loss 0.131686
+mbs is 16
+Fwd comm: 0.002500833511352539 ms
+Forward 2507.210205078125 ms
+Backward time: 579.8758544921875
+grpc bwd comm" 6.718873977661133e-06
+Overall iteration time 3095.847900390625
+Finished training it 59/128 of epoch 1, 3095.72 ms/it, loss 0.122018
+mbs is 16
+Fwd comm: 0.002600701332092285 ms
+Forward 2607.858154296875 ms
+Backward time: 661.30126953125
+grpc bwd comm" 6.542205810546875e-06
+Overall iteration time 3277.698974609375
+Finished training it 60/128 of epoch 1, 3277.54 ms/it, loss 0.067456
+mbs is 16
+Fwd comm: 0.0009579832553863525 ms
+Forward 965.0383911132812 ms
+Backward time: 811.1738891601562
+grpc bwd comm" 1.9550085067749022e-05
+Overall iteration time 1798.065185546875
+Finished training it 61/128 of epoch 1, 1797.89 ms/it, loss 0.107605
+mbs is 16
+Fwd comm: 0.0005879120826721192 ms
+Forward 594.55712890625 ms
+Backward time: 3091.938232421875
+grpc bwd comm" 7.25555419921875e-06
+Overall iteration time 3695.6611328125
+Finished training it 62/128 of epoch 1, 3695.51 ms/it, loss 0.065700
+mbs is 16
+Fwd comm: 0.0010515003204345703 ms
+Forward 1058.1602783203125 ms
+Backward time: 130.52723693847656
+grpc bwd comm" 6.059718132019043e-05
+Overall iteration time 1251.7498779296875
+Finished training it 63/128 of epoch 1, 1251.56 ms/it, loss 0.092300
+mbs is 16
+Fwd comm: 0.001372450351715088 ms
+Forward 1379.1317138671875 ms
+Backward time: 2488.75830078125
+grpc bwd comm" 3.896951675415039e-06
+Overall iteration time 3873.673095703125
+Finished training it 64/128 of epoch 1, 3873.48 ms/it, loss 0.079062
+mbs is 16
+Fwd comm: 0.002032478094100952 ms
+Forward 2040.16455078125 ms
+Backward time: 912.448486328125
+grpc bwd comm" 1.5184879302978515e-06
+Overall iteration time 2956.7978515625
+Finished training it 65/128 of epoch 1, 2956.62 ms/it, loss 0.064015
+mbs is 16
+Fwd comm: 0.00010959506034851074 ms
+Forward 115.34976196289062 ms
+Backward time: 3039.44091796875
+grpc bwd comm" 4.059791564941406e-06
+Overall iteration time 3161.427001953125
+Finished training it 66/128 of epoch 1, 3161.24 ms/it, loss 0.087013
+mbs is 16
+Fwd comm: 0.0009298064708709717 ms
+Forward 937.9115600585938 ms
+Backward time: 422.3180847167969
+grpc bwd comm" 6.151437759399414e-06
+Overall iteration time 1368.5975341796875
+Finished training it 67/128 of epoch 1, 1368.40 ms/it, loss 0.086286
+mbs is 16
+Fwd comm: 0.0006978030204772949 ms
+Forward 708.451416015625 ms
+Backward time: 2324.36328125
+grpc bwd comm" 1.6207695007324219e-06
+Overall iteration time 3037.22705078125
+Finished training it 68/128 of epoch 1, 3037.04 ms/it, loss 0.090036
+mbs is 16
+Fwd comm: 0.0019467344284057617 ms
+Forward 1957.4757080078125 ms
+Backward time: 1629.27099609375
+grpc bwd comm" 7.975339889526367e-06
+Overall iteration time 3596.831787109375
+Finished training it 69/128 of epoch 1, 3596.66 ms/it, loss 0.076214
+mbs is 16
+Fwd comm: 0.0005674929618835449 ms
+Forward 574.0753173828125 ms
+Backward time: 642.8272705078125
+grpc bwd comm" 4.089117050170898e-06
+Overall iteration time 1223.5386962890625
+Finished training it 70/128 of epoch 1, 1223.37 ms/it, loss 0.079311
+mbs is 16
+Fwd comm: 0.0010431962013244629 ms
+Forward 1050.2515869140625 ms
+Backward time: 2784.804931640625
+grpc bwd comm" 9.605884552001953e-06
+Overall iteration time 3847.825439453125
+Finished training it 71/128 of epoch 1, 3847.59 ms/it, loss 0.080515
+mbs is 16
+Fwd comm: 0.0027895379066467285 ms
+Forward 2795.22900390625 ms
+Backward time: 116.0099868774414
+grpc bwd comm" 4.561185836791992e-06
+Overall iteration time 2917.7314453125
+Finished training it 72/128 of epoch 1, 2917.60 ms/it, loss 0.057181
+mbs is 16
+Fwd comm: 0.0015289309024810792 ms
+Forward 1537.54833984375 ms
+Backward time: 2402.5302734375
+grpc bwd comm" 4.259324073791504e-05
+Overall iteration time 3984.492431640625
+Finished training it 73/128 of epoch 1, 3984.34 ms/it, loss 0.086253
+mbs is 16
+Fwd comm: 0.0019175779819488525 ms
+Forward 1924.6956787109375 ms
+Backward time: 377.45050048828125
+grpc bwd comm" 9.483098983764648e-06
+Overall iteration time 2313.76904296875
+Finished training it 74/128 of epoch 1, 2313.56 ms/it, loss 0.096845
+mbs is 16
+Fwd comm: 0.0033834984302520753 ms
+Forward 3390.62646484375 ms
+Backward time: 471.4833984375
+grpc bwd comm" 8.035182952880859e-06
+Overall iteration time 3872.1884765625
+Finished training it 75/128 of epoch 1, 3872.03 ms/it, loss 0.063629
+mbs is 16
+Fwd comm: 0.0012203271389007568 ms
+Forward 1227.77587890625 ms
+Backward time: 1478.254638671875
+grpc bwd comm" 2.0384788513183595e-06
+Overall iteration time 2709.8837890625
+Finished training it 76/128 of epoch 1, 2709.72 ms/it, loss 0.096288
+mbs is 16
+Fwd comm: 0.0005906834602355957 ms
+Forward 598.2022094726562 ms
+Backward time: 404.3499450683594
+grpc bwd comm" 2.6652812957763673e-06
+Overall iteration time 1007.0446166992188
+Finished training it 77/128 of epoch 1, 1006.89 ms/it, loss 0.081702
+mbs is 16
+Fwd comm: 0.003159529685974121 ms
+Forward 3167.049560546875 ms
+Backward time: 912.479248046875
+grpc bwd comm" 6.840944290161133e-06
+Overall iteration time 4088.471435546875
+Finished training it 78/128 of epoch 1, 4088.31 ms/it, loss 0.089537
+mbs is 16
+Fwd comm: 0.001834190845489502 ms
+Forward 1839.7552490234375 ms
+Backward time: 1275.6910400390625
+grpc bwd comm" 3.0621767044067386e-05
+Overall iteration time 3148.178466796875
+Finished training it 79/128 of epoch 1, 3147.98 ms/it, loss 0.074735
+mbs is 16
+Fwd comm: 0.002041329622268677 ms
+Forward 2048.6181640625 ms
+Backward time: 1882.7591552734375
+grpc bwd comm" 5.337953567504883e-06
+Overall iteration time 3939.250244140625
+Finished training it 80/128 of epoch 1, 3939.08 ms/it, loss 0.096485
+mbs is 16
+Fwd comm: 0.002059159517288208 ms
+Forward 2067.30908203125 ms
+Backward time: 1768.586181640625
+grpc bwd comm" 3.823995590209961e-06
+Overall iteration time 3841.92724609375
+Finished training it 81/128 of epoch 1, 3841.78 ms/it, loss 0.083923
+mbs is 16
+Fwd comm: 0.004054991960525512 ms
+Forward 4060.635498046875 ms
+Backward time: 377.481201171875
+grpc bwd comm" 3.3872127532958986e-06
+Overall iteration time 4443.509765625
+Finished training it 82/128 of epoch 1, 4443.33 ms/it, loss 0.099862
+mbs is 16
+Fwd comm: 0.0006424665451049804 ms
+Forward 648.561279296875 ms
+Backward time: 1738.0260009765625
+grpc bwd comm" 6.398129463195801e-05
+Overall iteration time 2452.509765625
+Finished training it 83/128 of epoch 1, 2452.35 ms/it, loss 0.085453
+mbs is 16
+Fwd comm: 0.001121161937713623 ms
+Forward 1130.474365234375 ms
+Backward time: 230.70822143554688
+grpc bwd comm" 4.484486579895019e-05
+Overall iteration time 1407.9017333984375
+Finished training it 84/128 of epoch 1, 1407.74 ms/it, loss 0.088264
+mbs is 16
+Fwd comm: 0.00011382842063903808 ms
+Forward 118.65430450439453 ms
+Backward time: 3118.181396484375
+grpc bwd comm" 4.287004470825196e-06
+Overall iteration time 3242.755126953125
+Finished training it 85/128 of epoch 1, 3242.63 ms/it, loss 0.071610
+mbs is 16
+Fwd comm: 0.0009392118453979493 ms
+Forward 951.1121215820312 ms
+Backward time: 3357.412353515625
+grpc bwd comm" 4.506587982177735e-06
+Overall iteration time 4315.2587890625
+Finished training it 86/128 of epoch 1, 4315.04 ms/it, loss 0.077155
+mbs is 16
+Fwd comm: 0.0018850088119506836 ms
+Forward 1891.9339599609375 ms
+Backward time: 814.1731567382812
+grpc bwd comm" 4.251003265380859e-06
+Overall iteration time 2712.46533203125
+Finished training it 87/128 of epoch 1, 2712.30 ms/it, loss 0.065920
+mbs is 16
+Fwd comm: 0.0009701981544494629 ms
+Forward 978.4020385742188 ms
+Backward time: 123.5384292602539
+grpc bwd comm" 4.207849502563477e-06
+Overall iteration time 1107.936279296875
+Finished training it 88/128 of epoch 1, 1107.78 ms/it, loss 0.055547
+mbs is 16
+Fwd comm: 0.0016086115837097169 ms
+Forward 1616.8779296875 ms
+Backward time: 2117.600341796875
+grpc bwd comm" 2.861166000366211e-05
+Overall iteration time 3764.90185546875
+Finished training it 89/128 of epoch 1, 3764.73 ms/it, loss 0.100640
+mbs is 16
+Fwd comm: 0.0032842087745666502 ms
+Forward 3290.95263671875 ms
+Backward time: 855.478271484375
+grpc bwd comm" 2.5780200958251955e-06
+Overall iteration time 4151.626953125
+Finished training it 90/128 of epoch 1, 4151.45 ms/it, loss 0.100797
+mbs is 16
+Fwd comm: 0.0027002573013305666 ms
+Forward 2706.5244140625 ms
+Backward time: 1525.1251220703125
+grpc bwd comm" 7.265567779541016e-06
+Overall iteration time 4242.77587890625
+Finished training it 91/128 of epoch 1, 4242.59 ms/it, loss 0.113695
+mbs is 16
+Fwd comm: 0.0006849436759948731 ms
+Forward 692.2667236328125 ms
+Backward time: 314.250244140625
+grpc bwd comm" 8.227109909057617e-06
+Overall iteration time 1017.0603637695312
+Finished training it 92/128 of epoch 1, 1016.87 ms/it, loss 0.059193
+mbs is 16
+Fwd comm: 0.0012663669586181641 ms
+Forward 1273.63037109375 ms
+Backward time: 184.11109924316406
+grpc bwd comm" 6.1490535736083985e-06
+Overall iteration time 1466.1488037109375
+Finished training it 93/128 of epoch 1, 1465.97 ms/it, loss 0.076578
+mbs is 16
+Fwd comm: 0.00356973934173584 ms
+Forward 3576.224609375 ms
+Backward time: 106.73971557617188
+grpc bwd comm" 1.6461610794067383e-05
+Overall iteration time 3701.876708984375
+Finished training it 94/128 of epoch 1, 3701.71 ms/it, loss 0.075102
+mbs is 16
+Fwd comm: 0.003082292079925537 ms
+Forward 3088.59716796875 ms
+Backward time: 355.0146484375
+grpc bwd comm" 7.6000690460205075e-06
+Overall iteration time 3453.389892578125
+Finished training it 95/128 of epoch 1, 3453.21 ms/it, loss 0.087178
+mbs is 16
+Fwd comm: 0.0022884204387664795 ms
+Forward 2296.128662109375 ms
+Backward time: 591.6282958984375
+grpc bwd comm" 5.063533782958984e-06
+Overall iteration time 2894.70361328125
+Finished training it 96/128 of epoch 1, 2894.58 ms/it, loss 0.073872
+mbs is 16
+Fwd comm: 0.0013477206230163574 ms
+Forward 1354.5606689453125 ms
+Backward time: 114.3367691040039
+grpc bwd comm" 2.165317535400391e-06
+Overall iteration time 1473.226806640625
+Finished training it 97/128 of epoch 1, 1473.08 ms/it, loss 0.086084
+mbs is 16
+Fwd comm: 0.0017392826080322265 ms
+Forward 1744.6075439453125 ms
+Backward time: 2937.5048828125
+grpc bwd comm" 4.874944686889648e-06
+Overall iteration time 4688.80078125
+Finished training it 98/128 of epoch 1, 4688.66 ms/it, loss 0.069312
+mbs is 16
+Fwd comm: 0.0014713122844696046 ms
+Forward 1477.8695068359375 ms
+Backward time: 1489.8463134765625
+grpc bwd comm" 3.255128860473633e-06
+Overall iteration time 2973.011962890625
+Finished training it 99/128 of epoch 1, 2972.84 ms/it, loss 0.079040
+mbs is 16
+Fwd comm: 0.0007269525527954101 ms
+Forward 734.0112915039062 ms
+Backward time: 1563.75244140625
+grpc bwd comm" 4.937410354614258e-06
+Overall iteration time 2304.618408203125
+Finished training it 100/128 of epoch 1, 2304.45 ms/it, loss 0.103169
+mbs is 16
+Fwd comm: 0.0015730392932891846 ms
+Forward 1579.8115234375 ms
+Backward time: 2781.033447265625
+grpc bwd comm" 7.673263549804687e-06
+Overall iteration time 4370.60302734375
+Finished training it 101/128 of epoch 1, 4370.44 ms/it, loss 0.087185
+mbs is 16
+Fwd comm: 0.0015940167903900147 ms
+Forward 1600.68505859375 ms
+Backward time: 524.326904296875
+grpc bwd comm" 2.4344921112060548e-06
+Overall iteration time 2129.534912109375
+Finished training it 102/128 of epoch 1, 2129.36 ms/it, loss 0.107681
+mbs is 16
+Fwd comm: 9.881758689880371e-05 ms
+Forward 105.6072006225586 ms
+Backward time: 3410.387939453125
+grpc bwd comm" 6.92892074584961e-06
+Overall iteration time 3524.724853515625
+Finished training it 103/128 of epoch 1, 3524.55 ms/it, loss 0.062271
+mbs is 16
+Fwd comm: 0.0019474034309387208 ms
+Forward 1955.4910888671875 ms
+Backward time: 1571.541015625
+grpc bwd comm" 1.9850730895996095e-06
+Overall iteration time 3530.872802734375
+Finished training it 104/128 of epoch 1, 3530.69 ms/it, loss 0.081351
+mbs is 16
+Fwd comm: 0.0008260617256164551 ms
+Forward 834.5916137695312 ms
+Backward time: 159.60166931152344
+grpc bwd comm" 5.4944992065429685e-05
+Overall iteration time 1051.010009765625
+Finished training it 105/128 of epoch 1, 1050.84 ms/it, loss 0.080012
+mbs is 16
+Fwd comm: 0.0011922297477722167 ms
+Forward 1199.5921630859375 ms
+Backward time: 2333.54541015625
+grpc bwd comm" 6.385326385498047e-06
+Overall iteration time 3542.08154296875
+Finished training it 106/128 of epoch 1, 3541.89 ms/it, loss 0.052570
+mbs is 16
+Fwd comm: 0.0036530249118804934 ms
+Forward 3659.9697265625 ms
+Backward time: 303.8873596191406
+grpc bwd comm" 4.964828491210938e-06
+Overall iteration time 3970.87548828125
+Finished training it 107/128 of epoch 1, 3970.70 ms/it, loss 0.076559
+mbs is 16
+Fwd comm: 0.002231566905975342 ms
+Forward 2238.486328125 ms
+Backward time: 1462.9119873046875
+grpc bwd comm" 6.326913833618164e-06
+Overall iteration time 3710.314453125
+Finished training it 108/128 of epoch 1, 3710.17 ms/it, loss 0.053903
+mbs is 16
+Fwd comm: 0.0017796816825866699 ms
+Forward 1786.223388671875 ms
+Backward time: 2349.77783203125
+grpc bwd comm" 7.278919219970703e-06
+Overall iteration time 4145.3916015625
+Finished training it 109/128 of epoch 1, 4145.23 ms/it, loss 0.089528
+mbs is 16
+Fwd comm: 0.0033783867359161376 ms
+Forward 3384.9130859375 ms
+Backward time: 327.8622741699219
+grpc bwd comm" 1.775360107421875e-05
+Overall iteration time 3732.651123046875
+Finished training it 110/128 of epoch 1, 3732.47 ms/it, loss 0.079105
+mbs is 16
+Fwd comm: 0.0008401257991790771 ms
+Forward 847.3231201171875 ms
+Backward time: 334.9227600097656
+grpc bwd comm" 9.214472770690918e-05
+Overall iteration time 1276.27978515625
+Finished training it 111/128 of epoch 1, 1276.13 ms/it, loss 0.056687
+mbs is 16
+Fwd comm: 0.0018428757190704346 ms
+Forward 1849.868408203125 ms
+Backward time: 1197.1502685546875
+grpc bwd comm" 4.97746467590332e-06
+Overall iteration time 3054.098388671875
+Finished training it 112/128 of epoch 1, 3053.95 ms/it, loss 0.050750
+mbs is 16
+Fwd comm: 0.002145047664642334 ms
+Forward 2151.943359375 ms
+Backward time: 1212.3760986328125
+grpc bwd comm" 1.8036365509033204e-06
+Overall iteration time 3367.878662109375
+Finished training it 113/128 of epoch 1, 3367.73 ms/it, loss 0.082112
+mbs is 16
+Fwd comm: 0.0009212563037872314 ms
+Forward 930.905517578125 ms
+Backward time: 709.0452270507812
+grpc bwd comm" 5.7184696197509764e-06
+Overall iteration time 1647.8023681640625
+Finished training it 114/128 of epoch 1, 1647.59 ms/it, loss 0.071014
+mbs is 16
+Fwd comm: 0.002473106861114502 ms
+Forward 2481.892822265625 ms
+Backward time: 1849.7945556640625
+grpc bwd comm" 3.5846233367919922e-06
+Overall iteration time 4337.4755859375
+Finished training it 115/128 of epoch 1, 4337.29 ms/it, loss 0.083125
+mbs is 16
+Fwd comm: 0.001161714792251587 ms
+Forward 1171.362060546875 ms
+Backward time: 2412.472412109375
+grpc bwd comm" 2.9302358627319337e-05
+Overall iteration time 3615.751220703125
+Finished training it 116/128 of epoch 1, 3615.57 ms/it, loss 0.063170
+mbs is 16
+Fwd comm: 0.0021020863056182863 ms
+Forward 2107.405029296875 ms
+Backward time: 1365.5142822265625
+grpc bwd comm" 3.103494644165039e-06
+Overall iteration time 3477.971923828125
+Finished training it 117/128 of epoch 1, 3477.80 ms/it, loss 0.097825
+mbs is 16
+Fwd comm: 0.0005961999893188476 ms
+Forward 603.423583984375 ms
+Backward time: 2082.88671875
+grpc bwd comm" 1.7843246459960937e-06
+Overall iteration time 2690.378662109375
+Finished training it 118/128 of epoch 1, 2690.23 ms/it, loss 0.077116
+mbs is 16
+Fwd comm: 0.002094400405883789 ms
+Forward 2102.51171875 ms
+Backward time: 1182.3594970703125
+grpc bwd comm" 7.167577743530273e-06
+Overall iteration time 3294.075927734375
+Finished training it 119/128 of epoch 1, 3293.91 ms/it, loss 0.076930
+mbs is 16
+Fwd comm: 0.0013864278793334962 ms
+Forward 1393.8095703125 ms
+Backward time: 430.40155029296875
+grpc bwd comm" 3.2618045806884764e-06
+Overall iteration time 1830.109130859375
+Finished training it 120/128 of epoch 1, 1829.96 ms/it, loss 0.079111
+mbs is 16
+Fwd comm: 9.14011001586914e-05 ms
+Forward 98.60924530029297 ms
+Backward time: 3790.3349609375
+grpc bwd comm" 4.557132720947266e-06
+Overall iteration time 3895.28369140625
+Finished training it 121/128 of epoch 1, 3895.14 ms/it, loss 0.116994
+mbs is 16
+Fwd comm: 0.0022462668418884277 ms
+Forward 2252.228759765625 ms
+Backward time: 461.2853698730469
+grpc bwd comm" 2.3956298828125e-06
+Overall iteration time 2717.88330078125
+Finished training it 122/128 of epoch 1, 2717.74 ms/it, loss 0.069717
+mbs is 16
+Fwd comm: 0.0018506028652191162 ms
+Forward 1858.284423828125 ms
+Backward time: 615.3001098632812
+grpc bwd comm" 6.714820861816407e-06
+Overall iteration time 2482.28759765625
+Finished training it 123/128 of epoch 1, 2482.13 ms/it, loss 0.094326
+mbs is 16
+Fwd comm: 0.0008246400356292725 ms
+Forward 830.8128051757812 ms
+Backward time: 2515.9853515625
+grpc bwd comm" 1.7883777618408204e-06
+Overall iteration time 3350.3466796875
+Finished training it 124/128 of epoch 1, 3350.17 ms/it, loss 0.101257
+mbs is 16
+Fwd comm: 0.0002569761276245117 ms
+Forward 263.0775146484375 ms
+Backward time: 1843.483642578125
+grpc bwd comm" 5.692958831787109e-06
+Overall iteration time 2114.22216796875
+Finished training it 125/128 of epoch 1, 2114.05 ms/it, loss 0.091761
+mbs is 16
+Fwd comm: 0.0029419059753417968 ms
+Forward 2950.36767578125 ms
+Backward time: 623.7224731445312
+grpc bwd comm" 1.495051383972168e-05
+Overall iteration time 3591.29296875
+Finished training it 126/128 of epoch 1, 3591.12 ms/it, loss 0.076804
+mbs is 16
+Fwd comm: 0.003219153642654419 ms
+Forward 3224.752685546875 ms
+Backward time: 295.7096862792969
+grpc bwd comm" 1.9495487213134765e-06
+Overall iteration time 3524.43603515625
+Finished training it 127/128 of epoch 1, 3524.28 ms/it, loss 0.065383
+mbs is 16
+Fwd comm: 0.001936342716217041 ms
+Forward 1943.6568603515625 ms
+Backward time: 701.1143798828125
+grpc bwd comm" 1.951932907104492e-06
+Overall iteration time 2648.808349609375
+Finished training it 128/128 of epoch 1, 2648.67 ms/it, loss 0.097604
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+Servre blocking on result...
+Server got terminate
+Server unblocked.
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 6
+-- using grpc True
+globval rank 6
+Rank 6 set device 6
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 6 with train-dy-p4d24xlarge-2, 29501
+Global rank 6 using gpu 6
+Init pg with nccl 6 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 6 16
+world size: 16, current rank: 6, local rank: 6
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 3
+-- using grpc True
+globval rank 11
+Rank 3 set device 3
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 11 with train-dy-p4d24xlarge-2, 29501
+Global rank 11 using gpu 3
+Init pg with nccl 11 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 11 16
+world size: 16, current rank: 11, local rank: 3
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-3 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 4
+-- using grpc True
+globval rank 12
+Rank 4 set device 4
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 12 with train-dy-p4d24xlarge-2, 29501
+Global rank 12 using gpu 4
+Init pg with nccl 12 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 12 16
+world size: 16, current rank: 12, local rank: 4
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-3 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 2
+-- using grpc True
+globval rank 10
+Rank 2 set device 2
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 10 with train-dy-p4d24xlarge-2, 29501
+Global rank 10 using gpu 2
+Init pg with nccl 10 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 10 16
+world size: 16, current rank: 10, local rank: 2
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-3 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 6
+-- using grpc True
+globval rank 14
+Rank 6 set device 6
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 14 with train-dy-p4d24xlarge-2, 29501
+Global rank 14 using gpu 6
+Init pg with nccl 14 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 14 16
+world size: 16, current rank: 14, local rank: 6
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-3 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 5
+-- using grpc True
+globval rank 5
+Rank 5 set device 5
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 5 with train-dy-p4d24xlarge-2, 29501
+Global rank 5 using gpu 5
+Init pg with nccl 5 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 5 16
+world size: 16, current rank: 5, local rank: 5
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 4
+-- using grpc True
+globval rank 4
+Rank 4 set device 4
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 4 with train-dy-p4d24xlarge-2, 29501
+Global rank 4 using gpu 4
+Init pg with nccl 4 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 4 16
+world size: 16, current rank: 4, local rank: 4
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 3
+-- using grpc True
+globval rank 3
+Rank 3 set device 3
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 3 with train-dy-p4d24xlarge-2, 29501
+Global rank 3 using gpu 3
+Init pg with nccl 3 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 3 16
+world size: 16, current rank: 3, local rank: 3
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc True
+globval rank 1
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 1 with train-dy-p4d24xlarge-2, 29501
+Global rank 1 using gpu 1
+Init pg with nccl 1 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 1 16
+world size: 16, current rank: 1, local rank: 1
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 2
+-- using grpc True
+globval rank 2
+Rank 2 set device 2
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 2 with train-dy-p4d24xlarge-2, 29501
+Global rank 2 using gpu 2
+Init pg with nccl 2 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 2 16
+world size: 16, current rank: 2, local rank: 2
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc True
+globval rank 8
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 8 with train-dy-p4d24xlarge-2, 29501
+Global rank 8 using gpu 0
+Init pg with nccl 8 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 8 16
+world size: 16, current rank: 8, local rank: 0
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-3 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc True
+globval rank 9
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 9 with train-dy-p4d24xlarge-2, 29501
+Global rank 9 using gpu 1
+Init pg with nccl 9 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 9 16
+world size: 16, current rank: 9, local rank: 1
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-3 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 7
+-- using grpc True
+globval rank 7
+Rank 7 set device 7
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 7 with train-dy-p4d24xlarge-2, 29501
+Global rank 7 using gpu 7
+Init pg with nccl 7 ws 16, addr train-dy-p4d24xlarge-2 port 29501
+ ---- init done --- 7 16
+world size: 16, current rank: 7, local rank: 7
+Created client!
+Created embedding!
+Client on train-dy-p4d24xlarge-2 got [tensor([[-1.00034,  0.12773, -1.84533,  0.17320,  0.37734, -0.21436,  0.48051,
+          0.81687, -0.10701,  0.16431]], requires_grad=True)]
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>

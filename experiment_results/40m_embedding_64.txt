@@ -1,0 +1,3386 @@
+using master addrtrain-dy-p4d24xlarge-1
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-1
+rank? 0
+embedding size 64
+32768
+using master addrtrain-dy-p4d24xlarge-1
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-2
+rank? 1
+embedding size 64
+32768
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc False
+globval rank 0
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 0 with train-dy-p4d24xlarge-1, 29501
+Global rank 0 using gpu 0
+Init pg with nccl 0 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 0 16
+Running on 16 ranks using nccl backend
+world size: 16, current rank: 0, local rank: 0
+Distributed init done!
+Using 1 GPU per process, this process is using 0
+Using 1 GPU(s)...
+model arch:
+mlp top arch 3 layers, with input to output dimensions:
+[  79 4096 4096    1]
+# of interactions
+79
+mlp bot arch 5 layers, with input to output dimensions:
+[2000 1024 1024  512  256   64]
+# of features (sparse and dense)
+6
+dense feature size
+2000
+sparse feature size
+64
+# of embeddings (= # of sparse features) 5, with dimensions 64x:
+[8000000 8000000 8000000 8000000 8000000]
+computed ndevices as 1: ngpus=1, bs=64, fea=5
+--- calling create emb in DLRM __init__
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Creating linear with 2000 1024
+Creating linear with 1024 1024
+Creating linear with 1024 512
+Creating linear with 512 256
+Creating linear with 256 64
+Created 10 layers
+Creating linear with 79 4096
+Creating linear with 4096 4096
+Creating linear with 4096 1
+Created 6 layers
+overall: Number of parameter tensors: 21
+overall: Number of parameters: 2580884289
+overall: Parameter size in bytes: 10323537156 (9845.292240142822 MB) 
+
+emb_l: Number of parameter tensors: 5
+emb_l: Number of parameters: 2560000000
+emb_l: Parameter size in bytes: 10240000000 (9765.625 MB) 
+
+bot_l: Number of parameter tensors: 10
+bot_l: Number of parameters: 3771200
+bot_l: Parameter size in bytes: 15084800 (14.385986328125 MB) 
+
+top_l: Number of parameter tensors: 6
+top_l: Number of parameters: 17113089
+top_l: Parameter size in bytes: 68452356 (65.28125381469727 MB) 
+
+Initialized DLRM
+use_gpu is true
+Using data parallel MLPs
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+time/loss/accuracy (if enabled):
+mbs is 64
+Forward 1619.11474609375 ms
+Backward time: 874.8353881835938
+Average sparse bwd comm time over 5 embeddings nan
+Overall iteration time 2502.01904296875
+Finished training it 1/512 of epoch 0, 2501.77 ms/it, loss 0.127575
+mbs is 64
+Forward 46.8798713684082 ms
+Backward time: 549.6279296875
+Average sparse bwd comm time over 5 embeddings 846.9049343999999
+Overall iteration time 599.1495971679688
+Finished training it 2/512 of epoch 0, 598.98 ms/it, loss 0.144475
+mbs is 64
+Forward 108.90419006347656 ms
+Backward time: 756.4932861328125
+Average sparse bwd comm time over 5 embeddings 633.9908608
+Overall iteration time 867.8236083984375
+Finished training it 3/512 of epoch 0, 867.68 ms/it, loss 0.153489
+mbs is 64
+Forward 45.282752990722656 ms
+Backward time: 691.272705078125
+Average sparse bwd comm time over 5 embeddings 672.8708094
+Overall iteration time 741.3637084960938
+Finished training it 4/512 of epoch 0, 741.17 ms/it, loss 0.189911
+mbs is 64
+Forward 36.55526351928711 ms
+Backward time: 655.7972412109375
+Average sparse bwd comm time over 5 embeddings 670.7493881999999
+Overall iteration time 694.9693603515625
+Finished training it 5/512 of epoch 0, 694.79 ms/it, loss 0.153552
+mbs is 64
+Forward 18.92892837524414 ms
+Backward time: 688.8396606445312
+Average sparse bwd comm time over 5 embeddings 665.8487491999999
+Overall iteration time 729.22314453125
+Finished training it 6/512 of epoch 0, 729.03 ms/it, loss 0.189917
+mbs is 64
+Forward 42.64166259765625 ms
+Backward time: 693.022705078125
+Average sparse bwd comm time over 5 embeddings 667.6059126
+Overall iteration time 750.7077026367188
+Finished training it 7/512 of epoch 0, 750.52 ms/it, loss 0.132090
+mbs is 64
+Forward 2.9507200717926025 ms
+Backward time: 597.9064331054688
+Average sparse bwd comm time over 5 embeddings 669.5961147999999
+Overall iteration time 684.06884765625
+Finished training it 8/512 of epoch 0, 683.89 ms/it, loss 0.176650
+mbs is 64
+Forward 2.9100160598754883 ms
+Backward time: 667.8128662109375
+Average sparse bwd comm time over 5 embeddings 659.8191343999999
+Overall iteration time 773.4599609375
+Finished training it 9/512 of epoch 0, 773.28 ms/it, loss 0.140111
+mbs is 64
+Forward 2.9072320461273193 ms
+Backward time: 579.478515625
+Average sparse bwd comm time over 5 embeddings 660.0711945999999
+Overall iteration time 596.7411499023438
+Finished training it 10/512 of epoch 0, 596.56 ms/it, loss 0.181639
+mbs is 64
+Forward 5.871935844421387 ms
+Backward time: 632.1981201171875
+Average sparse bwd comm time over 5 embeddings 651.6000338
+Overall iteration time 640.6881103515625
+Finished training it 11/512 of epoch 0, 640.51 ms/it, loss 0.168066
+mbs is 64
+Forward 2.9246718883514404 ms
+Backward time: 621.1450805664062
+Average sparse bwd comm time over 5 embeddings 649.2123486
+Overall iteration time 630.091796875
+Finished training it 12/512 of epoch 0, 629.93 ms/it, loss 0.132288
+mbs is 64
+Forward 24.189056396484375 ms
+Backward time: 536.6138916015625
+Average sparse bwd comm time over 5 embeddings 646.580631
+Overall iteration time 563.5594482421875
+Finished training it 13/512 of epoch 0, 563.39 ms/it, loss 0.183785
+mbs is 64
+Forward 9.93660831451416 ms
+Backward time: 684.099609375
+Average sparse bwd comm time over 5 embeddings 637.7461731999999
+Overall iteration time 700.5491333007812
+Finished training it 14/512 of epoch 0, 700.38 ms/it, loss 0.184709
+mbs is 64
+Forward 3.090240001678467 ms
+Backward time: 680.595458984375
+Average sparse bwd comm time over 5 embeddings 640.4611481999999
+Overall iteration time 686.318603515625
+Finished training it 15/512 of epoch 0, 686.15 ms/it, loss 0.184664
+mbs is 64
+Forward 52.06079864501953 ms
+Backward time: 614.3037719726562
+Average sparse bwd comm time over 5 embeddings 641.009333
+Overall iteration time 668.8788452148438
+Finished training it 16/512 of epoch 0, 668.72 ms/it, loss 0.166689
+mbs is 64
+Forward 47.546783447265625 ms
+Backward time: 602.1140747070312
+Average sparse bwd comm time over 5 embeddings 638.6084956000001
+Overall iteration time 668.6289672851562
+Finished training it 17/512 of epoch 0, 668.46 ms/it, loss 0.141662
+mbs is 64
+Forward 26.353824615478516 ms
+Backward time: 605.412353515625
+Average sparse bwd comm time over 5 embeddings 636.0806304
+Overall iteration time 634.0546264648438
+Finished training it 18/512 of epoch 0, 633.91 ms/it, loss 0.142302
+mbs is 64
+Forward 31.0545597076416 ms
+Backward time: 708.71142578125
+Average sparse bwd comm time over 5 embeddings 633.5268712
+Overall iteration time 742.4020385742188
+Finished training it 19/512 of epoch 0, 742.24 ms/it, loss 0.166297
+mbs is 64
+Forward 9.243776321411133 ms
+Backward time: 532.6295166015625
+Average sparse bwd comm time over 5 embeddings 637.2905347999999
+Overall iteration time 575.1869506835938
+Finished training it 20/512 of epoch 0, 575.02 ms/it, loss 0.160545
+mbs is 64
+Forward 33.60380935668945 ms
+Backward time: 577.7489624023438
+Average sparse bwd comm time over 5 embeddings 631.7215094000001
+Overall iteration time 613.9780883789062
+Finished training it 21/512 of epoch 0, 613.78 ms/it, loss 0.162521
+mbs is 64
+Forward 45.407039642333984 ms
+Backward time: 617.9328002929688
+Average sparse bwd comm time over 5 embeddings 628.9741981999999
+Overall iteration time 671.4429321289062
+Finished training it 22/512 of epoch 0, 671.27 ms/it, loss 0.152985
+mbs is 64
+Forward 71.73340606689453 ms
+Backward time: 594.9818725585938
+Average sparse bwd comm time over 5 embeddings 628.3082340000001
+Overall iteration time 680.005615234375
+Finished training it 23/512 of epoch 0, 679.84 ms/it, loss 0.138156
+mbs is 64
+Forward 37.91209411621094 ms
+Backward time: 497.1704406738281
+Average sparse bwd comm time over 5 embeddings 626.6952706
+Overall iteration time 567.3799438476562
+Finished training it 24/512 of epoch 0, 567.21 ms/it, loss 0.158043
+mbs is 64
+Forward 19.900543212890625 ms
+Backward time: 551.5294799804688
+Average sparse bwd comm time over 5 embeddings 620.9231571999999
+Overall iteration time 574.4701538085938
+Finished training it 25/512 of epoch 0, 574.30 ms/it, loss 0.170091
+mbs is 64
+Forward 29.27782440185547 ms
+Backward time: 608.1607666015625
+Average sparse bwd comm time over 5 embeddings 617.9551675999999
+Overall iteration time 648.648681640625
+Finished training it 26/512 of epoch 0, 648.48 ms/it, loss 0.144524
+mbs is 64
+Forward 3.055936098098755 ms
+Backward time: 594.9286499023438
+Average sparse bwd comm time over 5 embeddings 617.3766368
+Overall iteration time 600.7767333984375
+Finished training it 27/512 of epoch 0, 600.60 ms/it, loss 0.136118
+mbs is 64
+Forward 2.807744026184082 ms
+Backward time: 559.0189819335938
+Average sparse bwd comm time over 5 embeddings 616.3220956
+Overall iteration time 577.7213745117188
+Finished training it 28/512 of epoch 0, 577.55 ms/it, loss 0.170915
+mbs is 64
+Forward 2.9916160106658936 ms
+Backward time: 673.9015502929688
+Average sparse bwd comm time over 5 embeddings 613.9069748
+Overall iteration time 735.4705810546875
+Finished training it 29/512 of epoch 0, 735.29 ms/it, loss 0.137095
+mbs is 64
+Forward 32.03798294067383 ms
+Backward time: 616.9548950195312
+Average sparse bwd comm time over 5 embeddings 614.7612468
+Overall iteration time 651.5957641601562
+Finished training it 30/512 of epoch 0, 651.40 ms/it, loss 0.144248
+mbs is 64
+Forward 3.4735679626464844 ms
+Backward time: 748.3975830078125
+Average sparse bwd comm time over 5 embeddings 614.4708542000001
+Overall iteration time 754.4514770507812
+Finished training it 31/512 of epoch 0, 754.28 ms/it, loss 0.142312
+mbs is 64
+Forward 30.18822479248047 ms
+Backward time: 657.833984375
+Average sparse bwd comm time over 5 embeddings 618.2934064
+Overall iteration time 690.8150024414062
+Finished training it 32/512 of epoch 0, 690.65 ms/it, loss 0.139923
+mbs is 64
+Forward 63.582496643066406 ms
+Backward time: 623.5361328125
+Average sparse bwd comm time over 5 embeddings 619.3917242
+Overall iteration time 700.590087890625
+Finished training it 33/512 of epoch 0, 700.42 ms/it, loss 0.145037
+mbs is 64
+Forward 5.409632205963135 ms
+Backward time: 601.20166015625
+Average sparse bwd comm time over 5 embeddings 619.381095
+Overall iteration time 609.3690795898438
+Finished training it 34/512 of epoch 0, 609.15 ms/it, loss 0.132373
+mbs is 64
+Forward 17.69740867614746 ms
+Backward time: 649.68701171875
+Average sparse bwd comm time over 5 embeddings 617.8893208
+Overall iteration time 669.6857299804688
+Finished training it 35/512 of epoch 0, 669.53 ms/it, loss 0.148620
+mbs is 64
+Forward 29.752639770507812 ms
+Backward time: 652.5593872070312
+Average sparse bwd comm time over 5 embeddings 618.6648061999999
+Overall iteration time 685.0580444335938
+Finished training it 36/512 of epoch 0, 684.89 ms/it, loss 0.164815
+mbs is 64
+Forward 71.26435089111328 ms
+Backward time: 579.3853149414062
+Average sparse bwd comm time over 5 embeddings 619.5067201999999
+Overall iteration time 653.2239379882812
+Finished training it 37/512 of epoch 0, 653.06 ms/it, loss 0.116636
+mbs is 64
+Forward 2.819711923599243 ms
+Backward time: 644.9889526367188
+Average sparse bwd comm time over 5 embeddings 618.1981573999999
+Overall iteration time 650.4304809570312
+Finished training it 38/512 of epoch 0, 650.26 ms/it, loss 0.141439
+mbs is 64
+Forward 6.387360095977783 ms
+Backward time: 531.9147338867188
+Average sparse bwd comm time over 5 embeddings 617.8576246
+Overall iteration time 597.9678955078125
+Finished training it 39/512 of epoch 0, 597.78 ms/it, loss 0.144832
+mbs is 64
+Forward 2.7712960243225098 ms
+Backward time: 546.3531494140625
+Average sparse bwd comm time over 5 embeddings 615.5232244
+Overall iteration time 551.6175537109375
+Finished training it 40/512 of epoch 0, 551.46 ms/it, loss 0.111326
+mbs is 64
+Forward 55.2531852722168 ms
+Backward time: 542.4179077148438
+Average sparse bwd comm time over 5 embeddings 613.7037371999999
+Overall iteration time 600.384521484375
+Finished training it 41/512 of epoch 0, 600.22 ms/it, loss 0.099534
+mbs is 64
+Forward 2.8866560459136963 ms
+Backward time: 524.885986328125
+Average sparse bwd comm time over 5 embeddings 611.8590766
+Overall iteration time 565.0626831054688
+Finished training it 42/512 of epoch 0, 564.91 ms/it, loss 0.138508
+mbs is 64
+Forward 2.918463945388794 ms
+Backward time: 695.4536743164062
+Average sparse bwd comm time over 5 embeddings 609.5692362
+Overall iteration time 813.3304443359375
+Finished training it 43/512 of epoch 0, 813.16 ms/it, loss 0.109997
+mbs is 64
+Forward 14.281023979187012 ms
+Backward time: 651.9296264648438
+Average sparse bwd comm time over 5 embeddings 611.3883441999999
+Overall iteration time 668.943359375
+Finished training it 44/512 of epoch 0, 668.75 ms/it, loss 0.099399
+mbs is 64
+Forward 2.779520034790039 ms
+Backward time: 643.726318359375
+Average sparse bwd comm time over 5 embeddings 611.977071
+Overall iteration time 658.2794189453125
+Finished training it 45/512 of epoch 0, 658.09 ms/it, loss 0.125508
+mbs is 64
+Forward 26.60982322692871 ms
+Backward time: 459.7319641113281
+Average sparse bwd comm time over 5 embeddings 612.6025557999999
+Overall iteration time 490.1160888671875
+Finished training it 46/512 of epoch 0, 489.93 ms/it, loss 0.116781
+mbs is 64
+Forward 2.8401598930358887 ms
+Backward time: 593.2369995117188
+Average sparse bwd comm time over 5 embeddings 609.1928472000001
+Overall iteration time 598.69287109375
+Finished training it 47/512 of epoch 0, 598.54 ms/it, loss 0.167302
+mbs is 64
+Forward 2.886336088180542 ms
+Backward time: 575.8269653320312
+Average sparse bwd comm time over 5 embeddings 608.7741292000001
+Overall iteration time 607.7071533203125
+Finished training it 48/512 of epoch 0, 607.55 ms/it, loss 0.123112
+mbs is 64
+Forward 2.9855360984802246 ms
+Backward time: 630.6334838867188
+Average sparse bwd comm time over 5 embeddings 608.0072086
+Overall iteration time 635.84765625
+Finished training it 49/512 of epoch 0, 635.70 ms/it, loss 0.123010
+mbs is 64
+Forward 26.604703903198242 ms
+Backward time: 520.6784057617188
+Average sparse bwd comm time over 5 embeddings 608.3950067999999
+Overall iteration time 570.1754760742188
+Finished training it 50/512 of epoch 0, 570.02 ms/it, loss 0.108346
+mbs is 64
+Forward 24.045215606689453 ms
+Backward time: 633.5354614257812
+Average sparse bwd comm time over 5 embeddings 606.3075258
+Overall iteration time 669.9857788085938
+Finished training it 51/512 of epoch 0, 669.82 ms/it, loss 0.116031
+mbs is 64
+Forward 34.15760040283203 ms
+Backward time: 549.1107788085938
+Average sparse bwd comm time over 5 embeddings 606.7668958
+Overall iteration time 585.870361328125
+Finished training it 52/512 of epoch 0, 585.70 ms/it, loss 0.091581
+mbs is 64
+Forward 8.412927627563477 ms
+Backward time: 631.604248046875
+Average sparse bwd comm time over 5 embeddings 605.3527674000001
+Overall iteration time 672.9021606445312
+Finished training it 53/512 of epoch 0, 672.47 ms/it, loss 0.113954
+mbs is 64
+Forward 2.9792320728302 ms
+Backward time: 591.2555541992188
+Average sparse bwd comm time over 5 embeddings 605.7693916000001
+Overall iteration time 596.8875732421875
+Finished training it 54/512 of epoch 0, 596.71 ms/it, loss 0.124217
+mbs is 64
+Forward 36.52272033691406 ms
+Backward time: 688.9553833007812
+Average sparse bwd comm time over 5 embeddings 605.0942171999999
+Overall iteration time 733.1942138671875
+Finished training it 55/512 of epoch 0, 733.02 ms/it, loss 0.127595
+mbs is 64
+Forward 2.9028160572052 ms
+Backward time: 581.9473876953125
+Average sparse bwd comm time over 5 embeddings 606.5425636
+Overall iteration time 615.1956176757812
+Finished training it 56/512 of epoch 0, 615.03 ms/it, loss 0.111392
+mbs is 64
+Forward 5.336863994598389 ms
+Backward time: 552.2349853515625
+Average sparse bwd comm time over 5 embeddings 606.0341083999999
+Overall iteration time 560.1720581054688
+Finished training it 57/512 of epoch 0, 559.99 ms/it, loss 0.121878
+mbs is 64
+Forward 35.84640121459961 ms
+Backward time: 597.228515625
+Average sparse bwd comm time over 5 embeddings 604.9976908
+Overall iteration time 635.6080932617188
+Finished training it 58/512 of epoch 0, 635.45 ms/it, loss 0.108427
+mbs is 64
+Forward 51.97462463378906 ms
+Backward time: 611.1170654296875
+Average sparse bwd comm time over 5 embeddings 604.7580485999999
+Overall iteration time 707.9464721679688
+Finished training it 59/512 of epoch 0, 707.78 ms/it, loss 0.114372
+mbs is 64
+Forward 9.780799865722656 ms
+Backward time: 499.8021240234375
+Average sparse bwd comm time over 5 embeddings 604.7486546
+Overall iteration time 512.4413452148438
+Finished training it 60/512 of epoch 0, 512.24 ms/it, loss 0.104379
+mbs is 64
+Forward 9.721728324890137 ms
+Backward time: 576.73828125
+Average sparse bwd comm time over 5 embeddings 602.7952981999999
+Overall iteration time 605.4614868164062
+Finished training it 61/512 of epoch 0, 605.28 ms/it, loss 0.101349
+mbs is 64
+Forward 10.443488121032715 ms
+Backward time: 615.2683715820312
+Average sparse bwd comm time over 5 embeddings 602.3067643999999
+Overall iteration time 642.619384765625
+Finished training it 62/512 of epoch 0, 642.46 ms/it, loss 0.115271
+mbs is 64
+Forward 41.476863861083984 ms
+Backward time: 626.1575927734375
+Average sparse bwd comm time over 5 embeddings 602.4524657999999
+Overall iteration time 670.2950439453125
+Finished training it 63/512 of epoch 0, 670.12 ms/it, loss 0.106597
+mbs is 64
+Forward 28.06083106994629 ms
+Backward time: 694.56591796875
+Average sparse bwd comm time over 5 embeddings 602.7395611999999
+Overall iteration time 725.327880859375
+Finished training it 64/512 of epoch 0, 725.14 ms/it, loss 0.114870
+mbs is 64
+Forward 52.79385757446289 ms
+Backward time: 693.032958984375
+Average sparse bwd comm time over 5 embeddings 603.9402319999999
+Overall iteration time 749.1348266601562
+Finished training it 65/512 of epoch 0, 748.96 ms/it, loss 0.094799
+mbs is 64
+Forward 22.63488006591797 ms
+Backward time: 607.08349609375
+Average sparse bwd comm time over 5 embeddings 605.2118161999999
+Overall iteration time 633.87646484375
+Finished training it 66/512 of epoch 0, 633.70 ms/it, loss 0.101251
+mbs is 64
+Forward 2.9387199878692627 ms
+Backward time: 597.5941162109375
+Average sparse bwd comm time over 5 embeddings 605.1866815999999
+Overall iteration time 605.8843994140625
+Finished training it 67/512 of epoch 0, 605.71 ms/it, loss 0.098880
+mbs is 64
+Forward 3.243839979171753 ms
+Backward time: 569.1392211914062
+Average sparse bwd comm time over 5 embeddings 604.9806918
+Overall iteration time 575.1951293945312
+Finished training it 68/512 of epoch 0, 574.97 ms/it, loss 0.102538
+mbs is 64
+Forward 37.83001708984375 ms
+Backward time: 595.957763671875
+Average sparse bwd comm time over 5 embeddings 604.2069772
+Overall iteration time 636.3944702148438
+Finished training it 69/512 of epoch 0, 636.22 ms/it, loss 0.118287
+mbs is 64
+Forward 40.270111083984375 ms
+Backward time: 598.319091796875
+Average sparse bwd comm time over 5 embeddings 603.9502691999999
+Overall iteration time 682.3628540039062
+Finished training it 70/512 of epoch 0, 682.18 ms/it, loss 0.093976
+mbs is 64
+Forward 22.217727661132812 ms
+Backward time: 512.2089233398438
+Average sparse bwd comm time over 5 embeddings 603.5989167999999
+Overall iteration time 588.9341430664062
+Finished training it 71/512 of epoch 0, 588.75 ms/it, loss 0.092447
+mbs is 64
+Forward 27.421024322509766 ms
+Backward time: 571.0909423828125
+Average sparse bwd comm time over 5 embeddings 602.249341
+Overall iteration time 601.0398559570312
+Finished training it 72/512 of epoch 0, 600.88 ms/it, loss 0.097192
+mbs is 64
+Forward 2.904031991958618 ms
+Backward time: 685.9632568359375
+Average sparse bwd comm time over 5 embeddings 601.6769254
+Overall iteration time 691.7427368164062
+Finished training it 73/512 of epoch 0, 691.55 ms/it, loss 0.117140
+mbs is 64
+Forward 3.374783992767334 ms
+Backward time: 575.67333984375
+Average sparse bwd comm time over 5 embeddings 602.7837466
+Overall iteration time 631.815185546875
+Finished training it 74/512 of epoch 0, 631.63 ms/it, loss 0.087208
+mbs is 64
+Forward 36.69887924194336 ms
+Backward time: 668.7467651367188
+Average sparse bwd comm time over 5 embeddings 602.1461374
+Overall iteration time 710.5679321289062
+Finished training it 75/512 of epoch 0, 710.38 ms/it, loss 0.085298
+mbs is 64
+Forward 12.405440330505371 ms
+Backward time: 562.5599975585938
+Average sparse bwd comm time over 5 embeddings 602.9825054
+Overall iteration time 629.0513916015625
+Finished training it 76/512 of epoch 0, 628.88 ms/it, loss 0.102635
+mbs is 64
+Forward 32.32777786254883 ms
+Backward time: 590.6647338867188
+Average sparse bwd comm time over 5 embeddings 602.251176
+Overall iteration time 625.6793823242188
+Finished training it 77/512 of epoch 0, 625.51 ms/it, loss 0.102709
+mbs is 64
+Forward 15.5731840133667 ms
+Backward time: 590.4271240234375
+Average sparse bwd comm time over 5 embeddings 601.9572034
+Overall iteration time 649.8641967773438
+Finished training it 78/512 of epoch 0, 649.68 ms/it, loss 0.087604
+mbs is 64
+Forward 29.103904724121094 ms
+Backward time: 584.3179321289062
+Average sparse bwd comm time over 5 embeddings 601.6595466000001
+Overall iteration time 638.6472778320312
+Finished training it 79/512 of epoch 0, 638.47 ms/it, loss 0.092780
+mbs is 64
+Forward 2.9996800422668457 ms
+Backward time: 581.5029907226562
+Average sparse bwd comm time over 5 embeddings 601.3924876
+Overall iteration time 597.222412109375
+Finished training it 80/512 of epoch 0, 597.04 ms/it, loss 0.097249
+mbs is 64
+Forward 33.44233703613281 ms
+Backward time: 631.6287841796875
+Average sparse bwd comm time over 5 embeddings 600.9897486
+Overall iteration time 667.6572265625
+Finished training it 81/512 of epoch 0, 667.48 ms/it, loss 0.092560
+mbs is 64
+Forward 3.081439971923828 ms
+Backward time: 557.3816528320312
+Average sparse bwd comm time over 5 embeddings 601.1129561999999
+Overall iteration time 563.072998046875
+Finished training it 82/512 of epoch 0, 562.91 ms/it, loss 0.085381
+mbs is 64
+Forward 3.0296640396118164 ms
+Backward time: 692.94384765625
+Average sparse bwd comm time over 5 embeddings 600.5344834
+Overall iteration time 698.6281127929688
+Finished training it 83/512 of epoch 0, 698.46 ms/it, loss 0.098997
+mbs is 64
+Forward 30.915807723999023 ms
+Backward time: 594.081787109375
+Average sparse bwd comm time over 5 embeddings 601.3775624
+Overall iteration time 627.3474731445312
+Finished training it 84/512 of epoch 0, 627.19 ms/it, loss 0.080013
+mbs is 64
+Forward 37.23356628417969 ms
+Backward time: 617.2692260742188
+Average sparse bwd comm time over 5 embeddings 601.1214648
+Overall iteration time 657.1817016601562
+Finished training it 85/512 of epoch 0, 657.02 ms/it, loss 0.086271
+mbs is 64
+Forward 3.323359966278076 ms
+Backward time: 578.05517578125
+Average sparse bwd comm time over 5 embeddings 601.2691481999999
+Overall iteration time 671.8801879882812
+Finished training it 86/512 of epoch 0, 671.71 ms/it, loss 0.080698
+mbs is 64
+Forward 8.67516803741455 ms
+Backward time: 609.5421142578125
+Average sparse bwd comm time over 5 embeddings 600.9568122
+Overall iteration time 620.48974609375
+Finished training it 87/512 of epoch 0, 620.34 ms/it, loss 0.077813
+mbs is 64
+Forward 3.060447931289673 ms
+Backward time: 726.9140625
+Average sparse bwd comm time over 5 embeddings 601.0107129999999
+Overall iteration time 825.93896484375
+Finished training it 88/512 of epoch 0, 825.77 ms/it, loss 0.088407
+mbs is 64
+Forward 28.053407669067383 ms
+Backward time: 563.1273193359375
+Average sparse bwd comm time over 5 embeddings 601.2655729999999
+Overall iteration time 594.20263671875
+Finished training it 89/512 of epoch 0, 594.04 ms/it, loss 0.086644
+mbs is 64
+Forward 47.017311096191406 ms
+Backward time: 549.607421875
+Average sparse bwd comm time over 5 embeddings 600.737292
+Overall iteration time 599.4690551757812
+Finished training it 90/512 of epoch 0, 599.29 ms/it, loss 0.090854
+mbs is 64
+Forward 2.9059200286865234 ms
+Backward time: 640.0286865234375
+Average sparse bwd comm time over 5 embeddings 600.1251202
+Overall iteration time 696.573974609375
+Finished training it 91/512 of epoch 0, 696.41 ms/it, loss 0.087091
+mbs is 64
+Forward 30.878175735473633 ms
+Backward time: 563.4754638671875
+Average sparse bwd comm time over 5 embeddings 600.3770517999999
+Overall iteration time 597.1322631835938
+Finished training it 92/512 of epoch 0, 596.95 ms/it, loss 0.074412
+mbs is 64
+Forward 50.10259246826172 ms
+Backward time: 571.5476684570312
+Average sparse bwd comm time over 5 embeddings 599.7865872
+Overall iteration time 629.6770629882812
+Finished training it 93/512 of epoch 0, 629.49 ms/it, loss 0.095923
+mbs is 64
+Forward 7.728928089141846 ms
+Backward time: 555.3970947265625
+Average sparse bwd comm time over 5 embeddings 599.4363446
+Overall iteration time 611.3914794921875
+Finished training it 94/512 of epoch 0, 611.21 ms/it, loss 0.085622
+mbs is 64
+Forward 2.994784116744995 ms
+Backward time: 654.3370361328125
+Average sparse bwd comm time over 5 embeddings 598.9285745999999
+Overall iteration time 779.630615234375
+Finished training it 95/512 of epoch 0, 779.46 ms/it, loss 0.092852
+mbs is 64
+Forward 22.38163185119629 ms
+Backward time: 574.1906127929688
+Average sparse bwd comm time over 5 embeddings 599.171616
+Overall iteration time 599.1762084960938
+Finished training it 96/512 of epoch 0, 599.01 ms/it, loss 0.089874
+mbs is 64
+Forward 36.05379104614258 ms
+Backward time: 673.2042236328125
+Average sparse bwd comm time over 5 embeddings 598.774876
+Overall iteration time 713.3982543945312
+Finished training it 97/512 of epoch 0, 713.22 ms/it, loss 0.071057
+mbs is 64
+Forward 2.9394240379333496 ms
+Backward time: 623.404052734375
+Average sparse bwd comm time over 5 embeddings 599.5028878
+Overall iteration time 674.783203125
+Finished training it 98/512 of epoch 0, 674.61 ms/it, loss 0.077080
+mbs is 64
+Forward 5.814911842346191 ms
+Backward time: 534.6744384765625
+Average sparse bwd comm time over 5 embeddings 599.709177
+Overall iteration time 609.4028930664062
+Finished training it 99/512 of epoch 0, 608.37 ms/it, loss 0.079673
+mbs is 64
+Forward 2.899616003036499 ms
+Backward time: 631.5069580078125
+Average sparse bwd comm time over 5 embeddings 598.9810035999999
+Overall iteration time 668.7017211914062
+Finished training it 100/512 of epoch 0, 668.53 ms/it, loss 0.078363
+mbs is 64
+Forward 90.27254486083984 ms
+Backward time: 686.6380615234375
+Average sparse bwd comm time over 5 embeddings 599.2692305999999
+Overall iteration time 779.5189819335938
+Finished training it 101/512 of epoch 0, 779.35 ms/it, loss 0.089118
+mbs is 64
+Forward 25.15894317626953 ms
+Backward time: 612.1287841796875
+Average sparse bwd comm time over 5 embeddings 600.026525
+Overall iteration time 639.8668823242188
+Finished training it 102/512 of epoch 0, 639.69 ms/it, loss 0.081585
+mbs is 64
+Forward 2.9014720916748047 ms
+Backward time: 729.1996459960938
+Average sparse bwd comm time over 5 embeddings 600.1103578
+Overall iteration time 734.4701538085938
+Finished training it 103/512 of epoch 0, 734.32 ms/it, loss 0.081885
+mbs is 64
+Forward 3.3999040126800537 ms
+Backward time: 598.4635009765625
+Average sparse bwd comm time over 5 embeddings 600.9952478
+Overall iteration time 634.2952880859375
+Finished training it 104/512 of epoch 0, 634.13 ms/it, loss 0.076878
+mbs is 64
+Forward 24.416128158569336 ms
+Backward time: 630.9284057617188
+Average sparse bwd comm time over 5 embeddings 600.9154184
+Overall iteration time 658.171875
+Finished training it 105/512 of epoch 0, 657.99 ms/it, loss 0.078508
+mbs is 64
+Forward 36.45017623901367 ms
+Backward time: 603.6244506835938
+Average sparse bwd comm time over 5 embeddings 601.1655056
+Overall iteration time 642.81396484375
+Finished training it 106/512 of epoch 0, 642.58 ms/it, loss 0.071971
+mbs is 64
+Forward 20.213632583618164 ms
+Backward time: 596.0325317382812
+Average sparse bwd comm time over 5 embeddings 601.1505537999999
+Overall iteration time 618.8124389648438
+Finished training it 107/512 of epoch 0, 618.65 ms/it, loss 0.072629
+mbs is 64
+Forward 2.863935947418213 ms
+Backward time: 589.56494140625
+Average sparse bwd comm time over 5 embeddings 601.0694268
+Overall iteration time 607.3026733398438
+Finished training it 108/512 of epoch 0, 607.13 ms/it, loss 0.095328
+mbs is 64
+Forward 48.796993255615234 ms
+Backward time: 561.322998046875
+Average sparse bwd comm time over 5 embeddings 600.926204
+Overall iteration time 612.6704711914062
+Finished training it 109/512 of epoch 0, 612.51 ms/it, loss 0.074669
+mbs is 64
+Forward 85.6756820678711 ms
+Backward time: 617.354248046875
+Average sparse bwd comm time over 5 embeddings 600.298809
+Overall iteration time 705.7141723632812
+Finished training it 110/512 of epoch 0, 705.53 ms/it, loss 0.074417
+mbs is 64
+Forward 3.0296640396118164 ms
+Backward time: 582.2648315429688
+Average sparse bwd comm time over 5 embeddings 600.4233797999999
+Overall iteration time 617.038818359375
+Finished training it 111/512 of epoch 0, 616.87 ms/it, loss 0.065633
+mbs is 64
+Forward 3.8762879371643066 ms
+Backward time: 554.9158325195312
+Average sparse bwd comm time over 5 embeddings 600.2281443999999
+Overall iteration time 623.6170043945312
+Finished training it 112/512 of epoch 0, 623.43 ms/it, loss 0.095919
+mbs is 64
+Forward 3.0394558906555176 ms
+Backward time: 648.9784545898438
+Average sparse bwd comm time over 5 embeddings 599.7885359999999
+Overall iteration time 654.61865234375
+Finished training it 113/512 of epoch 0, 654.45 ms/it, loss 0.083422
+mbs is 64
+Forward 32.20828628540039 ms
+Backward time: 695.1557006835938
+Average sparse bwd comm time over 5 embeddings 600.0551671999999
+Overall iteration time 738.5466918945312
+Finished training it 114/512 of epoch 0, 738.38 ms/it, loss 0.080439
+mbs is 64
+Forward 51.014400482177734 ms
+Backward time: 617.6768188476562
+Average sparse bwd comm time over 5 embeddings 600.8574455999999
+Overall iteration time 671.19921875
+Finished training it 115/512 of epoch 0, 671.04 ms/it, loss 0.079392
+mbs is 64
+Forward 3.1447041034698486 ms
+Backward time: 664.6312866210938
+Average sparse bwd comm time over 5 embeddings 600.9681559999999
+Overall iteration time 722.2517700195312
+Finished training it 116/512 of epoch 0, 722.08 ms/it, loss 0.068233
+mbs is 64
+Forward 2.8772799968719482 ms
+Backward time: 587.3346557617188
+Average sparse bwd comm time over 5 embeddings 601.3006066
+Overall iteration time 701.24951171875
+Finished training it 117/512 of epoch 0, 701.08 ms/it, loss 0.078618
+mbs is 64
+Forward 5.418528079986572 ms
+Backward time: 663.7762451171875
+Average sparse bwd comm time over 5 embeddings 601.1431444
+Overall iteration time 676.4994506835938
+Finished training it 118/512 of epoch 0, 676.33 ms/it, loss 0.093608
+mbs is 64
+Forward 20.845823287963867 ms
+Backward time: 558.6862182617188
+Average sparse bwd comm time over 5 embeddings 601.6360504
+Overall iteration time 600.7736206054688
+Finished training it 119/512 of epoch 0, 586.76 ms/it, loss 0.090165
+mbs is 64
+Forward 16.336095809936523 ms
+Backward time: 632.67431640625
+Average sparse bwd comm time over 5 embeddings 601.2351977999999
+Overall iteration time 662.6611328125
+Finished training it 120/512 of epoch 0, 662.49 ms/it, loss 0.084540
+mbs is 64
+Forward 43.39766311645508 ms
+Backward time: 572.1016235351562
+Average sparse bwd comm time over 5 embeddings 601.4217142
+Overall iteration time 617.8775024414062
+Finished training it 121/512 of epoch 0, 617.73 ms/it, loss 0.084221
+mbs is 64
+Forward 3.301215887069702 ms
+Backward time: 646.4686279296875
+Average sparse bwd comm time over 5 embeddings 601.1485282
+Overall iteration time 695.3666381835938
+Finished training it 122/512 of epoch 0, 695.20 ms/it, loss 0.091147
+mbs is 64
+Forward 21.234399795532227 ms
+Backward time: 615.8591918945312
+Average sparse bwd comm time over 5 embeddings 601.4847714
+Overall iteration time 639.7757568359375
+Finished training it 123/512 of epoch 0, 639.60 ms/it, loss 0.089713
+mbs is 64
+Forward 38.7632942199707 ms
+Backward time: 616.9876708984375
+Average sparse bwd comm time over 5 embeddings 601.5596536
+Overall iteration time 658.2702026367188
+Finished training it 124/512 of epoch 0, 658.11 ms/it, loss 0.063348
+mbs is 64
+Forward 43.424415588378906 ms
+Backward time: 583.4977416992188
+Average sparse bwd comm time over 5 embeddings 601.6282097999999
+Overall iteration time 629.5654296875
+Finished training it 125/512 of epoch 0, 629.38 ms/it, loss 0.098664
+mbs is 64
+Forward 3.2562880516052246 ms
+Backward time: 663.6544189453125
+Average sparse bwd comm time over 5 embeddings 601.4302172
+Overall iteration time 720.6553344726562
+Finished training it 126/512 of epoch 0, 720.48 ms/it, loss 0.102263
+mbs is 64
+Forward 2.748608112335205 ms
+Backward time: 575.0763549804688
+Average sparse bwd comm time over 5 embeddings 601.8002771999999
+Overall iteration time 620.8624877929688
+Finished training it 127/512 of epoch 0, 620.68 ms/it, loss 0.091076
+mbs is 64
+Forward 45.504127502441406 ms
+Backward time: 641.0966796875
+Average sparse bwd comm time over 5 embeddings 601.5617447999999
+Overall iteration time 692.1594848632812
+Finished training it 128/512 of epoch 0, 691.98 ms/it, loss 0.094811
+mbs is 64
+Forward 12.898271560668945 ms
+Backward time: 606.3861694335938
+Average sparse bwd comm time over 5 embeddings 601.815648
+Overall iteration time 621.8106689453125
+Finished training it 129/512 of epoch 0, 621.64 ms/it, loss 0.095035
+mbs is 64
+Forward 2.816800117492676 ms
+Backward time: 680.2718505859375
+Average sparse bwd comm time over 5 embeddings 601.7652828
+Overall iteration time 712.65380859375
+Finished training it 130/512 of epoch 0, 712.46 ms/it, loss 0.081309
+mbs is 64
+Forward 2.609247922897339 ms
+Backward time: 549.718017578125
+Average sparse bwd comm time over 5 embeddings 602.2534039999999
+Overall iteration time 565.3309326171875
+Finished training it 131/512 of epoch 0, 565.16 ms/it, loss 0.065952
+mbs is 64
+Forward 54.09190368652344 ms
+Backward time: 598.830078125
+Average sparse bwd comm time over 5 embeddings 601.8212716
+Overall iteration time 655.510498046875
+Finished training it 132/512 of epoch 0, 655.35 ms/it, loss 0.080378
+mbs is 64
+Forward 46.90195083618164 ms
+Backward time: 594.9470825195312
+Average sparse bwd comm time over 5 embeddings 601.7703697999999
+Overall iteration time 644.3970336914062
+Finished training it 133/512 of epoch 0, 644.24 ms/it, loss 0.077534
+mbs is 64
+Forward 31.18934440612793 ms
+Backward time: 655.75732421875
+Average sparse bwd comm time over 5 embeddings 601.628143
+Overall iteration time 697.8611450195312
+Finished training it 134/512 of epoch 0, 697.70 ms/it, loss 0.079745
+mbs is 64
+Forward 40.29804611206055 ms
+Backward time: 664.500244140625
+Average sparse bwd comm time over 5 embeddings 601.9958832
+Overall iteration time 744.2349853515625
+Finished training it 135/512 of epoch 0, 744.05 ms/it, loss 0.078101
+mbs is 64
+Forward 8.86847972869873 ms
+Backward time: 526.6923217773438
+Average sparse bwd comm time over 5 embeddings 602.4276874
+Overall iteration time 541.7113647460938
+Finished training it 136/512 of epoch 0, 541.55 ms/it, loss 0.081438
+mbs is 64
+Forward 3.0426878929138184 ms
+Backward time: 664.1971435546875
+Average sparse bwd comm time over 5 embeddings 601.834459
+Overall iteration time 696.8330078125
+Finished training it 137/512 of epoch 0, 696.67 ms/it, loss 0.078244
+mbs is 64
+Forward 9.479519844055176 ms
+Backward time: 599.4700927734375
+Average sparse bwd comm time over 5 embeddings 602.2510684
+Overall iteration time 611.5758056640625
+Finished training it 138/512 of epoch 0, 611.40 ms/it, loss 0.081270
+mbs is 64
+Forward 196.1516876220703 ms
+Backward time: 534.3662109375
+Average sparse bwd comm time over 5 embeddings 602.1936527999999
+Overall iteration time 796.2705688476562
+Finished training it 139/512 of epoch 0, 796.10 ms/it, loss 0.079869
+mbs is 64
+Forward 8.22755241394043 ms
+Backward time: 627.5000610351562
+Average sparse bwd comm time over 5 embeddings 601.6781506
+Overall iteration time 669.2556762695312
+Finished training it 140/512 of epoch 0, 669.07 ms/it, loss 0.070222
+mbs is 64
+Forward 15.397760391235352 ms
+Backward time: 606.34521484375
+Average sparse bwd comm time over 5 embeddings 601.817893
+Overall iteration time 624.3389282226562
+Finished training it 141/512 of epoch 0, 624.18 ms/it, loss 0.089164
+mbs is 64
+Forward 2.996448040008545 ms
+Backward time: 581.054443359375
+Average sparse bwd comm time over 5 embeddings 601.7751664
+Overall iteration time 592.4290771484375
+Finished training it 142/512 of epoch 0, 592.26 ms/it, loss 0.088411
+mbs is 64
+Forward 17.693632125854492 ms
+Backward time: 567.1843872070312
+Average sparse bwd comm time over 5 embeddings 601.5427608
+Overall iteration time 597.1650390625
+Finished training it 143/512 of epoch 0, 596.98 ms/it, loss 0.076238
+mbs is 64
+Forward 39.77248001098633 ms
+Backward time: 540.094482421875
+Average sparse bwd comm time over 5 embeddings 601.2487444000001
+Overall iteration time 582.3989868164062
+Finished training it 144/512 of epoch 0, 582.21 ms/it, loss 0.095891
+mbs is 64
+Forward 19.02444839477539 ms
+Backward time: 519.4813232421875
+Average sparse bwd comm time over 5 embeddings 600.7988285999999
+Overall iteration time 541.54443359375
+Finished training it 145/512 of epoch 0, 541.32 ms/it, loss 0.084866
+mbs is 64
+Forward 27.16022491455078 ms
+Backward time: 677.3975219726562
+Average sparse bwd comm time over 5 embeddings 600.1754267999999
+Overall iteration time 707.2665405273438
+Finished training it 146/512 of epoch 0, 707.06 ms/it, loss 0.099146
+mbs is 64
+Forward 27.652448654174805 ms
+Backward time: 679.4035034179688
+Average sparse bwd comm time over 5 embeddings 600.6749641999999
+Overall iteration time 709.6279296875
+Finished training it 147/512 of epoch 0, 709.46 ms/it, loss 0.079626
+mbs is 64
+Forward 2.9444479942321777 ms
+Backward time: 651.304931640625
+Average sparse bwd comm time over 5 embeddings 601.1529986
+Overall iteration time 737.8052978515625
+Finished training it 148/512 of epoch 0, 737.59 ms/it, loss 0.089208
+mbs is 64
+Forward 30.58777618408203 ms
+Backward time: 687.5084838867188
+Average sparse bwd comm time over 5 embeddings 601.4525146
+Overall iteration time 720.7833862304688
+Finished training it 149/512 of epoch 0, 720.61 ms/it, loss 0.091245
+mbs is 64
+Forward 2.806623935699463 ms
+Backward time: 682.0751342773438
+Average sparse bwd comm time over 5 embeddings 602.0046138
+Overall iteration time 738.75048828125
+Finished training it 150/512 of epoch 0, 738.58 ms/it, loss 0.075288
+mbs is 64
+Forward 63.306400299072266 ms
+Backward time: 605.201416015625
+Average sparse bwd comm time over 5 embeddings 602.5119348000001
+Overall iteration time 671.298583984375
+Finished training it 151/512 of epoch 0, 671.11 ms/it, loss 0.098017
+mbs is 64
+Forward 2.8679680824279785 ms
+Backward time: 651.293701171875
+Average sparse bwd comm time over 5 embeddings 602.4241608
+Overall iteration time 689.6373901367188
+Finished training it 152/512 of epoch 0, 689.42 ms/it, loss 0.092457
+mbs is 64
+Forward 37.989280700683594 ms
+Backward time: 592.584716796875
+Average sparse bwd comm time over 5 embeddings 602.7209757999999
+Overall iteration time 633.0900268554688
+Finished training it 153/512 of epoch 0, 632.93 ms/it, loss 0.090006
+mbs is 64
+Forward 30.78646469116211 ms
+Backward time: 554.503173828125
+Average sparse bwd comm time over 5 embeddings 602.5672784000001
+Overall iteration time 587.89990234375
+Finished training it 154/512 of epoch 0, 587.71 ms/it, loss 0.106627
+mbs is 64
+Forward 46.050209045410156 ms
+Backward time: 626.8579711914062
+Average sparse bwd comm time over 5 embeddings 602.1192272000001
+Overall iteration time 677.1056518554688
+Finished training it 155/512 of epoch 0, 676.95 ms/it, loss 0.077403
+mbs is 64
+Forward 2.8599679470062256 ms
+Backward time: 591.6006469726562
+Average sparse bwd comm time over 5 embeddings 602.252037
+Overall iteration time 597.0759887695312
+Finished training it 156/512 of epoch 0, 596.91 ms/it, loss 0.080232
+mbs is 64
+Forward 2.8138880729675293 ms
+Backward time: 612.1359252929688
+Average sparse bwd comm time over 5 embeddings 602.1602535999999
+Overall iteration time 618.0597534179688
+Finished training it 157/512 of epoch 0, 617.90 ms/it, loss 0.085986
+mbs is 64
+Forward 19.47804832458496 ms
+Backward time: 677.8193969726562
+Average sparse bwd comm time over 5 embeddings 602.2010492
+Overall iteration time 699.96337890625
+Finished training it 158/512 of epoch 0, 699.79 ms/it, loss 0.089437
+mbs is 64
+Forward 18.272159576416016 ms
+Backward time: 704.0870361328125
+Average sparse bwd comm time over 5 embeddings 602.5931812
+Overall iteration time 725.8695678710938
+Finished training it 159/512 of epoch 0, 725.71 ms/it, loss 0.073167
+mbs is 64
+Forward 32.44121551513672 ms
+Backward time: 613.3514404296875
+Average sparse bwd comm time over 5 embeddings 603.2047838
+Overall iteration time 660.6602172851562
+Finished training it 160/512 of epoch 0, 660.48 ms/it, loss 0.099695
+mbs is 64
+Forward 14.678272247314453 ms
+Backward time: 544.3604736328125
+Average sparse bwd comm time over 5 embeddings 603.2364557999999
+Overall iteration time 572.7887573242188
+Finished training it 161/512 of epoch 0, 572.62 ms/it, loss 0.093899
+mbs is 64
+Forward 29.11859130859375 ms
+Backward time: 554.092529296875
+Average sparse bwd comm time over 5 embeddings 602.8472201999999
+Overall iteration time 585.9778442382812
+Finished training it 162/512 of epoch 0, 585.81 ms/it, loss 0.074621
+mbs is 64
+Forward 18.273088455200195 ms
+Backward time: 557.2689819335938
+Average sparse bwd comm time over 5 embeddings 602.5026388
+Overall iteration time 586.5840454101562
+Finished training it 163/512 of epoch 0, 586.42 ms/it, loss 0.096908
+mbs is 64
+Forward 13.099871635437012 ms
+Backward time: 579.8031616210938
+Average sparse bwd comm time over 5 embeddings 602.1922818
+Overall iteration time 606.3349609375
+Finished training it 164/512 of epoch 0, 606.15 ms/it, loss 0.091606
+mbs is 64
+Forward 32.189727783203125 ms
+Backward time: 534.6109619140625
+Average sparse bwd comm time over 5 embeddings 602.0142837999999
+Overall iteration time 580.7236938476562
+Finished training it 165/512 of epoch 0, 580.55 ms/it, loss 0.075651
+mbs is 64
+Forward 2.980799913406372 ms
+Backward time: 588.3135986328125
+Average sparse bwd comm time over 5 embeddings 601.5414038
+Overall iteration time 593.5780029296875
+Finished training it 166/512 of epoch 0, 593.43 ms/it, loss 0.080945
+mbs is 64
+Forward 7.370528221130371 ms
+Backward time: 587.6387939453125
+Average sparse bwd comm time over 5 embeddings 601.2896512
+Overall iteration time 601.0286254882812
+Finished training it 167/512 of epoch 0, 600.85 ms/it, loss 0.081609
+mbs is 64
+Forward 2.833951950073242 ms
+Backward time: 716.4395751953125
+Average sparse bwd comm time over 5 embeddings 601.1866772
+Overall iteration time 750.4363403320312
+Finished training it 168/512 of epoch 0, 750.27 ms/it, loss 0.082055
+mbs is 64
+Forward 3.002847909927368 ms
+Backward time: 618.186767578125
+Average sparse bwd comm time over 5 embeddings 601.8502558
+Overall iteration time 639.4265747070312
+Finished training it 169/512 of epoch 0, 639.24 ms/it, loss 0.066082
+mbs is 64
+Forward 29.818464279174805 ms
+Backward time: 544.2785034179688
+Average sparse bwd comm time over 5 embeddings 601.9207552
+Overall iteration time 576.8386840820312
+Finished training it 170/512 of epoch 0, 576.67 ms/it, loss 0.099038
+mbs is 64
+Forward 2.922175884246826 ms
+Backward time: 555.989990234375
+Average sparse bwd comm time over 5 embeddings 601.5558708000001
+Overall iteration time 577.7264404296875
+Finished training it 171/512 of epoch 0, 577.54 ms/it, loss 0.091800
+mbs is 64
+Forward 39.82447814941406 ms
+Backward time: 553.9164428710938
+Average sparse bwd comm time over 5 embeddings 601.2667532
+Overall iteration time 616.0240478515625
+Finished training it 172/512 of epoch 0, 615.85 ms/it, loss 0.082425
+mbs is 64
+Forward 22.12995147705078 ms
+Backward time: 592.58984375
+Average sparse bwd comm time over 5 embeddings 600.9586112
+Overall iteration time 617.5283203125
+Finished training it 173/512 of epoch 0, 617.35 ms/it, loss 0.083136
+mbs is 64
+Forward 81.69087982177734 ms
+Backward time: 665.091064453125
+Average sparse bwd comm time over 5 embeddings 600.8416166
+Overall iteration time 749.3457641601562
+Finished training it 174/512 of epoch 0, 749.17 ms/it, loss 0.088825
+mbs is 64
+Forward 20.234495162963867 ms
+Backward time: 633.6952514648438
+Average sparse bwd comm time over 5 embeddings 601.157704
+Overall iteration time 656.5232543945312
+Finished training it 175/512 of epoch 0, 656.35 ms/it, loss 0.083707
+mbs is 64
+Forward 3.073888063430786 ms
+Backward time: 641.2155151367188
+Average sparse bwd comm time over 5 embeddings 601.3227681999999
+Overall iteration time 650.12939453125
+Finished training it 176/512 of epoch 0, 649.95 ms/it, loss 0.102525
+mbs is 64
+Forward 52.844993591308594 ms
+Backward time: 595.1743774414062
+Average sparse bwd comm time over 5 embeddings 601.5286564
+Overall iteration time 675.6280517578125
+Finished training it 177/512 of epoch 0, 675.39 ms/it, loss 0.066449
+mbs is 64
+Forward 19.962207794189453 ms
+Backward time: 521.4013671875
+Average sparse bwd comm time over 5 embeddings 601.4696865999999
+Overall iteration time 593.4305419921875
+Finished training it 178/512 of epoch 0, 593.27 ms/it, loss 0.091944
+mbs is 64
+Forward 2.9654719829559326 ms
+Backward time: 563.2542724609375
+Average sparse bwd comm time over 5 embeddings 600.9822796
+Overall iteration time 571.3284912109375
+Finished training it 179/512 of epoch 0, 568.58 ms/it, loss 0.074479
+mbs is 64
+Forward 3.0347518920898438 ms
+Backward time: 568.8934326171875
+Average sparse bwd comm time over 5 embeddings 600.7485982
+Overall iteration time 598.8075561523438
+Finished training it 180/512 of epoch 0, 598.63 ms/it, loss 0.085482
+mbs is 64
+Forward 69.0755844116211 ms
+Backward time: 659.6597900390625
+Average sparse bwd comm time over 5 embeddings 600.548348
+Overall iteration time 731.2896118164062
+Finished training it 181/512 of epoch 0, 731.12 ms/it, loss 0.078697
+mbs is 64
+Forward 2.8904640674591064 ms
+Backward time: 544.6359252929688
+Average sparse bwd comm time over 5 embeddings 600.8528692
+Overall iteration time 584.3455810546875
+Finished training it 182/512 of epoch 0, 584.19 ms/it, loss 0.075984
+mbs is 64
+Forward 2.8557119369506836 ms
+Backward time: 737.269775390625
+Average sparse bwd comm time over 5 embeddings 600.5218454
+Overall iteration time 763.6377563476562
+Finished training it 183/512 of epoch 0, 763.47 ms/it, loss 0.065394
+mbs is 64
+Forward 21.41302490234375 ms
+Backward time: 596.716552734375
+Average sparse bwd comm time over 5 embeddings 601.0200699999999
+Overall iteration time 666.588134765625
+Finished training it 184/512 of epoch 0, 666.41 ms/it, loss 0.075787
+mbs is 64
+Forward 29.489471435546875 ms
+Backward time: 534.2116088867188
+Average sparse bwd comm time over 5 embeddings 600.9766128
+Overall iteration time 582.4808959960938
+Finished training it 185/512 of epoch 0, 582.28 ms/it, loss 0.071826
+mbs is 64
+Forward 24.60028839111328 ms
+Backward time: 688.9553833007812
+Average sparse bwd comm time over 5 embeddings 600.5233842
+Overall iteration time 767.8607177734375
+Finished training it 186/512 of epoch 0, 767.69 ms/it, loss 0.086083
+mbs is 64
+Forward 22.05276870727539 ms
+Backward time: 611.2481079101562
+Average sparse bwd comm time over 5 embeddings 600.9784778
+Overall iteration time 691.962890625
+Finished training it 187/512 of epoch 0, 691.80 ms/it, loss 0.080799
+mbs is 64
+Forward 2.813375949859619 ms
+Backward time: 619.2568359375
+Average sparse bwd comm time over 5 embeddings 601.0113449999999
+Overall iteration time 624.5785522460938
+Finished training it 188/512 of epoch 0, 624.42 ms/it, loss 0.092818
+mbs is 64
+Forward 16.014400482177734 ms
+Backward time: 560.922607421875
+Average sparse bwd comm time over 5 embeddings 601.0056366
+Overall iteration time 629.7261962890625
+Finished training it 189/512 of epoch 0, 629.55 ms/it, loss 0.082267
+mbs is 64
+Forward 2.967072010040283 ms
+Backward time: 584.580078125
+Average sparse bwd comm time over 5 embeddings 600.7746381999999
+Overall iteration time 618.5441284179688
+Finished training it 190/512 of epoch 0, 618.39 ms/it, loss 0.083586
+mbs is 64
+Forward 25.560352325439453 ms
+Backward time: 698.8369750976562
+Average sparse bwd comm time over 5 embeddings 600.653794
+Overall iteration time 776.1408081054688
+Finished training it 191/512 of epoch 0, 727.78 ms/it, loss 0.083802
+mbs is 64
+Forward 27.79417610168457 ms
+Backward time: 596.1748657226562
+Average sparse bwd comm time over 5 embeddings 601.1085022
+Overall iteration time 626.6286010742188
+Finished training it 192/512 of epoch 0, 626.47 ms/it, loss 0.094340
+mbs is 64
+Forward 49.753761291503906 ms
+Backward time: 617.18017578125
+Average sparse bwd comm time over 5 embeddings 601.0638391999998
+Overall iteration time 673.0424194335938
+Finished training it 193/512 of epoch 0, 672.88 ms/it, loss 0.100101
+mbs is 64
+Forward 35.839134216308594 ms
+Backward time: 595.5584106445312
+Average sparse bwd comm time over 5 embeddings 601.1267164000001
+Overall iteration time 634.076171875
+Finished training it 194/512 of epoch 0, 633.90 ms/it, loss 0.086767
+mbs is 64
+Forward 2.960832118988037 ms
+Backward time: 638.392333984375
+Average sparse bwd comm time over 5 embeddings 601.0789024
+Overall iteration time 643.9342041015625
+Finished training it 195/512 of epoch 0, 643.77 ms/it, loss 0.079608
+mbs is 64
+Forward 2.913248062133789 ms
+Backward time: 708.3571166992188
+Average sparse bwd comm time over 5 embeddings 601.2111431999999
+Overall iteration time 713.8662109375
+Finished training it 196/512 of epoch 0, 713.70 ms/it, loss 0.083550
+mbs is 64
+Forward 24.524127960205078 ms
+Backward time: 601.7791748046875
+Average sparse bwd comm time over 5 embeddings 601.5229412
+Overall iteration time 628.8732299804688
+Finished training it 197/512 of epoch 0, 628.71 ms/it, loss 0.081416
+mbs is 64
+Forward 2.9479360580444336 ms
+Backward time: 558.1096801757812
+Average sparse bwd comm time over 5 embeddings 601.4639576
+Overall iteration time 566.22900390625
+Finished training it 198/512 of epoch 0, 566.05 ms/it, loss 0.100916
+mbs is 64
+Forward 2.939743995666504 ms
+Backward time: 567.0051879882812
+Average sparse bwd comm time over 5 embeddings 601.2243258
+Overall iteration time 572.621826171875
+Finished training it 199/512 of epoch 0, 572.45 ms/it, loss 0.098835
+mbs is 64
+Forward 2.89900803565979 ms
+Backward time: 796.8552856445312
+Average sparse bwd comm time over 5 embeddings 601.0324361999999
+Overall iteration time 832.6983642578125
+Finished training it 200/512 of epoch 0, 832.52 ms/it, loss 0.088372
+mbs is 64
+Forward 2.8662400245666504 ms
+Backward time: 652.189697265625
+Average sparse bwd comm time over 5 embeddings 601.9936363999999
+Overall iteration time 697.8805541992188
+Finished training it 201/512 of epoch 0, 697.71 ms/it, loss 0.095200
+mbs is 64
+Forward 32.949119567871094 ms
+Backward time: 626.1258544921875
+Average sparse bwd comm time over 5 embeddings 602.2244516000001
+Overall iteration time 735.71533203125
+Finished training it 202/512 of epoch 0, 735.55 ms/it, loss 0.082801
+mbs is 64
+Forward 8.838399887084961 ms
+Backward time: 579.1057739257812
+Average sparse bwd comm time over 5 embeddings 602.2930091999999
+Overall iteration time 590.6165771484375
+Finished training it 203/512 of epoch 0, 590.43 ms/it, loss 0.082142
+mbs is 64
+Forward 2.848128080368042 ms
+Backward time: 693.1414794921875
+Average sparse bwd comm time over 5 embeddings 602.1597181999999
+Overall iteration time 797.9171752929688
+Finished training it 204/512 of epoch 0, 797.75 ms/it, loss 0.094100
+mbs is 64
+Forward 18.478975296020508 ms
+Backward time: 539.9715576171875
+Average sparse bwd comm time over 5 embeddings 602.533295
+Overall iteration time 560.8335571289062
+Finished training it 205/512 of epoch 0, 560.66 ms/it, loss 0.085531
+mbs is 64
+Forward 2.8010880947113037 ms
+Backward time: 590.1220092773438
+Average sparse bwd comm time over 5 embeddings 602.2083786
+Overall iteration time 595.6935424804688
+Finished training it 206/512 of epoch 0, 595.54 ms/it, loss 0.091800
+mbs is 64
+Forward 2.8431038856506348 ms
+Backward time: 805.4220581054688
+Average sparse bwd comm time over 5 embeddings 602.1315258
+Overall iteration time 810.7233276367188
+Finished training it 207/512 of epoch 0, 810.57 ms/it, loss 0.088608
+mbs is 64
+Forward 2.8938241004943848 ms
+Backward time: 626.1145629882812
+Average sparse bwd comm time over 5 embeddings 603.0960352
+Overall iteration time 642.107421875
+Finished training it 208/512 of epoch 0, 641.96 ms/it, loss 0.091627
+mbs is 64
+Forward 23.37664031982422 ms
+Backward time: 663.9093627929688
+Average sparse bwd comm time over 5 embeddings 603.1849545999999
+Overall iteration time 755.8113403320312
+Finished training it 209/512 of epoch 0, 755.64 ms/it, loss 0.087025
+mbs is 64
+Forward 3.9041919708251953 ms
+Backward time: 513.7643432617188
+Average sparse bwd comm time over 5 embeddings 603.4520602
+Overall iteration time 520.6159057617188
+Finished training it 210/512 of epoch 0, 520.39 ms/it, loss 0.077909
+mbs is 64
+Forward 3.3150079250335693 ms
+Backward time: 620.2265625
+Average sparse bwd comm time over 5 embeddings 602.9789294
+Overall iteration time 658.1810913085938
+Finished training it 211/512 of epoch 0, 658.01 ms/it, loss 0.086272
+mbs is 64
+Forward 20.91948890686035 ms
+Backward time: 602.0781860351562
+Average sparse bwd comm time over 5 embeddings 603.0317177999999
+Overall iteration time 631.667724609375
+Finished training it 212/512 of epoch 0, 631.44 ms/it, loss 0.079370
+mbs is 64
+Forward 2.8348159790039062 ms
+Backward time: 629.3032836914062
+Average sparse bwd comm time over 5 embeddings 603.0090184
+Overall iteration time 634.7949829101562
+Finished training it 213/512 of epoch 0, 634.63 ms/it, loss 0.085578
+mbs is 64
+Forward 3.1154239177703857 ms
+Backward time: 574.587890625
+Average sparse bwd comm time over 5 embeddings 602.9388667999999
+Overall iteration time 614.5638427734375
+Finished training it 214/512 of epoch 0, 579.89 ms/it, loss 0.081739
+mbs is 64
+Forward 51.238433837890625 ms
+Backward time: 635.5865478515625
+Average sparse bwd comm time over 5 embeddings 602.7787468
+Overall iteration time 690.535400390625
+Finished training it 215/512 of epoch 0, 690.37 ms/it, loss 0.087321
+mbs is 64
+Forward 2.993504047393799 ms
+Backward time: 751.7491455078125
+Average sparse bwd comm time over 5 embeddings 602.9029441999999
+Overall iteration time 757.5132446289062
+Finished training it 216/512 of epoch 0, 757.34 ms/it, loss 0.073416
+mbs is 64
+Forward 37.55120086669922 ms
+Backward time: 626.9573364257812
+Average sparse bwd comm time over 5 embeddings 603.4442317999999
+Overall iteration time 698.4519653320312
+Finished training it 217/512 of epoch 0, 698.24 ms/it, loss 0.089685
+mbs is 64
+Forward 43.25724792480469 ms
+Backward time: 637.6775512695312
+Average sparse bwd comm time over 5 embeddings 603.5364904
+Overall iteration time 684.548095703125
+Finished training it 218/512 of epoch 0, 684.35 ms/it, loss 0.082090
+mbs is 64
+Forward 9.723551750183105 ms
+Backward time: 537.5682373046875
+Average sparse bwd comm time over 5 embeddings 603.6757147999999
+Overall iteration time 581.3289184570312
+Finished training it 219/512 of epoch 0, 581.11 ms/it, loss 0.088563
+mbs is 64
+Forward 2.798719882965088 ms
+Backward time: 670.76708984375
+Average sparse bwd comm time over 5 embeddings 603.3552076
+Overall iteration time 713.650146484375
+Finished training it 220/512 of epoch 0, 713.48 ms/it, loss 0.079163
+mbs is 64
+Forward 135.2981719970703 ms
+Backward time: 629.19580078125
+Average sparse bwd comm time over 5 embeddings 603.5752334
+Overall iteration time 769.2083129882812
+Finished training it 221/512 of epoch 0, 769.06 ms/it, loss 0.081332
+mbs is 64
+Forward 2.7515199184417725 ms
+Backward time: 648.76953125
+Average sparse bwd comm time over 5 embeddings 603.6757076
+Overall iteration time 658.8753662109375
+Finished training it 222/512 of epoch 0, 658.70 ms/it, loss 0.086548
+mbs is 64
+Forward 9.370176315307617 ms
+Backward time: 589.0416870117188
+Average sparse bwd comm time over 5 embeddings 603.85962
+Overall iteration time 611.15185546875
+Finished training it 223/512 of epoch 0, 610.97 ms/it, loss 0.083103
+mbs is 64
+Forward 2.9391040802001953 ms
+Backward time: 529.8226928710938
+Average sparse bwd comm time over 5 embeddings 603.6258852
+Overall iteration time 548.0724487304688
+Finished training it 224/512 of epoch 0, 547.89 ms/it, loss 0.067462
+mbs is 64
+Forward 8.31123161315918 ms
+Backward time: 566.2116088867188
+Average sparse bwd comm time over 5 embeddings 603.2626712
+Overall iteration time 577.1970825195312
+Finished training it 225/512 of epoch 0, 577.01 ms/it, loss 0.077649
+mbs is 64
+Forward 27.069408416748047 ms
+Backward time: 595.99462890625
+Average sparse bwd comm time over 5 embeddings 603.0682149999999
+Overall iteration time 680.5657348632812
+Finished training it 226/512 of epoch 0, 680.37 ms/it, loss 0.096458
+mbs is 64
+Forward 33.387359619140625 ms
+Backward time: 572.55322265625
+Average sparse bwd comm time over 5 embeddings 603.0185406
+Overall iteration time 608.5416870117188
+Finished training it 227/512 of epoch 0, 608.36 ms/it, loss 0.090509
+mbs is 64
+Forward 46.91241455078125 ms
+Backward time: 558.19775390625
+Average sparse bwd comm time over 5 embeddings 602.8301759999999
+Overall iteration time 607.6006469726562
+Finished training it 228/512 of epoch 0, 607.44 ms/it, loss 0.075006
+mbs is 64
+Forward 2.853055953979492 ms
+Backward time: 600.142822265625
+Average sparse bwd comm time over 5 embeddings 602.6188376
+Overall iteration time 690.3593139648438
+Finished training it 229/512 of epoch 0, 690.15 ms/it, loss 0.086936
+mbs is 64
+Forward 4.677120208740234 ms
+Backward time: 552.7470092773438
+Average sparse bwd comm time over 5 embeddings 602.5921254
+Overall iteration time 594.2261962890625
+Finished training it 230/512 of epoch 0, 594.04 ms/it, loss 0.094233
+mbs is 64
+Forward 2.8554561138153076 ms
+Backward time: 616.1920166015625
+Average sparse bwd comm time over 5 embeddings 602.3420656
+Overall iteration time 638.6298828125
+Finished training it 231/512 of epoch 0, 638.46 ms/it, loss 0.077656
+mbs is 64
+Forward 27.986591339111328 ms
+Backward time: 562.0090942382812
+Average sparse bwd comm time over 5 embeddings 602.3784554
+Overall iteration time 613.9207763671875
+Finished training it 232/512 of epoch 0, 613.73 ms/it, loss 0.080496
+mbs is 64
+Forward 3.1233599185943604 ms
+Backward time: 552.7510986328125
+Average sparse bwd comm time over 5 embeddings 602.1883546
+Overall iteration time 558.455810546875
+Finished training it 233/512 of epoch 0, 558.27 ms/it, loss 0.068911
+mbs is 64
+Forward 2.915519952774048 ms
+Backward time: 641.8258056640625
+Average sparse bwd comm time over 5 embeddings 601.8919586
+Overall iteration time 648.6896362304688
+Finished training it 234/512 of epoch 0, 648.52 ms/it, loss 0.099349
+mbs is 64
+Forward 60.54838562011719 ms
+Backward time: 585.8242797851562
+Average sparse bwd comm time over 5 embeddings 602.0285368
+Overall iteration time 710.2894287109375
+Finished training it 235/512 of epoch 0, 710.10 ms/it, loss 0.077177
+mbs is 64
+Forward 3.04531192779541 ms
+Backward time: 650.8114013671875
+Average sparse bwd comm time over 5 embeddings 601.8966394
+Overall iteration time 656.4454345703125
+Finished training it 236/512 of epoch 0, 656.29 ms/it, loss 0.091687
+mbs is 64
+Forward 27.705791473388672 ms
+Backward time: 653.9786376953125
+Average sparse bwd comm time over 5 embeddings 601.9744774000001
+Overall iteration time 684.3279418945312
+Finished training it 237/512 of epoch 0, 684.17 ms/it, loss 0.085259
+mbs is 64
+Forward 2.881983995437622 ms
+Backward time: 724.8107299804688
+Average sparse bwd comm time over 5 embeddings 602.177593
+Overall iteration time 731.631591796875
+Finished training it 238/512 of epoch 0, 731.46 ms/it, loss 0.088943
+mbs is 64
+Forward 34.63945770263672 ms
+Backward time: 630.0426025390625
+Average sparse bwd comm time over 5 embeddings 602.573628
+Overall iteration time 802.207763671875
+Finished training it 239/512 of epoch 0, 802.05 ms/it, loss 0.088455
+mbs is 64
+Forward 6.336319923400879 ms
+Backward time: 527.8555908203125
+Average sparse bwd comm time over 5 embeddings 602.6378953999999
+Overall iteration time 537.1217651367188
+Finished training it 240/512 of epoch 0, 536.92 ms/it, loss 0.074331
+mbs is 64
+Forward 25.162431716918945 ms
+Backward time: 598.7501831054688
+Average sparse bwd comm time over 5 embeddings 602.1187562
+Overall iteration time 626.5303344726562
+Finished training it 241/512 of epoch 0, 626.35 ms/it, loss 0.083174
+mbs is 64
+Forward 3.395008087158203 ms
+Backward time: 613.749755859375
+Average sparse bwd comm time over 5 embeddings 602.0290133999999
+Overall iteration time 619.9224243164062
+Finished training it 242/512 of epoch 0, 619.74 ms/it, loss 0.072533
+mbs is 64
+Forward 4.463808059692383 ms
+Backward time: 632.5718994140625
+Average sparse bwd comm time over 5 embeddings 602.058319
+Overall iteration time 639.7061157226562
+Finished training it 243/512 of epoch 0, 639.52 ms/it, loss 0.071173
+mbs is 64
+Forward 8.7957763671875 ms
+Backward time: 585.9880981445312
+Average sparse bwd comm time over 5 embeddings 602.1552554
+Overall iteration time 608.4761352539062
+Finished training it 244/512 of epoch 0, 608.30 ms/it, loss 0.109944
+mbs is 64
+Forward 34.04240036010742 ms
+Backward time: 675.3310546875
+Average sparse bwd comm time over 5 embeddings 602.0733322
+Overall iteration time 711.930908203125
+Finished training it 245/512 of epoch 0, 711.76 ms/it, loss 0.093848
+mbs is 64
+Forward 11.111776351928711 ms
+Backward time: 726.6682739257812
+Average sparse bwd comm time over 5 embeddings 602.3569536
+Overall iteration time 741.2510986328125
+Finished training it 246/512 of epoch 0, 741.10 ms/it, loss 0.085606
+mbs is 64
+Forward 2.9775679111480713 ms
+Backward time: 782.266357421875
+Average sparse bwd comm time over 5 embeddings 602.8355206
+Overall iteration time 787.736572265625
+Finished training it 247/512 of epoch 0, 787.56 ms/it, loss 0.086523
+mbs is 64
+Forward 2.8871679306030273 ms
+Backward time: 562.9900512695312
+Average sparse bwd comm time over 5 embeddings 603.4858827999999
+Overall iteration time 592.2078857421875
+Finished training it 248/512 of epoch 0, 592.03 ms/it, loss 0.080977
+mbs is 64
+Forward 41.76492691040039 ms
+Backward time: 696.964111328125
+Average sparse bwd comm time over 5 embeddings 603.302482
+Overall iteration time 741.2244262695312
+Finished training it 249/512 of epoch 0, 741.06 ms/it, loss 0.080727
+mbs is 64
+Forward 3.029695987701416 ms
+Backward time: 589.35498046875
+Average sparse bwd comm time over 5 embeddings 603.6332738000001
+Overall iteration time 594.8743896484375
+Finished training it 250/512 of epoch 0, 594.72 ms/it, loss 0.063583
+mbs is 64
+Forward 3.031872034072876 ms
+Backward time: 766.3472900390625
+Average sparse bwd comm time over 5 embeddings 603.5084802
+Overall iteration time 773.1712036132812
+Finished training it 251/512 of epoch 0, 773.01 ms/it, loss 0.088115
+mbs is 64
+Forward 11.294783592224121 ms
+Backward time: 568.2575073242188
+Average sparse bwd comm time over 5 embeddings 604.1413306000001
+Overall iteration time 592.2252807617188
+Finished training it 252/512 of epoch 0, 592.02 ms/it, loss 0.077434
+mbs is 64
+Forward 5.933375835418701 ms
+Backward time: 526.1455078125
+Average sparse bwd comm time over 5 embeddings 603.981596
+Overall iteration time 615.8253784179688
+Finished training it 253/512 of epoch 0, 615.57 ms/it, loss 0.109081
+mbs is 64
+Forward 3.0936639308929443 ms
+Backward time: 523.5855102539062
+Average sparse bwd comm time over 5 embeddings 603.6080776
+Overall iteration time 529.0127563476562
+Finished training it 254/512 of epoch 0, 528.85 ms/it, loss 0.108859
+mbs is 64
+Forward 3.00710391998291 ms
+Backward time: 589.4113159179688
+Average sparse bwd comm time over 5 embeddings 603.2308215999999
+Overall iteration time 641.7295532226562
+Finished training it 255/512 of epoch 0, 641.55 ms/it, loss 0.066784
+mbs is 64
+Forward 52.126495361328125 ms
+Backward time: 551.85205078125
+Average sparse bwd comm time over 5 embeddings 603.1563416
+Overall iteration time 626.5200805664062
+Finished training it 256/512 of epoch 0, 626.34 ms/it, loss 0.093620
+mbs is 64
+Forward 2.836992025375366 ms
+Backward time: 650.73046875
+Average sparse bwd comm time over 5 embeddings 602.9157479999999
+Overall iteration time 656.0634765625
+Finished training it 257/512 of epoch 0, 655.90 ms/it, loss 0.091008
+mbs is 64
+Forward 49.238590240478516 ms
+Backward time: 637.5639038085938
+Average sparse bwd comm time over 5 embeddings 602.9662849999999
+Overall iteration time 689.3557739257812
+Finished training it 258/512 of epoch 0, 689.20 ms/it, loss 0.077493
+mbs is 64
+Forward 26.91551971435547 ms
+Backward time: 589.4318237304688
+Average sparse bwd comm time over 5 embeddings 603.0600056
+Overall iteration time 644.6929931640625
+Finished training it 259/512 of epoch 0, 618.95 ms/it, loss 0.092355
+mbs is 64
+Forward 6.300415992736816 ms
+Backward time: 567.5274047851562
+Average sparse bwd comm time over 5 embeddings 602.9936762
+Overall iteration time 590.3779907226562
+Finished training it 260/512 of epoch 0, 590.21 ms/it, loss 0.085288
+mbs is 64
+Forward 10.248319625854492 ms
+Backward time: 648.0977783203125
+Average sparse bwd comm time over 5 embeddings 602.8352402
+Overall iteration time 670.6114501953125
+Finished training it 261/512 of epoch 0, 670.42 ms/it, loss 0.048442
+mbs is 64
+Forward 2.9809279441833496 ms
+Backward time: 637.2935791015625
+Average sparse bwd comm time over 5 embeddings 602.915207
+Overall iteration time 654.9227294921875
+Finished training it 262/512 of epoch 0, 654.75 ms/it, loss 0.072803
+mbs is 64
+Forward 68.89324951171875 ms
+Backward time: 684.548095703125
+Average sparse bwd comm time over 5 embeddings 602.95353
+Overall iteration time 782.1107177734375
+Finished training it 263/512 of epoch 0, 781.94 ms/it, loss 0.086329
+mbs is 64
+Forward 2.947648048400879 ms
+Backward time: 652.7958984375
+Average sparse bwd comm time over 5 embeddings 603.2499621999999
+Overall iteration time 695.004150390625
+Finished training it 264/512 of epoch 0, 658.13 ms/it, loss 0.064783
+mbs is 64
+Forward 2.844320058822632 ms
+Backward time: 624.300048828125
+Average sparse bwd comm time over 5 embeddings 603.4230298
+Overall iteration time 676.8711547851562
+Finished training it 265/512 of epoch 0, 676.70 ms/it, loss 0.082958
+mbs is 64
+Forward 2.970720052719116 ms
+Backward time: 687.3425903320312
+Average sparse bwd comm time over 5 embeddings 603.4862949999999
+Overall iteration time 713.2733154296875
+Finished training it 266/512 of epoch 0, 713.10 ms/it, loss 0.076434
+mbs is 64
+Forward 27.279199600219727 ms
+Backward time: 588.1835327148438
+Average sparse bwd comm time over 5 embeddings 603.7878367999999
+Overall iteration time 708.759521484375
+Finished training it 267/512 of epoch 0, 708.60 ms/it, loss 0.067591
+mbs is 64
+Forward 2.9314560890197754 ms
+Backward time: 573.4983520507812
+Average sparse bwd comm time over 5 embeddings 603.7142772
+Overall iteration time 579.5379028320312
+Finished training it 268/512 of epoch 0, 579.36 ms/it, loss 0.102041
+mbs is 64
+Forward 2.9626240730285645 ms
+Backward time: 758.6375732421875
+Average sparse bwd comm time over 5 embeddings 603.5135156
+Overall iteration time 764.569580078125
+Finished training it 269/512 of epoch 0, 764.42 ms/it, loss 0.076428
+mbs is 64
+Forward 14.448960304260254 ms
+Backward time: 735.1818237304688
+Average sparse bwd comm time over 5 embeddings 604.04352
+Overall iteration time 752.2805786132812
+Finished training it 270/512 of epoch 0, 752.10 ms/it, loss 0.084361
+mbs is 64
+Forward 33.6519660949707 ms
+Backward time: 581.4640502929688
+Average sparse bwd comm time over 5 embeddings 604.4884632
+Overall iteration time 617.7699584960938
+Finished training it 271/512 of epoch 0, 617.61 ms/it, loss 0.083842
+mbs is 64
+Forward 3.4824318885803223 ms
+Backward time: 586.7059326171875
+Average sparse bwd comm time over 5 embeddings 604.3630006
+Overall iteration time 592.8048706054688
+Finished training it 272/512 of epoch 0, 592.64 ms/it, loss 0.080762
+mbs is 64
+Forward 43.005184173583984 ms
+Backward time: 639.5637817382812
+Average sparse bwd comm time over 5 embeddings 604.2811136
+Overall iteration time 685.2290649414062
+Finished training it 273/512 of epoch 0, 685.06 ms/it, loss 0.083404
+mbs is 64
+Forward 2.9849600791931152 ms
+Backward time: 699.5138549804688
+Average sparse bwd comm time over 5 embeddings 604.3756502
+Overall iteration time 705.2677001953125
+Finished training it 274/512 of epoch 0, 705.10 ms/it, loss 0.094465
+mbs is 64
+Forward 33.829185485839844 ms
+Backward time: 574.8643798828125
+Average sparse bwd comm time over 5 embeddings 604.7094953999998
+Overall iteration time 770.6890258789062
+Finished training it 275/512 of epoch 0, 770.49 ms/it, loss 0.072394
+mbs is 64
+Forward 4.273439884185791 ms
+Backward time: 546.6009521484375
+Average sparse bwd comm time over 5 embeddings 604.5634829999999
+Overall iteration time 553.6614379882812
+Finished training it 276/512 of epoch 0, 553.49 ms/it, loss 0.088848
+mbs is 64
+Forward 15.854111671447754 ms
+Backward time: 618.6065673828125
+Average sparse bwd comm time over 5 embeddings 604.3371006
+Overall iteration time 637.117431640625
+Finished training it 277/512 of epoch 0, 636.96 ms/it, loss 0.073065
+mbs is 64
+Forward 12.168479919433594 ms
+Backward time: 693.4712524414062
+Average sparse bwd comm time over 5 embeddings 604.3508261999999
+Overall iteration time 710.0006103515625
+Finished training it 278/512 of epoch 0, 709.84 ms/it, loss 0.080459
+mbs is 64
+Forward 2.836927890777588 ms
+Backward time: 628.9551391601562
+Average sparse bwd comm time over 5 embeddings 604.6532536000001
+Overall iteration time 634.3434448242188
+Finished training it 279/512 of epoch 0, 634.18 ms/it, loss 0.095200
+mbs is 64
+Forward 41.820640563964844 ms
+Backward time: 606.5121459960938
+Average sparse bwd comm time over 5 embeddings 604.715283
+Overall iteration time 650.9475708007812
+Finished training it 280/512 of epoch 0, 650.78 ms/it, loss 0.077507
+mbs is 64
+Forward 38.35491180419922 ms
+Backward time: 657.8380737304688
+Average sparse bwd comm time over 5 embeddings 604.7082898
+Overall iteration time 698.7786254882812
+Finished training it 281/512 of epoch 0, 698.61 ms/it, loss 0.089122
+mbs is 64
+Forward 18.979360580444336 ms
+Backward time: 610.0889892578125
+Average sparse bwd comm time over 5 embeddings 604.8706312
+Overall iteration time 631.86328125
+Finished training it 282/512 of epoch 0, 631.68 ms/it, loss 0.084775
+mbs is 64
+Forward 8.478048324584961 ms
+Backward time: 534.3733520507812
+Average sparse bwd comm time over 5 embeddings 604.8490802
+Overall iteration time 545.6240844726562
+Finished training it 283/512 of epoch 0, 545.44 ms/it, loss 0.087994
+mbs is 64
+Forward 46.9381103515625 ms
+Backward time: 646.4174194335938
+Average sparse bwd comm time over 5 embeddings 604.5761753999999
+Overall iteration time 695.9063110351562
+Finished training it 284/512 of epoch 0, 695.75 ms/it, loss 0.101772
+mbs is 64
+Forward 90.35523223876953 ms
+Backward time: 623.1101684570312
+Average sparse bwd comm time over 5 embeddings 604.7109968000001
+Overall iteration time 727.1475219726562
+Finished training it 285/512 of epoch 0, 726.98 ms/it, loss 0.063658
+mbs is 64
+Forward 2.944767951965332 ms
+Backward time: 579.8615112304688
+Average sparse bwd comm time over 5 embeddings 604.7616799999998
+Overall iteration time 665.049072265625
+Finished training it 286/512 of epoch 0, 664.88 ms/it, loss 0.066236
+mbs is 64
+Forward 37.28351974487305 ms
+Backward time: 639.003662109375
+Average sparse bwd comm time over 5 embeddings 604.6537372
+Overall iteration time 678.9109497070312
+Finished training it 287/512 of epoch 0, 678.75 ms/it, loss 0.095163
+mbs is 64
+Forward 5.887296199798584 ms
+Backward time: 625.2769165039062
+Average sparse bwd comm time over 5 embeddings 604.720795
+Overall iteration time 662.6119384765625
+Finished training it 288/512 of epoch 0, 662.45 ms/it, loss 0.084392
+mbs is 64
+Forward 42.65251159667969 ms
+Backward time: 575.5381469726562
+Average sparse bwd comm time over 5 embeddings 604.7611718
+Overall iteration time 625.0455322265625
+Finished training it 289/512 of epoch 0, 624.88 ms/it, loss 0.074173
+mbs is 64
+Forward 32.265663146972656 ms
+Backward time: 624.9871215820312
+Average sparse bwd comm time over 5 embeddings 604.6442638000001
+Overall iteration time 686.1516723632812
+Finished training it 290/512 of epoch 0, 685.96 ms/it, loss 0.081680
+mbs is 64
+Forward 13.37161636352539 ms
+Backward time: 654.93505859375
+Average sparse bwd comm time over 5 embeddings 604.7012914
+Overall iteration time 671.014892578125
+Finished training it 291/512 of epoch 0, 670.85 ms/it, loss 0.083640
+mbs is 64
+Forward 5.712831974029541 ms
+Backward time: 613.0575561523438
+Average sparse bwd comm time over 5 embeddings 604.8609244
+Overall iteration time 659.1876831054688
+Finished training it 292/512 of epoch 0, 659.01 ms/it, loss 0.072637
+mbs is 64
+Forward 48.999454498291016 ms
+Backward time: 620.5183715820312
+Average sparse bwd comm time over 5 embeddings 604.8448857999999
+Overall iteration time 682.9547729492188
+Finished training it 293/512 of epoch 0, 682.78 ms/it, loss 0.090363
+mbs is 64
+Forward 21.758880615234375 ms
+Backward time: 596.7431640625
+Average sparse bwd comm time over 5 embeddings 604.8788826
+Overall iteration time 621.10205078125
+Finished training it 294/512 of epoch 0, 620.93 ms/it, loss 0.085331
+mbs is 64
+Forward 37.355712890625 ms
+Backward time: 567.4669799804688
+Average sparse bwd comm time over 5 embeddings 604.837608
+Overall iteration time 621.3826293945312
+Finished training it 295/512 of epoch 0, 621.23 ms/it, loss 0.085859
+mbs is 64
+Forward 2.9411840438842773 ms
+Backward time: 667.2178955078125
+Average sparse bwd comm time over 5 embeddings 604.6981953999999
+Overall iteration time 672.8253173828125
+Finished training it 296/512 of epoch 0, 672.65 ms/it, loss 0.099842
+mbs is 64
+Forward 4.436223983764648 ms
+Backward time: 624.2181396484375
+Average sparse bwd comm time over 5 embeddings 604.8969016
+Overall iteration time 631.5540771484375
+Finished training it 297/512 of epoch 0, 631.39 ms/it, loss 0.090117
+mbs is 64
+Forward 3.153887987136841 ms
+Backward time: 574.8469848632812
+Average sparse bwd comm time over 5 embeddings 604.8231226
+Overall iteration time 610.4217529296875
+Finished training it 298/512 of epoch 0, 610.24 ms/it, loss 0.066836
+mbs is 64
+Forward 20.728544235229492 ms
+Backward time: 630.6836547851562
+Average sparse bwd comm time over 5 embeddings 604.7050804
+Overall iteration time 654.3278198242188
+Finished training it 299/512 of epoch 0, 654.16 ms/it, loss 0.100342
+mbs is 64
+Forward 47.21574401855469 ms
+Backward time: 587.6347045898438
+Average sparse bwd comm time over 5 embeddings 604.7785459999999
+Overall iteration time 637.56494140625
+Finished training it 300/512 of epoch 0, 637.39 ms/it, loss 0.076819
+mbs is 64
+Forward 2.860703945159912 ms
+Backward time: 710.1061401367188
+Average sparse bwd comm time over 5 embeddings 604.6917751999999
+Overall iteration time 715.6336669921875
+Finished training it 301/512 of epoch 0, 715.47 ms/it, loss 0.105615
+mbs is 64
+Forward 56.104671478271484 ms
+Backward time: 647.299072265625
+Average sparse bwd comm time over 5 embeddings 604.9963576
+Overall iteration time 822.9837036132812
+Finished training it 302/512 of epoch 0, 822.81 ms/it, loss 0.092184
+mbs is 64
+Forward 3.039520025253296 ms
+Backward time: 577.4192504882812
+Average sparse bwd comm time over 5 embeddings 605.1029444
+Overall iteration time 583.0399780273438
+Finished training it 303/512 of epoch 0, 582.88 ms/it, loss 0.095632
+mbs is 64
+Forward 8.675871849060059 ms
+Backward time: 581.4948120117188
+Average sparse bwd comm time over 5 embeddings 604.9445056
+Overall iteration time 592.7506103515625
+Finished training it 304/512 of epoch 0, 592.59 ms/it, loss 0.091175
+mbs is 64
+Forward 63.789825439453125 ms
+Backward time: 584.69580078125
+Average sparse bwd comm time over 5 embeddings 604.8382088000001
+Overall iteration time 651.9132080078125
+Finished training it 305/512 of epoch 0, 651.75 ms/it, loss 0.084269
+mbs is 64
+Forward 37.33302307128906 ms
+Backward time: 692.0028076171875
+Average sparse bwd comm time over 5 embeddings 604.7192956000001
+Overall iteration time 731.599853515625
+Finished training it 306/512 of epoch 0, 731.44 ms/it, loss 0.098255
+mbs is 64
+Forward 4.911488056182861 ms
+Backward time: 724.0888061523438
+Average sparse bwd comm time over 5 embeddings 604.9497154000001
+Overall iteration time 731.3244018554688
+Finished training it 307/512 of epoch 0, 731.17 ms/it, loss 0.078904
+mbs is 64
+Forward 51.02473449707031 ms
+Backward time: 591.0927124023438
+Average sparse bwd comm time over 5 embeddings 605.3144138
+Overall iteration time 644.5496215820312
+Finished training it 308/512 of epoch 0, 644.39 ms/it, loss 0.078180
+mbs is 64
+Forward 2.803679943084717 ms
+Backward time: 679.5274047851562
+Average sparse bwd comm time over 5 embeddings 605.2566546
+Overall iteration time 685.1450805664062
+Finished training it 309/512 of epoch 0, 684.96 ms/it, loss 0.082221
+mbs is 64
+Forward 60.35171127319336 ms
+Backward time: 590.582763671875
+Average sparse bwd comm time over 5 embeddings 605.4034959999999
+Overall iteration time 757.2428588867188
+Finished training it 310/512 of epoch 0, 757.03 ms/it, loss 0.082908
+mbs is 64
+Forward 13.557439804077148 ms
+Backward time: 541.9591674804688
+Average sparse bwd comm time over 5 embeddings 605.3356111999999
+Overall iteration time 632.7296142578125
+Finished training it 311/512 of epoch 0, 632.56 ms/it, loss 0.079266
+mbs is 64
+Forward 26.680320739746094 ms
+Backward time: 568.9968872070312
+Average sparse bwd comm time over 5 embeddings 605.1193482
+Overall iteration time 598.302734375
+Finished training it 312/512 of epoch 0, 598.14 ms/it, loss 0.083350
+mbs is 64
+Forward 20.594688415527344 ms
+Backward time: 570.9762573242188
+Average sparse bwd comm time over 5 embeddings 604.9807263999999
+Overall iteration time 599.6134643554688
+Finished training it 313/512 of epoch 0, 599.43 ms/it, loss 0.072319
+mbs is 64
+Forward 3.045919895172119 ms
+Backward time: 644.4554443359375
+Average sparse bwd comm time over 5 embeddings 604.8555671999999
+Overall iteration time 650.1201782226562
+Finished training it 314/512 of epoch 0, 649.95 ms/it, loss 0.085686
+mbs is 64
+Forward 2.853951930999756 ms
+Backward time: 616.8258666992188
+Average sparse bwd comm time over 5 embeddings 604.9037584
+Overall iteration time 649.0419311523438
+Finished training it 315/512 of epoch 0, 648.86 ms/it, loss 0.081752
+mbs is 64
+Forward 12.132672309875488 ms
+Backward time: 583.1342163085938
+Average sparse bwd comm time over 5 embeddings 604.9263674000001
+Overall iteration time 605.4236450195312
+Finished training it 316/512 of epoch 0, 605.26 ms/it, loss 0.068641
+mbs is 64
+Forward 3.2510080337524414 ms
+Backward time: 633.7259521484375
+Average sparse bwd comm time over 5 embeddings 604.8431463999999
+Overall iteration time 639.3640747070312
+Finished training it 317/512 of epoch 0, 639.21 ms/it, loss 0.091247
+mbs is 64
+Forward 62.15203094482422 ms
+Backward time: 647.7977294921875
+Average sparse bwd comm time over 5 embeddings 604.9229458
+Overall iteration time 712.4981689453125
+Finished training it 318/512 of epoch 0, 712.34 ms/it, loss 0.089336
+mbs is 64
+Forward 21.84867286682129 ms
+Backward time: 532.7155151367188
+Average sparse bwd comm time over 5 embeddings 605.0470282
+Overall iteration time 599.5775756835938
+Finished training it 319/512 of epoch 0, 599.41 ms/it, loss 0.067270
+mbs is 64
+Forward 7.716928005218506 ms
+Backward time: 543.7501220703125
+Average sparse bwd comm time over 5 embeddings 604.8074313999999
+Overall iteration time 569.3583374023438
+Finished training it 320/512 of epoch 0, 569.17 ms/it, loss 0.102351
+mbs is 64
+Forward 2.777600049972534 ms
+Backward time: 560.1126098632812
+Average sparse bwd comm time over 5 embeddings 604.5839378
+Overall iteration time 565.5848999023438
+Finished training it 321/512 of epoch 0, 565.39 ms/it, loss 0.087111
+mbs is 64
+Forward 69.79167938232422 ms
+Backward time: 586.1253051757812
+Average sparse bwd comm time over 5 embeddings 604.4307106
+Overall iteration time 658.5415649414062
+Finished training it 322/512 of epoch 0, 658.37 ms/it, loss 0.062662
+mbs is 64
+Forward 3.0545599460601807 ms
+Backward time: 709.622802734375
+Average sparse bwd comm time over 5 embeddings 604.3617836000001
+Overall iteration time 715.2803955078125
+Finished training it 323/512 of epoch 0, 715.10 ms/it, loss 0.079788
+mbs is 64
+Forward 2.9991679191589355 ms
+Backward time: 680.859619140625
+Average sparse bwd comm time over 5 embeddings 604.6621737999999
+Overall iteration time 686.2684326171875
+Finished training it 324/512 of epoch 0, 686.11 ms/it, loss 0.087086
+mbs is 64
+Forward 20.85424041748047 ms
+Backward time: 591.4091796875
+Average sparse bwd comm time over 5 embeddings 604.7833023999999
+Overall iteration time 712.2022705078125
+Finished training it 325/512 of epoch 0, 712.04 ms/it, loss 0.083896
+mbs is 64
+Forward 31.223840713500977 ms
+Backward time: 616.8197021484375
+Average sparse bwd comm time over 5 embeddings 604.7291474
+Overall iteration time 650.7940063476562
+Finished training it 326/512 of epoch 0, 650.63 ms/it, loss 0.077923
+mbs is 64
+Forward 48.86489486694336 ms
+Backward time: 600.27392578125
+Average sparse bwd comm time over 5 embeddings 604.7532887999998
+Overall iteration time 651.8118286132812
+Finished training it 327/512 of epoch 0, 651.65 ms/it, loss 0.110061
+mbs is 64
+Forward 29.172607421875 ms
+Backward time: 689.97119140625
+Average sparse bwd comm time over 5 embeddings 604.7289789999999
+Overall iteration time 859.1953735351562
+Finished training it 328/512 of epoch 0, 859.03 ms/it, loss 0.102148
+mbs is 64
+Forward 3.1207680702209473 ms
+Backward time: 561.7244262695312
+Average sparse bwd comm time over 5 embeddings 604.9705736
+Overall iteration time 567.4454956054688
+Finished training it 329/512 of epoch 0, 567.28 ms/it, loss 0.087380
+mbs is 64
+Forward 23.597248077392578 ms
+Backward time: 612.5568237304688
+Average sparse bwd comm time over 5 embeddings 604.8274566
+Overall iteration time 638.887939453125
+Finished training it 330/512 of epoch 0, 638.69 ms/it, loss 0.095857
+mbs is 64
+Forward 40.61891174316406 ms
+Backward time: 565.1046142578125
+Average sparse bwd comm time over 5 embeddings 604.8384914
+Overall iteration time 608.3583984375
+Finished training it 331/512 of epoch 0, 608.19 ms/it, loss 0.084183
+mbs is 64
+Forward 51.68531036376953 ms
+Backward time: 590.8572387695312
+Average sparse bwd comm time over 5 embeddings 604.7078768
+Overall iteration time 645.296142578125
+Finished training it 332/512 of epoch 0, 645.13 ms/it, loss 0.079449
+mbs is 64
+Forward 2.9641919136047363 ms
+Backward time: 743.5007934570312
+Average sparse bwd comm time over 5 embeddings 604.654393
+Overall iteration time 749.1655883789062
+Finished training it 333/512 of epoch 0, 749.01 ms/it, loss 0.080069
+mbs is 64
+Forward 34.58214569091797 ms
+Backward time: 588.75390625
+Average sparse bwd comm time over 5 embeddings 605.0607096
+Overall iteration time 650.7028198242188
+Finished training it 334/512 of epoch 0, 650.53 ms/it, loss 0.080936
+mbs is 64
+Forward 38.146305084228516 ms
+Backward time: 585.7986450195312
+Average sparse bwd comm time over 5 embeddings 605.0014364
+Overall iteration time 626.513916015625
+Finished training it 335/512 of epoch 0, 626.36 ms/it, loss 0.075385
+mbs is 64
+Forward 21.193824768066406 ms
+Backward time: 680.0465698242188
+Average sparse bwd comm time over 5 embeddings 604.91227
+Overall iteration time 718.5684204101562
+Finished training it 336/512 of epoch 0, 718.41 ms/it, loss 0.095456
+mbs is 64
+Forward 59.778079986572266 ms
+Backward time: 673.2708129882812
+Average sparse bwd comm time over 5 embeddings 605.1248841999999
+Overall iteration time 744.6845703125
+Finished training it 337/512 of epoch 0, 744.52 ms/it, loss 0.103624
+mbs is 64
+Forward 2.948319911956787 ms
+Backward time: 880.2959594726562
+Average sparse bwd comm time over 5 embeddings 605.3156147999999
+Overall iteration time 885.8367919921875
+Finished training it 338/512 of epoch 0, 885.66 ms/it, loss 0.089197
+mbs is 64
+Forward 3.0228159427642822 ms
+Backward time: 641.2083129882812
+Average sparse bwd comm time over 5 embeddings 606.1167456
+Overall iteration time 680.5770263671875
+Finished training it 339/512 of epoch 0, 680.42 ms/it, loss 0.083041
+mbs is 64
+Forward 33.325313568115234 ms
+Backward time: 631.784423828125
+Average sparse bwd comm time over 5 embeddings 606.2026136000001
+Overall iteration time 667.6234130859375
+Finished training it 340/512 of epoch 0, 667.46 ms/it, loss 0.091526
+mbs is 64
+Forward 34.553855895996094 ms
+Backward time: 614.5484619140625
+Average sparse bwd comm time over 5 embeddings 606.2171318
+Overall iteration time 652.12109375
+Finished training it 341/512 of epoch 0, 651.97 ms/it, loss 0.077024
+mbs is 64
+Forward 30.431903839111328 ms
+Backward time: 598.908935546875
+Average sparse bwd comm time over 5 embeddings 606.2312068
+Overall iteration time 631.91552734375
+Finished training it 342/512 of epoch 0, 631.75 ms/it, loss 0.082008
+mbs is 64
+Forward 23.81011199951172 ms
+Backward time: 599.5386962890625
+Average sparse bwd comm time over 5 embeddings 606.1814643999999
+Overall iteration time 718.329833984375
+Finished training it 343/512 of epoch 0, 718.10 ms/it, loss 0.087077
+mbs is 64
+Forward 35.344512939453125 ms
+Backward time: 535.6533813476562
+Average sparse bwd comm time over 5 embeddings 606.1357896
+Overall iteration time 573.7994384765625
+Finished training it 344/512 of epoch 0, 573.65 ms/it, loss 0.085440
+mbs is 64
+Forward 26.334144592285156 ms
+Backward time: 622.0421142578125
+Average sparse bwd comm time over 5 embeddings 605.920272
+Overall iteration time 804.654052734375
+Finished training it 345/512 of epoch 0, 804.49 ms/it, loss 0.086781
+mbs is 64
+Forward 6.575967788696289 ms
+Backward time: 579.2747802734375
+Average sparse bwd comm time over 5 embeddings 605.9552295999999
+Overall iteration time 593.5984497070312
+Finished training it 346/512 of epoch 0, 593.43 ms/it, loss 0.080277
+mbs is 64
+Forward 19.203968048095703 ms
+Backward time: 556.2664794921875
+Average sparse bwd comm time over 5 embeddings 605.8625208
+Overall iteration time 577.9619750976562
+Finished training it 347/512 of epoch 0, 577.80 ms/it, loss 0.101343
+mbs is 64
+Forward 29.54275131225586 ms
+Backward time: 612.658203125
+Average sparse bwd comm time over 5 embeddings 605.7041968
+Overall iteration time 644.7308959960938
+Finished training it 348/512 of epoch 0, 644.56 ms/it, loss 0.093326
+mbs is 64
+Forward 2.8214399814605713 ms
+Backward time: 637.1184692382812
+Average sparse bwd comm time over 5 embeddings 605.6857414
+Overall iteration time 642.4903564453125
+Finished training it 349/512 of epoch 0, 642.32 ms/it, loss 0.081578
+mbs is 64
+Forward 32.25084686279297 ms
+Backward time: 590.4967651367188
+Average sparse bwd comm time over 5 embeddings 605.6142116
+Overall iteration time 626.8630981445312
+Finished training it 350/512 of epoch 0, 626.72 ms/it, loss 0.087761
+mbs is 64
+Forward 2.9501760005950928 ms
+Backward time: 600.4182739257812
+Average sparse bwd comm time over 5 embeddings 605.5544179999999
+Overall iteration time 634.5256958007812
+Finished training it 351/512 of epoch 0, 634.37 ms/it, loss 0.079761
+mbs is 64
+Forward 2.90995192527771 ms
+Backward time: 569.4535522460938
+Average sparse bwd comm time over 5 embeddings 605.4545764
+Overall iteration time 595.5235595703125
+Finished training it 352/512 of epoch 0, 574.78 ms/it, loss 0.069828
+mbs is 64
+Forward 3.490976095199585 ms
+Backward time: 738.1944580078125
+Average sparse bwd comm time over 5 embeddings 605.2806606
+Overall iteration time 839.9237060546875
+Finished training it 353/512 of epoch 0, 839.73 ms/it, loss 0.084956
+mbs is 64
+Forward 18.067167282104492 ms
+Backward time: 502.8905029296875
+Average sparse bwd comm time over 5 embeddings 605.4509439999999
+Overall iteration time 523.2557983398438
+Finished training it 354/512 of epoch 0, 523.10 ms/it, loss 0.086399
+mbs is 64
+Forward 23.24720001220703 ms
+Backward time: 661.8367919921875
+Average sparse bwd comm time over 5 embeddings 605.1448528
+Overall iteration time 687.7337646484375
+Finished training it 355/512 of epoch 0, 687.57 ms/it, loss 0.077813
+mbs is 64
+Forward 2.829888105392456 ms
+Backward time: 630.7133178710938
+Average sparse bwd comm time over 5 embeddings 605.2791878
+Overall iteration time 675.5184936523438
+Finished training it 356/512 of epoch 0, 675.34 ms/it, loss 0.085154
+mbs is 64
+Forward 43.17670440673828 ms
+Backward time: 727.4977416992188
+Average sparse bwd comm time over 5 embeddings 605.3349138
+Overall iteration time 776.5493774414062
+Finished training it 357/512 of epoch 0, 776.38 ms/it, loss 0.083407
+mbs is 64
+Forward 44.60374450683594 ms
+Backward time: 572.4508056640625
+Average sparse bwd comm time over 5 embeddings 605.640118
+Overall iteration time 619.7084350585938
+Finished training it 358/512 of epoch 0, 619.54 ms/it, loss 0.079465
+mbs is 64
+Forward 8.416031837463379 ms
+Backward time: 761.3399047851562
+Average sparse bwd comm time over 5 embeddings 605.5108136
+Overall iteration time 772.3755493164062
+Finished training it 359/512 of epoch 0, 772.22 ms/it, loss 0.091093
+mbs is 64
+Forward 3.10479998588562 ms
+Backward time: 576.0859985351562
+Average sparse bwd comm time over 5 embeddings 605.9286023999999
+Overall iteration time 612.6069946289062
+Finished training it 360/512 of epoch 0, 612.42 ms/it, loss 0.085315
+mbs is 64
+Forward 3.046720027923584 ms
+Backward time: 557.8322143554688
+Average sparse bwd comm time over 5 embeddings 605.8355808
+Overall iteration time 563.3863525390625
+Finished training it 361/512 of epoch 0, 563.19 ms/it, loss 0.074663
+mbs is 64
+Forward 24.909343719482422 ms
+Backward time: 615.2755126953125
+Average sparse bwd comm time over 5 embeddings 605.6020794
+Overall iteration time 689.4028930664062
+Finished training it 362/512 of epoch 0, 689.22 ms/it, loss 0.077660
+mbs is 64
+Forward 9.424415588378906 ms
+Backward time: 536.8442993164062
+Average sparse bwd comm time over 5 embeddings 605.6186872000001
+Overall iteration time 549.6166381835938
+Finished training it 363/512 of epoch 0, 549.44 ms/it, loss 0.082829
+mbs is 64
+Forward 14.9334077835083 ms
+Backward time: 703.494140625
+Average sparse bwd comm time over 5 embeddings 605.4186712
+Overall iteration time 750.0626220703125
+Finished training it 364/512 of epoch 0, 749.88 ms/it, loss 0.092574
+mbs is 64
+Forward 2.9838719367980957 ms
+Backward time: 728.8524780273438
+Average sparse bwd comm time over 5 embeddings 605.6560446
+Overall iteration time 809.6644897460938
+Finished training it 365/512 of epoch 0, 809.47 ms/it, loss 0.084023
+mbs is 64
+Forward 43.056575775146484 ms
+Backward time: 505.4115905761719
+Average sparse bwd comm time over 5 embeddings 605.979966
+Overall iteration time 551.109619140625
+Finished training it 366/512 of epoch 0, 550.95 ms/it, loss 0.095537
+mbs is 64
+Forward 28.8637752532959 ms
+Backward time: 619.56201171875
+Average sparse bwd comm time over 5 embeddings 605.6949148
+Overall iteration time 651.0960693359375
+Finished training it 367/512 of epoch 0, 650.93 ms/it, loss 0.075536
+mbs is 64
+Forward 2.8477120399475098 ms
+Backward time: 643.9014282226562
+Average sparse bwd comm time over 5 embeddings 605.7043944000001
+Overall iteration time 667.8425903320312
+Finished training it 368/512 of epoch 0, 667.67 ms/it, loss 0.065407
+mbs is 64
+Forward 40.89228820800781 ms
+Backward time: 674.2313232421875
+Average sparse bwd comm time over 5 embeddings 605.7655578
+Overall iteration time 717.9827270507812
+Finished training it 369/512 of epoch 0, 717.83 ms/it, loss 0.066809
+mbs is 64
+Forward 20.253887176513672 ms
+Backward time: 596.0079345703125
+Average sparse bwd comm time over 5 embeddings 605.9395075999998
+Overall iteration time 618.8339233398438
+Finished training it 370/512 of epoch 0, 618.67 ms/it, loss 0.096200
+mbs is 64
+Forward 42.395137786865234 ms
+Backward time: 672.8140869140625
+Average sparse bwd comm time over 5 embeddings 605.8917233999999
+Overall iteration time 717.7420654296875
+Finished training it 371/512 of epoch 0, 717.58 ms/it, loss 0.066930
+mbs is 64
+Forward 10.573504447937012 ms
+Backward time: 578.2005615234375
+Average sparse bwd comm time over 5 embeddings 606.0621672
+Overall iteration time 591.31494140625
+Finished training it 372/512 of epoch 0, 591.15 ms/it, loss 0.088123
+mbs is 64
+Forward 2.8313279151916504 ms
+Backward time: 569.7105712890625
+Average sparse bwd comm time over 5 embeddings 605.9541734000001
+Overall iteration time 602.00244140625
+Finished training it 373/512 of epoch 0, 601.82 ms/it, loss 0.102089
+mbs is 64
+Forward 42.63359832763672 ms
+Backward time: 556.4856567382812
+Average sparse bwd comm time over 5 embeddings 605.8455985999999
+Overall iteration time 653.0518798828125
+Finished training it 374/512 of epoch 0, 652.89 ms/it, loss 0.085162
+mbs is 64
+Forward 2.8050880432128906 ms
+Backward time: 588.7570190429688
+Average sparse bwd comm time over 5 embeddings 605.6798226
+Overall iteration time 594.1852416992188
+Finished training it 375/512 of epoch 0, 594.00 ms/it, loss 0.075285
+mbs is 64
+Forward 26.128063201904297 ms
+Backward time: 608.6328125
+Average sparse bwd comm time over 5 embeddings 605.6251934
+Overall iteration time 639.4593505859375
+Finished training it 376/512 of epoch 0, 639.29 ms/it, loss 0.094788
+mbs is 64
+Forward 23.274303436279297 ms
+Backward time: 674.0152587890625
+Average sparse bwd comm time over 5 embeddings 605.6219296
+Overall iteration time 699.7933959960938
+Finished training it 377/512 of epoch 0, 699.63 ms/it, loss 0.090630
+mbs is 64
+Forward 35.833248138427734 ms
+Backward time: 580.35302734375
+Average sparse bwd comm time over 5 embeddings 605.7929651999999
+Overall iteration time 618.7325439453125
+Finished training it 378/512 of epoch 0, 618.57 ms/it, loss 0.085824
+mbs is 64
+Forward 41.11151885986328 ms
+Backward time: 594.3019409179688
+Average sparse bwd comm time over 5 embeddings 605.7161491999999
+Overall iteration time 637.98681640625
+Finished training it 379/512 of epoch 0, 637.82 ms/it, loss 0.076827
+mbs is 64
+Forward 37.200321197509766 ms
+Backward time: 618.04443359375
+Average sparse bwd comm time over 5 embeddings 605.6760082000001
+Overall iteration time 663.6482543945312
+Finished training it 380/512 of epoch 0, 663.48 ms/it, loss 0.093112
+mbs is 64
+Forward 41.31827163696289 ms
+Backward time: 580.7882080078125
+Average sparse bwd comm time over 5 embeddings 605.6964574
+Overall iteration time 634.5942993164062
+Finished training it 381/512 of epoch 0, 634.43 ms/it, loss 0.086427
+mbs is 64
+Forward 2.9681921005249023 ms
+Backward time: 694.349853515625
+Average sparse bwd comm time over 5 embeddings 605.6212016000001
+Overall iteration time 729.0265502929688
+Finished training it 382/512 of epoch 0, 728.85 ms/it, loss 0.093573
+mbs is 64
+Forward 35.56425476074219 ms
+Backward time: 497.3731689453125
+Average sparse bwd comm time over 5 embeddings 605.7917554
+Overall iteration time 535.6318969726562
+Finished training it 383/512 of epoch 0, 535.47 ms/it, loss 0.076855
+mbs is 64
+Forward 2.9711360931396484 ms
+Backward time: 647.2908935546875
+Average sparse bwd comm time over 5 embeddings 605.4916436
+Overall iteration time 653.1942138671875
+Finished training it 384/512 of epoch 0, 652.94 ms/it, loss 0.079270
+mbs is 64
+Forward 5.328991889953613 ms
+Backward time: 574.3493041992188
+Average sparse bwd comm time over 5 embeddings 605.4971154
+Overall iteration time 605.2034301757812
+Finished training it 385/512 of epoch 0, 605.05 ms/it, loss 0.082751
+mbs is 64
+Forward 40.345279693603516 ms
+Backward time: 604.241943359375
+Average sparse bwd comm time over 5 embeddings 605.4064625999999
+Overall iteration time 647.2857666015625
+Finished training it 386/512 of epoch 0, 647.12 ms/it, loss 0.080262
+mbs is 64
+Forward 2.7974720001220703 ms
+Backward time: 552.4234008789062
+Average sparse bwd comm time over 5 embeddings 605.393913
+Overall iteration time 558.1475830078125
+Finished training it 387/512 of epoch 0, 557.98 ms/it, loss 0.093884
+mbs is 64
+Forward 2.9739840030670166 ms
+Backward time: 617.7064819335938
+Average sparse bwd comm time over 5 embeddings 605.2439903999999
+Overall iteration time 623.29345703125
+Finished training it 388/512 of epoch 0, 623.13 ms/it, loss 0.074750
+mbs is 64
+Forward 2.874943971633911 ms
+Backward time: 579.1959228515625
+Average sparse bwd comm time over 5 embeddings 605.2656588
+Overall iteration time 584.690673828125
+Finished training it 389/512 of epoch 0, 584.52 ms/it, loss 0.078531
+mbs is 64
+Forward 3.0409278869628906 ms
+Backward time: 581.9535522460938
+Average sparse bwd comm time over 5 embeddings 605.1286162
+Overall iteration time 587.3449096679688
+Finished training it 390/512 of epoch 0, 587.18 ms/it, loss 0.080621
+mbs is 64
+Forward 2.950752019882202 ms
+Backward time: 615.8776245117188
+Average sparse bwd comm time over 5 embeddings 605.0134478
+Overall iteration time 646.2678833007812
+Finished training it 391/512 of epoch 0, 646.08 ms/it, loss 0.101507
+mbs is 64
+Forward 6.974207878112793 ms
+Backward time: 609.3711547851562
+Average sparse bwd comm time over 5 embeddings 605.0313754
+Overall iteration time 618.93017578125
+Finished training it 392/512 of epoch 0, 618.76 ms/it, loss 0.078406
+mbs is 64
+Forward 2.9188480377197266 ms
+Backward time: 599.8336181640625
+Average sparse bwd comm time over 5 embeddings 604.9613028
+Overall iteration time 605.37548828125
+Finished training it 393/512 of epoch 0, 605.19 ms/it, loss 0.087310
+mbs is 64
+Forward 16.728191375732422 ms
+Backward time: 652.40576171875
+Average sparse bwd comm time over 5 embeddings 604.8746262
+Overall iteration time 671.6661987304688
+Finished training it 394/512 of epoch 0, 671.50 ms/it, loss 0.074420
+mbs is 64
+Forward 3.0263679027557373 ms
+Backward time: 560.6031494140625
+Average sparse bwd comm time over 5 embeddings 604.9780795999999
+Overall iteration time 567.0390014648438
+Finished training it 395/512 of epoch 0, 566.86 ms/it, loss 0.083495
+mbs is 64
+Forward 2.951647996902466 ms
+Backward time: 620.12109375
+Average sparse bwd comm time over 5 embeddings 604.8485881999999
+Overall iteration time 689.1827392578125
+Finished training it 396/512 of epoch 0, 688.99 ms/it, loss 0.071949
+mbs is 64
+Forward 2.760319948196411 ms
+Backward time: 559.6395263671875
+Average sparse bwd comm time over 5 embeddings 604.8783634
+Overall iteration time 568.1766357421875
+Finished training it 397/512 of epoch 0, 567.97 ms/it, loss 0.079217
+mbs is 64
+Forward 39.80160140991211 ms
+Backward time: 647.8510131835938
+Average sparse bwd comm time over 5 embeddings 604.721641
+Overall iteration time 705.564697265625
+Finished training it 398/512 of epoch 0, 705.35 ms/it, loss 0.076276
+mbs is 64
+Forward 10.53548812866211 ms
+Backward time: 706.5599975585938
+Average sparse bwd comm time over 5 embeddings 604.8114336000001
+Overall iteration time 738.8211059570312
+Finished training it 399/512 of epoch 0, 738.66 ms/it, loss 0.083654
+mbs is 64
+Forward 51.424896240234375 ms
+Backward time: 626.5446166992188
+Average sparse bwd comm time over 5 embeddings 605.0517156
+Overall iteration time 680.5104370117188
+Finished training it 400/512 of epoch 0, 680.35 ms/it, loss 0.090833
+mbs is 64
+Forward 34.683135986328125 ms
+Backward time: 562.8958740234375
+Average sparse bwd comm time over 5 embeddings 605.0964489999999
+Overall iteration time 600.3486938476562
+Finished training it 401/512 of epoch 0, 600.15 ms/it, loss 0.079054
+mbs is 64
+Forward 3.030751943588257 ms
+Backward time: 594.1063842773438
+Average sparse bwd comm time over 5 embeddings 604.9703133999999
+Overall iteration time 599.7485961914062
+Finished training it 402/512 of epoch 0, 599.59 ms/it, loss 0.081856
+mbs is 64
+Forward 2.7357120513916016 ms
+Backward time: 634.1795654296875
+Average sparse bwd comm time over 5 embeddings 604.8483612
+Overall iteration time 666.8062744140625
+Finished training it 403/512 of epoch 0, 666.64 ms/it, loss 0.090488
+mbs is 64
+Forward 29.3189754486084 ms
+Backward time: 622.5029296875
+Average sparse bwd comm time over 5 embeddings 604.9104672
+Overall iteration time 654.4896240234375
+Finished training it 404/512 of epoch 0, 654.31 ms/it, loss 0.086383
+mbs is 64
+Forward 28.922239303588867 ms
+Backward time: 676.5404052734375
+Average sparse bwd comm time over 5 embeddings 604.932831
+Overall iteration time 708.0396728515625
+Finished training it 405/512 of epoch 0, 707.88 ms/it, loss 0.063188
+mbs is 64
+Forward 2.9098880290985107 ms
+Backward time: 722.1626586914062
+Average sparse bwd comm time over 5 embeddings 605.0154714
+Overall iteration time 727.6216430664062
+Finished training it 406/512 of epoch 0, 727.43 ms/it, loss 0.086517
+mbs is 64
+Forward 3.051743984222412 ms
+Backward time: 811.6797485351562
+Average sparse bwd comm time over 5 embeddings 605.205631
+Overall iteration time 850.1176147460938
+Finished training it 407/512 of epoch 0, 849.95 ms/it, loss 0.088855
+mbs is 64
+Forward 48.427616119384766 ms
+Backward time: 591.8822631835938
+Average sparse bwd comm time over 5 embeddings 605.6492103999999
+Overall iteration time 643.294189453125
+Finished training it 408/512 of epoch 0, 643.11 ms/it, loss 0.090321
+mbs is 64
+Forward 19.20515251159668 ms
+Backward time: 586.9680786132812
+Average sparse bwd comm time over 5 embeddings 605.6070103999999
+Overall iteration time 611.2000122070312
+Finished training it 409/512 of epoch 0, 611.06 ms/it, loss 0.074497
+mbs is 64
+Forward 2.9410240650177 ms
+Backward time: 748.9208374023438
+Average sparse bwd comm time over 5 embeddings 605.5452428
+Overall iteration time 754.418701171875
+Finished training it 410/512 of epoch 0, 754.25 ms/it, loss 0.073606
+mbs is 64
+Forward 25.142911911010742 ms
+Backward time: 652.779541015625
+Average sparse bwd comm time over 5 embeddings 605.6458055999999
+Overall iteration time 686.1987915039062
+Finished training it 411/512 of epoch 0, 686.03 ms/it, loss 0.069317
+mbs is 64
+Forward 2.699392080307007 ms
+Backward time: 613.6473388671875
+Average sparse bwd comm time over 5 embeddings 605.7254585999999
+Overall iteration time 618.9066162109375
+Finished training it 412/512 of epoch 0, 618.73 ms/it, loss 0.091980
+mbs is 64
+Forward 35.63091278076172 ms
+Backward time: 586.8277587890625
+Average sparse bwd comm time over 5 embeddings 605.7361903999999
+Overall iteration time 628.0591430664062
+Finished training it 413/512 of epoch 0, 627.88 ms/it, loss 0.086423
+mbs is 64
+Forward 78.04524993896484 ms
+Backward time: 566.41943359375
+Average sparse bwd comm time over 5 embeddings 605.6672816
+Overall iteration time 647.0440673828125
+Finished training it 414/512 of epoch 0, 646.87 ms/it, loss 0.084348
+mbs is 64
+Forward 2.7966079711914062 ms
+Backward time: 595.8717651367188
+Average sparse bwd comm time over 5 embeddings 605.5632787999999
+Overall iteration time 635.9439086914062
+Finished training it 415/512 of epoch 0, 635.77 ms/it, loss 0.069003
+mbs is 64
+Forward 3.074592113494873 ms
+Backward time: 611.00439453125
+Average sparse bwd comm time over 5 embeddings 605.494617
+Overall iteration time 630.0006103515625
+Finished training it 416/512 of epoch 0, 629.78 ms/it, loss 0.086488
+mbs is 64
+Forward 38.02252960205078 ms
+Backward time: 634.1611328125
+Average sparse bwd comm time over 5 embeddings 605.4983307999998
+Overall iteration time 674.7637939453125
+Finished training it 417/512 of epoch 0, 674.60 ms/it, loss 0.090054
+mbs is 64
+Forward 19.449663162231445 ms
+Backward time: 560.021484375
+Average sparse bwd comm time over 5 embeddings 605.5284318
+Overall iteration time 582.48193359375
+Finished training it 418/512 of epoch 0, 582.29 ms/it, loss 0.098917
+mbs is 64
+Forward 3.110368013381958 ms
+Backward time: 597.0995483398438
+Average sparse bwd comm time over 5 embeddings 605.3944577999999
+Overall iteration time 639.351806640625
+Finished training it 419/512 of epoch 0, 639.20 ms/it, loss 0.087077
+mbs is 64
+Forward 114.23632049560547 ms
+Backward time: 691.251220703125
+Average sparse bwd comm time over 5 embeddings 605.3165581999999
+Overall iteration time 808.1008911132812
+Finished training it 420/512 of epoch 0, 807.94 ms/it, loss 0.096724
+mbs is 64
+Forward 3.005568027496338 ms
+Backward time: 633.1617431640625
+Average sparse bwd comm time over 5 embeddings 605.5125624
+Overall iteration time 638.8735961914062
+Finished training it 421/512 of epoch 0, 638.70 ms/it, loss 0.075917
+mbs is 64
+Forward 37.07913589477539 ms
+Backward time: 576.732177734375
+Average sparse bwd comm time over 5 embeddings 605.53934
+Overall iteration time 678.8976440429688
+Finished training it 422/512 of epoch 0, 678.72 ms/it, loss 0.076837
+mbs is 64
+Forward 3.7377920150756836 ms
+Backward time: 604.5071411132812
+Average sparse bwd comm time over 5 embeddings 605.4626235999999
+Overall iteration time 621.2976684570312
+Finished training it 423/512 of epoch 0, 621.13 ms/it, loss 0.079732
+mbs is 64
+Forward 60.268001556396484 ms
+Backward time: 574.5899658203125
+Average sparse bwd comm time over 5 embeddings 605.4510504
+Overall iteration time 773.2633666992188
+Finished training it 424/512 of epoch 0, 773.09 ms/it, loss 0.078624
+mbs is 64
+Forward 12.817983627319336 ms
+Backward time: 574.2755737304688
+Average sparse bwd comm time over 5 embeddings 605.3562288
+Overall iteration time 589.728759765625
+Finished training it 425/512 of epoch 0, 589.55 ms/it, loss 0.077900
+mbs is 64
+Forward 8.053855895996094 ms
+Backward time: 589.2034301757812
+Average sparse bwd comm time over 5 embeddings 605.2523107999999
+Overall iteration time 599.9298706054688
+Finished training it 426/512 of epoch 0, 599.76 ms/it, loss 0.084173
+mbs is 64
+Forward 3.0492160320281982 ms
+Backward time: 623.1234741210938
+Average sparse bwd comm time over 5 embeddings 605.2028364
+Overall iteration time 645.1364135742188
+Finished training it 427/512 of epoch 0, 644.96 ms/it, loss 0.076729
+mbs is 64
+Forward 39.51366424560547 ms
+Backward time: 634.4898681640625
+Average sparse bwd comm time over 5 embeddings 605.2361999999999
+Overall iteration time 676.2578125
+Finished training it 428/512 of epoch 0, 676.11 ms/it, loss 0.078275
+mbs is 64
+Forward 28.485536575317383 ms
+Backward time: 570.808349609375
+Average sparse bwd comm time over 5 embeddings 605.2953944
+Overall iteration time 605.33349609375
+Finished training it 429/512 of epoch 0, 605.15 ms/it, loss 0.090483
+mbs is 64
+Forward 2.8887360095977783 ms
+Backward time: 647.2315063476562
+Average sparse bwd comm time over 5 embeddings 605.1589082
+Overall iteration time 668.3013305664062
+Finished training it 430/512 of epoch 0, 668.12 ms/it, loss 0.091712
+mbs is 64
+Forward 41.59529495239258 ms
+Backward time: 641.891357421875
+Average sparse bwd comm time over 5 embeddings 605.2485688
+Overall iteration time 736.6420288085938
+Finished training it 431/512 of epoch 0, 736.46 ms/it, loss 0.090028
+mbs is 64
+Forward 25.502368927001953 ms
+Backward time: 651.4349975585938
+Average sparse bwd comm time over 5 embeddings 605.3126447999999
+Overall iteration time 679.65234375
+Finished training it 432/512 of epoch 0, 679.46 ms/it, loss 0.070635
+mbs is 64
+Forward 14.037983894348145 ms
+Backward time: 833.6803588867188
+Average sparse bwd comm time over 5 embeddings 605.3811453999999
+Overall iteration time 850.2599487304688
+Finished training it 433/512 of epoch 0, 850.09 ms/it, loss 0.086298
+mbs is 64
+Forward 34.97353744506836 ms
+Backward time: 581.8941650390625
+Average sparse bwd comm time over 5 embeddings 605.8915052
+Overall iteration time 622.8203735351562
+Finished training it 434/512 of epoch 0, 622.65 ms/it, loss 0.061071
+mbs is 64
+Forward 23.079679489135742 ms
+Backward time: 603.1974487304688
+Average sparse bwd comm time over 5 embeddings 605.8267436
+Overall iteration time 629.8798217773438
+Finished training it 435/512 of epoch 0, 629.70 ms/it, loss 0.077519
+mbs is 64
+Forward 6.465695858001709 ms
+Backward time: 636.9259643554688
+Average sparse bwd comm time over 5 embeddings 605.7691133999999
+Overall iteration time 647.8499755859375
+Finished training it 436/512 of epoch 0, 647.66 ms/it, loss 0.084432
+mbs is 64
+Forward 55.823486328125 ms
+Backward time: 596.2772216796875
+Average sparse bwd comm time over 5 embeddings 605.8257678
+Overall iteration time 654.6483154296875
+Finished training it 437/512 of epoch 0, 654.48 ms/it, loss 0.074735
+mbs is 64
+Forward 2.9077439308166504 ms
+Backward time: 595.2491455078125
+Average sparse bwd comm time over 5 embeddings 605.7870694000001
+Overall iteration time 627.8707275390625
+Finished training it 438/512 of epoch 0, 627.70 ms/it, loss 0.082903
+mbs is 64
+Forward 2.8414080142974854 ms
+Backward time: 606.6605834960938
+Average sparse bwd comm time over 5 embeddings 605.7551934
+Overall iteration time 612.2393798828125
+Finished training it 439/512 of epoch 0, 612.07 ms/it, loss 0.077058
+mbs is 64
+Forward 27.426847457885742 ms
+Backward time: 577.6097412109375
+Average sparse bwd comm time over 5 embeddings 605.6669792
+Overall iteration time 625.9650268554688
+Finished training it 440/512 of epoch 0, 625.80 ms/it, loss 0.101099
+mbs is 64
+Forward 33.65817642211914 ms
+Backward time: 593.1212768554688
+Average sparse bwd comm time over 5 embeddings 605.5919762
+Overall iteration time 629.34326171875
+Finished training it 441/512 of epoch 0, 629.18 ms/it, loss 0.080473
+mbs is 64
+Forward 2.9036478996276855 ms
+Backward time: 596.9879150390625
+Average sparse bwd comm time over 5 embeddings 605.5269334000001
+Overall iteration time 643.6649169921875
+Finished training it 442/512 of epoch 0, 643.50 ms/it, loss 0.088035
+mbs is 64
+Forward 34.57833480834961 ms
+Backward time: 583.7117309570312
+Average sparse bwd comm time over 5 embeddings 605.4954759999999
+Overall iteration time 620.95361328125
+Finished training it 443/512 of epoch 0, 620.77 ms/it, loss 0.080576
+mbs is 64
+Forward 3.1745920181274414 ms
+Backward time: 567.6032104492188
+Average sparse bwd comm time over 5 embeddings 605.4355564
+Overall iteration time 590.7844848632812
+Finished training it 444/512 of epoch 0, 590.61 ms/it, loss 0.078987
+mbs is 64
+Forward 2.8157119750976562 ms
+Backward time: 744.5596313476562
+Average sparse bwd comm time over 5 embeddings 605.3425396
+Overall iteration time 750.1383666992188
+Finished training it 445/512 of epoch 0, 749.97 ms/it, loss 0.097140
+mbs is 64
+Forward 16.941280364990234 ms
+Backward time: 682.197021484375
+Average sparse bwd comm time over 5 embeddings 605.5492118
+Overall iteration time 701.8117065429688
+Finished training it 446/512 of epoch 0, 701.64 ms/it, loss 0.080155
+mbs is 64
+Forward 13.908703804016113 ms
+Backward time: 550.3805541992188
+Average sparse bwd comm time over 5 embeddings 605.7058878
+Overall iteration time 586.9117431640625
+Finished training it 447/512 of epoch 0, 586.66 ms/it, loss 0.085310
+mbs is 64
+Forward 21.166240692138672 ms
+Backward time: 677.8091430664062
+Average sparse bwd comm time over 5 embeddings 605.5696685999999
+Overall iteration time 701.6253662109375
+Finished training it 448/512 of epoch 0, 701.47 ms/it, loss 0.105507
+mbs is 64
+Forward 28.790016174316406 ms
+Backward time: 675.5369262695312
+Average sparse bwd comm time over 5 embeddings 605.7226158000001
+Overall iteration time 706.9132690429688
+Finished training it 449/512 of epoch 0, 706.74 ms/it, loss 0.072682
+mbs is 64
+Forward 2.91212797164917 ms
+Backward time: 592.021484375
+Average sparse bwd comm time over 5 embeddings 605.8697768
+Overall iteration time 672.3983154296875
+Finished training it 450/512 of epoch 0, 672.20 ms/it, loss 0.079528
+mbs is 64
+Forward 19.790111541748047 ms
+Backward time: 580.8721923828125
+Average sparse bwd comm time over 5 embeddings 605.830251
+Overall iteration time 653.7031860351562
+Finished training it 451/512 of epoch 0, 653.54 ms/it, loss 0.107632
+mbs is 64
+Forward 46.08992004394531 ms
+Backward time: 593.6138305664062
+Average sparse bwd comm time over 5 embeddings 605.766373
+Overall iteration time 642.165771484375
+Finished training it 452/512 of epoch 0, 642.01 ms/it, loss 0.079491
+mbs is 64
+Forward 3.0539519786834717 ms
+Backward time: 581.802978515625
+Average sparse bwd comm time over 5 embeddings 605.7202111999999
+Overall iteration time 587.894775390625
+Finished training it 453/512 of epoch 0, 587.71 ms/it, loss 0.087086
+mbs is 64
+Forward 19.497087478637695 ms
+Backward time: 600.6138916015625
+Average sparse bwd comm time over 5 embeddings 605.6001242
+Overall iteration time 646.1900634765625
+Finished training it 454/512 of epoch 0, 646.03 ms/it, loss 0.083429
+mbs is 64
+Forward 3.028223991394043 ms
+Backward time: 579.620849609375
+Average sparse bwd comm time over 5 embeddings 605.5722294
+Overall iteration time 585.2631225585938
+Finished training it 455/512 of epoch 0, 585.09 ms/it, loss 0.075970
+mbs is 64
+Forward 33.52377700805664 ms
+Backward time: 583.96875
+Average sparse bwd comm time over 5 embeddings 605.5028925999999
+Overall iteration time 638.4588623046875
+Finished training it 456/512 of epoch 0, 638.27 ms/it, loss 0.098523
+mbs is 64
+Forward 30.512128829956055 ms
+Backward time: 543.1183471679688
+Average sparse bwd comm time over 5 embeddings 605.4396985999999
+Overall iteration time 576.2734375
+Finished training it 457/512 of epoch 0, 576.11 ms/it, loss 0.066941
+mbs is 64
+Forward 2.9482240676879883 ms
+Backward time: 625.8155517578125
+Average sparse bwd comm time over 5 embeddings 605.2951808
+Overall iteration time 665.945068359375
+Finished training it 458/512 of epoch 0, 665.77 ms/it, loss 0.074460
+mbs is 64
+Forward 2.8322560787200928 ms
+Backward time: 605.5772094726562
+Average sparse bwd comm time over 5 embeddings 605.3303684
+Overall iteration time 666.3598022460938
+Finished training it 459/512 of epoch 0, 666.20 ms/it, loss 0.091540
+mbs is 64
+Forward 26.75971221923828 ms
+Backward time: 571.7862548828125
+Average sparse bwd comm time over 5 embeddings 605.3231198
+Overall iteration time 601.0449829101562
+Finished training it 460/512 of epoch 0, 600.88 ms/it, loss 0.083417
+mbs is 64
+Forward 20.45840072631836 ms
+Backward time: 642.9153442382812
+Average sparse bwd comm time over 5 embeddings 605.2273625999999
+Overall iteration time 672.331787109375
+Finished training it 461/512 of epoch 0, 672.17 ms/it, loss 0.084040
+mbs is 64
+Forward 115.71485137939453 ms
+Backward time: 612.6284790039062
+Average sparse bwd comm time over 5 embeddings 605.3011594
+Overall iteration time 730.8892211914062
+Finished training it 462/512 of epoch 0, 730.72 ms/it, loss 0.074778
+mbs is 64
+Forward 28.70796775817871 ms
+Backward time: 567.09326171875
+Average sparse bwd comm time over 5 embeddings 605.309287
+Overall iteration time 598.1204223632812
+Finished training it 463/512 of epoch 0, 597.95 ms/it, loss 0.083388
+mbs is 64
+Forward 43.71142578125 ms
+Backward time: 706.9235229492188
+Average sparse bwd comm time over 5 embeddings 605.2188686
+Overall iteration time 755.5419921875
+Finished training it 464/512 of epoch 0, 755.36 ms/it, loss 0.083174
+mbs is 64
+Forward 25.25596809387207 ms
+Backward time: 598.8515625
+Average sparse bwd comm time over 5 embeddings 605.4274372
+Overall iteration time 627.0115966796875
+Finished training it 465/512 of epoch 0, 626.60 ms/it, loss 0.078520
+mbs is 64
+Forward 52.31488037109375 ms
+Backward time: 767.2412109375
+Average sparse bwd comm time over 5 embeddings 605.398586
+Overall iteration time 822.2955322265625
+Finished training it 466/512 of epoch 0, 822.14 ms/it, loss 0.087896
+mbs is 64
+Forward 2.715424060821533 ms
+Backward time: 637.0447387695312
+Average sparse bwd comm time over 5 embeddings 605.7377528
+Overall iteration time 642.386962890625
+Finished training it 467/512 of epoch 0, 642.21 ms/it, loss 0.081378
+mbs is 64
+Forward 2.9181439876556396 ms
+Backward time: 792.56884765625
+Average sparse bwd comm time over 5 embeddings 605.764157
+Overall iteration time 802.318359375
+Finished training it 468/512 of epoch 0, 802.17 ms/it, loss 0.073907
+mbs is 64
+Forward 22.67647933959961 ms
+Backward time: 588.2091674804688
+Average sparse bwd comm time over 5 embeddings 606.1475028000001
+Overall iteration time 613.381103515625
+Finished training it 469/512 of epoch 0, 613.19 ms/it, loss 0.079488
+mbs is 64
+Forward 3.310431957244873 ms
+Backward time: 582.1051025390625
+Average sparse bwd comm time over 5 embeddings 606.1007554
+Overall iteration time 588.2122192382812
+Finished training it 470/512 of epoch 0, 588.03 ms/it, loss 0.069427
+mbs is 64
+Forward 35.86140823364258 ms
+Backward time: 631.4915771484375
+Average sparse bwd comm time over 5 embeddings 606.0271065999998
+Overall iteration time 670.3421630859375
+Finished training it 471/512 of epoch 0, 670.14 ms/it, loss 0.089829
+mbs is 64
+Forward 46.604576110839844 ms
+Backward time: 692.6683959960938
+Average sparse bwd comm time over 5 embeddings 606.0630998
+Overall iteration time 741.9043579101562
+Finished training it 472/512 of epoch 0, 741.73 ms/it, loss 0.091176
+mbs is 64
+Forward 2.7392001152038574 ms
+Backward time: 646.287353515625
+Average sparse bwd comm time over 5 embeddings 606.2390327999999
+Overall iteration time 651.6500244140625
+Finished training it 473/512 of epoch 0, 651.48 ms/it, loss 0.081726
+mbs is 64
+Forward 41.78022384643555 ms
+Backward time: 598.9519653320312
+Average sparse bwd comm time over 5 embeddings 606.3163066
+Overall iteration time 643.4877319335938
+Finished training it 474/512 of epoch 0, 643.33 ms/it, loss 0.066860
+mbs is 64
+Forward 20.64441680908203 ms
+Backward time: 636.1835327148438
+Average sparse bwd comm time over 5 embeddings 606.2838912
+Overall iteration time 660.3233032226562
+Finished training it 475/512 of epoch 0, 660.14 ms/it, loss 0.078195
+mbs is 64
+Forward 14.024191856384277 ms
+Backward time: 533.0216674804688
+Average sparse bwd comm time over 5 embeddings 606.3360638
+Overall iteration time 596.769775390625
+Finished training it 476/512 of epoch 0, 596.58 ms/it, loss 0.062357
+mbs is 64
+Forward 2.935839891433716 ms
+Backward time: 727.2632446289062
+Average sparse bwd comm time over 5 embeddings 606.1746095999999
+Overall iteration time 732.732421875
+Finished training it 477/512 of epoch 0, 732.57 ms/it, loss 0.091176
+mbs is 64
+Forward 2.8548800945281982 ms
+Backward time: 649.13818359375
+Average sparse bwd comm time over 5 embeddings 606.3798879999999
+Overall iteration time 654.693359375
+Finished training it 478/512 of epoch 0, 654.50 ms/it, loss 0.082982
+mbs is 64
+Forward 15.888640403747559 ms
+Backward time: 526.5858764648438
+Average sparse bwd comm time over 5 embeddings 606.4291058
+Overall iteration time 552.2514038085938
+Finished training it 479/512 of epoch 0, 552.08 ms/it, loss 0.078814
+mbs is 64
+Forward 2.891455888748169 ms
+Backward time: 576.2334594726562
+Average sparse bwd comm time over 5 embeddings 606.2513904
+Overall iteration time 581.7364501953125
+Finished training it 480/512 of epoch 0, 581.56 ms/it, loss 0.074659
+mbs is 64
+Forward 35.18761444091797 ms
+Backward time: 575.3640747070312
+Average sparse bwd comm time over 5 embeddings 606.1452988000001
+Overall iteration time 626.79345703125
+Finished training it 481/512 of epoch 0, 626.61 ms/it, loss 0.089152
+mbs is 64
+Forward 6.414336204528809 ms
+Backward time: 692.4943237304688
+Average sparse bwd comm time over 5 embeddings 606.07133
+Overall iteration time 766.7353515625
+Finished training it 482/512 of epoch 0, 766.58 ms/it, loss 0.087323
+mbs is 64
+Forward 6.209023952484131 ms
+Backward time: 591.1142578125
+Average sparse bwd comm time over 5 embeddings 606.243195
+Overall iteration time 601.6583862304688
+Finished training it 483/512 of epoch 0, 601.49 ms/it, loss 0.074274
+mbs is 64
+Forward 7.920479774475098 ms
+Backward time: 571.1380615234375
+Average sparse bwd comm time over 5 embeddings 606.2048118
+Overall iteration time 608.4403076171875
+Finished training it 484/512 of epoch 0, 608.25 ms/it, loss 0.085465
+mbs is 64
+Forward 11.944160461425781 ms
+Backward time: 589.7533569335938
+Average sparse bwd comm time over 5 embeddings 606.1249384
+Overall iteration time 604.3033447265625
+Finished training it 485/512 of epoch 0, 604.14 ms/it, loss 0.102422
+mbs is 64
+Forward 3.2185919284820557 ms
+Backward time: 674.8907470703125
+Average sparse bwd comm time over 5 embeddings 606.073579
+Overall iteration time 681.8058471679688
+Finished training it 486/512 of epoch 0, 681.63 ms/it, loss 0.084096
+mbs is 64
+Forward 31.1495361328125 ms
+Backward time: 722.5220947265625
+Average sparse bwd comm time over 5 embeddings 606.1960263999999
+Overall iteration time 767.3128662109375
+Finished training it 487/512 of epoch 0, 767.14 ms/it, loss 0.090978
+mbs is 64
+Forward 2.827967882156372 ms
+Backward time: 619.5527954101562
+Average sparse bwd comm time over 5 embeddings 606.409187
+Overall iteration time 661.591064453125
+Finished training it 488/512 of epoch 0, 661.40 ms/it, loss 0.084688
+mbs is 64
+Forward 53.2993278503418 ms
+Backward time: 576.884765625
+Average sparse bwd comm time over 5 embeddings 606.420359
+Overall iteration time 632.8760375976562
+Finished training it 489/512 of epoch 0, 632.71 ms/it, loss 0.075571
+mbs is 64
+Forward 3.017184019088745 ms
+Backward time: 645.95458984375
+Average sparse bwd comm time over 5 embeddings 606.3523250000001
+Overall iteration time 680.6661376953125
+Finished training it 490/512 of epoch 0, 680.50 ms/it, loss 0.083889
+mbs is 64
+Forward 11.86963176727295 ms
+Backward time: 643.4979858398438
+Average sparse bwd comm time over 5 embeddings 606.4214014
+Overall iteration time 698.3618774414062
+Finished training it 491/512 of epoch 0, 698.20 ms/it, loss 0.075596
+mbs is 64
+Forward 19.377504348754883 ms
+Backward time: 632.754150390625
+Average sparse bwd comm time over 5 embeddings 606.4893814
+Overall iteration time 654.8275146484375
+Finished training it 492/512 of epoch 0, 654.65 ms/it, loss 0.069307
+mbs is 64
+Forward 2.9059200286865234 ms
+Backward time: 636.9945678710938
+Average sparse bwd comm time over 5 embeddings 606.5356534
+Overall iteration time 642.3828735351562
+Finished training it 493/512 of epoch 0, 642.22 ms/it, loss 0.066347
+mbs is 64
+Forward 48.72358322143555 ms
+Backward time: 605.5239868164062
+Average sparse bwd comm time over 5 embeddings 606.4960666
+Overall iteration time 656.8079223632812
+Finished training it 494/512 of epoch 0, 656.65 ms/it, loss 0.091340
+mbs is 64
+Forward 26.89151954650879 ms
+Backward time: 629.1036376953125
+Average sparse bwd comm time over 5 embeddings 606.4657129999999
+Overall iteration time 658.6142578125
+Finished training it 495/512 of epoch 0, 658.44 ms/it, loss 0.093701
+mbs is 64
+Forward 8.087615966796875 ms
+Backward time: 689.63330078125
+Average sparse bwd comm time over 5 embeddings 606.4823193999999
+Overall iteration time 700.2869873046875
+Finished training it 496/512 of epoch 0, 700.12 ms/it, loss 0.083926
+mbs is 64
+Forward 27.000383377075195 ms
+Backward time: 667.7882690429688
+Average sparse bwd comm time over 5 embeddings 606.4957226
+Overall iteration time 704.5703735351562
+Finished training it 497/512 of epoch 0, 704.40 ms/it, loss 0.087225
+mbs is 64
+Forward 30.61849594116211 ms
+Backward time: 622.5910034179688
+Average sparse bwd comm time over 5 embeddings 606.5894958
+Overall iteration time 685.1553344726562
+Finished training it 498/512 of epoch 0, 684.98 ms/it, loss 0.075516
+mbs is 64
+Forward 12.904224395751953 ms
+Backward time: 562.9255981445312
+Average sparse bwd comm time over 5 embeddings 606.5573454
+Overall iteration time 599.3768920898438
+Finished training it 499/512 of epoch 0, 599.19 ms/it, loss 0.062219
+mbs is 64
+Forward 17.860671997070312 ms
+Backward time: 618.9526977539062
+Average sparse bwd comm time over 5 embeddings 606.4556163999999
+Overall iteration time 743.7588500976562
+Finished training it 500/512 of epoch 0, 743.60 ms/it, loss 0.083060
+mbs is 64
+Forward 10.555647850036621 ms
+Backward time: 636.7570190429688
+Average sparse bwd comm time over 5 embeddings 606.4726668
+Overall iteration time 649.9993896484375
+Finished training it 501/512 of epoch 0, 649.80 ms/it, loss 0.070843
+mbs is 64
+Forward 23.742015838623047 ms
+Backward time: 626.6234741210938
+Average sparse bwd comm time over 5 embeddings 606.5216188
+Overall iteration time 653.0795288085938
+Finished training it 502/512 of epoch 0, 652.91 ms/it, loss 0.083366
+mbs is 64
+Forward 2.7674880027770996 ms
+Backward time: 654.8551635742188
+Average sparse bwd comm time over 5 embeddings 606.543919
+Overall iteration time 660.3448486328125
+Finished training it 503/512 of epoch 0, 660.16 ms/it, loss 0.075308
+mbs is 64
+Forward 47.11625671386719 ms
+Backward time: 615.5970458984375
+Average sparse bwd comm time over 5 embeddings 606.6292082
+Overall iteration time 665.2456665039062
+Finished training it 504/512 of epoch 0, 665.09 ms/it, loss 0.090464
+mbs is 64
+Forward 3.3437440395355225 ms
+Backward time: 583.8305053710938
+Average sparse bwd comm time over 5 embeddings 606.6320816
+Overall iteration time 589.765625
+Finished training it 505/512 of epoch 0, 589.59 ms/it, loss 0.080325
+mbs is 64
+Forward 20.327199935913086 ms
+Backward time: 555.1349487304688
+Average sparse bwd comm time over 5 embeddings 606.5397234
+Overall iteration time 580.806640625
+Finished training it 506/512 of epoch 0, 580.64 ms/it, loss 0.083801
+mbs is 64
+Forward 2.8074560165405273 ms
+Backward time: 647.246826171875
+Average sparse bwd comm time over 5 embeddings 606.4164986
+Overall iteration time 652.6289672851562
+Finished training it 507/512 of epoch 0, 652.47 ms/it, loss 0.083812
+mbs is 64
+Forward 9.96332836151123 ms
+Backward time: 625.6650390625
+Average sparse bwd comm time over 5 embeddings 606.4802024
+Overall iteration time 674.1411743164062
+Finished training it 508/512 of epoch 0, 673.95 ms/it, loss 0.078447
+mbs is 64
+Forward 23.71139144897461 ms
+Backward time: 644.990966796875
+Average sparse bwd comm time over 5 embeddings 606.494207
+Overall iteration time 671.3436279296875
+Finished training it 509/512 of epoch 0, 671.17 ms/it, loss 0.068233
+mbs is 64
+Forward 3.138943910598755 ms
+Backward time: 493.50347900390625
+Average sparse bwd comm time over 5 embeddings 606.5626517999999
+Overall iteration time 534.2515258789062
+Finished training it 510/512 of epoch 0, 534.07 ms/it, loss 0.071801
+mbs is 64
+Forward 5.165696144104004 ms
+Backward time: 534.7317504882812
+Average sparse bwd comm time over 5 embeddings 606.3329947999999
+Overall iteration time 549.5776977539062
+Finished training it 511/512 of epoch 0, 549.36 ms/it, loss 0.085344
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 7
+-- using grpc False
+globval rank 15
+Rank 7 set device 7
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 15 with train-dy-p4d24xlarge-1, 29501
+Global rank 15 using gpu 7
+Init pg with nccl 15 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 15 16
+world size: 16, current rank: 15, local rank: 7
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc False
+globval rank 9
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 9 with train-dy-p4d24xlarge-1, 29501
+Global rank 9 using gpu 1
+Init pg with nccl 9 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 9 16
+world size: 16, current rank: 9, local rank: 1
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 4
+-- using grpc False
+globval rank 12
+Rank 4 set device 4
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 12 with train-dy-p4d24xlarge-1, 29501
+Global rank 12 using gpu 4
+Init pg with nccl 12 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 12 16
+world size: 16, current rank: 12, local rank: 4
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 2
+-- using grpc False
+globval rank 10
+Rank 2 set device 2
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 10 with train-dy-p4d24xlarge-1, 29501
+Global rank 10 using gpu 2
+Init pg with nccl 10 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 10 16
+world size: 16, current rank: 10, local rank: 2
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 5
+-- using grpc False
+globval rank 13
+Rank 5 set device 5
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 13 with train-dy-p4d24xlarge-1, 29501
+Global rank 13 using gpu 5
+Init pg with nccl 13 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 13 16
+world size: 16, current rank: 13, local rank: 5
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+mbs is 64
+Forward 3.3625919818878174 ms
+Backward time: 481.3711242675781
+Average sparse bwd comm time over 5 embeddings 606.1815227999999
+Overall iteration time 487.3830261230469
+Finished training it 512/512 of epoch 0, 487.23 ms/it, loss 0.096392
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 4
+-- using grpc False
+globval rank 4
+Rank 4 set device 4
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 4 with train-dy-p4d24xlarge-1, 29501
+Global rank 4 using gpu 4
+Init pg with nccl 4 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 4 16
+world size: 16, current rank: 4, local rank: 4
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 2
+-- using grpc False
+globval rank 2
+Rank 2 set device 2
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 2 with train-dy-p4d24xlarge-1, 29501
+Global rank 2 using gpu 2
+Init pg with nccl 2 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 2 16
+world size: 16, current rank: 2, local rank: 2
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 6
+-- using grpc False
+globval rank 6
+Rank 6 set device 6
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 6 with train-dy-p4d24xlarge-1, 29501
+Global rank 6 using gpu 6
+Init pg with nccl 6 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 6 16
+world size: 16, current rank: 6, local rank: 6
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc False
+globval rank 1
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 1 with train-dy-p4d24xlarge-1, 29501
+Global rank 1 using gpu 1
+Init pg with nccl 1 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 1 16
+world size: 16, current rank: 1, local rank: 1
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 5
+-- using grpc False
+globval rank 5
+Rank 5 set device 5
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 5 with train-dy-p4d24xlarge-1, 29501
+Global rank 5 using gpu 5
+Init pg with nccl 5 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 5 16
+world size: 16, current rank: 5, local rank: 5
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 3
+-- using grpc False
+globval rank 3
+Rank 3 set device 3
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 3 with train-dy-p4d24xlarge-1, 29501
+Global rank 3 using gpu 3
+Init pg with nccl 3 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 3 16
+world size: 16, current rank: 3, local rank: 3
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 7
+-- using grpc False
+globval rank 7
+Rank 7 set device 7
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 7 with train-dy-p4d24xlarge-1, 29501
+Global rank 7 using gpu 7
+Init pg with nccl 7 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 7 16
+world size: 16, current rank: 7, local rank: 7
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 6
+-- using grpc False
+globval rank 14
+Rank 6 set device 6
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 14 with train-dy-p4d24xlarge-1, 29501
+Global rank 14 using gpu 6
+Init pg with nccl 14 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 14 16
+world size: 16, current rank: 14, local rank: 6
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc False
+globval rank 8
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 8 with train-dy-p4d24xlarge-1, 29501
+Global rank 8 using gpu 0
+Init pg with nccl 8 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 8 16
+world size: 16, current rank: 8, local rank: 0
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 3
+-- using grpc False
+globval rank 11
+Rank 3 set device 3
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 11 with train-dy-p4d24xlarge-1, 29501
+Global rank 11 using gpu 3
+Init pg with nccl 11 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 11 16
+world size: 16, current rank: 11, local rank: 3
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>

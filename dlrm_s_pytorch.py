@@ -66,8 +66,9 @@ exc = getattr(builtins, "IOError", "FileNotFoundError")
 
 
 def time_wrap(use_gpu):
+    use_gpu = True
     if use_gpu:
-        torch.cuda.synchronize()
+        torch.cuda.synchronize(torch.cuda.current_device())
     return time.time()
 
 
@@ -92,7 +93,7 @@ def dlrm_wrap(X, lS_o, lS_i, use_gpu, device, ndevices=1):
 
 def profile_hook(state_dict, bucket):
     rank = dist.get_rank()
-    tensor = bucket.get_tensors()[0]
+    tensor = bucket.get_tensor()
     metrics = {}
     state_dict[bucket.get_index()] = metrics
 
@@ -275,7 +276,12 @@ class DLRM_Net(nn.Module):
             print(f"Using dev_id {dev_id} for rank {dist.get_rank()}")
             ee_params = {p.device for p in EE.parameters()}
             print(f"ee_params {ee_params}")
-            EE = ext_dist.DDP(EE, device_ids=[dev_id], process_group=gloo_pg)
+            if not self.use_grpc:
+                # Only do DDP for embeddings when not using grpc.
+                EE = ext_dist.DDP(EE, device_ids=[dev_id], process_group=gloo_pg)
+                EE._set_ddp_runtime_logging_sample_rate(1)
+            # self.state_dicts[i] = {}
+            # EE.register_comm_hook(self.state_dicts[i], profile_hook)
             # if not self.sparse_state_dict:
             #     self.sparse_state_dict = {}
             #     self.sparse_state_dict
@@ -329,6 +335,7 @@ class DLRM_Net(nn.Module):
             and (arch_interaction_op is not None)
         ):
             self.use_grpc = args.grpc
+            self.state_dicts = {}
             # create grpc client if needed
             if self.use_grpc:
                 print("Creating grpc client")
@@ -338,7 +345,25 @@ class DLRM_Net(nn.Module):
                 self.client = client
                 ext_dist.print_all("Created client!")
                 # Create embedding
-                client.create_embedding(name="create_embedding", tensor=torch.tensor([0]))
+                num_tries = 0
+                sleep_time = 2
+                max_num_tries = 8
+                conn_to_server = False
+                while not conn_to_server and num_tries < max_num_tries:
+                    num_tries += 1
+                    try:
+                        client.create_embedding(name="create_embedding", tensor=torch.tensor([0]))
+                        conn_to_server = True
+                        break
+                    except:
+                        time.sleep(sleep_time)
+                        sleep_time *= 2
+                
+                if not conn_to_server:
+                    raise ValueError(f"Client failed to connect to grpc master after {num_tries} tries!")
+
+                        
+                    
                 ext_dist.print_all("Created embedding!")
                 idx = torch.tensor([1])
                 cpu_tensors = client.embedding_lookup(name="embedding", tensor=idx, cuda=False)
@@ -482,13 +507,17 @@ class DLRM_Net(nn.Module):
                         per_sample_weights=per_sample_weights,
                         cuda=False,
                     )
-                    # ret_tensors = []
-                    # for t in tens:
-                    #     ret_tensors.append(t.to(torch.cuda.current_device()))
-                    # V = ret_tensors[0]
-                    V = futs[0]
+                    tens = self.client.wait_all_futs(futs, cuda=False)
+                    ret_tensors = []
+                    for t in tens:
+                        ret_tensors.append(t.to(torch.cuda.current_device()))
+                    V = ret_tensors[0]
+                    # V = futs[0]
                     # Save embedding shapes
-                    self.Vs[k] = emb_l[k].module.weight.shape
+                    try:
+                        self.Vs[k] = emb_l[k].module.weight.shape
+                    except:
+                        self.Vs[k] = emb_l[k].weight.shape
                     # ext_dist.print_all(f"Client got back embedding {ret_tensors} compared to local {V}")
                 else:
                     E = emb_l[k]
@@ -559,7 +588,20 @@ class DLRM_Net(nn.Module):
         return R
 
     def forward(self, dense_x, lS_o, lS_i):
-        return self.sequential_forward(dense_x, lS_o, lS_i)
+        e_before = torch.cuda.Event(enable_timing=True)
+        with torch.cuda.device(torch.cuda.current_device()):
+            e_before.record()
+        # Launch forward
+        fwd_return = self.sequential_forward(dense_x, lS_o, lS_i)
+        e_after = torch.cuda.Event(enable_timing=True)
+        with torch.cuda.device(torch.cuda.current_device()):
+            e_after.record()
+        # torch.cuda.synchronize(torch.cuda.current_device())
+        e_before.synchronize()
+        e_after.synchronize()
+        elapsed_time_ms = e_before.elapsed_time(e_after)
+        print(f"Forward {elapsed_time_ms} ms")
+        return fwd_return
         if ext_dist.my_size > 1:
             # multi-node multi-device run
             return self.distributed_forward(dense_x, lS_o, lS_i)
@@ -641,12 +683,16 @@ class DLRM_Net(nn.Module):
         #     print(y.detach().cpu().numpy())
 
         # interact features (dense and sparse)
-        if self.use_grpc:
-            futs = ly
-            cpu_tensors = self.client.wait_all_futs(futs, cuda=False)
-            tmp = cpu_tensors
-            for i in range(len(tmp)):
-                ly[i] = tmp[i].to(torch.cuda.current_device())
+        # Wait on async grpc embedding lookup
+        # if self.use_grpc:
+        #     futs = ly
+        #     fwd_comm_start = time.time()
+        #     cpu_tensors = self.client.wait_all_futs(futs, cuda=False)
+        #     fwd_comm_end = time.time()
+        #     print(f'Fwd comm: {(fwd_comm_end - fwd_comm_start) / 1000} ms')
+        #     tmp = cpu_tensors
+        #     for i in range(len(tmp)):
+        #         ly[i] = tmp[i].to(torch.cuda.current_device())
             
         z = self.interact_features(x, ly)
         # print(z.detach().cpu().numpy())
@@ -1093,7 +1139,7 @@ def run():
         grpc_server_proc = None
         ctx = mp.get_context('spawn')
         if args.rank == 0 and args.grpc:
-            print("-- starting grpc server")
+            print(f"-- starting grpc server on rank {args.rank}")
             maddr = os.environ["GRPC_MASTER_ADDR"]
             hostname = socket.gethostname()
             print(f"{maddr} vs {hostname}")
@@ -1490,7 +1536,9 @@ def training(i, args):
             device_ids = [ext_dist.my_local_rank]
             print("Using data parallel MLPs")
             dlrm.bot_l = ext_dist.DDP(dlrm.bot_l, device_ids=device_ids)
+            dlrm.bot_l._set_ddp_runtime_logging_sample_rate(1)
             dlrm.top_l = ext_dist.DDP(dlrm.top_l, device_ids=device_ids)
+            dlrm.top_l._set_ddp_runtime_logging_sample_rate(1)
         else:
             dlrm.bot_l = ext_dist.DDP(dlrm.bot_l)
             dlrm.top_l = ext_dist.DDP(dlrm.top_l)
@@ -1701,6 +1749,13 @@ def training(i, args):
                     previous_iteration_time = None
 
                 for j, inputBatch in enumerate(train_ld):
+                    # Start of iteration
+                    it_start_event = torch.cuda.Event(enable_timing=True)
+                    with torch.cuda.device(torch.cuda.current_device()):
+                        it_start_event.record()
+                    
+
+
                     if j == 0 and args.save_onnx:
                         X_onnx, lS_o_onnx, lS_i_onnx, _, _, _ = unpack_batch(inputBatch)
 
@@ -1708,6 +1763,13 @@ def training(i, args):
                         continue
 
                     X, lS_o, lS_i, T, W, CBPP = unpack_batch(inputBatch)
+                    # ext_dist.print_all(f"Got X shape {X.shape}")
+                    global_bs = X.shape[0]
+                    ddp_bs = global_bs // dist.get_world_size()
+                    local_rank = dist.get_rank() % torch.cuda.device_count()
+                    # X_mini = X[local_rank * ddp_bs : local_rank * ddp_bs + ddp_bs]
+                    # print(f"X_mini shape {X_mini.shape}")
+                    # X = X_mini
 
                     if args.mlperf_logging:
                         current_time = time_wrap(use_gpu)
@@ -1732,7 +1794,7 @@ def training(i, args):
                         continue
 
                     mbs = T.shape[0]  # = args.mini_batch_size except maybe for last
-
+                    print(f"mbs is {mbs}")
                     # forward pass
                     Z = dlrm_wrap(
                         X,
@@ -1744,8 +1806,9 @@ def training(i, args):
                     )
 
                     if ext_dist.my_size > 1:
-                        T = T[ext_dist.get_my_slice(mbs)]
-                        W = W[ext_dist.get_my_slice(mbs)]
+                        pass
+                        # T = T[ext_dist.get_my_slice(mbs)]
+                        # W = W[ext_dist.get_my_slice(mbs)]
 
                     # loss
                     E = loss_fn_wrap(Z, T, use_gpu, device)
@@ -1769,19 +1832,76 @@ def training(i, args):
                         # (where we do not accumulate gradients across mini-batches)
                         optimizer.zero_grad()
                         # backward pass
+                        bwd_before_event = torch.cuda.Event(enable_timing=True)
+                        bwd_before_event.record()
                         E.backward()
+                        bwd_after_event = torch.cuda.Event(enable_timing=True)
+                        bwd_after_event.record()
+                        bwd_before_event.synchronize()
+                        bwd_after_event.synchronize()
+                        bwd_elapsed = bwd_before_event.elapsed_time(bwd_after_event)
+                        print(f"Backward time: {bwd_elapsed}")
+                        if dist.get_rank() == 0:
+                            # print backward stats
+                            # sd = dlrm.state_dicts[0]
+                            # print(f"State_dict {sd}")
+                            pass
                         if dlrm.use_grpc:
                             # Send dummy gradients over the wire and apply step on param server
-                            grad_tensors = [torch.zeros(1) for _ in dlrm.Vs]
+                            grad_tensors = [torch.zeros((100, 100)) for s in dlrm.Vs]
+                            print(f"Grad tensor shape: {grad_tensors[0].shape}")
+                            bwd_sparse_comm_start = time.time()
                             dlrm.client.dlrm_embedding_send_grads(
                                 name="dlrm_embedding_send_grads",
                                 grad_tensors=grad_tensors,
                                 cuda=False
                             )
+                            bwd_sparse_comm_end = time.time()
+                            print(f'grpc bwd comm" {(bwd_sparse_comm_end - bwd_sparse_comm_start)/1000}')
 
                         # optimizer
                         optimizer.step()
                         lr_scheduler.step()
+                    
+                    # it_end_event = torch.cuda.Event(enable_timing=True)
+                    # with torch.cuda.device(torch.cuda.current_device()):
+                    #     it_end_event.record()
+                    # torch.cuda.synchronize(torch.cuda.current_device())
+                    # elapsed_overall_ms = it_start_event.elapsed_time(it_end_event)
+                    # print(f"Overall iteration time {elapsed_overall_ms}")
+        #             torch.cuda.synchronize(torch.cuda.current_device())
+        # elapsed_time_ms = e_before.elapsed_time(e_after)
+                    
+                    # Get DDP perf data
+                    sparse_bwd_comm = []
+                    sparse_bwd_comp = []
+                    embs = dlrm.emb_l
+                    if not dlrm.use_grpc:
+                        for ddp_emb in embs:
+                            logging_data = ddp_emb._get_ddp_logging_data()
+                            try:
+                                sparse_bwd_comm.append(logging_data['avg_backward_comm_time'] * 1e-6)
+                                sparse_bwd_comp.append(logging_data['avg_backward_compute_time'] * 1e-6)
+                            except:
+                                pass
+                            # print(f"GOT LOGGING DATA {logging_data}")
+                        
+                        print(f"Average sparse bwd comm time over {len(embs)} embeddings {np.mean(sparse_bwd_comm)}")
+                        dlrm_bot_l_data = dlrm.bot_l._get_ddp_logging_data()
+                        dlrm_top_l_data = dlrm.top_l._get_ddp_logging_data()
+                        try:
+                            bot_l_bwd_comp = dlrm_bot_l_data['avg_backward_compute_time']*1e-6
+                            top_l_bwd_comp = dlrm_top_l_data['avg_backward_compute_time'] *1e-6
+                            sparse_bwd_comp.extend([bot_l_bwd_comp, top_l_bwd_comp])
+                        except:
+                            pass
+                        
+                        # assert success
+                        
+                        # Print average of overall comp time
+                        avg_comp_bwd_overall = np.mean(sparse_bwd_comp)
+                        # print(f"Average overall bwd comp time {avg_comp_bwd_overall}")
+                    
 
                     if args.mlperf_logging:
                         total_time += iteration_time
@@ -1817,7 +1937,13 @@ def training(i, args):
                         wall_time = ""
                         if args.print_wall_time:
                             wall_time = " ({})".format(time.strftime("%H:%M"))
-
+                        
+                        it_end_event = torch.cuda.Event(enable_timing=True)
+                        with torch.cuda.device(torch.cuda.current_device()):
+                            it_end_event.record()
+                        torch.cuda.synchronize(torch.cuda.current_device())
+                        elapsed_overall_ms = it_start_event.elapsed_time(it_end_event)
+                        print(f"Overall iteration time {elapsed_overall_ms}")
                         print(
                             "Finished {} it {}/{} of epoch {}, {:.2f} ms/it,".format(
                                 str_run_type, j + 1, nbatches, k, gT

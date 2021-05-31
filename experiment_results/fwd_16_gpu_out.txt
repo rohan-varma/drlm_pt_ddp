@@ -1,0 +1,1100 @@
+using master addrtrain-dy-p4d24xlarge-1
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-2
+rank? 1
+using master addrtrain-dy-p4d24xlarge-1
+using part 
+running python script
+world size 2
+node name train-dy-p4d24xlarge-1
+rank? 0
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+exiting
+About to spawn.... 8
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc False
+globval rank 0
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 0 with train-dy-p4d24xlarge-1, 29501
+Global rank 0 using gpu 0
+Init pg with nccl 0 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 0 16
+Running on 16 ranks using nccl backend
+world size: 16, current rank: 0, local rank: 0
+Distributed init done!
+Using 1 GPU per process, this process is using 0
+Using 1 GPU(s)...
+model arch:
+mlp top arch 3 layers, with input to output dimensions:
+[ 142 4096 4096    1]
+# of interactions
+142
+mlp bot arch 5 layers, with input to output dimensions:
+[2000 1024 1024  512  256   64]
+# of features (sparse and dense)
+13
+dense feature size
+2000
+sparse feature size
+64
+# of embeddings (= # of sparse features) 12, with dimensions 64x:
+[1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000
+ 1000000 1000000 1000000]
+computed ndevices as 1: ngpus=1, bs=16, fea=12
+--- calling create emb in DLRM __init__
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Using dev_id 0 for rank 0
+ee_params {device(type='cuda', index=0)}
+Type of EE is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Creating linear with 2000 1024
+Creating linear with 1024 1024
+Creating linear with 1024 512
+Creating linear with 512 256
+Creating linear with 256 64
+Created 10 layers
+Creating linear with 142 4096
+Creating linear with 4096 4096
+Creating linear with 4096 1
+Created 6 layers
+overall: Number of parameter tensors: 28
+overall: Number of parameters: 789142337
+overall: Parameter size in bytes: 3156569348 (3010.3391151428223 MB) 
+
+emb_l: Number of parameter tensors: 12
+emb_l: Number of parameters: 768000000
+emb_l: Parameter size in bytes: 3072000000 (2929.6875 MB) 
+
+bot_l: Number of parameter tensors: 10
+bot_l: Number of parameters: 3771200
+bot_l: Parameter size in bytes: 15084800 (14.385986328125 MB) 
+
+top_l: Number of parameter tensors: 6
+top_l: Number of parameters: 17371137
+top_l: Parameter size in bytes: 69484548 (66.26562881469727 MB) 
+
+Initialized DLRM
+use_gpu is true
+Using data parallel MLPs
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+time/loss/accuracy (if enabled):
+mbs is 16
+Forward 1855.35595703125 ms
+Finished training it 1/128 of epoch 0, 2151.81 ms/it, loss 0.000247
+mbs is 16
+Forward 19.03673553466797 ms
+Finished training it 2/128 of epoch 0, 195.01 ms/it, loss 0.161120
+mbs is 16
+Forward 6.247615814208984 ms
+Finished training it 3/128 of epoch 0, 170.85 ms/it, loss 0.048713
+mbs is 16
+Forward 5.332287788391113 ms
+Finished training it 4/128 of epoch 0, 199.45 ms/it, loss 0.063930
+mbs is 16
+Forward 14.98259162902832 ms
+Finished training it 5/128 of epoch 0, 184.80 ms/it, loss 0.061207
+mbs is 16
+Forward 7.093247890472412 ms
+Finished training it 6/128 of epoch 0, 171.38 ms/it, loss 0.275846
+mbs is 16
+Forward 14.396320343017578 ms
+Finished training it 7/128 of epoch 0, 193.51 ms/it, loss 0.003044
+mbs is 16
+Forward 9.885024070739746 ms
+Finished training it 8/128 of epoch 0, 182.11 ms/it, loss 0.183282
+mbs is 16
+Forward 5.508639812469482 ms
+Finished training it 9/128 of epoch 0, 169.50 ms/it, loss 0.026412
+mbs is 16
+Forward 5.963712215423584 ms
+Finished training it 10/128 of epoch 0, 200.57 ms/it, loss 0.071113
+mbs is 16
+Forward 5.788127899169922 ms
+Finished training it 11/128 of epoch 0, 199.63 ms/it, loss 0.065033
+mbs is 16
+Forward 5.724639892578125 ms
+Finished training it 12/128 of epoch 0, 177.37 ms/it, loss 0.310728
+mbs is 16
+Forward 7.739391803741455 ms
+Finished training it 13/128 of epoch 0, 202.22 ms/it, loss 0.025085
+mbs is 16
+Forward 5.459968090057373 ms
+Finished training it 14/128 of epoch 0, 207.03 ms/it, loss 0.013117
+mbs is 16
+Forward 15.166336059570312 ms
+Finished training it 15/128 of epoch 0, 191.09 ms/it, loss 0.067178
+mbs is 16
+Forward 5.517951965332031 ms
+Finished training it 16/128 of epoch 0, 204.42 ms/it, loss 0.000060
+mbs is 16
+Forward 5.7387518882751465 ms
+Finished training it 17/128 of epoch 0, 208.27 ms/it, loss 0.001629
+mbs is 16
+Forward 5.66480016708374 ms
+Finished training it 18/128 of epoch 0, 184.00 ms/it, loss 0.000124
+mbs is 16
+Forward 5.41487979888916 ms
+Finished training it 19/128 of epoch 0, 194.46 ms/it, loss 0.245469
+mbs is 16
+Forward 14.296128273010254 ms
+Finished training it 20/128 of epoch 0, 194.33 ms/it, loss 0.124167
+mbs is 16
+Forward 5.205023765563965 ms
+Finished training it 21/128 of epoch 0, 182.41 ms/it, loss 0.006223
+mbs is 16
+Forward 5.866208076477051 ms
+Finished training it 22/128 of epoch 0, 209.14 ms/it, loss 0.017305
+mbs is 16
+Forward 3.4969921112060547 ms
+Finished training it 23/128 of epoch 0, 246.56 ms/it, loss 0.274479
+mbs is 16
+Forward 3.211359977722168 ms
+Finished training it 24/128 of epoch 0, 239.69 ms/it, loss 0.062051
+mbs is 16
+Forward 3.5579841136932373 ms
+Finished training it 25/128 of epoch 0, 196.01 ms/it, loss 0.024126
+mbs is 16
+Forward 5.654335975646973 ms
+Finished training it 26/128 of epoch 0, 253.09 ms/it, loss 0.009428
+mbs is 16
+Forward 6.455615997314453 ms
+Finished training it 27/128 of epoch 0, 177.70 ms/it, loss 0.265930
+mbs is 16
+Forward 5.3381757736206055 ms
+Finished training it 28/128 of epoch 0, 194.14 ms/it, loss 0.261207
+mbs is 16
+Forward 5.434944152832031 ms
+Finished training it 29/128 of epoch 0, 191.73 ms/it, loss 0.131980
+mbs is 16
+Forward 5.784287929534912 ms
+Finished training it 30/128 of epoch 0, 225.97 ms/it, loss 0.041714
+mbs is 16
+Forward 6.333600044250488 ms
+Finished training it 31/128 of epoch 0, 194.87 ms/it, loss 0.194552
+mbs is 16
+Forward 5.4003520011901855 ms
+Finished training it 32/128 of epoch 0, 192.03 ms/it, loss 0.243679
+mbs is 16
+Forward 5.72819185256958 ms
+Finished training it 33/128 of epoch 0, 210.07 ms/it, loss 0.021926
+mbs is 16
+Forward 5.623199939727783 ms
+Finished training it 34/128 of epoch 0, 166.48 ms/it, loss 0.061062
+mbs is 16
+Forward 5.658880233764648 ms
+Finished training it 35/128 of epoch 0, 190.71 ms/it, loss 0.101137
+mbs is 16
+Forward 5.6154561042785645 ms
+Finished training it 36/128 of epoch 0, 184.79 ms/it, loss 0.002051
+mbs is 16
+Forward 5.706208229064941 ms
+Finished training it 37/128 of epoch 0, 193.38 ms/it, loss 0.025747
+mbs is 16
+Forward 18.878528594970703 ms
+Finished training it 38/128 of epoch 0, 187.38 ms/it, loss 0.003152
+mbs is 16
+Forward 7.543935775756836 ms
+Finished training it 39/128 of epoch 0, 193.89 ms/it, loss 0.246665
+mbs is 16
+Forward 6.036384105682373 ms
+Finished training it 40/128 of epoch 0, 211.02 ms/it, loss 0.090867
+mbs is 16
+Forward 5.493055820465088 ms
+Finished training it 41/128 of epoch 0, 164.72 ms/it, loss 0.182714
+mbs is 16
+Forward 5.748447895050049 ms
+Finished training it 42/128 of epoch 0, 170.92 ms/it, loss 0.187215
+mbs is 16
+Forward 5.4236159324646 ms
+Finished training it 43/128 of epoch 0, 169.48 ms/it, loss 0.048128
+mbs is 16
+Forward 7.998688220977783 ms
+Finished training it 44/128 of epoch 0, 191.01 ms/it, loss 0.000434
+mbs is 16
+Forward 5.511712074279785 ms
+Finished training it 45/128 of epoch 0, 196.57 ms/it, loss 0.084677
+mbs is 16
+Forward 5.735968112945557 ms
+Finished training it 46/128 of epoch 0, 211.06 ms/it, loss 0.171333
+mbs is 16
+Forward 7.16048002243042 ms
+Finished training it 47/128 of epoch 0, 185.82 ms/it, loss 0.039790
+mbs is 16
+Forward 15.42307186126709 ms
+Finished training it 48/128 of epoch 0, 186.59 ms/it, loss 0.162055
+mbs is 16
+Forward 6.065855979919434 ms
+Finished training it 49/128 of epoch 0, 176.73 ms/it, loss 0.136170
+mbs is 16
+Forward 6.595583915710449 ms
+Finished training it 50/128 of epoch 0, 174.65 ms/it, loss 0.045333
+mbs is 16
+Forward 6.011839866638184 ms
+Finished training it 51/128 of epoch 0, 190.87 ms/it, loss 0.228326
+mbs is 16
+Forward 15.621024131774902 ms
+Finished training it 52/128 of epoch 0, 203.51 ms/it, loss 0.266878
+mbs is 16
+Forward 5.494207859039307 ms
+Finished training it 53/128 of epoch 0, 178.93 ms/it, loss 0.063755
+mbs is 16
+Forward 5.495359897613525 ms
+Finished training it 54/128 of epoch 0, 170.49 ms/it, loss 0.009531
+mbs is 16
+Forward 5.445248126983643 ms
+Finished training it 55/128 of epoch 0, 207.64 ms/it, loss 0.000466
+mbs is 16
+Forward 7.591551780700684 ms
+Finished training it 56/128 of epoch 0, 217.70 ms/it, loss 0.034057
+mbs is 16
+Forward 5.627808094024658 ms
+Finished training it 57/128 of epoch 0, 186.21 ms/it, loss 0.114561
+mbs is 16
+Forward 5.323008060455322 ms
+Finished training it 58/128 of epoch 0, 204.43 ms/it, loss 0.194645
+mbs is 16
+Forward 7.131840229034424 ms
+Finished training it 59/128 of epoch 0, 183.13 ms/it, loss 0.186285
+mbs is 16
+Forward 5.433728218078613 ms
+Finished training it 60/128 of epoch 0, 218.05 ms/it, loss 0.020264
+mbs is 16
+Forward 5.59548807144165 ms
+Finished training it 61/128 of epoch 0, 181.76 ms/it, loss 0.087908
+mbs is 16
+Forward 6.500192165374756 ms
+Finished training it 62/128 of epoch 0, 207.90 ms/it, loss 0.212161
+mbs is 16
+Forward 7.134463787078857 ms
+Finished training it 63/128 of epoch 0, 180.40 ms/it, loss 0.081651
+mbs is 16
+Forward 5.70582389831543 ms
+Finished training it 64/128 of epoch 0, 180.12 ms/it, loss 0.218743
+mbs is 16
+Forward 9.828543663024902 ms
+Finished training it 65/128 of epoch 0, 163.94 ms/it, loss 0.048120
+mbs is 16
+Forward 5.779583930969238 ms
+Finished training it 66/128 of epoch 0, 188.76 ms/it, loss 0.040048
+mbs is 16
+Forward 5.88259220123291 ms
+Finished training it 67/128 of epoch 0, 203.41 ms/it, loss 0.129566
+mbs is 16
+Forward 5.4700798988342285 ms
+Finished training it 68/128 of epoch 0, 138.65 ms/it, loss 0.072196
+mbs is 16
+Forward 5.178592205047607 ms
+Finished training it 69/128 of epoch 0, 172.40 ms/it, loss 0.034683
+mbs is 16
+Forward 5.944672107696533 ms
+Finished training it 70/128 of epoch 0, 169.19 ms/it, loss 0.048417
+mbs is 16
+Forward 5.871232032775879 ms
+Finished training it 71/128 of epoch 0, 198.74 ms/it, loss 0.126665
+mbs is 16
+Forward 5.60697603225708 ms
+Finished training it 72/128 of epoch 0, 182.99 ms/it, loss 0.016678
+mbs is 16
+Forward 5.281407833099365 ms
+Finished training it 73/128 of epoch 0, 187.24 ms/it, loss 0.053475
+mbs is 16
+Forward 5.780064105987549 ms
+Finished training it 74/128 of epoch 0, 182.12 ms/it, loss 0.217904
+mbs is 16
+Forward 5.910848140716553 ms
+Finished training it 75/128 of epoch 0, 174.51 ms/it, loss 0.131606
+mbs is 16
+Forward 16.80918312072754 ms
+Finished training it 76/128 of epoch 0, 182.58 ms/it, loss 0.177655
+mbs is 16
+Forward 5.8097920417785645 ms
+Finished training it 77/128 of epoch 0, 184.47 ms/it, loss 0.046697
+mbs is 16
+Forward 5.64358377456665 ms
+Finished training it 78/128 of epoch 0, 203.31 ms/it, loss 0.027554
+mbs is 16
+Forward 8.675935745239258 ms
+Finished training it 79/128 of epoch 0, 205.51 ms/it, loss 0.077711
+mbs is 16
+Forward 5.731232166290283 ms
+Finished training it 80/128 of epoch 0, 201.57 ms/it, loss 0.192700
+mbs is 16
+Forward 4.273471832275391 ms
+Finished training it 81/128 of epoch 0, 239.10 ms/it, loss 0.029274
+mbs is 16
+Forward 5.579904079437256 ms
+Finished training it 82/128 of epoch 0, 213.73 ms/it, loss 0.195113
+mbs is 16
+Forward 14.541695594787598 ms
+Finished training it 83/128 of epoch 0, 198.25 ms/it, loss 0.081794
+mbs is 16
+Forward 5.575456142425537 ms
+Finished training it 84/128 of epoch 0, 185.43 ms/it, loss 0.153515
+mbs is 16
+Forward 5.5452799797058105 ms
+Finished training it 85/128 of epoch 0, 185.84 ms/it, loss 0.020893
+mbs is 16
+Forward 4.375999927520752 ms
+Finished training it 86/128 of epoch 0, 185.83 ms/it, loss 0.012584
+mbs is 16
+Forward 8.736063957214355 ms
+Finished training it 87/128 of epoch 0, 194.72 ms/it, loss 0.042558
+mbs is 16
+Forward 7.967328071594238 ms
+Finished training it 88/128 of epoch 0, 171.33 ms/it, loss 0.019206
+mbs is 16
+Forward 5.883935928344727 ms
+Finished training it 89/128 of epoch 0, 198.95 ms/it, loss 0.062057
+mbs is 16
+Forward 5.441664218902588 ms
+Finished training it 90/128 of epoch 0, 207.66 ms/it, loss 0.130413
+mbs is 16
+Forward 6.9462080001831055 ms
+Finished training it 91/128 of epoch 0, 205.42 ms/it, loss 0.012764
+mbs is 16
+Forward 5.377344131469727 ms
+Finished training it 92/128 of epoch 0, 249.81 ms/it, loss 0.010222
+mbs is 16
+Forward 3.8726720809936523 ms
+Finished training it 93/128 of epoch 0, 174.53 ms/it, loss 0.004925
+mbs is 16
+Forward 8.83903980255127 ms
+Finished training it 94/128 of epoch 0, 167.73 ms/it, loss 0.019221
+mbs is 16
+Forward 5.484127998352051 ms
+Finished training it 95/128 of epoch 0, 176.48 ms/it, loss 0.094417
+mbs is 16
+Forward 5.550559997558594 ms
+Finished training it 96/128 of epoch 0, 175.40 ms/it, loss 0.186170
+mbs is 16
+Forward 5.284287929534912 ms
+Finished training it 97/128 of epoch 0, 189.23 ms/it, loss 0.220638
+mbs is 16
+Forward 5.814815998077393 ms
+Finished training it 98/128 of epoch 0, 178.28 ms/it, loss 0.004043
+mbs is 16
+Forward 7.6163201332092285 ms
+Finished training it 99/128 of epoch 0, 199.25 ms/it, loss 0.214697
+mbs is 16
+Forward 5.407584190368652 ms
+Finished training it 100/128 of epoch 0, 195.17 ms/it, loss 0.147242
+mbs is 16
+Forward 5.375936031341553 ms
+Finished training it 101/128 of epoch 0, 189.97 ms/it, loss 0.110562
+mbs is 16
+Forward 6.8163838386535645 ms
+Finished training it 102/128 of epoch 0, 217.18 ms/it, loss 0.204296
+mbs is 16
+Forward 4.010240077972412 ms
+Finished training it 103/128 of epoch 0, 195.09 ms/it, loss 0.030161
+mbs is 16
+Forward 5.75161600112915 ms
+Finished training it 104/128 of epoch 0, 172.12 ms/it, loss 0.000842
+mbs is 16
+Forward 5.440351963043213 ms
+Finished training it 105/128 of epoch 0, 218.32 ms/it, loss 0.040319
+mbs is 16
+Forward 5.337696075439453 ms
+Finished training it 106/128 of epoch 0, 201.25 ms/it, loss 0.076213
+mbs is 16
+Forward 5.645792007446289 ms
+Finished training it 107/128 of epoch 0, 201.00 ms/it, loss 0.069741
+mbs is 16
+Forward 17.790815353393555 ms
+Finished training it 108/128 of epoch 0, 199.75 ms/it, loss 0.055518
+mbs is 16
+Forward 17.61859130859375 ms
+Finished training it 109/128 of epoch 0, 183.90 ms/it, loss 0.102987
+mbs is 16
+Forward 5.669280052185059 ms
+Finished training it 110/128 of epoch 0, 191.44 ms/it, loss 0.025885
+mbs is 16
+Forward 5.431359767913818 ms
+Finished training it 111/128 of epoch 0, 186.72 ms/it, loss 0.073568
+mbs is 16
+Forward 6.143616199493408 ms
+Finished training it 112/128 of epoch 0, 225.56 ms/it, loss 0.141825
+mbs is 16
+Forward 8.586015701293945 ms
+Finished training it 113/128 of epoch 0, 166.71 ms/it, loss 0.231579
+mbs is 16
+Forward 5.404575824737549 ms
+Finished training it 114/128 of epoch 0, 188.73 ms/it, loss 0.000434
+mbs is 16
+Forward 5.382271766662598 ms
+Finished training it 115/128 of epoch 0, 178.06 ms/it, loss 0.093066
+mbs is 16
+Forward 4.96230411529541 ms
+Finished training it 116/128 of epoch 0, 168.77 ms/it, loss 0.225295
+mbs is 16
+Forward 5.4468159675598145 ms
+Finished training it 117/128 of epoch 0, 214.17 ms/it, loss 0.022077
+mbs is 16
+Forward 3.4391040802001953 ms
+Finished training it 118/128 of epoch 0, 195.60 ms/it, loss 0.016776
+mbs is 16
+Forward 15.673952102661133 ms
+Finished training it 119/128 of epoch 0, 183.91 ms/it, loss 0.061184
+mbs is 16
+Forward 5.94649600982666 ms
+Finished training it 120/128 of epoch 0, 174.57 ms/it, loss 0.095703
+mbs is 16
+Forward 5.243328094482422 ms
+Finished training it 121/128 of epoch 0, 174.99 ms/it, loss 0.033742
+mbs is 16
+Forward 5.604095935821533 ms
+Finished training it 122/128 of epoch 0, 175.13 ms/it, loss 0.049432
+mbs is 16
+Forward 5.535007953643799 ms
+Finished training it 123/128 of epoch 0, 165.65 ms/it, loss 0.092915
+mbs is 16
+Forward 5.583263874053955 ms
+Finished training it 124/128 of epoch 0, 168.97 ms/it, loss 0.014115
+mbs is 16
+Forward 5.3903679847717285 ms
+Finished training it 125/128 of epoch 0, 193.14 ms/it, loss 0.072587
+mbs is 16
+Forward 8.081536293029785 ms
+Finished training it 126/128 of epoch 0, 163.96 ms/it, loss 0.069669
+mbs is 16
+Forward 5.692255973815918 ms
+Finished training it 127/128 of epoch 0, 184.64 ms/it, loss 0.010629
+mbs is 16
+Forward 6.009759902954102 ms
+Finished training it 128/128 of epoch 0, 174.22 ms/it, loss 0.015643
+mbs is 16
+Forward 5.955296039581299 ms
+Finished training it 1/128 of epoch 1, 174.86 ms/it, loss 0.007481
+mbs is 16
+Forward 5.64137601852417 ms
+Finished training it 2/128 of epoch 1, 203.54 ms/it, loss 0.109533
+mbs is 16
+Forward 5.934175968170166 ms
+Finished training it 3/128 of epoch 1, 177.88 ms/it, loss 0.083915
+mbs is 16
+Forward 5.650752067565918 ms
+Finished training it 4/128 of epoch 1, 180.31 ms/it, loss 0.102852
+mbs is 16
+Forward 5.67193603515625 ms
+Finished training it 5/128 of epoch 1, 198.70 ms/it, loss 0.032736
+mbs is 16
+Forward 13.804448127746582 ms
+Finished training it 6/128 of epoch 1, 184.32 ms/it, loss 0.210121
+mbs is 16
+Forward 5.400479793548584 ms
+Finished training it 7/128 of epoch 1, 172.73 ms/it, loss 0.000122
+mbs is 16
+Forward 5.632480144500732 ms
+Finished training it 8/128 of epoch 1, 192.25 ms/it, loss 0.131576
+mbs is 16
+Forward 15.47702407836914 ms
+Finished training it 9/128 of epoch 1, 187.90 ms/it, loss 0.051604
+mbs is 16
+Forward 5.772543907165527 ms
+Finished training it 10/128 of epoch 1, 188.66 ms/it, loss 0.041043
+mbs is 16
+Forward 5.9088640213012695 ms
+Finished training it 11/128 of epoch 1, 188.20 ms/it, loss 0.101774
+mbs is 16
+Forward 5.966464042663574 ms
+Finished training it 12/128 of epoch 1, 217.97 ms/it, loss 0.243792
+mbs is 16
+Forward 5.618207931518555 ms
+Finished training it 13/128 of epoch 1, 172.19 ms/it, loss 0.009215
+mbs is 16
+Forward 6.4778242111206055 ms
+Finished training it 14/128 of epoch 1, 210.91 ms/it, loss 0.002647
+mbs is 16
+Forward 5.560895919799805 ms
+Finished training it 15/128 of epoch 1, 174.21 ms/it, loss 0.039103
+mbs is 16
+Forward 5.825920104980469 ms
+Finished training it 16/128 of epoch 1, 183.96 ms/it, loss 0.004713
+mbs is 16
+Forward 19.071264266967773 ms
+Finished training it 17/128 of epoch 1, 183.29 ms/it, loss 0.000452
+mbs is 16
+Forward 5.125216007232666 ms
+Finished training it 18/128 of epoch 1, 166.02 ms/it, loss 0.005081
+mbs is 16
+Forward 6.355616092681885 ms
+Finished training it 19/128 of epoch 1, 190.54 ms/it, loss 0.191116
+mbs is 16
+Forward 5.383615970611572 ms
+Finished training it 20/128 of epoch 1, 185.31 ms/it, loss 0.168843
+mbs is 16
+Forward 5.542463779449463 ms
+Finished training it 21/128 of epoch 1, 180.47 ms/it, loss 0.000504
+mbs is 16
+Forward 5.772160053253174 ms
+Finished training it 22/128 of epoch 1, 192.81 ms/it, loss 0.005799
+mbs is 16
+Forward 6.348127841949463 ms
+Finished training it 23/128 of epoch 1, 182.29 ms/it, loss 0.218833
+mbs is 16
+Forward 6.000415802001953 ms
+Finished training it 24/128 of epoch 1, 200.74 ms/it, loss 0.094095
+mbs is 16
+Forward 5.824960231781006 ms
+Finished training it 25/128 of epoch 1, 176.10 ms/it, loss 0.010011
+mbs is 16
+Forward 5.705056190490723 ms
+Finished training it 26/128 of epoch 1, 214.24 ms/it, loss 0.023264
+mbs is 16
+Forward 12.36297607421875 ms
+Finished training it 27/128 of epoch 1, 194.65 ms/it, loss 0.212678
+mbs is 16
+Forward 4.903552055358887 ms
+Finished training it 28/128 of epoch 1, 172.94 ms/it, loss 0.210217
+mbs is 16
+Forward 5.823232173919678 ms
+Finished training it 29/128 of epoch 1, 194.49 ms/it, loss 0.096736
+mbs is 16
+Forward 5.700831890106201 ms
+Finished training it 30/128 of epoch 1, 200.82 ms/it, loss 0.022361
+mbs is 16
+Forward 5.376416206359863 ms
+Finished training it 31/128 of epoch 1, 181.44 ms/it, loss 0.150286
+mbs is 16
+Forward 5.369440078735352 ms
+Finished training it 32/128 of epoch 1, 184.11 ms/it, loss 0.195108
+mbs is 16
+Forward 6.627744197845459 ms
+Finished training it 33/128 of epoch 1, 182.41 ms/it, loss 0.008867
+mbs is 16
+Forward 5.597599983215332 ms
+Finished training it 34/128 of epoch 1, 184.01 ms/it, loss 0.089171
+mbs is 16
+Forward 5.787744045257568 ms
+Finished training it 35/128 of epoch 1, 195.36 ms/it, loss 0.135758
+mbs is 16
+Forward 5.829823970794678 ms
+Finished training it 36/128 of epoch 1, 145.65 ms/it, loss 0.000029
+mbs is 16
+Forward 6.290304183959961 ms
+Finished training it 37/128 of epoch 1, 189.95 ms/it, loss 0.043727
+mbs is 16
+Forward 3.3578879833221436 ms
+Finished training it 38/128 of epoch 1, 165.12 ms/it, loss 0.010383
+mbs is 16
+Forward 17.744224548339844 ms
+Finished training it 39/128 of epoch 1, 189.85 ms/it, loss 0.202941
+mbs is 16
+Forward 10.351519584655762 ms
+Finished training it 40/128 of epoch 1, 165.14 ms/it, loss 0.120234
+mbs is 16
+Forward 3.4137279987335205 ms
+Finished training it 41/128 of epoch 1, 201.93 ms/it, loss 0.146827
+mbs is 16
+Forward 5.551136016845703 ms
+Finished training it 42/128 of epoch 1, 210.25 ms/it, loss 0.226835
+mbs is 16
+Forward 5.688032150268555 ms
+Finished training it 43/128 of epoch 1, 216.68 ms/it, loss 0.030762
+mbs is 16
+Forward 5.875904083251953 ms
+Finished training it 44/128 of epoch 1, 219.00 ms/it, loss 0.004079
+mbs is 16
+Forward 5.303071975708008 ms
+Finished training it 45/128 of epoch 1, 213.44 ms/it, loss 0.112065
+mbs is 16
+Forward 5.457376003265381 ms
+Finished training it 46/128 of epoch 1, 178.74 ms/it, loss 0.137474
+mbs is 16
+Forward 5.265600204467773 ms
+Finished training it 47/128 of epoch 1, 186.22 ms/it, loss 0.058706
+mbs is 16
+Forward 9.618176460266113 ms
+Finished training it 48/128 of epoch 1, 175.13 ms/it, loss 0.198173
+mbs is 16
+Forward 5.8466877937316895 ms
+Finished training it 49/128 of epoch 1, 176.20 ms/it, loss 0.167423
+mbs is 16
+Forward 5.360608100891113 ms
+Finished training it 50/128 of epoch 1, 196.74 ms/it, loss 0.029793
+mbs is 16
+Forward 5.602176189422607 ms
+Finished training it 51/128 of epoch 1, 176.04 ms/it, loss 0.191624
+mbs is 16
+Forward 5.760159969329834 ms
+Finished training it 52/128 of epoch 1, 200.89 ms/it, loss 0.227943
+mbs is 16
+Forward 5.523839950561523 ms
+Finished training it 53/128 of epoch 1, 205.36 ms/it, loss 0.084485
+mbs is 16
+Forward 5.659423828125 ms
+Finished training it 54/128 of epoch 1, 175.50 ms/it, loss 0.003620
+mbs is 16
+Forward 5.7499518394470215 ms
+Finished training it 55/128 of epoch 1, 211.75 ms/it, loss 0.003418
+mbs is 16
+Forward 4.821663856506348 ms
+Finished training it 56/128 of epoch 1, 196.07 ms/it, loss 0.021892
+mbs is 16
+Forward 5.570176124572754 ms
+Finished training it 57/128 of epoch 1, 212.85 ms/it, loss 0.091439
+mbs is 16
+Forward 6.150720119476318 ms
+Finished training it 58/128 of epoch 1, 175.04 ms/it, loss 0.164447
+mbs is 16
+Forward 5.184607982635498 ms
+Finished training it 59/128 of epoch 1, 201.55 ms/it, loss 0.218229
+mbs is 16
+Forward 5.294911861419678 ms
+Finished training it 60/128 of epoch 1, 192.29 ms/it, loss 0.031563
+mbs is 16
+Forward 5.708799839019775 ms
+Finished training it 61/128 of epoch 1, 182.26 ms/it, loss 0.109671
+mbs is 16
+Forward 5.616096019744873 ms
+Finished training it 62/128 of epoch 1, 179.76 ms/it, loss 0.182194
+mbs is 16
+Forward 5.850719928741455 ms
+Finished training it 63/128 of epoch 1, 177.99 ms/it, loss 0.063764
+mbs is 16
+Forward 5.7942399978637695 ms
+Finished training it 64/128 of epoch 1, 213.61 ms/it, loss 0.188719
+mbs is 16
+Forward 5.3809919357299805 ms
+Finished training it 65/128 of epoch 1, 179.73 ms/it, loss 0.034674
+mbs is 16
+Forward 26.414623260498047 ms
+Finished training it 66/128 of epoch 1, 181.88 ms/it, loss 0.053949
+mbs is 16
+Forward 5.965407848358154 ms
+Finished training it 67/128 of epoch 1, 201.22 ms/it, loss 0.107875
+mbs is 16
+Forward 5.3633599281311035 ms
+Finished training it 68/128 of epoch 1, 175.72 ms/it, loss 0.056528
+mbs is 16
+Forward 14.067423820495605 ms
+Finished training it 69/128 of epoch 1, 185.22 ms/it, loss 0.023925
+mbs is 16
+Forward 5.697055816650391 ms
+Finished training it 70/128 of epoch 1, 204.35 ms/it, loss 0.036033
+mbs is 16
+Forward 5.559199810028076 ms
+Finished training it 71/128 of epoch 1, 199.37 ms/it, loss 0.105999
+mbs is 16
+Forward 5.760511875152588 ms
+Finished training it 72/128 of epoch 1, 171.87 ms/it, loss 0.009978
+mbs is 16
+Forward 5.822720050811768 ms
+Finished training it 73/128 of epoch 1, 186.16 ms/it, loss 0.067721
+mbs is 16
+Forward 5.341599941253662 ms
+Finished training it 74/128 of epoch 1, 192.44 ms/it, loss 0.244848
+mbs is 16
+Forward 5.555776119232178 ms
+Finished training it 75/128 of epoch 1, 174.71 ms/it, loss 0.151977
+mbs is 16
+Forward 3.3243839740753174 ms
+Finished training it 76/128 of epoch 1, 201.55 ms/it, loss 0.200240
+mbs is 16
+Forward 5.289696216583252 ms
+Finished training it 77/128 of epoch 1, 175.51 ms/it, loss 0.058680
+mbs is 16
+Forward 5.185919761657715 ms
+Finished training it 78/128 of epoch 1, 190.33 ms/it, loss 0.036584
+mbs is 16
+Forward 14.244576454162598 ms
+Finished training it 79/128 of epoch 1, 183.45 ms/it, loss 0.091793
+mbs is 16
+Forward 5.565408229827881 ms
+Finished training it 80/128 of epoch 1, 176.82 ms/it, loss 0.213718
+mbs is 16
+Forward 5.836287975311279 ms
+Finished training it 81/128 of epoch 1, 170.49 ms/it, loss 0.037618
+mbs is 16
+Forward 5.877632141113281 ms
+Finished training it 82/128 of epoch 1, 228.80 ms/it, loss 0.175825
+mbs is 16
+Forward 3.335520029067993 ms
+Finished training it 83/128 of epoch 1, 157.01 ms/it, loss 0.094702
+mbs is 16
+Forward 3.658463954925537 ms
+Finished training it 84/128 of epoch 1, 212.49 ms/it, loss 0.171154
+mbs is 16
+Forward 5.152128219604492 ms
+Finished training it 85/128 of epoch 1, 202.26 ms/it, loss 0.027555
+mbs is 16
+Forward 5.589248180389404 ms
+Finished training it 86/128 of epoch 1, 195.41 ms/it, loss 0.008357
+mbs is 16
+Forward 5.215680122375488 ms
+Finished training it 87/128 of epoch 1, 185.67 ms/it, loss 0.034237
+mbs is 16
+Forward 3.632927894592285 ms
+Finished training it 88/128 of epoch 1, 200.04 ms/it, loss 0.025467
+mbs is 16
+Forward 3.2751359939575195 ms
+Finished training it 89/128 of epoch 1, 249.55 ms/it, loss 0.072764
+mbs is 16
+Forward 7.194784164428711 ms
+Finished training it 90/128 of epoch 1, 203.47 ms/it, loss 0.144808
+mbs is 16
+Forward 22.66864013671875 ms
+Finished training it 91/128 of epoch 1, 195.35 ms/it, loss 0.017569
+mbs is 16
+Forward 5.955359935760498 ms
+Finished training it 92/128 of epoch 1, 209.86 ms/it, loss 0.014248
+mbs is 16
+Forward 5.838560104370117 ms
+Finished training it 93/128 of epoch 1, 203.37 ms/it, loss 0.007721
+mbs is 16
+Forward 5.661087989807129 ms
+Finished training it 94/128 of epoch 1, 172.52 ms/it, loss 0.014588
+mbs is 16
+Forward 5.660384178161621 ms
+Finished training it 95/128 of epoch 1, 185.41 ms/it, loss 0.105408
+mbs is 16
+Forward 16.599008560180664 ms
+Finished training it 96/128 of epoch 1, 212.67 ms/it, loss 0.171898
+mbs is 16
+Forward 6.84438419342041 ms
+Finished training it 97/128 of epoch 1, 220.97 ms/it, loss 0.236547
+mbs is 16
+Forward 14.941823959350586 ms
+Finished training it 98/128 of epoch 1, 176.79 ms/it, loss 0.002184
+mbs is 16
+Forward 5.483712196350098 ms
+Finished training it 99/128 of epoch 1, 171.94 ms/it, loss 0.230095
+mbs is 16
+Forward 5.784319877624512 ms
+Finished training it 100/128 of epoch 1, 200.49 ms/it, loss 0.159556
+mbs is 16
+Forward 17.618528366088867 ms
+Finished training it 101/128 of epoch 1, 204.63 ms/it, loss 0.100545
+mbs is 16
+Forward 5.874911785125732 ms
+Finished training it 102/128 of epoch 1, 187.10 ms/it, loss 0.218148
+mbs is 16
+Forward 6.295487880706787 ms
+Finished training it 103/128 of epoch 1, 168.14 ms/it, loss 0.025343
+mbs is 16
+Forward 5.217887878417969 ms
+Finished training it 104/128 of epoch 1, 178.37 ms/it, loss 0.000234
+mbs is 16
+Forward 5.5865278244018555 ms
+Finished training it 105/128 of epoch 1, 205.30 ms/it, loss 0.046244
+mbs is 16
+Forward 9.067423820495605 ms
+Finished training it 106/128 of epoch 1, 182.73 ms/it, loss 0.084011
+mbs is 16
+Forward 5.437568187713623 ms
+Finished training it 107/128 of epoch 1, 210.32 ms/it, loss 0.076934
+mbs is 16
+Forward 6.184671878814697 ms
+Finished training it 108/128 of epoch 1, 198.06 ms/it, loss 0.061874
+mbs is 16
+Forward 5.419583797454834 ms
+Finished training it 109/128 of epoch 1, 208.08 ms/it, loss 0.111415
+mbs is 16
+Forward 5.621344089508057 ms
+Finished training it 110/128 of epoch 1, 172.25 ms/it, loss 0.029999
+mbs is 16
+Forward 5.6741437911987305 ms
+Finished training it 111/128 of epoch 1, 173.64 ms/it, loss 0.067090
+mbs is 16
+Forward 5.977888107299805 ms
+Finished training it 112/128 of epoch 1, 210.57 ms/it, loss 0.150996
+mbs is 16
+Forward 5.805727958679199 ms
+Finished training it 113/128 of epoch 1, 185.44 ms/it, loss 0.242862
+mbs is 16
+Forward 7.20854377746582 ms
+Finished training it 114/128 of epoch 1, 188.57 ms/it, loss 0.000103
+mbs is 16
+Forward 5.536479949951172 ms
+Finished training it 115/128 of epoch 1, 207.94 ms/it, loss 0.086350
+mbs is 16
+Forward 5.711775779724121 ms
+Finished training it 116/128 of epoch 1, 202.43 ms/it, loss 0.214998
+mbs is 16
+Forward 5.73308801651001 ms
+Finished training it 117/128 of epoch 1, 173.47 ms/it, loss 0.018954
+mbs is 16
+Forward 6.082143783569336 ms
+Finished training it 118/128 of epoch 1, 190.82 ms/it, loss 0.019628
+mbs is 16
+Forward 5.690144062042236 ms
+Finished training it 119/128 of epoch 1, 200.89 ms/it, loss 0.066457
+mbs is 16
+Forward 3.4858241081237793 ms
+Finished training it 120/128 of epoch 1, 190.14 ms/it, loss 0.102072
+mbs is 16
+Forward 5.376895904541016 ms
+Finished training it 121/128 of epoch 1, 197.21 ms/it, loss 0.030261
+mbs is 16
+Forward 5.830656051635742 ms
+Finished training it 122/128 of epoch 1, 177.61 ms/it, loss 0.045331
+mbs is 16
+Forward 5.407616138458252 ms
+Finished training it 123/128 of epoch 1, 202.49 ms/it, loss 0.098570
+mbs is 16
+Forward 5.842879772186279 ms
+Finished training it 124/128 of epoch 1, 204.86 ms/it, loss 0.016282
+mbs is 16
+Forward 13.917119979858398 ms
+Finished training it 125/128 of epoch 1, 193.24 ms/it, loss 0.067950
+mbs is 16
+Forward 5.848832130432129 ms
+Finished training it 126/128 of epoch 1, 205.29 ms/it, loss 0.074376
+mbs is 16
+Forward 5.31766414642334 ms
+Finished training it 127/128 of epoch 1, 174.63 ms/it, loss 0.012490
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 5
+-- using grpc False
+globval rank 5
+Rank 5 set device 5
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 5 with train-dy-p4d24xlarge-1, 29501
+Global rank 5 using gpu 5
+Init pg with nccl 5 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 5 16
+world size: 16, current rank: 5, local rank: 5
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 2
+-- using grpc False
+globval rank 2
+Rank 2 set device 2
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 2 with train-dy-p4d24xlarge-1, 29501
+Global rank 2 using gpu 2
+Init pg with nccl 2 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 2 16
+world size: 16, current rank: 2, local rank: 2
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 3
+-- using grpc False
+globval rank 3
+Rank 3 set device 3
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 3 with train-dy-p4d24xlarge-1, 29501
+Global rank 3 using gpu 3
+Init pg with nccl 3 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 3 16
+world size: 16, current rank: 3, local rank: 3
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 4
+-- using grpc False
+globval rank 4
+Rank 4 set device 4
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 4 with train-dy-p4d24xlarge-1, 29501
+Global rank 4 using gpu 4
+Init pg with nccl 4 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 4 16
+world size: 16, current rank: 4, local rank: 4
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc False
+globval rank 1
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 1 with train-dy-p4d24xlarge-1, 29501
+Global rank 1 using gpu 1
+Init pg with nccl 1 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 1 16
+world size: 16, current rank: 1, local rank: 1
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 6
+-- using grpc False
+globval rank 6
+Rank 6 set device 6
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 6 with train-dy-p4d24xlarge-1, 29501
+Global rank 6 using gpu 6
+Init pg with nccl 6 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 6 16
+world size: 16, current rank: 6, local rank: 6
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+mbs is 16
+Forward 17.96236801147461 ms
+Finished training it 128/128 of epoch 1, 183.26 ms/it, loss 0.017815
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 7
+-- using grpc False
+globval rank 7
+Rank 7 set device 7
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 7 with train-dy-p4d24xlarge-1, 29501
+Global rank 7 using gpu 7
+Init pg with nccl 7 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 7 16
+world size: 16, current rank: 7, local rank: 7
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 1
+-- using grpc False
+globval rank 9
+Rank 1 set device 1
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 9 with train-dy-p4d24xlarge-1, 29501
+Global rank 9 using gpu 1
+Init pg with nccl 9 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 9 16
+world size: 16, current rank: 9, local rank: 1
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 3
+-- using grpc False
+globval rank 11
+Rank 3 set device 3
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 11 with train-dy-p4d24xlarge-1, 29501
+Global rank 11 using gpu 3
+Init pg with nccl 11 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 11 16
+world size: 16, current rank: 11, local rank: 3
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 2
+-- using grpc False
+globval rank 10
+Rank 2 set device 2
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 10 with train-dy-p4d24xlarge-1, 29501
+Global rank 10 using gpu 2
+Init pg with nccl 10 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 10 16
+world size: 16, current rank: 10, local rank: 2
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 4
+-- using grpc False
+globval rank 12
+Rank 4 set device 4
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 12 with train-dy-p4d24xlarge-1, 29501
+Global rank 12 using gpu 4
+Init pg with nccl 12 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 12 16
+world size: 16, current rank: 12, local rank: 4
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 6
+-- using grpc False
+globval rank 14
+Rank 6 set device 6
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 14 with train-dy-p4d24xlarge-1, 29501
+Global rank 14 using gpu 6
+Init pg with nccl 14 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 14 16
+world size: 16, current rank: 14, local rank: 6
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 5
+-- using grpc False
+globval rank 13
+Rank 5 set device 5
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 13 with train-dy-p4d24xlarge-1, 29501
+Global rank 13 using gpu 5
+Init pg with nccl 13 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 13 16
+world size: 16, current rank: 13, local rank: 5
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 7
+-- using grpc False
+globval rank 15
+Rank 7 set device 7
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 15 with train-dy-p4d24xlarge-1, 29501
+Global rank 15 using gpu 7
+Init pg with nccl 15 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 15 16
+world size: 16, current rank: 15, local rank: 7
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>
+Unable to import mlperf_logging,  No module named 'mlperf_logging'
+Unable to import onnx.  No module named 'onnx'
+local Rank 0
+-- using grpc False
+globval rank 8
+Rank 0 set device 0
+Initializing with nccl
+node size 2 local 8 overall 16
+About to initialize distributed, world size 16 global rank 8 with train-dy-p4d24xlarge-1, 29501
+Global rank 8 using gpu 0
+Init pg with nccl 8 ws 16, addr train-dy-p4d24xlarge-1 port 29501
+ ---- init done --- 8 16
+world size: 16, current rank: 8, local rank: 0
+type is <class 'torch.nn.parallel.distributed.DistributedDataParallel'>

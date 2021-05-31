@@ -123,7 +123,7 @@ class Client:
     
     def dlrm_embedding_send_grads(self, *, name=None, grad_tensors, cuda):
         assert name == "dlrm_embedding_send_grads"
-        grad_tensors = []
+        # grad_tensors = []
         data = pickle.dumps((name, grad_tensors, cuda))
         # print(" --- dumped data")
         req = benchmark_pb2.Request(data=data)
